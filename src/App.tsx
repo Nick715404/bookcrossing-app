@@ -1,3 +1,5 @@
+import './styles/styles.scss'
+
 import Home from "./panels/home/Home";
 
 const App = () => {
@@ -5,7 +7,6 @@ const App = () => {
 
 	return (
 		<>
-			{/*<h1>Hello guys</h1>*/}
 			<Home id="/" />
 		</>
 	);

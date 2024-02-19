@@ -1,10 +1,7 @@
-import React from 'react';
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
-import INavigationBarButton from '../../../intrerface/buttonNavigationBarIntrface/INavigationBarButton';
 
-import './style/styleButtonForNavigationBar.scss';
+import { INavigationBarButton } from '../../../interfaces/interface';
 
-const ButtonForNavigationBar = ({nameButton, image}:INavigationBarButton) => {
+const ButtonForNavigationBar = ({ nameButton, image }: INavigationBarButton) => {
 
     return (
         <button className='btnNavBar'>

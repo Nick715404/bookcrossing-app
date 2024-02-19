@@ -1,9 +1,4 @@
-import React from 'react';
 import ButtonForNavigationBar from './elements/buttonForNavigationBar';
-
-import './style/styleNavigationBar.scss'
-//import profileImg from '../../image/profileUser.svg';
-//import profile from '../../image/profile.svg';
 
 const NavigationBar = () => {
     let nameButton1 :string = "Профиль";

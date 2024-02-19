@@ -1,15 +1,15 @@
+// СЛишком много кода! Рефакторить нужно очень сильно, выносить по папкам
+
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 
-import ISlide from "../../intrerface/sliderInterface/ISlide";
-import IAdressJson from "../../intrerface/sliderInterface/IAdressJson";
-//import ISliderProps from "../../intrerface/sliderInterface/ISliderProps";
+import { ISlide, IAdressJson } from "../../interfaces/interface";
 
-const Slider = ({adress}: IAdressJson) => {
+const Slider = ({ adress }: IAdressJson) => {
     const [slides, setSlides] = useState<ISlide[]>([]);
 
-    const [currentSlide ,setCurrentSlide] = useState(0);
-    
+    const [currentSlide, setCurrentSlide] = useState(0);
+
     const sliderRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -27,15 +27,11 @@ const Slider = ({adress}: IAdressJson) => {
 
     const handleDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
-            
+
         if (sliderRef.current) {
             sliderRef.current.classList.add('dragging');
         }
     };
-
-    /*document.addEventListener('mousemove', handleDrag);
-    document.addEventListener('mouseup', handleDragEnd);*/
-    
 
     const handleDragEnd = () => {
         if (sliderRef.current) {
@@ -45,7 +41,7 @@ const Slider = ({adress}: IAdressJson) => {
 
     const handleDrag = (e: React.MouseEvent<HTMLDivElement>) => {
         if (sliderRef.current) {
-            const {clientX} = e;
+            const { clientX } = e;
 
             const sliderWidth = sliderRef.current.offsetWidth;
 
@@ -63,8 +59,8 @@ const Slider = ({adress}: IAdressJson) => {
             {slides.map((image, index) => (
                 <div key={index}
                     className={`slider__image ${index === currentSlide ? 'slider__image--active' : ''}`}
-                    style={{backgroundImage: `url(${image.image})`, backgroundSize: 'cover'}}>
-                        <div className="slider__text">{image.text}</div>
+                    style={{ backgroundImage: `url(${image.image})`, backgroundSize: 'cover' }}>
+                    <div className="slider__text">{image.text}</div>
                 </div>
             ))}
         </div>
