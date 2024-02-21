@@ -4,10 +4,10 @@ type Props = {
 	id: string
 }
 
-export default function Home({ id }: Props) {
+export default function Catalog({ id }: Props) {
 	return (
 		<Panel id={id}>
-			Home
+			Catalog
 		</Panel>
 	)
 }
