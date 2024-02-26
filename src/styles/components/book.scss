@@ -1,34 +1,40 @@
 $index: calc(1vw + 1vh);
 
 .book {
+  position: relative;
+  padding-top: 0 !important;
 
   &-wrapper {
-    align-items: flex-end !important;
+    align-items: flex-start !important;
     background-color: #F5F5F5;
     padding: 12px;
     border-radius: 10px !important;
-  }
 
-  &-img {
-    height: calc($index * 10) !important;
-    max-height: 116px;
-    width: calc($index * 10) !important;
-    max-width: 96px;
+    .vkuiSimpleCell__content {
+      max-width: 85% !important;
+    }
   }
 
   &-title {
-    font-size: 16px;
-    margin-bottom: 5px !important;
+    font-size: clamp(14px, 3.7vw, 16px) !important;
+    margin-bottom: 1% !important;
     white-space: wrap !important;
   }
 
+  &-info {
+    font-size: clamp(10px, 3.6vw, 13px) !important;
+    line-height: 1.4 !important;
+    opacity: 0.6;
+  }
+
   &-author {
-    margin-bottom: 15px !important;
     white-space: wrap !important;
+    font-size: clamp(10px, 3.6vw, 13px) !important;
+    margin-bottom: 1% !important;
   }
 
   .vkuiSimpleCell__main {
     padding: 0 !important;
   }
-  
+
 }

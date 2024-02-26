@@ -1,3 +1,17 @@
+$dt-bg: #2d2c2c;
+
 .vkuiGroup__inner {
   padding: 0 !important;
+}
+
+// Dark-theme normilizer 
+.vkui--sizeX-none.vkui--vkBase--dark,
+.vkui--sizeX-none.vkui--vkIOS--dark {
+  .book-wrapper {
+    background-color: $dt-bg !important;
+  }
+
+  .card__icon {
+    background-color: $dt-bg !important;
+  }
 }

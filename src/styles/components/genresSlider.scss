@@ -3,8 +3,9 @@ $index: calc(1vw + 1vh);
 .card {
   // background-color: #ddd;
   background-color: transparent !important;
-  padding: 10px;
+  padding: 0 10px 10px;
   width: 15% !important;
+
 
   &__wrapper {
     display: flex;
