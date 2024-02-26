@@ -2,7 +2,6 @@ import {
 	Panel,
 	PanelHeader,
 	Group,
-	Title
 } from '@vkontakte/vkui';
 
 import Search from '../../components/search/Search';
@@ -27,7 +26,7 @@ export default function Catalog({ id }: Props) {
 				<Genres />
 			</Group>
 
-			<Group>
+			<Group separator='hide'>
 				<Relevants />
 			</Group>
 
