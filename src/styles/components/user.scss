@@ -1,0 +1,23 @@
+@import url('https://fonts.cdnfonts.com/css/sf-ui-display');
+
+$index: calc(1vw + 1vh);
+$fontName: 'SF UI Display';
+$fontNameSize: 16px;
+$fomtCitySize: 13px;
+
+.userBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/*.nameText {
+    font-family: $fontName;
+    font-size: $fontNameSize;
+    //font-weight: bold;
+}
+
+.cityText {
+    font-family: $fontName;
+    font-size: $fomtCitySize;
+}*/
