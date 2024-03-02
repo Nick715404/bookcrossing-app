@@ -1,6 +1,7 @@
-import { Icon24Message, Icon24MessageAddBadgeOutline, Icon24MessageBadge, Icon24MessageOutline } from "@vkontakte/icons";
+import { Icon24Add, Icon24Delete, Icon24DeleteArrowUpOutline, Icon24DeleteOutline, Icon24EditorCutOutline, Icon24EducationOutline, Icon24Message, Icon24MessageAddBadgeOutline, Icon24MessageBadge, Icon24MessageOutline, Icon24PenOutline, Icon24RemoveCircle, Icon24Upload } from "@vkontakte/icons";
 import { Div, Card, Image, SimpleCell, Text,  IconButton, Button, Group} from "@vkontakte/vkui";
 import '../../styles/components/myBook.scss'
+import CardControlButtons from "./cardControlButtons/CardControlButtons";
 
 export default function MyBook() {
     const image = (
@@ -8,39 +9,50 @@ export default function MyBook() {
             style={{marginBottom: '0', marginTop: '0'}}
             className="book-img"
             borderRadius="m"
+            size={96}
             src="https://fashionelite.com/wp-content/uploads/2016/09/1331144712_IMG_paris1.jpg" 
         />
     )
     
     return (
-            <div className="cardMyBook">
-                <div className="blocImage">
-                    <SimpleCell before={image} />
-                </div>
-                <div className=" ">
-                    <div className="textMyBook">
-                        <Text
-                            weight="1">
+        <Div className="cardMyBook">
+            {/*<Group className="blocImage" separator="hide">*/}
+                <SimpleCell className="imgBook" before={image}>
+                <Group className=" " separator="hide">
+                    <Group className="textMyBook" separator="hide">
+                        <Text weight="1" className="book-title">
                             Атлант расправил плечи
                         </Text>
 
-                        <Text
-                            weight="3">
+                        <Text className="book-author book-info">
                             Энтони Берджес
                         </Text>
-                    </div>
-                    <div className="buttonMyBook">
+
+                        <Text className="book-quality book-info">
+                            Отличное
+                        </Text>
+
+                        <Text className="book-genre book-info">
+                            Детектив
+                        </Text>
+
+                        <Text className="book-asbn book-info">
+                            199148-12881
+                        </Text>
+                    </Group>
+                    {/*<Group className="buttonMyBook">
                         <Button>
                             Редактировать
                         </Button>
-                    </div>
-                </div>
-                <div className="iconBtn">
-                    <IconButton>
-                        <Icon24MessageOutline />
-                    </IconButton>
-                </div>
-            </div>
+                    </Group>*/}
+                </Group>
+                </SimpleCell>
+            {/*</Group>*/}
+                
+            <Group className="controlBtn">
+                <CardControlButtons />
+            </Group>
+        </Div>
     )
 
     /*return (
