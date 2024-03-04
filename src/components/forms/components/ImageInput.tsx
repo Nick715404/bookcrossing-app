@@ -16,12 +16,25 @@ export default function ImageInput() {
     console.log(selectedImages);
   }, [selectedImages]);
 
+  const styles = {
+    height: '44px',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+
   return (
     <div>
-      <input type="file" multiple onChange={handleImageChange} />
-
+      <input 
+      type="file" 
+      multiple 
+      onChange={handleImageChange}
+      style={styles}
+      />
+{/* 
       <button onClick={handleImageUpload}>Загрузить фото</button>
-      <button onClick={getBookImage}>Получить картинки книги 123</button>
+      <button onClick={getBookImage}>Получить картинки книги 123</button> */}
 
       <div className="">
           {images && images.map((image, id) => {

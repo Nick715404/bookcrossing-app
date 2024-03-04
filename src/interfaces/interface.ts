@@ -27,3 +27,12 @@ export interface IBook {
   state: string,
   title: string,
 }
+
+export interface ICreateBook {
+  bookTitle: string
+  bookAuthor: string
+  bookQuality?: string
+  bookGanre?: string
+  bookIsbn: string
+  bookDesr?: string
+}

@@ -46,9 +46,9 @@ export default function Book({ book }: Props) {
           <Text className="book-isbn book-info">
             {book.isbn}
           </Text>
-          <ToShelf />
         </SimpleCell>
       </Div >
+      <ToShelf />
     </SplitLayout>
   )
 }
