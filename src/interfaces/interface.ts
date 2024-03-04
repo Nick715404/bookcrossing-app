@@ -15,3 +15,15 @@ export interface ISlide {
 export interface ISliderProps {
   dataPath: string;
 };
+
+export interface IBook {
+  id: string
+  authorId?: string | null,
+  description?: string | null,
+  genreId?: string | null,
+  imageId?: string,
+  isbn: string,
+  ownerId?: string | null,
+  state: string,
+  title: string,
+}

@@ -1,18 +1,29 @@
 import { Header } from "@vkontakte/vkui"
+import { IBook } from "../../interfaces/interface";
+import { $books } from "../../store/books";
+import { useUnit } from "effector-react";
+import { useEffect } from "react";
+import { getAllBooksFX } from "../../api/server/books/books";
+
 import Book from "../book/Book"
 
 export default function Relevants() {
+
+  const books = useUnit($books);
+
+  useEffect(() => {
+    getAllBooksFX();
+  }, [])
+
   return (
     <div>
       <Header mode="primary">
         Новые
       </Header>
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
+      {/* Рендер компонента Book с прокидыванием в него данных с сервера в переменной book */}
+      {books && books.map((book: IBook) => (
+        <Book key={book.id} book={book} />
+      ))}
     </div>
   )
 }

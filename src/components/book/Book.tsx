@@ -1,7 +1,20 @@
-import { Div, SimpleCell, Image, Text } from "@vkontakte/vkui"
+import {
+  Div,
+  SimpleCell,
+  Image,
+  Text,
+  SplitLayout,
+} from "@vkontakte/vkui"
+
 import ToShelf from "./toShelf/toShelf";
 
-export default function Book() {
+import { IBook } from "../../interfaces/interface";
+
+type Props = {
+  book: IBook
+}
+
+export default function Book({ book }: Props) {
 
   const image = (
     <Image
@@ -13,27 +26,29 @@ export default function Book() {
   )
 
   return (
-    <Div className="book">
-      <SimpleCell className="book-wrapper" before={image}>
-        <Text
-          weight="1"
-          className="book-title">
-          Атлант расправил плечи
-        </Text>
-        <Text className="book-author book-info">
-          Энтони Бёрджесс
-        </Text>
-        <Text className="book-quality book-info">
-          Отличное
-        </Text>
-        <Text className="book-genre book-info">
-          Детектив
-        </Text>
-        <Text className="book-asbn book-info">
-          199148-12881
-        </Text>
-        <ToShelf />
-      </SimpleCell>
-    </Div >
+    <SplitLayout>
+      <Div className="book">
+        <SimpleCell className="book-wrapper" before={image}>
+          <Text
+            weight="1"
+            className="book-title">
+            {book.title}
+          </Text>
+          <Text className="book-author book-info">
+            {book.authorId ? null : 'Автор не найден' }
+          </Text>
+          <Text className="book-quality book-info">
+            {book.state}
+          </Text>
+          <Text className="book-genre book-info">
+            {book.genreId ? null : 'Нет жанра'}
+          </Text>
+          <Text className="book-isbn book-info">
+            {book.isbn}
+          </Text>
+          <ToShelf />
+        </SimpleCell>
+      </Div >
+    </SplitLayout>
   )
 }

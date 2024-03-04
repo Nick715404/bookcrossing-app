@@ -3,6 +3,7 @@ $index: calc(1vw + 1vh);
 .book {
   position: relative;
   padding-top: 0 !important;
+  width: 100%;
 
   &-wrapper {
     align-items: flex-start !important;

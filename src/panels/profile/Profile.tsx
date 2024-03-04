@@ -23,10 +23,10 @@ export default function Profile({ id }: Props) {
       <SegmentedControlCustom />
 
       <Group>
+        {/* <Book />
         <Book />
         <Book />
-        <Book />
-        <Book />
+        <Book /> */}
       </Group>
 
     </Panel>

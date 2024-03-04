@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { getGenres } from "../../api/server/genres/genres"
 
 import { Icon24BrainOutline } from '@vkontakte/icons';
 
@@ -9,10 +8,10 @@ export default function Genres() {
 
   const [genres, setGenres] = useState<any[] | null>(null);
 
-  useEffect((): any => {
-    const data = getGenres();
-    setGenres(data);
-  }, [])
+  // useEffect((): any => {
+  //   const data = getGenres();
+  //   setGenres(data);
+  // }, [])
 
   return (
     <Group>
@@ -20,7 +19,7 @@ export default function Genres() {
         Жанры
       </Header>
       <CardScroll size='s'>
-        {genres && genres.map(ganre => (
+        {/* {genres && genres.map(ganre => (
           <Card className="card" key={ganre.id}>
             <div className="card__wrapper">
               <div className="card__icon">
@@ -31,7 +30,7 @@ export default function Genres() {
               </div>
             </div>
           </Card>
-        ))}
+        ))} */}
       </CardScroll>
     </Group>
   )
