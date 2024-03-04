@@ -8,7 +8,7 @@ import {
 } from "@vkontakte/vkui";
 
 import { options } from "../../../constants/select-options";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createBookFX } from "../../../api/server/books/books";
 
 import ImageInput from "../components/ImageInput";
@@ -37,7 +37,12 @@ export default function CreateBook() {
     e.preventDefault();
     createBookFX(setData());
 
-    
+    setTitle('');
+    setAuthor(''),
+    setQuality('');
+    setGenre('');
+    setIsbn('');
+    setDescr('');
   }
 
   return (

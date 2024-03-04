@@ -16,10 +16,19 @@ export const createBookFX = createEffect(async (book: ICreateBook) => {
   try {
     console.log(book);
     const { data } = await api.post('/book/create', book);
-    alert('Ура')
     return data;
   }
   catch (error) {
     console.log(error);
   }
 });
+
+export const deleteBook = async (id: string) => {
+  try {
+    const { data } = await api.delete(`/book/delete/${id}`);
+    return data
+  } 
+  catch (error) {
+    console.log(error)
+  }
+}

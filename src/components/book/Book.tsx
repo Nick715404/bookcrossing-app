@@ -6,7 +6,8 @@ import {
   SplitLayout,
 } from "@vkontakte/vkui"
 
-import ToShelf from "./toShelf/toShelf";
+import ToShelf from "../toShelf/toShelf";
+import ToChat from "../toChat/toChat";
 
 import { IBook } from "../../interfaces/interface";
 
@@ -26,7 +27,7 @@ export default function Book({ book }: Props) {
   )
 
   return (
-    <SplitLayout>
+    <SplitLayout id={book.id}>
       <Div className="book">
         <SimpleCell className="book-wrapper" before={image}>
           <Text
@@ -35,7 +36,7 @@ export default function Book({ book }: Props) {
             {book.title}
           </Text>
           <Text className="book-author book-info">
-            {book.authorId ? null : 'Автор не найден' }
+            {book.authorId ? null : 'Автор не найден'}
           </Text>
           <Text className="book-quality book-info">
             {book.state}
@@ -48,7 +49,8 @@ export default function Book({ book }: Props) {
           </Text>
         </SimpleCell>
       </Div >
-      <ToShelf />
+      <ToShelf id={book.id} />
+      <ToChat />
     </SplitLayout>
   )
 }

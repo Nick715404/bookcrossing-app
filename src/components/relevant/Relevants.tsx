@@ -15,15 +15,28 @@ export default function Relevants() {
     getAllBooksFX();
   }, [])
 
+  const fake: IBook = {
+    id: 'adashduaho8',
+    genreId: 'детектив',
+    isbn: '81004-2312-12',
+    state: 'Хорошее',
+    title: 'Обычная книга с обычным названием',
+    authorId: 'Конан Дудель',
+  }
+
   return (
     <div>
       <Header mode="primary">
         Новые
       </Header>
       {/* Рендер компонента Book с прокидыванием в него данных с сервера в переменной book */}
-      {books && books.map((book: IBook) => (
+      {/* {books && books.map((book: IBook) => (
         <Book key={book.id} book={book} />
-      ))}
+      ))} */}
+      <Book book={fake} />
+      <Book book={fake} />
+      <Book book={fake} />
+      <Book book={fake} />
     </div>
   )
 }
