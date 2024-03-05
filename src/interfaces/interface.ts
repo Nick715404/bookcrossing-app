@@ -20,7 +20,7 @@ export interface IBook {
   id: string
   authorId?: string | null,
   description?: string | null,
-  genreId?: string | null,
+  categoryTitle?: string | null,
   imageId?: string,
   isbn: string,
   ownerId?: string | null,
@@ -32,7 +32,14 @@ export interface ICreateBook {
   bookTitle: string
   bookAuthor: string
   bookQuality?: string
-  bookGanre?: string
+  bookCategory?: string
   bookIsbn: string
   bookDesr?: string
+}
+
+export interface IGenre {
+  id: string
+  title: string
+  imageName: string
+  books: IBook[]
 }

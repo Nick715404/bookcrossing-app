@@ -7,18 +7,18 @@ import {
   Select
 } from "@vkontakte/vkui";
 
-import { options } from "../../../constants/select-options";
 import { useState } from "react";
 import { createBookFX } from "../../../api/server/books/books";
 
 import ImageInput from "../components/ImageInput";
+import CategoryInput from "../components/categoryInput";
 
 export default function CreateBook() {
 
   const [title, setTitle] = useState<string>('');
   const [author, setAuthor] = useState<string>('');
-  const [quality, setQuality] = useState<string>('');
-  const [genre, setGenre] = useState<string>('');
+  const [quality, setQuality] = useState<string | undefined>(undefined);
+  const [category, setCategory] = useState<string>('');
   const [isbn, setIsbn] = useState<string>('');
   const [descr, setDescr] = useState<string>('');
 
@@ -27,7 +27,7 @@ export default function CreateBook() {
       bookTitle: title,
       bookAuthor: author,
       bookQuality: quality,
-      bookGanre: genre,
+      bookCategory: category,
       bookIsbn: isbn,
       bookDesr: descr
     }
@@ -38,12 +38,33 @@ export default function CreateBook() {
     createBookFX(setData());
 
     setTitle('');
-    setAuthor(''),
+    setAuthor('');
     setQuality('');
-    setGenre('');
+    setCategory('');
     setIsbn('');
     setDescr('');
   }
+
+  const options = [
+    {
+      value: 'Отличное состояние',
+      label: 'Отличное'
+    },
+    {
+      value: 'Хорошее состояние',
+      label: 'Хорошее'
+    },
+    {
+      value: 'Примелимое состояние',
+      label: 'Приемлимое'
+    },
+    {
+      value: 'Плохое состояние',
+      label: 'Плохое'
+    },
+  ];
+
+  console.log(setData());
 
   return (
     <form onSubmit={handleSubmit}>
@@ -95,21 +116,8 @@ export default function CreateBook() {
           onChange={(e) => setQuality(e.target.value)}
         />
       </FormItem>
-      {/* Жанры книги */}
-      <FormItem
-        top='Жанр'
-        htmlFor="bookQuality"
-      >
-        <NativeSelect
-          id="bookGenre"
-          placeholder="Выберите жанр книги"
-          name="genre"
-          value={genre}
-          onChange={(e) => setGenre(e.target.value)}
-        >
-          <option value="bad">Запрос на все жанры</option>
-        </NativeSelect>
-      </FormItem>
+      {/* Категории книги */}
+      <CategoryInput value={category} change={(e: any) => setCategory(e.target.value)} />
       {/* ISBN книги */}
       <FormItem
         top='ISBN'

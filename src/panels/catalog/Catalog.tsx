@@ -5,7 +5,7 @@ import {
 } from '@vkontakte/vkui';
 
 import Search from '../../components/search/Search';
-import Genres from '../../components/genres/Genres';
+import Categories from '../../components/genres/Categories';
 import Relevants from '../../components/relevant/Relevants';
 
 type Props = {
@@ -24,7 +24,7 @@ export default function Catalog({ id }: Props) {
 			<Search />
 
 			<Group separator='hide'>
-				<Genres />
+				<Categories />
 			</Group>
 
 			<Group separator='hide'>

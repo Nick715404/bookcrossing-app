@@ -17,13 +17,13 @@ $index: calc(1vw + 1vh);
   }
 
   &-title {
-    font-size: clamp(14px, 3.7vw, 16px) !important;
-    margin-bottom: 1% !important;
+    font-size: clamp(14px, 3.9vw, 16px) !important;
+    margin-bottom: 5px !important;
     white-space: wrap !important;
   }
 
   &-info {
-    font-size: clamp(10px, 3.6vw, 13px) !important;
+    font-size: clamp(10px, 3.8vw, 13px) !important;
     line-height: 1.4 !important;
     opacity: 0.6;
   }

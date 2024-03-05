@@ -38,14 +38,8 @@ export default function Book({ book }: Props) {
           <Text className="book-author book-info">
             {book.authorId ? null : 'Автор не найден'}
           </Text>
-          <Text className="book-quality book-info">
-            {book.state}
-          </Text>
           <Text className="book-genre book-info">
-            {book.genreId ? null : 'Нет жанра'}
-          </Text>
-          <Text className="book-isbn book-info">
-            {book.isbn}
+            {book.categoryTitle ? book.categoryTitle : 'Нет жанра'}
           </Text>
         </SimpleCell>
       </Div >

@@ -18,14 +18,15 @@ export default function ToShelf({ id }: Props) {
 
   const books = useUnit($books);
 
-  // const handleDeleteBook = async (e: any) => {
-  //   e.preventDefault();
-  //   const isDelete = await deleteBook(id)
+  const handleDeleteBook = async (e: any) => {
+    e.preventDefault();
+    const isDelete = await deleteBook(id)
 
-  //   if (isDelete === '200') {
-  //     books.filter(el => el.id != id);
-  //   }
-  // }
+    if (isDelete === '200') {
+      books.filter(el => el.id != id);
+    }
+    setActive(!acitive);
+  }
 
   const fakeHandleClick = () => {
     setActive(!acitive);
@@ -33,7 +34,7 @@ export default function ToShelf({ id }: Props) {
 
   return (
     <div
-      onClick={fakeHandleClick}
+      onClick={handleDeleteBook}
       className='to-shelf-btn'>
       {acitive ? <Icon24Bookmark fill='#99A2AD' /> : <Icon24BookmarkOutline fill='#99A2AD' />}
     </div>

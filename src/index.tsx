@@ -6,6 +6,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 import { RouterProvider } from "@vkontakte/vk-mini-apps-router";
 import { AdaptivityProvider, ConfigProvider, AppRoot } from "@vkontakte/vkui";
 import { appRouter } from "./constants/vk-router";
+import { StrictMode } from "react";
 
 // Init VK  Mini App
 bridge.send("VKWebAppInit");
@@ -15,7 +16,9 @@ ReactDOM.render(
     <AdaptivityProvider>
       <AppRoot>
         <RouterProvider router={appRouter}>
-          <App />
+          <StrictMode>
+            <App />
+          </StrictMode>
         </RouterProvider>
       </AppRoot>
     </AdaptivityProvider>
