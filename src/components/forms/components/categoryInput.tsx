@@ -5,7 +5,7 @@ import { useUnit } from "effector-react";
 import { getAllCategoriesFX } from "../../../api/server/categories/categories";
 
 type Props = {
-  value: string
+  value: string | undefined
   change: any
 };
 
@@ -34,7 +34,7 @@ function CategoryInput({ value, change }: Props) {
         id="bookCategory"
         placeholder="Выберите категорию книги"
         name="genre"
-        defaultValue='Выберите категорию книги'
+        // defaultValue='Выберите категорию книги'
         value={value}
         onChange={change}
         options={createOptions} />

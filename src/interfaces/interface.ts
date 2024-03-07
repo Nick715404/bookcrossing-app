@@ -31,7 +31,7 @@ export interface IBook {
 export interface ICreateBook {
   bookTitle: string
   bookAuthor: string
-  bookQuality?:string | null,
+  bookQuality?: string | null,
   bookCategory?: string | null,
   bookIsbn: string
   bookDesr?: string | null,
@@ -42,4 +42,13 @@ export interface IGenre {
   title: string
   imageName: string
   books: IBook[]
+}
+
+export interface IDataState {
+  title: string,
+  author: string,
+  quality?: string,
+  category?: string,
+  isbn: string,
+  descr?: string
 }

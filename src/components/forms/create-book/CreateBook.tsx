@@ -9,29 +9,32 @@ import {
   Checkbox
 } from "@vkontakte/vkui";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { createBookFX } from "../../../api/server/books/books";
+import { IDataState } from "../../../interfaces/interface";
 
 import ImageInput from "../components/ImageInput";
 import CategoryInput from "../components/categoryInput";
 
 export default React.memo(function CreateBook() {
 
-  const [title, setTitle] = useState<string>('');
-  const [author, setAuthor] = useState<string>('');
-  const [quality, setQuality] = useState<string | undefined>(undefined);
-  const [category, setCategory] = useState<string>('');
-  const [isbn, setIsbn] = useState<string>('');
-  const [descr, setDescr] = useState<string>('');
+  const [formData, setFormData] = useState<IDataState>({
+    title: '',
+    author: '',
+    quality: '',
+    category: '',
+    isbn: '',
+    descr: ''
+  });
 
   const setData = () => {
     return {
-      bookTitle: title,
-      bookAuthor: author,
-      bookQuality: quality,
-      bookCategory: category,
-      bookIsbn: isbn,
-      bookDesr: descr
+      bookTitle: formData.title,
+      bookAuthor: formData.author,
+      bookQuality: formData.quality,
+      bookCategory: formData.category,
+      bookIsbn: formData.isbn,
+      bookDesr: formData.descr
     }
   }
 
@@ -39,34 +42,45 @@ export default React.memo(function CreateBook() {
     e.preventDefault();
     createBookFX(setData());
 
-    setTitle('');
-    setAuthor('');
-    setQuality('');
-    setCategory('');
-    setIsbn('');
-    setDescr('');
+    setFormData(prev => {
+      return {
+        ...prev,
+        title: '',
+        author: '',
+        quality: '',
+        category: options[0].label,
+        isbn: '',
+        descr: ''
+      }
+    })
   }
 
-  const options = [
-    {
-      value: 'Отличное состояние',
-      label: 'Отличное'
-    },
-    {
-      value: 'Хорошее состояние',
-      label: 'Хорошее'
-    },
-    {
-      value: 'Примелимое состояние',
-      label: 'Приемлимое'
-    },
-    {
-      value: 'Плохое состояние',
-      label: 'Плохое'
-    },
-  ];
+  const options = useMemo(() => {
+    return [
+      {
+        value: 'Выберите состояние книги',
+        label: 'Отличное'
+      },
+      {
+        value: 'Отличное состояние',
+        label: 'Отличное'
+      },
+      {
+        value: 'Хорошее состояние',
+        label: 'Хорошее'
+      },
+      {
+        value: 'Примелимое состояние',
+        label: 'Приемлимое'
+      },
+      {
+        value: 'Плохое состояние',
+        label: 'Плохое'
+      },
+    ];
+  }, []);
 
-  console.count('Rerender')
+  // console.count('Rerender')
 
   return (
     <form onSubmit={handleSubmit}>
@@ -85,18 +99,23 @@ export default React.memo(function CreateBook() {
           type="text"
           name="title"
           required
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={formData.title}
+          onChange={(e) => setFormData(prev => {
+            return {
+              ...prev,
+              title: e.target.value
+            }
+          })}
         />
       </FormItem>
       {/* Автор книги */}
       <FormItem
         top='Автор'
         htmlFor="bookAuthor"
-        // status={author ? 'valid' : 'error'}
-        // bottom={
-        //   author ? 'Автор введен верно!' : 'Введите в формате - "Фамилия И. О."'
-        // }
+      // status={author ? 'valid' : 'error'}
+      // bottom={
+      //   author ? 'Автор введен верно!' : 'Введите в формате - "Фамилия И. О."'
+      // }
       >
         <Input
           id="bookAuthor"
@@ -104,8 +123,13 @@ export default React.memo(function CreateBook() {
           type="text"
           name="author"
           required
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
+          value={formData.author}
+          onChange={(e) => setFormData(prev => {
+            return {
+              ...prev,
+              author: e.target.value
+            }
+          })}
         />
       </FormItem>
       {/* Состояние книги */}
@@ -118,12 +142,22 @@ export default React.memo(function CreateBook() {
           placeholder="Выберите состояние книги"
           name="quality"
           options={options}
-          value={quality}
-          onChange={(e) => setQuality(e.target.value)}
+          // value={formData.quality}
+          onChange={(e) => setFormData(prev => {
+            return {
+              ...prev,
+              quality: e.target.value,
+            }
+          })}
         />
       </FormItem>
       {/* Категории книги */}
-      <CategoryInput value={category} change={(e: any) => setCategory(e.target.value)} />
+      <CategoryInput value={formData.category} change={(e: any) => setFormData(prev => {
+        return {
+          ...prev,
+          category: e.target.value
+        }
+      })} />
       {/* ISBN книги */}
       <FormItem
         top='ISBN'
@@ -135,8 +169,13 @@ export default React.memo(function CreateBook() {
           type="text"
           name="isbn"
           required
-          value={isbn}
-          onChange={(e) => setIsbn(e.target.value)}
+          value={formData.isbn}
+          onChange={(e) => setFormData(prev => {
+            return {
+              ...prev,
+              isbn: e.target.value
+            }
+          })}
         />
       </FormItem>
       {/* Есть ли isbn */}
@@ -152,8 +191,13 @@ export default React.memo(function CreateBook() {
           id="bookDescription"
           placeholder="Добавьте комментарий"
           name="description"
-          value={descr}
-          onChange={(e) => setDescr(e.target.value)}
+          value={formData.descr}
+          onChange={(e) => setFormData(prev => {
+            return {
+              ...prev,
+              descr: e.target.value
+            }
+          })}
         />
       </FormItem>
       {/* Кнопка отправить форму */}

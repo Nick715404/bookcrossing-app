@@ -23,7 +23,7 @@ export default function Book({ book }: Props) {
       className="book-img"
       size={96}
       borderRadius="m"
-      src="https://fashionelite.com/wp-content/uploads/2016/09/1331144712_IMG_paris1.jpg" />
+      src="/img/genres/genre1.jpg" />
   )
 
   return (
