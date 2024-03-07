@@ -1,10 +1,12 @@
+import React from "react";
+
 import {
   FormItem,
   Input,
-  NativeSelect,
   Textarea,
   Button,
-  Select
+  Select,
+  Checkbox
 } from "@vkontakte/vkui";
 
 import { useState } from "react";
@@ -13,7 +15,7 @@ import { createBookFX } from "../../../api/server/books/books";
 import ImageInput from "../components/ImageInput";
 import CategoryInput from "../components/categoryInput";
 
-export default function CreateBook() {
+export default React.memo(function CreateBook() {
 
   const [title, setTitle] = useState<string>('');
   const [author, setAuthor] = useState<string>('');
@@ -64,7 +66,7 @@ export default function CreateBook() {
     },
   ];
 
-  console.log(setData());
+  console.count('Rerender')
 
   return (
     <form onSubmit={handleSubmit}>
@@ -91,6 +93,10 @@ export default function CreateBook() {
       <FormItem
         top='Автор'
         htmlFor="bookAuthor"
+        // status={author ? 'valid' : 'error'}
+        // bottom={
+        //   author ? 'Автор введен верно!' : 'Введите в формате - "Фамилия И. О."'
+        // }
       >
         <Input
           id="bookAuthor"
@@ -133,6 +139,10 @@ export default function CreateBook() {
           onChange={(e) => setIsbn(e.target.value)}
         />
       </FormItem>
+      {/* Есть ли isbn */}
+      <FormItem>
+        <Checkbox>ISBN отсутствует</Checkbox>
+      </FormItem>
       {/* Комментарий к книге */}
       <FormItem
         top='Комментарий'
@@ -156,4 +166,4 @@ export default function CreateBook() {
       </FormItem>
     </form >
   )
-}
+})

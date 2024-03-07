@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useMemo } from "react";
 import { FormItem, Select } from "@vkontakte/vkui";
 import { $categories } from "../../../store/categories";
 import { useUnit } from "effector-react";
@@ -9,20 +9,21 @@ type Props = {
   change: any
 };
 
-function createOptions(genres: any[]) {
-  const options = genres.map(genre => ({
-    value: genre.title,
-    label: genre.title
-  }));
-  return options;
-}
-
 function CategoryInput({ value, change }: Props) {
+  
   const categories = useUnit($categories);
 
   useEffect(() => {
     getAllCategoriesFX();
   }, []);
+
+  const createOptions = useMemo(() => {
+    const options = categories.map(category => ({
+      value: category.title,
+      label: category.title
+    }));
+    return options;
+  }, [categories])
 
   return (
     <FormItem
@@ -33,9 +34,10 @@ function CategoryInput({ value, change }: Props) {
         id="bookCategory"
         placeholder="Выберите категорию книги"
         name="genre"
+        defaultValue='Выберите категорию книги'
         value={value}
         onChange={change}
-        options={createOptions(categories)} />
+        options={createOptions} />
     </FormItem>
   );
 }

@@ -9,7 +9,7 @@ type Props = {
 export default function Create({ id }: Props) {
   return (
     <Panel id={id}>
-      <PanelHeader>
+      <PanelHeader separator={false}>
         Буккроссинг
       </PanelHeader>
       <CreateBook />

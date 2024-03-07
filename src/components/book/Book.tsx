@@ -30,13 +30,11 @@ export default function Book({ book }: Props) {
     <SplitLayout id={book.id}>
       <Div className="book">
         <SimpleCell className="book-wrapper" before={image}>
-          <Text
-            weight="1"
-            className="book-title">
+          <Text className="book-title" weight="1">
             {book.title}
           </Text>
           <Text className="book-author book-info">
-            {book.authorId ? null : 'Автор не найден'}
+            {book.author ? book.author : 'Автор не найден'}
           </Text>
           <Text className="book-genre book-info">
             {book.categoryTitle ? book.categoryTitle : 'Нет жанра'}

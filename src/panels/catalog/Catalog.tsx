@@ -17,7 +17,7 @@ export default function Catalog({ id }: Props) {
 	return (
 		<Panel id={id}>
 
-			<PanelHeader>
+			<PanelHeader separator={false}>
 				Буккроссинг
 			</PanelHeader>
 

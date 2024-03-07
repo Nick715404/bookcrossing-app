@@ -12,7 +12,7 @@ export default function Profile({ id }: Props) {
   return (
     <Panel id={id}>
 
-      <PanelHeader>
+      <PanelHeader separator={false}>
         Буккроссинг
       </PanelHeader>
 

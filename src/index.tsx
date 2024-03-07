@@ -11,14 +11,15 @@ import { StrictMode } from "react";
 // Init VK  Mini App
 bridge.send("VKWebAppInit");
 
+// засунеть splitlayout
+// глобальное состояние с текущей книгой
+
 ReactDOM.render(
   <ConfigProvider>
     <AdaptivityProvider>
       <AppRoot>
         <RouterProvider router={appRouter}>
-          <StrictMode>
             <App />
-          </StrictMode>
         </RouterProvider>
       </AppRoot>
     </AdaptivityProvider>

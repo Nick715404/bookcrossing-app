@@ -17,29 +17,44 @@ export default function ImageInput() {
   }, [selectedImages]);
 
   const styles = {
-    height: '44px',
-    width: '100%',
+    width: '48%',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    aspectRatio: '1 / 1',
+    margin: '0 auto',
+    backgroundColor: '#F2F3F5',
+    borderRadius: '14px',
+    color: 'transparent'
   }
+
+  const uploadFiles = () => {
+    handleImageUpload(selectedImages);
+  }
+
+  const getFiles = () => {
+    getBookImage();
+  }
+
+  // Создать юзера с айди 123
 
   return (
     <div>
-      <input 
-      type="file" 
-      multiple 
-      onChange={handleImageChange}
-      style={styles}
+      <input
+        className="file-input"
+        type="file"
+        multiple
+        onChange={handleImageChange}
+        style={styles}
       />
-{/* 
-      <button onClick={handleImageUpload}>Загрузить фото</button>
-      <button onClick={getBookImage}>Получить картинки книги 123</button> */}
+
+      {/* <button onClick={uploadFiles}>Загрузить фото</button>
+      <button onClick={getFiles}>Получить картинки книги 123</button> */}
 
       <div className="">
-          {images && images.map((image, id) => {
-            return <img key={id} src={'http://localhost:3000' + image.path} />
-          })}
+        {images && images.map((image, id) => {
+          return <img key={id} src={'http://localhost:3000' + image.path} />
+        })}
       </div>
 
     </div>

@@ -18,7 +18,7 @@ export interface ISliderProps {
 
 export interface IBook {
   id: string
-  authorId?: string | null,
+  author?: string | null,
   description?: string | null,
   categoryTitle?: string | null,
   imageId?: string,
@@ -31,10 +31,10 @@ export interface IBook {
 export interface ICreateBook {
   bookTitle: string
   bookAuthor: string
-  bookQuality?: string
-  bookCategory?: string
+  bookQuality?:string | null,
+  bookCategory?: string | null,
   bookIsbn: string
-  bookDesr?: string
+  bookDesr?: string | null,
 }
 
 export interface IGenre {
