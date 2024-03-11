@@ -52,3 +52,11 @@ export interface IDataState {
   isbn: string,
   descr?: string
 }
+
+export interface ICreateUser {
+  vkid: string
+  city: string
+  shelf: string
+  givenBooks?: number
+  recievdBooks?: number
+}

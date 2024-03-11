@@ -58,10 +58,6 @@ export default React.memo(function CreateBook() {
   const options = useMemo(() => {
     return [
       {
-        value: 'Выберите состояние книги',
-        label: 'Отличное'
-      },
-      {
         value: 'Отличное состояние',
         label: 'Отличное'
       },
