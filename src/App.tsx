@@ -23,10 +23,6 @@ const App = () => {
 
 	const users = useUnit($users)
 
-	// useEffect(() => {
-	// 	createUserFX(fakeVkUser);
-	// }, []);
-
 	const { view: activeView } = useActiveVkuiLocation();
 	const activePanel = useGetPanelForView('panel');
 

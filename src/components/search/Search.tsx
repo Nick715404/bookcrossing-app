@@ -1,9 +1,23 @@
+import React from "react";
+import { useUnit } from "effector-react";
+import { $search, searchChanged } from "../../store/search";
 import { Search as SearchPanel } from "@vkontakte/vkui"
+import { useCallback } from "react";
 
-import { useState } from "react";
+function Search() {
 
-export default function Search() {
+  const [search, handleSearch] = useUnit([$search, searchChanged]);
+
+  const onSearchChange = useCallback((event) => {
+    handleSearch(event.target.value)
+  }, [handleSearch]);
+
   return (
-    <SearchPanel placeholder="Поиск"></SearchPanel>
+    <SearchPanel
+      value={search}
+      onChange={onSearchChange}
+      placeholder="Поиск" />
   )
 }
+
+export default React.memo(Search);

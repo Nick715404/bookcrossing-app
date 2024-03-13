@@ -7,6 +7,7 @@ import {
 import Search from '../../components/search/Search';
 import Categories from '../../components/genres/Categories';
 import Relevants from '../../components/relevant/Relevants';
+import SearchResult from '../../components/search-result/SearchResult';
 
 type Props = {
 	id: string
@@ -30,6 +31,8 @@ export default function Catalog({ id }: Props) {
 			<Group separator='hide'>
 				<Relevants />
 			</Group>
+
+			<SearchResult />
 
 		</Panel>
 	)
