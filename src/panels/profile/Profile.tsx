@@ -3,9 +3,6 @@ import User from '../../components/user/User';
 import Relevants from '../../components/relevant/Relevants';
 import SegmentedControlCustom from '../../components/segmentControl/SegmentControl';
 import MyBook from '../../components/myBook/MyBook';
-import CardMyBook from '../../components/myBook/cardMyBook/CardMyBook';
-import UserBookshelf from '../../components/userBookshelf/UserBookshelf';
-import { useState } from 'react';
 
 type Props = {
   id: string
@@ -15,25 +12,25 @@ export default function Profile({ id }: Props) {
   return (
     <Panel id={id}>
 
-      <PanelHeader>
-          Буккроссинг
+      <PanelHeader separator={false}>
+        Буккроссинг
       </PanelHeader>
 
       <Group separator='hide'>
-       <User />
+        <User />
       </Group>
 
       <SegmentedControlCustom />
 
       <Group>
-        {/*<Relevants />
+        {/*<Relevants />*/}
         <Div>
-          <Card>
-            <MyBook />
-          </Card>
-        </Div>*/}
+        <Card>
+          <MyBook />
+        </Card>
+        </Div>
         
-         <UserBookshelf />
+          
       </Group>
 
     </Panel>

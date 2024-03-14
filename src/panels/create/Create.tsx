@@ -1,4 +1,5 @@
-import { Panel } from '@vkontakte/vkui';
+import { Panel, PanelHeader } from '@vkontakte/vkui';
+import CreateBook from '../../components/forms/create-book/CreateBook';
 
 type Props = {
   id: string
@@ -8,7 +9,10 @@ type Props = {
 export default function Create({ id }: Props) {
   return (
     <Panel id={id}>
-      Create form
+      <PanelHeader separator={false}>
+        Буккроссинг
+      </PanelHeader>
+      <CreateBook />
     </Panel>
   )
 }

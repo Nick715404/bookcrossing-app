@@ -1,0 +1,32 @@
+.modalPage {
+    display: flex;
+    flex-direction: column;
+    //justify-content: center;
+    //align-items: center;
+}
+
+.bookImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.groupBookInformation {
+    margin-top: 16px;
+}
+
+.nameBook {
+    font-size: 21;
+}
+
+.buttonBlock {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    padding-bottom: 50px;
+}
+
+.gallery {
+    padding-bottom: 450px;
+}

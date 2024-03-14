@@ -6,16 +6,20 @@ import '@vkontakte/vkui/dist/vkui.css';
 import { RouterProvider } from "@vkontakte/vk-mini-apps-router";
 import { AdaptivityProvider, ConfigProvider, AppRoot } from "@vkontakte/vkui";
 import { appRouter } from "./constants/vk-router";
+import { StrictMode } from "react";
 
 // Init VK  Mini App
 bridge.send("VKWebAppInit");
+
+// засунеть splitlayout
+// глобальное состояние с текущей книгой
 
 ReactDOM.render(
   <ConfigProvider>
     <AdaptivityProvider>
       <AppRoot>
         <RouterProvider router={appRouter}>
-          <App />
+            <App />
         </RouterProvider>
       </AppRoot>
     </AdaptivityProvider>
