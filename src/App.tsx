@@ -3,25 +3,19 @@ import './styles/styles.scss'
 import { useActiveVkuiLocation, useGetPanelForView } from '@vkontakte/vk-mini-apps-router';
 import { View, Epic } from '@vkontakte/vkui';
 import { useEffect } from 'react';
+import { GetCurrentUserFX } from './api/server/user/user';
+import { vkUser } from './constants/vk-users';
 
 import Nav from './components/tabbar/Nav';
 import Catalog from './panels/catalog/Catalog';
 import Profile from './panels/profile/Profile';
 import Create from './panels/create/Create';
-import { createUserFX } from './api/server/user/user';
-import { useUnit } from 'effector-react';
-import { $users } from './store/user';
-
-const fakeVkUser = {
-	givenBooks: 134,
-	recievdBooks: 15,
-	city: 'Москва',
-	vkId: '9999'
-}
 
 const App = () => {
 
-	const users = useUnit($users)
+	useEffect(() => {
+		GetCurrentUserFX(vkUser);
+	}, []);
 
 	const { view: activeView } = useActiveVkuiLocation();
 	const activePanel = useGetPanelForView('panel');

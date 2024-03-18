@@ -56,7 +56,11 @@ export interface IDataState {
 export interface ICreateUser {
   vkid: string
   city: string
-  shelf: string
   givenBooks?: number
   recievdBooks?: number
+}
+
+export interface IUser extends ICreateUser {
+  name: string
+  surName: string
 }

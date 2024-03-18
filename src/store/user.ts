@@ -1,6 +1,9 @@
 import { createStore } from "effector";
-import { createUserFX } from "../api/server/user/user";
+import { GetCurrentUserFX, CreateUserFX } from "../api/server/user/user";
+import { IUser } from "../interfaces/interface";
 
-export const $users = createStore([]);
+export const $user = createStore<IUser | null>(null);
 
-$users.on(createUserFX.doneData, (_, newUser) => newUser);
+$user.on(CreateUserFX.doneData, (_, newUser) => newUser);
+
+$user.on(GetCurrentUserFX.doneData, (user, newUser) => newUser);
