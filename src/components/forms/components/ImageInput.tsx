@@ -12,9 +12,9 @@ export default function ImageInput() {
     setSelectedImages([...selectedImages, ...files]);
   }
 
-  useEffect(() => {
-    console.log(selectedImages);
-  }, [selectedImages]);
+  // useEffect(() => {
+  //   console.log(selectedImages);
+  // }, [selectedImages]);
 
   const styles = {
     width: '48%',

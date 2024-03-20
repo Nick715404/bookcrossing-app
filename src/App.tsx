@@ -8,13 +8,15 @@ import Nav from './components/tabbar/Nav';
 import Catalog from './panels/catalog/Catalog';
 import Profile from './panels/profile/Profile';
 import Create from './panels/create/Create';
-import { createUserFX } from './api/server/user/user';
+//import { createUserFX } from './api/server/user/user';
 import { useUnit } from 'effector-react';
-import { $users } from './store/user';
+//import { $users } from './store/user';
 import Modal from './components/modal/Modal';
 import ModalImgBook from './components/modal/modalImgbook/ModalImgBook';
 import { $statusActivModal, setStatusActiveModal } from './store/activeModal';
 import ModalBookStatusDescription from './components/modal/modalBookStatusDescriptions/ModalBookStatusDescription';
+import { GetCurrentUserFX } from './api/server/user/user';
+import { vkUser } from './constants/vk-users';
 // import TranscriptIsbnModal from './components/modal/transcriptISBNModal/transcriptIsbnModal';
 
 const fakeVkUser = {
@@ -26,7 +28,9 @@ const fakeVkUser = {
 
 const App = () => {
 
-	const users = useUnit($users)
+	useEffect(() => {
+		GetCurrentUserFX(vkUser);
+	}, []);
 
 	const { view: activeView } = useActiveVkuiLocation();
 	const activePanel = useGetPanelForView('panel');

@@ -58,7 +58,6 @@ export interface IDataState {
 export interface ICreateUser {
   vkid: string
   city: string
-  shelf: string
   givenBooks?: number
   recievdBooks?: number
 }
@@ -73,4 +72,9 @@ export interface IPassIdToModalPage {
 export interface ISwitchPageById {
   id: string;
   go: MouseEventHandler<HTMLElement>
+}
+
+export interface IUser extends ICreateUser {
+  name: string
+  surName: string
 }

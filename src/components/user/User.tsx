@@ -1,19 +1,30 @@
-import { Avatar, Cell, Div, Group, Text } from "@vkontakte/vkui";
+//import { Avatar, Cell, Div, Group, Text } from "@vkontakte/vkui";
+//import PropTypes from 'prop-types';
+import '../../styles/components/user.scss'
+
 import PropTypes from 'prop-types';
-import '../../styles/components/user.scss';
+import { Avatar, Div, Group, Text } from "@vkontakte/vkui";
+import { useUnit } from "effector-react";
+import { $user } from "../../store/user";
 
 
-const User = ({fetchedUser}: any) => {
+const User = () => {
+
+    const user = useUnit($user);
+
     return (
         <Group>
             <Div className="userBlock">
                 <Div>
-                    <Avatar size={80} initials='ИФ' gradientColor="blue"/>
+                    <Avatar size={80} initials='ИФ' gradientColor="blue" />
                 </Div>
                 <Div>
-                    <Text className="nameText" weight="1">Имя Фамлия</Text>
-
-                    <Text className="cityText" weight="3">Город</Text>
+                    <Text className="nameText" weight="1">
+                        {user ? user?.name : 'Загругка...'}
+                    </Text>
+                    <Text className="cityText" weight="3">
+                        {user ? user?.surName : 'Загругка...'}
+                    </Text>
                 </Div>
             </Div>
         </Group>
