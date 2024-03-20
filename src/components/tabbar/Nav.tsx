@@ -12,20 +12,19 @@ export default function Nav() {
       <TabbarItem
         selected={activePanel === 'profile-panel'}
         text='Профиль'
-        onClick={() => navigator.push('/profile')}>
+        onClick={() => navigator.push('/profile')} style={{width: "auto", paddingBottom: "12px"}}>
         <Icon24UserCircleOutline />
       </TabbarItem>
       <TabbarItem
         selected={activePanel === 'catalog-panel'}
         text='Каталог'
-        onClick={() => navigator.push('/')}>
+        onClick={() => navigator.push('/')}  style={{width: "auto", paddingBottom: "12px"}}>
         <Icon24ServicesOutline />
       </TabbarItem>
       <TabbarItem
         selected={activePanel === 'create-panel'}
         text='Добавить'
-        onClick={() => navigator.push('/create')}
-        >
+        onClick={() => navigator.push('/create')}  style={{width: "auto", paddingBottom: "12px"}}>
         <Icon24AddSquareOutline />
       </TabbarItem>
     </Tabbar>

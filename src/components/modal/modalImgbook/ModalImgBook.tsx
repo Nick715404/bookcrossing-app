@@ -1,10 +1,11 @@
 import { Div, Gallery, Group, ModalCard, ModalPage } from "@vkontakte/vkui";
 import { IPassIdToModalPage } from "../../../interfaces/interface";
+import { setStatusActiveModal } from "../../../store/activeModal";
 
 
 const ModalImgBook = ({id, changeActiveModal}: IPassIdToModalPage) => {
     return (
-        <ModalCard id={id} onClose={() => changeActiveModal(null)} /*dynamicContentHeight={true}*/>
+        <ModalCard id={id} onClose={() => setStatusActiveModal(null)} /*dynamicContentHeight={true}*/>
             <Div>
                 <Group className="gallery">
                     <Gallery slideWidth="90%" bullets="dark">

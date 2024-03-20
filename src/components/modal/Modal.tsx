@@ -1,10 +1,14 @@
-import { ModalRoot, ModalPage, usePlatform, useAdaptivityConditionalRender, Image, SplitLayout, Div, Group, SplitCol, Text, Button, SimpleCell} from "@vkontakte/vkui";
+import { ModalRoot, ModalPage, usePlatform, useAdaptivityConditionalRender, Image, SplitLayout, Div, Group, SplitCol, Text, Button, SimpleCell, CellButton } from "@vkontakte/vkui";
 import { IPassIdToModalPage } from "../../interfaces/interface"
 import { useCallback, useState } from "react";
 import { useUnit } from "effector-react";
 import { $selectedBook } from "../../store/modalBook";
 import '../../styles/panels/modal.scss';
 import ModalImgBook from "./modalImgbook/ModalImgBook";
+import ModalBookStatusDescription from "./modalBookStatusDescriptions/ModalBookStatusDescription";
+import { setStatusActiveModal } from "../../store/activeModal";
+
+import "../../styles/panels/modal.scss"
 
 type Props = {
   activeModal?: string | null
@@ -20,10 +24,10 @@ type Props = {
     </ModalRoot>
   )
 }*/
- 
-const Modal = ({id, changeActiveModal}: IPassIdToModalPage) => {
+
+const Modal = ({ id, changeActiveModal }: IPassIdToModalPage) => {
   const platform = usePlatform();
-  const {sizeX} = useAdaptivityConditionalRender();
+  const { sizeX } = useAdaptivityConditionalRender();
   const [expanded, setExpanded] = useState(false);
   const togle = useCallback(() => setExpanded(!expanded), [expanded]);
 
@@ -44,49 +48,99 @@ const Modal = ({id, changeActiveModal}: IPassIdToModalPage) => {
     setActiveModal(id);
   }*/
 
-  const [activeModal, setActiveModal] = useState<string | null>(null);
+  //const [activeModal, setActiveModal] = useState<string | null>(null);
 
-  const changeActiveModalImgBook = (id: string | null) => {
-    setActiveModal(id)
-  }
+  // const changeActiveModalImgBook = (id: string | null) => {
+  //   setActiveModal(id)
+  // }
 
-  const modal = (
-    <ModalRoot activeModal={activeModal} onClose={() => setActiveModal(null)}>
-      <ModalImgBook id={"modalImgBook"} changeActiveModal={changeActiveModal} />
-    </ModalRoot>
+  // const modal = (
+  //   <ModalRoot activeModal={activeModal} onClose={() => setActiveModal(null)}>
+  //     <ModalImgBook id={"modalImgBook"} changeActiveModal={changeActiveModal} />
+  //     <ModalBookStatusDescription id="statusDescription" changeActiveModal={changeActiveModal} />
+  //   </ModalRoot>
+  // )
+
+  const statusBook = (
+    <>
+    {/*<SplitLayout modal={modal} style={{ paddingBottom: -10 }}>*/}
+      {/*<SimpleCell  style={{padding: 0, paddingBottom: 0}}>*/}
+      <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{ padding: 0, margin: 0 }}>
+        {book && book.state}
+      </CellButton>
+      {/*</SimpleCell>*/}
+    {/*</SplitLayout>*/}
+    </>
   )
 
+  // author
+  // :
+  // "Autor1"
+  // categoryTitle
+  // :
+  // "<НАЗВАНИЕ КАТЕГОРИИЮ"
+  // description
+  // :
+  // "string"
+  // favourite
+  // :
+  // null
+  // id
+  // :
+  // "cltuhfz1300038f6d8ejh57dc"
+  // isbn
+  // :
+  // "123456789"
+  // owner
+  // :
+  // null
+  // releaseDate
+  // :
+  // "2024-03-16T19:30:17.751Z"
+  // shelf
+  // :
+  // null
+  // state
+  // :
+  // "quality1"
+  // title
+  // :
+  // "book1"
+    // imgUrls: ['http://link1.png', 'http://link1.png',]
+
   return (
-    <ModalPage id={id} onClose={() => changeActiveModal(null)} dynamicContentHeight={true}>
-      <SplitLayout modal={modal}>
+    <ModalPage id={id} onClose={() => setStatusActiveModal(null)} dynamicContentHeight={true}>
+      {/*<SplitLayout modal={modal}>*/}
+      <SplitLayout>
         <SplitCol animate={true}>
           <Div className="modalPage">
             <Group separator="hide">
               <Group separator="hide" >
-                <SimpleCell className="bookImg" onClick={() => setActiveModal('modalImgBook')}>
-                  {image}{book && book.imageId}
+                <SimpleCell className="bookImg" onClick={() => setStatusActiveModal('modalImgBook')}>
+                  <img src={book && book.imageId || ''} alt="" />
+                  {/* {book && book.imageId} */}
                 </SimpleCell>
               </Group>
             </Group>
 
             <Group className="groupBookInformation" separator="hide">
               <Text weight="1" className="nameBook">
-                Название:{book && book.title}
+                {book && book.title}
               </Text>
               <Text weight="3">
-                Автор:{book && book.author}
+                {book && book.author}
               </Text>
             </Group>
-            
+
             <Group separator="hide" className="groupBookInformation">
-              <Text>
-                Состояние:{book && book.state}
+              <Text weight="3">
+                {statusBook}
               </Text>
-              <Text className="groupBookInformation">
-                Категория:{book && book.categoryTitle}
+              <Text weight="3" className="groupBookInformation">
+                {book && book.categoryTitle}
               </Text>
-              <Text className="groupBookInformation">
-                ISBN:{book && book.isbn}
+              <Text weight="3" className="groupBookInformation">
+                {book && book.isbn}
               </Text>
             </Group>
 
@@ -97,6 +151,7 @@ const Modal = ({id, changeActiveModal}: IPassIdToModalPage) => {
             </Group>
           </Div>
         </SplitCol>
+      {/*</SplitLayout>*/}
       </SplitLayout>
     </ModalPage>
   )

@@ -6,7 +6,12 @@ import {
   Textarea,
   Button,
   Select,
-  Checkbox
+  Checkbox,
+  SplitLayout,
+  SimpleCell,
+  IconButton,
+  ModalRoot,
+  CellButton
 } from "@vkontakte/vkui";
 
 import { useState, useMemo } from "react";
@@ -15,6 +20,9 @@ import { IDataState } from "../../../interfaces/interface";
 
 import ImageInput from "../components/ImageInput";
 import CategoryInput from "../components/categoryInput";
+import { Icon16InfoCircle, Icon16InfoOutline } from "@vkontakte/icons";
+import ModalBookStatusDescription from "../../modal/modalBookStatusDescriptions/ModalBookStatusDescription";
+import { setStatusActiveModal } from "../../../store/activeModal";
 
 export default React.memo(function CreateBook() {
 
@@ -76,6 +84,28 @@ export default React.memo(function CreateBook() {
     ];
   }, []);
 
+  // const [activeModal, setActiveModal] = useState<string | null>(null);
+
+  // const changeActiveModal = (id: string | null) => {
+  //   setActiveModal(id);
+  // }
+
+  // const modal = (
+  //   <ModalRoot activeModal={activeModal} onClose={() => setActiveModal(null)}>
+  //     <ModalBookStatusDescription id={"statusDescription"} changeActiveModal={changeActiveModal} />
+  //   </ModalRoot>
+  // )
+
+  const statusBook = (
+    /*<SplitLayout modal={modal} style={{padding: 0, margin: 0}}>*/
+      /*<SimpleCell  onClick={() => setActiveModal('statusDescription')}>*/
+        <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{padding: 0, margin: 0}}>
+          Состояние
+        </CellButton>
+      /*</SimpleCell>*/
+    //  </SplitLayout>
+  )
+
   // console.count('Rerender')
 
   return (
@@ -130,8 +160,9 @@ export default React.memo(function CreateBook() {
       </FormItem>
       {/* Состояние книги */}
       <FormItem
-        top='Состояние'
+        top={statusBook}
         htmlFor="bookQuality"
+
       >
         <Select
           id="bookQuality"
