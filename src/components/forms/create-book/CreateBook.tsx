@@ -13,7 +13,7 @@ import QualitySelect from "../components/QualitySelect/QualitySelect";
 import CustomTextarea from "../components/CustomTextarea/CustomTextarea";
 
 export default React.memo(function CreateBook() {
-  
+
   const [formData, setFormData] = useState<IDataState>({
     title: '',
     author: '',
@@ -31,12 +31,12 @@ export default React.memo(function CreateBook() {
     e.preventDefault();
     const setData = () => {
       return {
-        bookTitle: formData.title,
-        bookAuthor: formData.author,
-        bookQuality: formData.quality,
-        bookCategory: formData.category,
-        bookIsbn: formData.isbn,
-        bookDesr: formData.descr
+        title: formData.title,
+        author: formData.author,
+        state: formData.quality,
+        categoryTitle: formData.category,
+        isbn: formData.isbn,
+        description: formData.descr
       }
     }
     createBookFX(setData());
