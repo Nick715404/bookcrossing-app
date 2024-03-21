@@ -1,16 +1,16 @@
 import React, { useEffect, useMemo } from "react";
 import { FormItem, Select } from "@vkontakte/vkui";
-import { $categories } from "../../../store/categories";
+import { $categories } from "../../../../store/categories";
 import { useUnit } from "effector-react";
-import { getAllCategoriesFX } from "../../../api/server/categories/categories";
+import { getAllCategoriesFX } from "../../../../api/server/categories/categories";
 
 type Props = {
   value: string | undefined
   change: any
 };
 
-function CategoryInput({ value, change }: Props) {
-  
+function CategorySelect({ value, change }: Props) {
+
   const categories = useUnit($categories);
 
   useEffect(() => {
@@ -42,4 +42,4 @@ function CategoryInput({ value, change }: Props) {
   );
 }
 
-export default React.memo(CategoryInput);
+export default React.memo(CategorySelect);

@@ -1,6 +1,8 @@
+import { FormItem } from "@vkontakte/vkui";
+
 import { useEffect, useState } from "react";
-import { handleImageUpload } from "../../../api/server/images/image";
-import { getBookImage } from "../../../api/server/images/image";
+import { handleImageUpload } from "../../../../api/server/images/image";
+import { getBookImage } from "../../../../api/server/images/image";
 
 export default function ImageInput() {
 
@@ -12,9 +14,9 @@ export default function ImageInput() {
     setSelectedImages([...selectedImages, ...files]);
   }
 
-  // useEffect(() => {
-  //   console.log(selectedImages);
-  // }, [selectedImages]);
+  useEffect(() => {
+    console.log(selectedImages);
+  }, [selectedImages]);
 
   const styles = {
     width: '48%',
@@ -39,7 +41,7 @@ export default function ImageInput() {
   // Создать юзера с айди 123
 
   return (
-    <div>
+    <FormItem>
       <input
         className="file-input"
         type="file"
@@ -51,12 +53,12 @@ export default function ImageInput() {
       {/* <button onClick={uploadFiles}>Загрузить фото</button>
       <button onClick={getFiles}>Получить картинки книги 123</button> */}
 
-      <div className="">
+      {/* <div className="">
         {images && images.map((image, id) => {
           return <img key={id} src={'http://localhost:3000' + image.path} />
         })}
-      </div>
+      </div> */}
 
-    </div>
+    </FormItem>
   )
 }
