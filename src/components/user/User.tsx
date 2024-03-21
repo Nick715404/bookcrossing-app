@@ -1,6 +1,11 @@
-import { Avatar, Cell, Div, Group, Text } from "@vkontakte/vkui";
+//import { Avatar, Cell, Div, Group, Text } from "@vkontakte/vkui";
+//import PropTypes from 'prop-types';
+import '../../styles/components/user.scss'
+
 import PropTypes from 'prop-types';
-import '../../styles/components/user.scss';
+import { Avatar, Div, Group, Text } from "@vkontakte/vkui";
+//import { useUnit } from "effector-react";
+//import { $user } from "../../store/user";
 
 //import PropTypes from 'prop-types';
 //import { Avatar, Div, Group, Text } from "@vkontakte/vkui";

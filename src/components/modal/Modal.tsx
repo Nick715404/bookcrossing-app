@@ -42,75 +42,16 @@ const Modal = ({ id, changeActiveModal }: IPassIdToModalPage) => {
       src="https://fashionelite.com/wp-content/uploads/2016/09/1331144712_IMG_paris1.jpg" />
   )
 
-  //const [activeModal, setActiveModal] = useState<string | null>(null);
-
-  /*const changeActiveModal = (id: string, data?: number[]) => {
-    setActiveModal(id);
-  }*/
-
-  //const [activeModal, setActiveModal] = useState<string | null>(null);
-
-  // const changeActiveModalImgBook = (id: string | null) => {
-  //   setActiveModal(id)
-  // }
-
-  // const modal = (
-  //   <ModalRoot activeModal={activeModal} onClose={() => setActiveModal(null)}>
-  //     <ModalImgBook id={"modalImgBook"} changeActiveModal={changeActiveModal} />
-  //     <ModalBookStatusDescription id="statusDescription" changeActiveModal={changeActiveModal} />
-  //   </ModalRoot>
-  // )
-
   const statusBook = (
     <>
-    {/*<SplitLayout modal={modal} style={{ paddingBottom: -10 }}>*/}
-      {/*<SimpleCell  style={{padding: 0, paddingBottom: 0}}>*/}
       <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{ padding: 0, margin: 0 }}>
         {book && book.state}
       </CellButton>
-      {/*</SimpleCell>*/}
-    {/*</SplitLayout>*/}
     </>
   )
 
-  // author
-  // :
-  // "Autor1"
-  // categoryTitle
-  // :
-  // "<НАЗВАНИЕ КАТЕГОРИИЮ"
-  // description
-  // :
-  // "string"
-  // favourite
-  // :
-  // null
-  // id
-  // :
-  // "cltuhfz1300038f6d8ejh57dc"
-  // isbn
-  // :
-  // "123456789"
-  // owner
-  // :
-  // null
-  // releaseDate
-  // :
-  // "2024-03-16T19:30:17.751Z"
-  // shelf
-  // :
-  // null
-  // state
-  // :
-  // "quality1"
-  // title
-  // :
-  // "book1"
-    // imgUrls: ['http://link1.png', 'http://link1.png',]
-
   return (
     <ModalPage id={id} onClose={() => setStatusActiveModal(null)} dynamicContentHeight={true}>
-      {/*<SplitLayout modal={modal}>*/}
       <SplitLayout>
         <SplitCol animate={true}>
           <Div className="modalPage">
@@ -118,7 +59,6 @@ const Modal = ({ id, changeActiveModal }: IPassIdToModalPage) => {
               <Group separator="hide" >
                 <SimpleCell className="bookImg" onClick={() => setStatusActiveModal('modalImgBook')}>
                   <img src={book && book.imageId || ''} alt="" />
-                  {/* {book && book.imageId} */}
                 </SimpleCell>
               </Group>
             </Group>
@@ -151,7 +91,6 @@ const Modal = ({ id, changeActiveModal }: IPassIdToModalPage) => {
             </Group>
           </Div>
         </SplitCol>
-      {/*</SplitLayout>*/}
       </SplitLayout>
     </ModalPage>
   )
