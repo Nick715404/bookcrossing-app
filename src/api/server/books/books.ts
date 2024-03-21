@@ -28,7 +28,7 @@ export const deleteBook = async (id: string) => {
   try {
     const { data } = await api.delete(`/book/delete/${id}`);
     return data
-  } 
+  }
   catch (error) {
     console.log(error)
   }

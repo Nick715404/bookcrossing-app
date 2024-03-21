@@ -4,8 +4,11 @@ import { setStatusActiveModal } from "../../../store/activeModal";
 
 
 const ModalBookStatusDescription = ({id}: IPassIdToModalPage) => {
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 65cfac3c623fb4633ce34251c084129ae010b54d
     return (
         <ModalPage id={id} onClose={() => setStatusActiveModal(null)}  size="s"
         header={

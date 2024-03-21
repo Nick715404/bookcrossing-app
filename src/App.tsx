@@ -27,9 +27,10 @@ const fakeVkUser = {
 
 const App = () => {
 
-	useEffect(() => {
-		GetCurrentUserFX(vkUser);
-	}, []);
+	// - Получение юзера с бд
+	// useEffect(() => {
+	// 	GetCurrentUserFX(vkUser);
+	// }, []);
 
 	const { view: activeView } = useActiveVkuiLocation();
 	const activePanel = useGetPanelForView('panel');

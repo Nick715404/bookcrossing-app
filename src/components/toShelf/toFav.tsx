@@ -12,7 +12,7 @@ type Props = {
   id: string
 }
 
-export default function ToShelf({ id }: Props) {
+export default function ToFav({ id }: Props) {
 
   const [acitive, setActive] = useState<boolean>(false);
 
@@ -34,7 +34,6 @@ export default function ToShelf({ id }: Props) {
 
   return (
     <div
-      onClick={handleDeleteBook}
       className='to-shelf-btn'>
       {acitive ? <Icon24Bookmark fill='#99A2AD' /> : <Icon24BookmarkOutline fill='#99A2AD' />}
     </div>

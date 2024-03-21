@@ -31,12 +31,12 @@ export interface IBook {
 }
 
 export interface ICreateBook {
-  bookTitle: string
-  bookAuthor: string
-  bookQuality?: string | null,
-  bookCategory?: string | null,
-  bookIsbn: string
-  bookDesr?: string | null,
+  isbn: string,
+  title: string
+  state: string | null | undefined,
+  description: string | null | undefined,
+  author: string,
+  categoryTitle: string | null | undefined
 }
 
 export interface IGenre {
