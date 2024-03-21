@@ -1,3 +1,5 @@
+//import { Avatar, Cell, Div, Group, Text } from "@vkontakte/vkui";
+//import PropTypes from 'prop-types';
 import '../../styles/components/user.scss'
 
 import PropTypes from 'prop-types';

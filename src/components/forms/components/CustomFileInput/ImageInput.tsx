@@ -3,6 +3,7 @@ import { FormItem } from "@vkontakte/vkui";
 import { useEffect, useState } from "react";
 import { handleImageUpload } from "../../../../api/server/images/image";
 import { getBookImage } from "../../../../api/server/images/image";
+import { imageInputStyles } from "../../../../constants/utils";
 
 export default function ImageInput() {
 
@@ -14,21 +15,10 @@ export default function ImageInput() {
     setSelectedImages([...selectedImages, ...files]);
   }
 
-  useEffect(() => {
-    console.log(selectedImages);
-  }, [selectedImages]);
-
-  const styles = {
-    width: '48%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    aspectRatio: '1 / 1',
-    margin: '0 auto',
-    backgroundColor: '#F2F3F5',
-    borderRadius: '14px',
-    color: 'transparent'
-  }
+  // - Код для отладки
+  // useEffect(() => {
+  //   console.log(selectedImages);
+  // }, [selectedImages]);
 
   const uploadFiles = () => {
     handleImageUpload(selectedImages);
@@ -46,7 +36,7 @@ export default function ImageInput() {
         type="file"
         multiple
         onChange={handleImageChange}
-        style={styles}
+        style={imageInputStyles}
       />
 
       <button onClick={uploadFiles}>Загрузить фото</button>

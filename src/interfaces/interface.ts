@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+
 export interface INavigationBarButton {
   nameButton?: string,
   image?: string
@@ -58,6 +60,18 @@ export interface ICreateUser {
   city: string
   givenBooks?: number
   recievdBooks?: number
+}
+
+export interface IPassIdToModalPage {
+  changeActiveModal?: (id: string | null) => void
+  id: string
+  data?: any
+  openFiltersModal?: any
+} 
+
+export interface ISwitchPageById {
+  id: string;
+  go: MouseEventHandler<HTMLElement>
 }
 
 export interface IUser extends ICreateUser {

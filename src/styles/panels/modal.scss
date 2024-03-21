@@ -1,0 +1,47 @@
+.modalPage {
+    display: flex;
+    flex-direction: column;
+    //justify-content: center;
+    //align-items: center;
+}
+
+.bookImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.groupBookInformation {
+    margin-top: 16px;
+}
+
+.nameBook {
+    font-size: 21;
+}
+
+.buttonBlock {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+   // padding-bottom: 50px;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    //padding-bottom: 250px;
+}
+
+.bottomStatus {
+    padding-bottom: 50px;
+}
+
+.statusBookPage {
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    white-space: normal;
+}

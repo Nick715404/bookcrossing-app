@@ -2,7 +2,7 @@ import { Card, Panel, PanelHeader, Group, Cell, SegmentedControl, Avatar, Div } 
 import User from '../../components/user/User';
 import Relevants from '../../components/relevant/Relevants';
 import SegmentedControlCustom from '../../components/segmentControl/SegmentControl';
-import Book from '../../components/book/Book';
+// import MyBook from '../../components/myBook/MyBook';
 
 type Props = {
   id: string
@@ -23,10 +23,14 @@ export default function Profile({ id }: Props) {
       <SegmentedControlCustom />
 
       <Group>
-        {/* <Book />
-        <Book />
-        <Book />
-        <Book /> */}
+        {/*<Relevants />*/}
+        <Div>
+        <Card>
+          {/* <MyBook /> */}
+        </Card>
+        </Div>
+        
+          
       </Group>
 
     </Panel>
