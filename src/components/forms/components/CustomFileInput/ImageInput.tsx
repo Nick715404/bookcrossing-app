@@ -34,11 +34,10 @@ export default function ImageInput() {
     handleImageUpload(selectedImages);
   }
 
-  const getFiles = () => {
-    getBookImage();
+  const getFiles = async () => {
+    const images = await getBookImage();
+    setImages(images);
   }
-
-  // Создать юзера с айди 123
 
   return (
     <FormItem>
@@ -50,14 +49,14 @@ export default function ImageInput() {
         style={styles}
       />
 
-      {/* <button onClick={uploadFiles}>Загрузить фото</button>
-      <button onClick={getFiles}>Получить картинки книги 123</button> */}
+      <button onClick={uploadFiles}>Загрузить фото</button>
+      <button onClick={getFiles}>Получить картинки книги 123</button>
 
-      {/* <div className="">
+      <div>
         {images && images.map((image, id) => {
-          return <img key={id} src={'http://localhost:3000' + image.path} />
+          return <img key={id} src={'http://localhost:3100/' + image.path} />
         })}
-      </div> */}
+      </div>
 
     </FormItem>
   )

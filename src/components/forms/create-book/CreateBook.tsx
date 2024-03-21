@@ -54,7 +54,7 @@ export default React.memo(function CreateBook() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <ImageInput />
       <CustomInput
         id="bookTitle"
@@ -101,7 +101,7 @@ export default React.memo(function CreateBook() {
         <Checkbox id="bookCheckbox">ISBN отсутсвует</Checkbox>
       </FormItem>
       <CustomTextarea />
-      <FormItem htmlFor="bookBtn">
+      {/* <FormItem htmlFor="bookBtn">
         <Button
           id="bookBtn"
           type="submit"
@@ -110,7 +110,7 @@ export default React.memo(function CreateBook() {
         >
           Сохранить
         </Button>
-      </FormItem>
+      </FormItem> */}
     </form>
   )
 })

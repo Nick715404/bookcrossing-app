@@ -3,16 +3,13 @@ import { api } from "../../axios/axiosInstance";
 export async function handleImageUpload(selectedIamges: any) {
   try {
     const formData = new FormData();
-    console.log('still working');
 
     selectedIamges.forEach((image: any) => {
       formData.append('images', image);
     });
-    console.log('still working');
 
-    const bookId: string = '123123';
+    const bookId: string = 'clu0zb2u5000289aaz0lp7j9u';
     formData.append('book-id', bookId);
-    console.log('still working');
 
     const response = await api.post('/image/load', formData, {
       onUploadProgress: (progressEvent: any) => {
@@ -20,9 +17,6 @@ export async function handleImageUpload(selectedIamges: any) {
         console.log(progress);
       }
     });
-
-    console.log('still working');
-
     return response;
   }
   catch (error) {
@@ -32,9 +26,11 @@ export async function handleImageUpload(selectedIamges: any) {
 
 export const getBookImage = async () => {
   try {
-    const bookId = '123123';
-    const response = await api.get('/book' + bookId + '/images');
-    return response;
+    const bookId = 'clu0zb2u5000289aaz0lp7j9u';
+    // - /image/clu0zb2u5000289aaz0lp7j9u/images
+    const { data } = await api.get('/image/' + bookId + '/images');
+    // console.log(data);
+    return data;
   }
   catch (error) {
     console.log(error);
