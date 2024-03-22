@@ -12,7 +12,7 @@ export default function CustomTextarea({ }: Props) {
         id="bookDescr"
         name="bookDescr"
         placeholder="Добавьте комментарий"
-        maxLength={250}
+        maxLength={200}
       />
     </FormItem>
   )

@@ -1,40 +1,26 @@
 import React from "react";
 
-<<<<<<< HEAD
-import { FormItem, Checkbox, Button } from "@vkontakte/vkui";
-=======
 import {
   FormItem,
   Input,
-  Textarea,
   Button,
   Select,
   Checkbox,
-  SplitLayout,
-  SimpleCell,
-  IconButton,
-  ModalRoot,
   CellButton
 } from "@vkontakte/vkui";
->>>>>>> 65cfac3c623fb4633ce34251c084129ae010b54d
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { createBookFX } from "../../../api/server/books/books";
 import { ICreateBook, IDataState } from "../../../interfaces/interface";
 
-<<<<<<< HEAD
 import ImageInput from "../components/CustomFileInput/ImageInput";
-import CustomInput from "../components/CustomInput/CustomInput";
 import CategorySelect from "../components/CategorySelect/CategorySelect";
-import QualitySelect from "../components/QualitySelect/QualitySelect";
-import CustomTextarea from "../components/CustomTextarea/CustomTextarea";
-=======
-import ImageInput from "../components/ImageInput";
-import CategoryInput from "../components/categoryInput";
 import { Icon16InfoCircle, Icon16InfoOutline } from "@vkontakte/icons";
 import ModalBookStatusDescription from "../../modal/modalBookStatusDescriptions/ModalBookStatusDescription";
 import { setStatusActiveModal } from "../../../store/activeModal";
->>>>>>> 65cfac3c623fb4633ce34251c084129ae010b54d
+import CustomInput from "../components/CustomInput/CustomInput";
+import CustomTextarea from "../components/CustomTextarea/CustomTextarea";
+import QualitySelect from "../components/QualitySelect/QualitySelect";
 
 export default React.memo(function CreateBook() {
 
@@ -77,165 +63,64 @@ export default React.memo(function CreateBook() {
     })
   }
 
-<<<<<<< HEAD
-=======
-  const options = useMemo(() => {
-    return [
-      {
-        value: 'Отличное состояние',
-        label: 'Отличное'
-      },
-      {
-        value: 'Хорошее состояние',
-        label: 'Хорошее'
-      },
-      {
-        value: 'Примелимое состояние',
-        label: 'Приемлимое'
-      },
-      {
-        value: 'Плохое состояние',
-        label: 'Плохое'
-      },
-    ];
-  }, []);
-
-  // const [activeModal, setActiveModal] = useState<string | null>(null);
-
-  // const changeActiveModal = (id: string | null) => {
-  //   setActiveModal(id);
-  // }
-
-  // const modal = (
-  //   <ModalRoot activeModal={activeModal} onClose={() => setActiveModal(null)}>
-  //     <ModalBookStatusDescription id={"statusDescription"} changeActiveModal={changeActiveModal} />
-  //   </ModalRoot>
-  // )
 
   const statusBook = (
     /*<SplitLayout modal={modal} style={{padding: 0, margin: 0}}>*/
-      /*<SimpleCell  onClick={() => setActiveModal('statusDescription')}>*/
-        <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{padding: 0, margin: 0}}>
-          Состояние
-        </CellButton>
-      /*</SimpleCell>*/
+    /*<SimpleCell  onClick={() => setActiveModal('statusDescription')}>*/
+    <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{ padding: 0, margin: 0 }}>
+      Состояние
+    </CellButton>
+    /*</SimpleCell>*/
     //  </SplitLayout>
   )
 
   // console.count('Rerender')
 
->>>>>>> 65cfac3c623fb4633ce34251c084129ae010b54d
   return (
     <form>
       <ImageInput />
       <CustomInput
-        id="bookTitle"
-        placeholder="Введите название"
-        top="Название"
-        name="bookTitle"
-        type="text"
-        isRequired
         htmlFor="bookTitle"
+        id="bookTitle"
+        top="Название"
+        placeholder="Мастер и маргарита"
+        name="bookTitle"
         value={formData.title}
         onChange={(e) => handleChangeValue(e, 'title')}
+        type="text"
       />
       <CustomInput
-        id="bookAuthor"
-        placeholder="Введите ФИО Автора"
-        top="Автор"
-        name="bookAuthor"
-        type="text"
-        isRequired
         htmlFor="bookAuthor"
-<<<<<<< HEAD
+        id="bookAuthor"
+        top="Автор"
+        placeholder="М. А. Булгаков"
+        name="bookAuthor"
         value={formData.author}
         onChange={(e) => handleChangeValue(e, 'author')}
+        type="text"
       />
       <QualitySelect
         value={formData.quality}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangeValue(e, 'quality')}
+        onChange={(e) => handleChangeValue(e, 'quality')}
       />
       <CategorySelect
         value={formData.category}
-        change={(e: React.ChangeEvent<HTMLInputElement>) => handleChangeValue(e, 'category')}
+        change={(e: any) => handleChangeValue(e, 'category')}
       />
       <CustomInput
-        id="bookIsbn"
-        placeholder="Введите ISBN"
-        top="ISBN"
-        name="bookIsbn"
-        type="text"
-        isRequired
-=======
-      // status={author ? 'valid' : 'error'}
-      // bottom={
-      //   author ? 'Автор введен верно!' : 'Введите в формате - "Фамилия И. О."'
-      // }
-      >
-        <Input
-          id="bookAuthor"
-          placeholder="Введите ФИО автора"
-          type="text"
-          name="author"
-          required
-          value={formData.author}
-          onChange={(e) => setFormData(prev => {
-            return {
-              ...prev,
-              author: e.target.value
-            }
-          })}
-        />
-      </FormItem>
-      {/* Состояние книги */}
-      <FormItem
-        top={statusBook}
-        htmlFor="bookQuality"
-
-      >
-        <Select
-          id="bookQuality"
-          placeholder="Выберите состояние книги"
-          name="quality"
-          options={options}
-          // value={formData.quality}
-          onChange={(e) => setFormData(prev => {
-            return {
-              ...prev,
-              quality: e.target.value,
-            }
-          })}
-        />
-      </FormItem>
-      {/* Категории книги */}
-      <CategoryInput value={formData.category} change={(e: any) => setFormData(prev => {
-        return {
-          ...prev,
-          category: e.target.value
-        }
-      })} />
-      {/* ISBN книги */}
-      <FormItem
-        top='ISBN'
->>>>>>> 65cfac3c623fb4633ce34251c084129ae010b54d
         htmlFor="bookIsbn"
+        id="bookIsbn"
+        top="ISBN"
+        placeholder="Введите ISBN"
+        name="bookIsbn"
         value={formData.isbn}
         onChange={(e) => handleChangeValue(e, 'isbn')}
+        type="text"
       />
       <FormItem htmlFor="bookCheckbox">
-        <Checkbox id="bookCheckbox">ISBN отсутсвует</Checkbox>
+        <Checkbox id="bookCheckbox">ISBN отсутствует</Checkbox>
       </FormItem>
       <CustomTextarea />
-      {/* <FormItem htmlFor="bookBtn">
-        <Button
-          id="bookBtn"
-          type="submit"
-          size="l"
-          stretched
-        >
-          Сохранить
-        </Button>
-      </FormItem> */}
     </form>
   )
 })
