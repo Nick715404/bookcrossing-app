@@ -1,5 +1,4 @@
-import { Div, Group } from "@vkontakte/vkui";
-import CardMyBook from "../myBook/cardMyBook/CardMyBook";
+import { Div } from "@vkontakte/vkui";
 import '../../styles/components/userBookshelf.scss';
 
 

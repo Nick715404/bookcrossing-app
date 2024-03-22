@@ -1,126 +1,113 @@
-import React from "react";
-
-import {
-  FormItem,
-  Input,
-  Button,
-  Select,
-  Checkbox,
-  CellButton
-} from "@vkontakte/vkui";
-
-import { useState } from "react";
 import { createBookFX } from "../../../api/server/books/books";
-import { ICreateBook, IDataState } from "../../../interfaces/interface";
-
+import { IDataState, } from "../../../interfaces/interface";
 import ImageInput from "../components/CustomFileInput/ImageInput";
 import CategorySelect from "../components/CategorySelect/CategorySelect";
-import { Icon16InfoCircle, Icon16InfoOutline } from "@vkontakte/icons";
-import ModalBookStatusDescription from "../../modal/modalBookStatusDescriptions/ModalBookStatusDescription";
-import { setStatusActiveModal } from "../../../store/activeModal";
 import CustomInput from "../components/CustomInput/CustomInput";
 import CustomTextarea from "../components/CustomTextarea/CustomTextarea";
 import QualitySelect from "../components/QualitySelect/QualitySelect";
+import { $user } from "../../../store/user";
+import { initialState } from "../../../constants/utils";
+import React, { useState } from "react";
+import { useUnit } from "effector-react";
+import { FormItem, Button, Checkbox } from "@vkontakte/vkui";
 
-export default React.memo(function CreateBook() {
+const CreateBook: React.FC = () => {
+  const [formData, setFormData] = useState<IDataState>(initialState);
+  const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
+  const [withoutISBN, setWithoutISBN] = useState<boolean>(false);
+  const user = useUnit($user);
 
-  const [formData, setFormData] = useState<IDataState>({
-    title: '',
-    author: '',
-    quality: '',
-    category: '',
-    isbn: '',
-    descr: ''
-  });
+  const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, field: keyof IDataState) => {
+    setFormData(prev => ({ ...prev, [field]: e.target.value }));
+  };
 
-  const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, state: string) => {
-    setFormData(prev => ({ ...prev, [state]: e.target.value }))
-  }
-
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const setData = () => {
-      return {
-        title: formData.title,
-        author: formData.author,
-        state: formData.quality,
-        categoryTitle: formData.category,
-        isbn: formData.isbn,
-        description: formData.descr
-      }
+
+    const errors: { [key: string]: string } = {};
+    if (!formData.author.trim()) {
+      errors.author = 'Поле "Автор" обязательно для заполнения';
+    } else if (!/^([А-ЯЁ]\.[А-ЯЁ]\.\s[А-ЯЁ][а-яё]+)$/.test(formData.author.trim())) {
+      errors.author = 'Введите ФИО в формате: О.И. Фамилия';
     }
-    createBookFX(setData());
-    setFormData(prev => {
-      return {
-        ...prev,
-        title: '',
-        author: '',
-        quality: '',
-        category: '',
-        isbn: '',
-        descr: ''
-      }
-    })
-  }
+    setFormErrors(errors);
 
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
 
-  const statusBook = (
-    /*<SplitLayout modal={modal} style={{padding: 0, margin: 0}}>*/
-    /*<SimpleCell  onClick={() => setActiveModal('statusDescription')}>*/
-    <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{ padding: 0, margin: 0 }}>
-      Состояние
-    </CellButton>
-    /*</SimpleCell>*/
-    //  </SplitLayout>
-  )
+    const data = { ...formData, user: user?.userId };
+    // createBookFX(data);
+    console.log(data);
 
-  // console.count('Rerender')
+    setFormData(initialState);
+    setFormErrors({});
+    setWithoutISBN(false);
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <ImageInput />
       <CustomInput
-        htmlFor="bookTitle"
         id="bookTitle"
-        top="Название"
-        placeholder="Мастер и маргарита"
+        placeholder="Мастер и Маргарита"
         name="bookTitle"
         value={formData.title}
         onChange={(e) => handleChangeValue(e, 'title')}
         type="text"
+        top="Название"
+        htmlFor="bookTitle"
+        isRequired
       />
       <CustomInput
-        htmlFor="bookAuthor"
         id="bookAuthor"
-        top="Автор"
         placeholder="М. А. Булгаков"
         name="bookAuthor"
         value={formData.author}
         onChange={(e) => handleChangeValue(e, 'author')}
         type="text"
+        top={formErrors.author ? formErrors.author : 'Автор'}
+        htmlFor="bookAuthor"
+        isRequired
+        status={formErrors.author ? 'error' : 'default'}
       />
       <QualitySelect
-        value={formData.quality}
-        onChange={(e) => handleChangeValue(e, 'quality')}
+        value={formData.state}
+        onChange={(e) => handleChangeValue(e, 'state')}
       />
       <CategorySelect
-        value={formData.category}
-        change={(e: any) => handleChangeValue(e, 'category')}
+        value={formData.categoryTitle}
+        onChange={(e: any) => handleChangeValue(e, 'categoryTitle')}
       />
       <CustomInput
-        htmlFor="bookIsbn"
         id="bookIsbn"
-        top="ISBN"
-        placeholder="Введите ISBN"
+        placeholder="Введите ISBN книги"
         name="bookIsbn"
-        value={formData.isbn}
+        value={withoutISBN ? '' : formData.isbn}
+        disabled={withoutISBN ? true : false}
         onChange={(e) => handleChangeValue(e, 'isbn')}
         type="text"
+        top="ISBN"
+        htmlFor="bookIsbn"
+        isRequired={withoutISBN ? false : true}
       />
       <FormItem htmlFor="bookCheckbox">
-        <Checkbox id="bookCheckbox">ISBN отсутствует</Checkbox>
+        <Checkbox onClick={() => setWithoutISBN(!withoutISBN)} id="bookCheckbox">ISBN отсутствует</Checkbox>
       </FormItem>
-      <CustomTextarea />
+      <CustomTextarea
+        value={formData.description}
+        onChange={(e: any) => handleChangeValue(e, 'description')}
+      />
+      <FormItem>
+        <Button
+          stretched
+          size="l"
+          type="submit"
+        >
+          Сохранить</Button>
+      </FormItem>
     </form>
-  )
-})
+  );
+};
+
+export default React.memo(CreateBook);

@@ -1,10 +1,13 @@
 import { FormItem, Textarea } from "@vkontakte/vkui";
 
-type Props = {}
+type Props = {
+  value: string | undefined
+  onChange: any
+}
 
-export default function CustomTextarea({ }: Props) {
+export default function CustomTextarea({ value, onChange }: Props) {
   return (
-    <FormItem 
+    <FormItem
       top='Комментарий'
       htmlFor="bookDescr"
     >
@@ -13,6 +16,7 @@ export default function CustomTextarea({ }: Props) {
         name="bookDescr"
         placeholder="Добавьте комментарий"
         maxLength={200}
+        value={value}
       />
     </FormItem>
   )

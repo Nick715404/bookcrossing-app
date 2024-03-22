@@ -31,12 +31,12 @@ export interface IBook {
 }
 
 export interface ICreateBook {
-  isbn: string,
+  isbn?: string,
   title: string
-  state: string | null | undefined,
-  description: string | null | undefined,
+  state: string | undefined,
+  description: string | undefined,
   author: string,
-  categoryTitle: string | null | undefined
+  categoryTitle: string | undefined
 }
 
 export interface IGenre {
@@ -46,16 +46,10 @@ export interface IGenre {
   books: IBook[]
 }
 
-export interface IDataState {
-  title: string,
-  author: string,
-  quality?: string,
-  category?: string,
-  isbn: string,
-  descr?: string
-}
+export interface IDataState extends ICreateBook { }
 
 export interface ICreateUser {
+  userId?: string
   vkid: string
   city: string
   givenBooks?: number
@@ -67,7 +61,7 @@ export interface IPassIdToModalPage {
   id: string
   data?: any
   openFiltersModal?: any
-} 
+}
 
 export interface ISwitchPageById {
   id: string;
@@ -78,3 +72,11 @@ export interface IUser extends ICreateUser {
   name: string
   surName: string
 }
+
+// export interface IServerUser {
+//   info?: IUser
+//   shelf: {
+//     id: string
+//     userId: string
+//   }
+// }
