@@ -14,17 +14,6 @@ type Props = {
   activeModal?: string | null
 }
 
-/*export default function Modal({ activeModal }: Props) {
-  return (
-    <ModalRoot activeModal={activeModal}>
-      <ModalPage id="info-book">
-        ModalPage about book
-      </ModalPage>
-      <ModalPage></ModalPage>
-    </ModalRoot>
-  )
-}*/
-
 const Modal = ({ id, changeActiveModal }: IPassIdToModalPage) => {
   const platform = usePlatform();
   const { sizeX } = useAdaptivityConditionalRender();
