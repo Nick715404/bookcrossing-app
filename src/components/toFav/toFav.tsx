@@ -34,6 +34,7 @@ export default function ToFav({ id }: Props) {
 
   return (
     <div
+      onClick={() => setActive(!acitive)}
       className='to-shelf-btn'>
       {acitive ? <Icon24Bookmark fill='#99A2AD' /> : <Icon24BookmarkOutline fill='#99A2AD' />}
     </div>

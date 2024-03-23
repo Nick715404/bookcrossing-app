@@ -1,4 +1,4 @@
-import ToShelf from "../toShelf/toFav";
+import ToShelf from "../toFav/toFav";
 import ToChat from "../toChat/toChat";
 
 import { IBook } from "../../interfaces/interface";
