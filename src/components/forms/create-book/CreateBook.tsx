@@ -26,10 +26,13 @@ const CreateBook: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    const { author } = formData;
+    const userId = user?.userId ?? null;
+
     const errors: { [key: string]: string } = {};
-    if (!formData.author.trim()) {
+    if (!author.trim()) {
       errors.author = 'Поле "Автор" обязательно для заполнения';
-    } else if (!/^([А-ЯЁ]\.[А-ЯЁ]\.\s[А-ЯЁ][а-яё]+)$/.test(formData.author.trim())) {
+    } else if (!/^([А-ЯЁ]\.[А-ЯЁ]\.\s[А-ЯЁ][а-яё]+)$/.test(author.trim())) {
       errors.author = 'Введите ФИО в формате: О.И. Фамилия';
     }
     setFormErrors(errors);
@@ -38,18 +41,20 @@ const CreateBook: React.FC = () => {
       return;
     }
 
-    const data = { ...formData, user: user?.userId };
+    const data = { ...formData, user: userId };
     // createBookFX(data);
     setSubmitted(true);
+    console.log(data);
 
     setFormData(initialState);
     setFormErrors({});
     setWithoutISBN(false);
   };
 
+
   return (
     <form onSubmit={handleSubmit}>
-      <ImageInput go={submitted} bookId="" />
+      <ImageInput go={submitted} bookId={user?.userId || ''} />
       <CustomInput
         id="bookTitle"
         placeholder="Мастер и Маргарита"

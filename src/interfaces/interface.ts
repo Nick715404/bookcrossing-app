@@ -20,14 +20,20 @@ export interface ISliderProps {
 
 export interface IBook {
   id: string
-  author?: string | null,
-  description?: string | null,
   categoryTitle?: string | null,
-  imageId?: string,
+  author?: string | null,
+  owner?: string | null,
   isbn: string,
-  ownerId?: string | null,
-  state: string,
   title: string,
+  state: string,
+  description?: string | null,
+  imageId?: string,
+}
+
+export interface IBookOnShelf extends IBook {
+  favourite?: any
+  shelf: string
+  releaseDate?: string
 }
 
 export interface ICreateBook {
@@ -73,10 +79,10 @@ export interface IUser extends ICreateUser {
   surName: string
 }
 
-// export interface IServerUser {
-//   info?: IUser
-//   shelf: {
-//     id: string
-//     userId: string
-//   }
-// }
+export interface IShelfInfo {
+  books: IBookOnShelf
+  info: {
+    id: string
+    userId: string
+  }
+}

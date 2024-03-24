@@ -43,16 +43,6 @@ export default function ImageInput({ go, bookId }: Props) {
         onChange={handleImageChange}
         style={imageInputStyles}
       />
-
-      {/* <button onClick={uploadFiles}>Загрузить фото</button>
-      <button onClick={getFiles}>Получить картинки книги 123</button> */}
-
-      {/* <div>
-        {images && images.map((image, id) => {
-          return <img key={id} src={'http://localhost:3100/' + image.path} />
-        })}
-      </div> */}
-
     </FormItem>
   )
 }

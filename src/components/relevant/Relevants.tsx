@@ -6,12 +6,11 @@ import { useEffect } from "react";
 import { getAllBooksFX } from "../../api/server/books/books";
 
 import Book from "../book/Book"
-import { $shelf } from "../../store/shelf";
 import ToFav from "../toFav/toFav";
 
 export default function Relevants() {
 
-  const [books, shelf] = useUnit([$books, $shelf]);
+  const books = useUnit($books);
 
   useEffect(() => {
     getAllBooksFX();
