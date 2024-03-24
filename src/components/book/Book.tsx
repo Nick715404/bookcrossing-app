@@ -1,3 +1,10 @@
+import ToShelf from "../toShelf/toFav";
+import ToChat from "../toChat/toChat";
+
+import { IBook } from "../../interfaces/interface";
+import { selectBook } from "../../store/modalBook";
+import { setStatusActiveModal } from "../../store/activeModal";
+
 import {
   Div,
   SimpleCell,
@@ -6,16 +13,6 @@ import {
   SplitLayout,
   ModalRoot,
 } from "@vkontakte/vkui"
-
-import ToShelf from "../toShelf/toShelf";
-import ToChat from "../toChat/toChat";
-
-import { IBook } from "../../interfaces/interface";
-import { useState } from "react";
-import Modal from "../modal/Modal";
-import ModalImgBook from "../modal/modalImgbook/ModalImgBook";
-import { selectBook } from "../../store/modalBook";
-import { setStatusActiveModal } from "../../store/activeModal";
 
 type Props = {
   book: IBook
@@ -32,26 +29,12 @@ export default function Book({ book }: Props) {
       src="/img/genres/genre1.jpg" />
   )
 
-  // const [activeModal, setActiveModal] = useState<string | null>(null);
-
-  // const changeActiveModal = (id: string | null) => {
-  //   setActiveModal(id);
-  // }
-
-  // const modal = (
-  //   <ModalRoot activeModal={activeModal} onClose={() => setActiveModal(null)}>
-  //     <Modal id={"modal"} changeActiveModal={changeActiveModal} />
-  //     <ModalImgBook id={"modalImgBook"} changeActiveModal={changeActiveModal} />
-  //   </ModalRoot>
-  // )
-
   const handleBook = () => {
     selectBook(book)
     setStatusActiveModal('modal');
   }
 
   return (
-    // <SplitLayout id={book.id} modal={modal}>
     <SplitLayout>
       <Div className="book" id={book.id}>
         <SimpleCell className="book-wrapper" before={image} onClick={() => handleBook()}>
@@ -61,7 +44,7 @@ export default function Book({ book }: Props) {
           <Text className="book-author book-info">
             {book.author ? book.author : 'Автор не найден'}
           </Text>
-          <Text className="book-quality">
+          <Text className="book-quality book-info">
             {book.state ? book.state : "не найдено"}
           </Text>
           <Text className="book-genre book-info">

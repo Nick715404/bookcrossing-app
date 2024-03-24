@@ -1,14 +1,16 @@
-import { Card, Panel, PanelHeader, Group, Cell, SegmentedControl, Avatar, Div } from '@vkontakte/vkui';
 import User from '../../components/user/User';
-import Relevants from '../../components/relevant/Relevants';
 import SegmentedControlCustom from '../../components/segmentControl/SegmentControl';
-import MyBook from '../../components/myBook/MyBook';
+import { useState } from 'react';
+import { Panel, PanelHeader, Group } from '@vkontakte/vkui';
 
 type Props = {
   id: string
 }
 
 export default function Profile({ id }: Props) {
+
+  const [position, setPosition] = useState<any>('shelf');  
+
   return (
     <Panel id={id}>
 
@@ -20,17 +22,10 @@ export default function Profile({ id }: Props) {
         <User />
       </Group>
 
-      <SegmentedControlCustom />
+      <SegmentedControlCustom position={position} setPosition={setPosition} />
 
       <Group>
-        {/*<Relevants />*/}
-        <Div>
-        <Card>
-          <MyBook />
-        </Card>
-        </Div>
-        
-          
+        Книги на полке
       </Group>
 
     </Panel>
