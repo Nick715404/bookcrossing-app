@@ -1,6 +1,6 @@
 import './styles/styles.scss'
 
-import { useActiveVkuiLocation, useGetPanelForView } from '@vkontakte/vk-mini-apps-router';
+import { RouterLink, useActiveVkuiLocation, useGetPanelForView } from '@vkontakte/vk-mini-apps-router';
 
 import Nav from './components/tabbar/Nav';
 import Catalog from './panels/catalog/Catalog';
@@ -14,13 +14,16 @@ import { $statusActivModal, setStatusActiveModal } from './store/activeModal';
 import ModalBookStatusDescription from './components/modal/modalBookStatusDescriptions/ModalBookStatusDescription';
 import { vkUser } from './constants/vk-users';
 // import TranscriptIsbnModal from './components/modal/transcriptISBNModal/transcriptIsbnModal';
-import { View, Epic, ModalRoot, SplitLayout } from '@vkontakte/vkui';
+import InitAppEntities from './init-app-entities/InitAppEntities';
+import InitAppModals from './init-app-entities/InitAppModals';
+import Router from './router/Router';
+import { AdaptivityProvider, AppRoot, ConfigProvider, Epic, SplitLayout, View } from '@vkontakte/vkui';
 
 const App = () => {
 
 	const { view: activeView } = useActiveVkuiLocation();
 	const activePanel = useGetPanelForView('panel');
-	// const [activeModal, setActiveModal] = useState<string | null>(null);
+	/* const [activeModal, setActiveModal] = useState<string | null>(null);
 
 	const changeActiveModal = (id: string | null) => {
 		setStatusActiveModal(id);
@@ -33,12 +36,12 @@ const App = () => {
 			<Modal id={"modal"} />
 			<ModalImgBook id={"modalImgBook"} changeActiveModal={changeActiveModal} />
 			<ModalBookStatusDescription id={"statusDescription"} changeActiveModal={changeActiveModal} />
-			{/* <TranscriptIsbnModal id={"transcriptISBN"} changeActiveModal={changeActiveModal}/> */}
+			{/* <TranscriptIsbnModal id={"transcriptISBN"} changeActiveModal={changeActiveModal}/>}
 		</ModalRoot>
-	)
+	)*/
 
 	return (
-		<SplitLayout modal={modal}>
+		<SplitLayout>
 			<Epic
 				activeStory={activeView || ''}
 				tabbar={<Nav />}
@@ -48,7 +51,7 @@ const App = () => {
 					<Profile id='profile-panel' />
 					<Create id='create-panel' />
 				</View>
-			</Epic>
+			</Epic>	
 		</SplitLayout>
 	);
 }

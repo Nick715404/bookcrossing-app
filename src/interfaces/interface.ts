@@ -73,6 +73,10 @@ export interface IUser extends ICreateUser {
   surName: string
 }
 
+export interface IInitAppEntities {
+  children: React.ReactNode
+}
+
 // export interface IServerUser {
 //   info?: IUser
 //   shelf: {

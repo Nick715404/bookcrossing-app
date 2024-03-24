@@ -6,7 +6,10 @@ import { appRouter } from "./constants/vk-router";
 import UserProvider from "./utilities/UserProvider";
 import bridge from "@vkontakte/vk-bridge";
 import { AdaptivityProvider, ConfigProvider, AppRoot } from "@vkontakte/vkui";
-import ReactDOM from "react-dom";
+import ReactDOM, { render } from "react-dom";
+import InitAppEntities from "./init-app-entities/InitAppEntities";
+import InitAppModals from "./init-app-entities/InitAppModals";
+import Router from "./router/Router";
 
 // Init VK  Mini App
 bridge.send("VKWebAppInit");
@@ -26,4 +29,3 @@ ReactDOM.render(
   </ConfigProvider>,
   document.getElementById("root")
 );
-
