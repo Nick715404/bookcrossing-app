@@ -2,6 +2,7 @@ import User from '../../components/user/User';
 import SegmentedControlCustom from '../../components/segmentControl/SegmentControl';
 import { useState } from 'react';
 import { Panel, PanelHeader, Group } from '@vkontakte/vkui';
+import BooksOnShelf from '../../components/books-on-shelf/BooksOnShelf';
 
 type Props = {
   id: string
@@ -9,7 +10,7 @@ type Props = {
 
 export default function Profile({ id }: Props) {
 
-  const [position, setPosition] = useState<any>('shelf');  
+  const [position, setPosition] = useState<any>('shelf');
 
   return (
     <Panel id={id}>
@@ -25,7 +26,7 @@ export default function Profile({ id }: Props) {
       <SegmentedControlCustom position={position} setPosition={setPosition} />
 
       <Group>
-        Книги на полке
+        <BooksOnShelf />
       </Group>
 
     </Panel>

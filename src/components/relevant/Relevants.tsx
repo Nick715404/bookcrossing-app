@@ -7,6 +7,7 @@ import { getAllBooksFX } from "../../api/server/books/books";
 
 import Book from "../book/Book"
 import { $shelf } from "../../store/shelf";
+import ToFav from "../toFav/toFav";
 
 export default function Relevants() {
 
@@ -23,7 +24,7 @@ export default function Relevants() {
       </Header>
       {/* Рендер компонента Book с прокидыванием в него данных с сервера в переменной book */}
       {books && books.map((book: IBook) => (
-        <Book key={book.id} book={book} />
+        <Book key={book.id} book={book} afterIcon={<ToFav id={book.id} />} />
       ))}
     </div>
   )

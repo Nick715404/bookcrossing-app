@@ -15,6 +15,8 @@ const CreateBook: React.FC = () => {
   const [formData, setFormData] = useState<IDataState>(initialState);
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
   const [withoutISBN, setWithoutISBN] = useState<boolean>(false);
+  const [submitted, setSubmitted] = useState<boolean>(false);
+
   const user = useUnit($user);
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, field: keyof IDataState) => {
@@ -38,7 +40,7 @@ const CreateBook: React.FC = () => {
 
     const data = { ...formData, user: user?.userId };
     // createBookFX(data);
-    console.log(data);
+    setSubmitted(true);
 
     setFormData(initialState);
     setFormErrors({});
@@ -47,7 +49,7 @@ const CreateBook: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <ImageInput />
+      <ImageInput go={submitted} bookId="" />
       <CustomInput
         id="bookTitle"
         placeholder="Мастер и Маргарита"
