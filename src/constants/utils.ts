@@ -1,3 +1,5 @@
+import { IDataState } from "../interfaces/interface";
+
 export const qualityOptions = [
   {
     value: 'Отличное состояние',
@@ -28,3 +30,33 @@ export const imageInputStyles = {
   borderRadius: '14px',
   color: 'transparent'
 }
+
+export const initialState: IDataState = {
+  title: '',
+  author: '',
+  state: '',
+  categoryTitle: '',
+  isbn: '',
+  description: ''
+};
+
+export const segmentControlsOption = [
+  {
+    label: 'Полка',
+    value: 'shelf'
+  },
+  {
+    label: 'Избраное',
+    value: 'favorites'
+  }
+]
+
+// export const statusBook = (
+//   /*<SplitLayout modal={modal} style={{padding: 0, margin: 0}}>*/
+//   /*<SimpleCell  onClick={() => setActiveModal('statusDescription')}>*/
+//   <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{ padding: 0, margin: 0 }}>
+//     Состояние
+//   </CellButton>
+//   /*</SimpleCell>*/
+//   //  </SplitLayout>
+// )

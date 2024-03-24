@@ -1,13 +1,15 @@
-import { Card, Panel, PanelHeader, Group, Cell, SegmentedControl, Avatar, Div } from '@vkontakte/vkui';
 import User from '../../components/user/User';
-import Relevants from '../../components/relevant/Relevants';
 import SegmentedControlCustom from '../../components/segmentControl/SegmentControl';
-
+import { Card, Div, Group, Panel, PanelHeader } from '@vkontakte/vkui';
+import { useState } from 'react';
 type Props = {
   id: string
 }
 
 export default function Profile({ id }: Props) {
+
+  const [position, setPosition] = useState<any>('shelf');  
+
   return (
     <Panel id={id}>
 
@@ -19,7 +21,7 @@ export default function Profile({ id }: Props) {
         <User />
       </Group>
 
-      <SegmentedControlCustom />
+      <SegmentedControlCustom position={position} setPosition={setPosition} />
 
       <Group>
         {/*<Relevants />*/}

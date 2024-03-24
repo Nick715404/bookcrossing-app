@@ -6,10 +6,10 @@ import { getAllCategoriesFX } from "../../../../api/server/categories/categories
 
 type Props = {
   value: string | undefined
-  change: any
+  onChange: (e: any) => void
 };
 
-function CategorySelect({ value, change }: Props) {
+function CategorySelect({ value, onChange }: Props) {
 
   const categories = useUnit($categories);
 
@@ -34,9 +34,8 @@ function CategorySelect({ value, change }: Props) {
         id="bookCategory"
         placeholder="Выберите категорию книги"
         name="genre"
-        // defaultValue='Выберите категорию книги'
         value={value}
-        onChange={change}
+        onChange={onChange}
         options={createOptions} />
     </FormItem>
   );

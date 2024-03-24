@@ -1,3 +1,10 @@
+import ToShelf from "../toFav/toFav";
+import ToChat from "../toChat/toChat";
+
+import { IBook } from "../../interfaces/interface";
+import { selectBook } from "../../store/modalBook";
+import { setStatusActiveModal } from "../../store/activeModal";
+
 import {
   Div,
   SimpleCell,
@@ -6,13 +13,6 @@ import {
   SplitLayout,
   ModalRoot,
 } from "@vkontakte/vkui"
-
-import ToShelf from "../toShelf/toFav";
-import ToChat from "../toChat/toChat";
-
-import { IBook } from "../../interfaces/interface";
-import { selectBook } from "../../store/modalBook";
-import { setStatusActiveModal } from "../../store/activeModal";
 
 type Props = {
   book: IBook
