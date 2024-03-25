@@ -14,21 +14,14 @@ export default function Profile({ id }: Props) {
 
   return (
     <Panel id={id}>
-
       <PanelHeader separator={false}>
         Буккроссинг
       </PanelHeader>
-
       <Group separator='hide'>
         <User />
       </Group>
-
       <SegmentedControlCustom position={position} setPosition={setPosition} />
-
-      <Group>
-        <BooksOnShelf />
-      </Group>
-
+      <BooksOnShelf />
     </Panel>
   )
 }

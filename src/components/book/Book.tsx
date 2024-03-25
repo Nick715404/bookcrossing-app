@@ -20,8 +20,7 @@ type Props = {
 
 // - Поменять список выводящихся полей
 
-export default function Book({ book, afterIcon }: Props) {
-
+export default function Book({ book, afterIcon }: Props) {  
   const image = (
     <Image
       style={{ marginBottom: '0', marginTop: '0' }}

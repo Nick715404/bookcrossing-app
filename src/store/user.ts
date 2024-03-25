@@ -6,4 +6,4 @@ export const $user = createStore<IUser | null>(null);
 
 $user.on(CreateUserFX.doneData, (_, newUser) => newUser);
 
-$user.on(GetCurrentUserFX.doneData, (user, newUser) => newUser);
+$user.on(GetCurrentUserFX.doneData, (_, newUser) => newUser);

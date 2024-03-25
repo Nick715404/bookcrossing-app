@@ -29,6 +29,7 @@ const CreateBook: React.FC = () => {
     const { author } = formData;
     const userId = user?.userId ?? null;
 
+    // - Вынести в функцию
     const errors: { [key: string]: string } = {};
     if (!author.trim()) {
       errors.author = 'Поле "Автор" обязательно для заполнения';
@@ -42,10 +43,11 @@ const CreateBook: React.FC = () => {
     }
 
     const data = { ...formData, user: userId };
-    // createBookFX(data);
+    createBookFX(data);
     setSubmitted(true);
-    console.log(data);
+    // console.log(data);
 
+    // - Вынести в функцию
     setFormData(initialState);
     setFormErrors({});
     setWithoutISBN(false);

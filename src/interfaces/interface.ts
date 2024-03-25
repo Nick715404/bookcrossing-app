@@ -80,7 +80,7 @@ export interface IUser extends ICreateUser {
 }
 
 export interface IShelfInfo {
-  books: IBookOnShelf
+  books: IBookOnShelf[]
   info: {
     id: string
     userId: string
