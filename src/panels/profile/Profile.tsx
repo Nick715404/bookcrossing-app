@@ -8,7 +8,7 @@ type Props = {
 
 export default function Profile({ id }: Props) {
 
-  const [position, setPosition] = useState<any>('shelf');  
+  const [position, setPosition] = useState<any>('shelf');
 
   return (
     <Panel id={id}>

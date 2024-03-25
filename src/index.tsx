@@ -18,13 +18,18 @@ bridge.send("VKWebAppInit");
 ReactDOM.render(
   <ConfigProvider>
     <AdaptivityProvider>
-      <UserProvider>
-        <AppRoot>
-          <RouterProvider router={appRouter}>
-            <App />
-          </RouterProvider>
-        </AppRoot>
-      </UserProvider>
+      <InitAppEntities>
+          <UserProvider>
+          <AppRoot>
+            <InitAppModals>
+              <RouterProvider router={appRouter}>
+                <App />
+              </RouterProvider>
+            </InitAppModals>
+          </AppRoot>
+        </UserProvider>
+      </InitAppEntities>
+      
     </AdaptivityProvider>
   </ConfigProvider>,
   document.getElementById("root")

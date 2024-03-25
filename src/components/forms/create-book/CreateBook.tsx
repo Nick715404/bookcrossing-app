@@ -15,6 +15,8 @@ const CreateBook: React.FC = () => {
   const [formData, setFormData] = useState<IDataState>(initialState);
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
   const [withoutISBN, setWithoutISBN] = useState<boolean>(false);
+  const [submitted, setSubmitted] = useState<boolean>(false);
+
   const user = useUnit($user);
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, field: keyof IDataState) => {
@@ -24,10 +26,13 @@ const CreateBook: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    const { author } = formData;
+    const userId = user?.userId ?? null;
+
     const errors: { [key: string]: string } = {};
-    if (!formData.author.trim()) {
+    if (!author.trim()) {
       errors.author = 'Поле "Автор" обязательно для заполнения';
-    } else if (!/^([А-ЯЁ]\.[А-ЯЁ]\.\s[А-ЯЁ][а-яё]+)$/.test(formData.author.trim())) {
+    } else if (!/^([А-ЯЁ]\.[А-ЯЁ]\.\s[А-ЯЁ][а-яё]+)$/.test(author.trim())) {
       errors.author = 'Введите ФИО в формате: О.И. Фамилия';
     }
     setFormErrors(errors);
@@ -36,8 +41,9 @@ const CreateBook: React.FC = () => {
       return;
     }
 
-    const data = { ...formData, user: user?.userId };
-    // createBookFX(data);
+    const data = { ...formData, user: userId };
+    createBookFX(data);
+    setSubmitted(true);
     console.log(data);
 
     setFormData(initialState);
@@ -45,9 +51,10 @@ const CreateBook: React.FC = () => {
     setWithoutISBN(false);
   };
 
+
   return (
     <form onSubmit={handleSubmit}>
-      <ImageInput />
+      <ImageInput go={submitted} bookId={user?.userId || ''} />
       <CustomInput
         id="bookTitle"
         placeholder="Мастер и Маргарита"

@@ -1,4 +1,3 @@
-import ToShelf from "../toFav/toFav";
 import ToChat from "../toChat/toChat";
 
 import { IBook } from "../../interfaces/interface";
@@ -16,9 +15,12 @@ import {
 
 type Props = {
   book: IBook
+  afterIcon: React.ReactNode | null
 }
 
-export default function Book({ book }: Props) {
+// - Поменять список выводящихся полей
+
+export default function Book({ book, afterIcon }: Props) {
 
   const image = (
     <Image
@@ -52,7 +54,7 @@ export default function Book({ book }: Props) {
           </Text>
         </SimpleCell>
       </Div >
-      <ToShelf id={book.id} />
+      {afterIcon}
       <ToChat />
     </SplitLayout >
   )
