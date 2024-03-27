@@ -5,6 +5,7 @@ import {
 } from '@vkontakte/icons';
 import { useState } from 'react';
 import { deleteBook } from '../../api/server/books/books';
+import { IconButton } from '@vkontakte/vkui';
 
 type Props = {
   id: string
@@ -24,10 +25,10 @@ export default function ToFav({ id }: Props) {
   };
 
   return (
-    <div
-      onClick={deleteButtonHandler}
+    <IconButton
+      onClick={fakeHandleClick}
       className='to-shelf-btn'>
       {acitive ? <Icon24Bookmark fill='#99A2AD' /> : <Icon24BookmarkOutline fill='#99A2AD' />}
-    </div>
+    </IconButton>
   )
 }

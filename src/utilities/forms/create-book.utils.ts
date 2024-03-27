@@ -9,7 +9,7 @@ export const handleFormValidation = (author: string, errors: any) => {
   }
 };
 
-export const handleCreateBook = (userId: string | undefined, formData: IDataState) => {
+export const handleCreateBook = async (userId: string | undefined, formData: IDataState) => {
   const data = { ...formData, userId: userId };
-  createBookFX(data);
+  return await createBookFX(data);
 };
