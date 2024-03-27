@@ -27,7 +27,6 @@ export const getBookImage = async (bookId: string) => {
   try {
     // - /image/clu0zb2u5000289aaz0lp7j9u/images
     const { data } = await api.get('/image/' + bookId + '/images');
-    // console.log(data);
     return data;
   }
   catch (error) {

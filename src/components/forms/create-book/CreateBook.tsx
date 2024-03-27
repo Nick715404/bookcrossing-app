@@ -20,6 +20,8 @@ const CreateBook: React.FC = () => {
 
   const user = useUnit($user);
 
+  // - Сделать лоадер для книги, сделать проверку на книгу
+
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, field: keyof IDataState) => {
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
   };
@@ -31,7 +33,7 @@ const CreateBook: React.FC = () => {
     setWithoutISBN(false);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const { author } = formData;
@@ -43,7 +45,10 @@ const CreateBook: React.FC = () => {
 
     if (Object.keys(errors).length > 0) return;
 
-    handleCreateBook(userId, formData);
+    const result = await handleCreateBook(userId, formData);
+
+    console.log(result);
+
     console.log('Book has been created!')
     handleResetForm();
   };
