@@ -1,9 +1,8 @@
 import User from '../../components/user/User';
 import SegmentedControlCustom from '../../components/segmentControl/SegmentControl';
+import { Card, Div, Group, Panel, PanelHeader } from '@vkontakte/vkui';
 import { useState } from 'react';
-import { Panel, PanelHeader, Group } from '@vkontakte/vkui';
 import BooksOnShelf from '../../components/books-on-shelf/BooksOnShelf';
-
 type Props = {
   id: string
 }

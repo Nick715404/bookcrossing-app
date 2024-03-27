@@ -3,9 +3,7 @@ import { IPassIdToModalPage } from "../../../interfaces/interface";
 import { setStatusActiveModal } from "../../../store/activeModal";
 
 
-const ModalBookStatusDescription = ({ id }: IPassIdToModalPage) => {
-
-
+const ModalBookStatusDescription = ({id}: IPassIdToModalPage) => {
     return (
         <ModalPage id={id} onClose={() => setStatusActiveModal(null)} size="s"
             header={

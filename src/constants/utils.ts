@@ -37,7 +37,8 @@ export const initialState: IDataState = {
   state: '',
   categoryTitle: '',
   isbn: '',
-  description: ''
+  description: '',
+  owner: ''
 };
 
 export const segmentControlsOption = [

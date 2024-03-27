@@ -1,20 +1,23 @@
+import { useUnit } from "effector-react"
 import { IBookOnShelf } from "../../interfaces/interface"
 import Book from "../book/Book"
 import EditBook from "../edit-book/EditBook"
+import { $books } from "../../store/books"
+import DeleteBook from "../delete-book/DeleteBook"
 
-type Props = {
-  books: IBookOnShelf[]
-}
+export default function ShelfBooksList() {
 
-export default function ShelfBooksList({ books }: Props) {
-
-  console.log(books);
+  const books = useUnit($books);
 
   return (
     <>
-      {books && books.map((book: IBookOnShelf) => {
-        console.log('log of book');
-        return (<Book key={book.id} book={book} afterIcon={<EditBook />} />)
+      {books && books.map((book: any) => {
+        return (<Book 
+          key={book.id} 
+          book={book} 
+          afterIcon={<EditBook />}
+          beforeIcon={<DeleteBook />}
+          />)
       })}
     </>
   )

@@ -13,7 +13,7 @@ export default function ToChat() {
     <div
       onClick={fakeHandleClick}
       className='to-chat-btn'>
-      {acitive ? <Icon24Message fill='#99A2AD' /> : <Icon24MessageOutline fill='#99A2AD' /> }
+      {acitive ? <Icon24Message fill='#99A2AD' /> : <Icon24MessageOutline fill='#99A2AD' />}
     </div>
   )
 }

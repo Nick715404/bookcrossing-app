@@ -22,7 +22,7 @@ export interface IBook {
   id: string
   categoryTitle?: string | null,
   author?: string | null,
-  owner?: string | null,
+  owner?: string,
   isbn: string,
   title: string,
   state: string,
@@ -43,6 +43,7 @@ export interface ICreateBook {
   description: string | undefined,
   author: string,
   categoryTitle: string | undefined
+  owner: string
 }
 
 export interface IGenre {
@@ -79,10 +80,22 @@ export interface IUser extends ICreateUser {
   surName: string
 }
 
+export interface IInitAppEntities {
+  children: React.ReactNode
+}
+
 export interface IShelfInfo {
-  books: IBookOnShelf[]
+  books: IBookOnShelf[] | undefined
   info: {
     id: string
     userId: string
   }
 }
+
+// export interface IServerUser {
+//   info?: IUser
+//   shelf: {
+//     id: string
+//     userId: string
+//   }
+// }

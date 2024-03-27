@@ -10,17 +10,17 @@ import {
   Image,
   Text,
   SplitLayout,
-  ModalRoot,
 } from "@vkontakte/vkui"
 
 type Props = {
   book: IBook
   afterIcon: React.ReactNode | null
+  beforeIcon: React.ReactNode | null
 }
 
 // - Поменять список выводящихся полей
 
-export default function Book({ book, afterIcon }: Props) {  
+export default function Book({ book, afterIcon, beforeIcon }: Props) {  
   const image = (
     <Image
       style={{ marginBottom: '0', marginTop: '0' }}
@@ -54,7 +54,7 @@ export default function Book({ book, afterIcon }: Props) {
         </SimpleCell>
       </Div >
       {afterIcon}
-      <ToChat />
+      {beforeIcon}
     </SplitLayout >
   )
 }

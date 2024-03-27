@@ -27,7 +27,7 @@ const CreateBook: React.FC = () => {
     e.preventDefault();
 
     const { author } = formData;
-    const userId = user?.userId ?? null;
+    const userId = user.userId;
 
     // - Вынести в функцию
     const errors: { [key: string]: string } = {};
@@ -42,7 +42,7 @@ const CreateBook: React.FC = () => {
       return;
     }
 
-    const data = { ...formData, user: userId };
+    const data = { ...formData, userId: userId };
     createBookFX(data);
     setSubmitted(true);
     // console.log(data);

@@ -1,12 +1,11 @@
-import { Icon28WriteOutline } from '@vkontakte/icons';
-import { useState } from 'react';
+import { Icon24WriteOutline } from '@vkontakte/icons';
 
 type Props = {}
 
 export default function EditBook({ }: Props) {
   return (
     <>
-      <Icon28WriteOutline />
+      <Icon24WriteOutline className='edit-book' />
     </>
   )
 }

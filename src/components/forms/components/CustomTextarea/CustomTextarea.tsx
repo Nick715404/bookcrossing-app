@@ -17,6 +17,7 @@ export default function CustomTextarea({ value, onChange }: Props) {
         placeholder="Добавьте комментарий"
         maxLength={200}
         value={value}
+        onChange={onChange}
       />
     </FormItem>
   )
