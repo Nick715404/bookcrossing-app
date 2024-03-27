@@ -45,7 +45,6 @@ const CreateBook: React.FC = () => {
     const data = { ...formData, userId: userId };
     createBookFX(data);
     setSubmitted(true);
-    // console.log(data);
 
     // - Вынести в функцию
     setFormData(initialState);

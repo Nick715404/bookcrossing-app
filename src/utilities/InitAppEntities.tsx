@@ -1,12 +1,19 @@
 
 // - Перенести сюда получение каталога, получение юзера
 
+import { useEffect } from "react";
 import { IInitAppEntities } from "../interfaces/interface";
+import UserProvider from "./UserProvider";
+import ShelfProvider from "./ShelfProvider";
 
-const InitAppEntities = ({children}: IInitAppEntities) => {
+const InitAppEntities = ({ children }: IInitAppEntities) => {
     return (
         <>
-            {children}
+            <UserProvider>
+                <ShelfProvider>
+                    {children}
+                </ShelfProvider>
+            </UserProvider>
         </>
     )
 }

@@ -14,9 +14,7 @@ export const getAllBooksFX = createEffect(async () => {
 
 export const createBookFX = createEffect(async (book: ICreateBook) => {
   try {
-    console.log(book);
     const { data } = await api.post('/book/create', book);
-    console.log(data);
     return data;
   }
   catch (error) {

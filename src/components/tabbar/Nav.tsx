@@ -8,7 +8,7 @@ export default function Nav() {
   const { panel: activePanel } = useActiveVkuiLocation();
 
   return (
-    <Tabbar>
+    <Tabbar style={{paddingTop: '5px'}}>
       <TabbarItem
         selected={activePanel === 'profile-panel'}
         text='Профиль'

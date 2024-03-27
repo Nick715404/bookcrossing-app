@@ -19,17 +19,14 @@ ReactDOM.render(
   <ConfigProvider>
     <AdaptivityProvider>
       <InitAppEntities>
-          <UserProvider>
-          <AppRoot>
-            <InitAppModals>
-              <RouterProvider router={appRouter}>
-                <App />
-              </RouterProvider>
-            </InitAppModals>
-          </AppRoot>
-        </UserProvider>
+        <AppRoot>
+          <InitAppModals>
+            <RouterProvider router={appRouter}>
+              <App />
+            </RouterProvider>
+          </InitAppModals>
+        </AppRoot>
       </InitAppEntities>
-      
     </AdaptivityProvider>
   </ConfigProvider>,
   document.getElementById("root")

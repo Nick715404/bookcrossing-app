@@ -9,12 +9,6 @@ import ShelfBooksList from "../shelf-books-list/ShelfBooksList";
 export default function BooksOnShelf() {
 
   const user = useUnit($user);
-  const books = useUnit($booksOnShelf);
-
-  useEffect(() => {
-    if (user.userId == '') return
-    FindBooksOnShelfFX(user.userId);
-  }, [user]);
 
   return (
     <Group>

@@ -22,7 +22,6 @@ export default function Relevants() {
       <Header mode="primary" style={{ paddingBottom: '12px' }}>
         Новые
       </Header>
-      {/* Рендер компонента Book с прокидыванием в него данных с сервера в переменной book */}
       {books && books.map((book: IBook) => (
         <Book
           key={book.id}
