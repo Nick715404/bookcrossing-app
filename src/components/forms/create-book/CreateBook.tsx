@@ -10,6 +10,7 @@ import { initialState } from "../../../constants/utils";
 import React, { useState } from "react";
 import { useUnit } from "effector-react";
 import { FormItem, Button, Checkbox } from "@vkontakte/vkui";
+import { handleCreateBook, handleFormValidation } from "../../../utilities/forms/create-book.utils";
 
 const CreateBook: React.FC = () => {
   const [formData, setFormData] = useState<IDataState>(initialState);
@@ -23,39 +24,34 @@ const CreateBook: React.FC = () => {
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const { author } = formData;
-    const userId = user.userId;
-
-    // - Вынести в функцию
-    const errors: { [key: string]: string } = {};
-    if (!author.trim()) {
-      errors.author = 'Поле "Автор" обязательно для заполнения';
-    } else if (!/^([А-ЯЁ]\.[А-ЯЁ]\.\s[А-ЯЁ][а-яё]+)$/.test(author.trim())) {
-      errors.author = 'Введите ФИО в формате: О.И. Фамилия';
-    }
-    setFormErrors(errors);
-
-    if (Object.keys(errors).length > 0) {
-      return;
-    }
-
-    const data = { ...formData, userId: userId };
-    createBookFX(data);
+  const handleResetForm = () => {
     setSubmitted(true);
-
-    // - Вынести в функцию
     setFormData(initialState);
     setFormErrors({});
     setWithoutISBN(false);
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const { author } = formData;
+    const userId: string | undefined = user.userId;
+
+    const errors: { [key: string]: string } = {};
+    handleFormValidation(author, errors);
+    setFormErrors(errors);
+
+    if (Object.keys(errors).length > 0) return;
+
+    handleCreateBook(userId, formData);
+    console.log('Book has been created!')
+    handleResetForm();
+  };
+
 
   return (
     <form onSubmit={handleSubmit}>
-      <ImageInput go={submitted} bookId={user?.userId || ''} />
+      <ImageInput go={submitted} bookId={user.userId} />
       <CustomInput
         id="bookTitle"
         placeholder="Мастер и Маргарита"

@@ -1,9 +1,8 @@
-import { FormItem } from "@vkontakte/vkui";
-
-import { useEffect, useState } from "react";
 import { handleImageUpload } from "../../../../api/server/images/image";
 import { getBookImage } from "../../../../api/server/images/image";
 import { imageInputStyles } from "../../../../constants/utils";
+import { FormItem } from "@vkontakte/vkui";
+import { useEffect, useState } from "react";
 
 type Props = {
   go: any
@@ -18,18 +17,27 @@ export default function ImageInput({ go, bookId }: Props) {
   const handleImageChange = (e: any) => {
     const files = e.target.files;
     setSelectedImages([...selectedImages, ...files]);
-  }
+  };
 
-  // - Код для отладки
+  //  Код для отладки
   useEffect(() => {
     console.log(selectedImages);
   }, [selectedImages]);
 
-  const uploadFiles = () => {
-    handleImageUpload(selectedImages, bookId);
-  }
+  useEffect(() => {
+    if (go) {
+      setTimeout(() => {
+        handleImageUpload(selectedImages, bookId);
+        getFiles();
+      }, 900);
+    }
+  }, [go]);
 
-  const getFiles = async () => {
+  // const uploadFiles = () => {
+  //   handleImageUpload(selectedImages, bookId);
+  // }
+
+  async function getFiles() {
     const images = await getBookImage(bookId);
     setImages(images);
   }
@@ -43,6 +51,10 @@ export default function ImageInput({ go, bookId }: Props) {
         onChange={handleImageChange}
         style={imageInputStyles}
       />
+
+      {images && images.map((image, id) => {
+        return <img key={id} src={'http://localhost:3100/' + image.path} />
+      })}
     </FormItem>
   )
 }

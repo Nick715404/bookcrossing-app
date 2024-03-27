@@ -59,8 +59,6 @@ export interface ICreateUser {
   userId?: string
   vkid: string
   city: string
-  givenBooks?: number
-  recievdBooks?: number
 }
 
 export interface IPassIdToModalPage {
@@ -80,6 +78,14 @@ export interface IUser extends ICreateUser {
   surName: string
 }
 
+export interface IServerUser {
+  userId: string
+  vkid: string
+  city: string
+  name: string
+  surName: string
+}
+
 export interface IInitAppEntities {
   children: React.ReactNode
 }
@@ -91,11 +97,3 @@ export interface IShelfInfo {
     userId: string
   }
 }
-
-// export interface IServerUser {
-//   info?: IUser
-//   shelf: {
-//     id: string
-//     userId: string
-//   }
-// }
