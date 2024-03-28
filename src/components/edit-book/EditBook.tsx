@@ -9,4 +9,4 @@ export default function EditBook({ }: Props) {
       <Icon24WriteOutline />
     </IconButton>
   )
-}
+} 
