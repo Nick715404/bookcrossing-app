@@ -4,11 +4,13 @@ import Book from "../book/Book"
 import EditBook from "../edit-book/EditBook"
 import DeleteBook from "../delete-book/DeleteBook"
 import { $booksOnShelf } from "../../store/shelf"
-import React from "react"
+import React, { useEffect, useMemo } from "react"
+import { FindBooksOnShelfFX } from "../../api/server/shelf/shelf"
+import { $user } from "../../store/user"
 
 function ShelfBooksList() {
 
-  const books = useUnit($booksOnShelf);
+  const [books, user] = useUnit([$booksOnShelf, $user]);
 
   return (
     <>
@@ -17,7 +19,7 @@ function ShelfBooksList() {
           key={book.id}
           book={book}
           afterIcon={<EditBook />}
-          beforeIcon={<DeleteBook />}
+          beforeIcon={<DeleteBook bookId={book.id} />}
         />)
       }).reverse()}
     </>

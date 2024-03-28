@@ -19,7 +19,6 @@ export const FindBooksOnShelfFX = createEffect(async (userId: string | undefined
     const { data } = await api.get(`/shelf/find/${userId}`);
     const shelf: IShelfInfo = data;
     const shelfBooks = shelf.books;
-    // console.log(shelfBooks);
     return shelfBooks;
   }
   catch (error) {

@@ -20,19 +20,19 @@ export default function ImageInput({ go, bookId }: Props) {
   };
 
   //  Код для отладки
-  useEffect(() => {
-    console.log(selectedImages);
-  }, [selectedImages]);
+  // useEffect(() => {
+  //   console.log(selectedImages);
+  // }, [selectedImages]);
 
   useEffect(() => {
-    if (go) {
-      handleImageUpload(selectedImages, bookId);
+    // if (go) {
+    //   handleImageUpload(selectedImages, bookId);
 
-      setTimeout(() => {
-        getFiles();
-      }, 800)
+    //   setTimeout(() => {
+    //     getFiles();
+    //   }, 800)
 
-    }
+    // }
   }, [go]);
 
   async function getFiles() {

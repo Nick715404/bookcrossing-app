@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { FindBooksOnShelfFX } from "../api/server/shelf/shelf";
 import { useUnit } from "effector-react";
 import { $user } from "../store/user";
-import { $books } from "../store/books";
 import { $booksOnShelf } from "../store/shelf";
 
 type Props = {
@@ -15,7 +14,7 @@ export default function ShelfProvider({ children }: Props) {
 
   useEffect(() => {
     if (user.userId == '') return
-    FindBooksOnShelfFX(user.userId);
+    FindBooksOnShelfFX(user.userId)
   }, [user]);
 
   return (

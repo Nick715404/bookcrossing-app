@@ -47,7 +47,9 @@ const CreateBook: React.FC = () => {
 
     const result = await handleCreateBook(userId, formData);
 
-    console.log(result);
+    if(result) {
+      console.log('Gotovo!')
+    }
 
     console.log('Book has been created!')
     handleResetForm();
