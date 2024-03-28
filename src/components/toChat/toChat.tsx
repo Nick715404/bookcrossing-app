@@ -1,4 +1,5 @@
-import { Icon24MessageOutline, Icon24Message } from '@vkontakte/icons';
+import { vkBlueColor } from '../../constants/utils';
+import { Icon28MessageOutline } from '@vkontakte/icons';
 import { IconButton } from '@vkontakte/vkui';
 import { useState } from 'react';
 
@@ -14,7 +15,7 @@ export default function ToChat() {
     <IconButton
       onClick={fakeHandleClick}
       className='to-chat-btn'>
-      {acitive ? <Icon24Message fill='#99A2AD' /> : <Icon24MessageOutline fill='#99A2AD' />}
+      {acitive ? <Icon28MessageOutline fill={vkBlueColor} /> : <Icon28MessageOutline fill={vkBlueColor} />}
     </IconButton>
   )
 }

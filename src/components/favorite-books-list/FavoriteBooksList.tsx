@@ -11,9 +11,14 @@ export default function FavoriteBooksList() {
 
   return (
     <>
-      {books && books.map((book: IBook) => {
-        return <Book key={book.id} book={book} beforeIcon={<ToFav id={book.id} />} afterIcon={<ToChat />} />
-      }).reverse()}
+      {books && books.map((book: IBook) => (
+        <Book
+          key={book.id}
+          book={book}
+          beforeIcon={<ToFav isFavorite id={book.id} />}
+          afterIcon={<ToChat />}
+        />
+      )).reverse()}
     </>
   )
 }

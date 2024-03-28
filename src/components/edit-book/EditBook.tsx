@@ -1,12 +1,13 @@
-import { Icon24WriteOutline } from '@vkontakte/icons';
 import { IconButton } from '@vkontakte/vkui';
+import { Icon28WriteOutline } from '@vkontakte/icons';
+import { vkBlueColor } from '../../constants/utils';
 
 type Props = {}
 
 export default function EditBook({ }: Props) {
   return (
     <IconButton className='edit-book'>
-      <Icon24WriteOutline />
+      <Icon28WriteOutline fill={vkBlueColor} />
     </IconButton>
   )
 } 

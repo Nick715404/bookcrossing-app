@@ -52,6 +52,8 @@ export const segmentControlsOption = [
   }
 ]
 
+export const vkBlueColor = '3F8AE0';
+
 // export const statusBook = (
 //   /*<SplitLayout modal={modal} style={{padding: 0, margin: 0}}>*/
 //   /*<SimpleCell  onClick={() => setActiveModal('statusDescription')}>*/
