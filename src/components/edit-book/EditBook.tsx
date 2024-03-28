@@ -5,8 +5,8 @@ type Props = {}
 
 export default function EditBook({ }: Props) {
   return (
-    <IconButton>
-      <Icon24WriteOutline className='edit-book' />
+    <IconButton className='edit-book'>
+      <Icon24WriteOutline />
     </IconButton>
   )
 }

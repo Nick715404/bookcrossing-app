@@ -43,11 +43,11 @@ export const initialState: IDataState = {
 
 export const segmentControlsOption = [
   {
-    label: 'Полка',
+    label: 'Мои книги',
     value: 'shelf'
   },
   {
-    label: 'Избраное',
+    label: 'Мне понравилось',
     value: 'favorites'
   }
 ]

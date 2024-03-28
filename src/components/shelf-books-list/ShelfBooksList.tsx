@@ -4,8 +4,9 @@ import Book from "../book/Book"
 import EditBook from "../edit-book/EditBook"
 import DeleteBook from "../delete-book/DeleteBook"
 import { $booksOnShelf } from "../../store/shelf"
+import React from "react"
 
-export default function ShelfBooksList() {
+function ShelfBooksList() {
 
   const books = useUnit($booksOnShelf);
 
@@ -18,7 +19,9 @@ export default function ShelfBooksList() {
           afterIcon={<EditBook />}
           beforeIcon={<DeleteBook />}
         />)
-      })}
+      }).reverse()}
     </>
   )
 }
+
+export default React.memo(ShelfBooksList);

@@ -1,12 +1,10 @@
-import { useUnit } from "effector-react";
-import { useEffect, useState } from "react"
-import { $booksOnShelf } from "../../store/shelf";
-import { FindBooksOnShelfFX } from "../../api/server/shelf/shelf";
+import ShelfBooksList from "../shelf-books-list/ShelfBooksList";
 import { $user } from "../../store/user";
 import { Group } from "@vkontakte/vkui";
-import ShelfBooksList from "../shelf-books-list/ShelfBooksList";
+import { useUnit } from "effector-react";
+import React from "react";
 
-export default function BooksOnShelf() {
+function BooksOnShelf() {
 
   const user = useUnit($user);
 
@@ -16,3 +14,5 @@ export default function BooksOnShelf() {
     </Group>
   )
 }
+
+export default React.memo(BooksOnShelf);

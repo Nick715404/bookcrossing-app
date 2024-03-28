@@ -1,8 +1,10 @@
 import User from '../../components/user/User';
 import SegmentedControlCustom from '../../components/segmentControl/SegmentControl';
-import { Card, Div, Group, Panel, PanelHeader } from '@vkontakte/vkui';
-import { useState } from 'react';
 import BooksOnShelf from '../../components/books-on-shelf/BooksOnShelf';
+import FavoritesBooks from '../../components/books-in-favorites/FavoritesBooks';
+import { useState } from 'react';
+import { Group, Panel, PanelHeader } from '@vkontakte/vkui';
+
 type Props = {
   id: string
 }
@@ -19,8 +21,11 @@ export default function Profile({ id }: Props) {
       <Group separator='hide'>
         <User />
       </Group>
+
       <SegmentedControlCustom position={position} setPosition={setPosition} />
-      <BooksOnShelf />
+
+      {position === 'shelf' ? <BooksOnShelf /> : <FavoritesBooks />}
+
     </Panel>
   )
 }

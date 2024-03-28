@@ -29,7 +29,7 @@ export default function Relevants() {
           afterIcon={<ToFav id={book.id} />}
           beforeIcon={<ToChat />}
         />
-      ))}
+      )).reverse()}
     </div>
   )
 }
