@@ -1,17 +1,17 @@
-
 // - Перенести сюда получение каталога, получение юзера
-
-import { useEffect } from "react";
 import { IInitAppEntities } from "../interfaces/interface";
 import UserProvider from "./UserProvider";
 import ShelfProvider from "./ShelfProvider";
+import FavouritesProvider from "./FavouritesProvider";
 
 const InitAppEntities = ({ children }: IInitAppEntities) => {
     return (
         <>
             <UserProvider>
                 <ShelfProvider>
-                    {children}
+                    <FavouritesProvider>
+                        {children}
+                    </FavouritesProvider>
                 </ShelfProvider>
             </UserProvider>
         </>
