@@ -25,14 +25,10 @@ export default function ImageInput({ go, bookId }: Props) {
   // }, [selectedImages]);
 
   useEffect(() => {
-    // if (go) {
-    //   handleImageUpload(selectedImages, bookId);
+    if (go) {
+      handleImageUpload(selectedImages, bookId);
 
-    //   setTimeout(() => {
-    //     getFiles();
-    //   }, 800)
-
-    // }
+    }
   }, [go]);
 
   async function getFiles() {
