@@ -7,6 +7,7 @@ import Create from './panels/create/Create';
 
 import { Epic, SplitLayout, View } from '@vkontakte/vkui';
 import { useActiveVkuiLocation, useGetPanelForView } from '@vkontakte/vk-mini-apps-router';
+import HomePageBook from './components/modal/pages/HomePageBook';
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
 					<Catalog id='catalog-panel' />
 					<Profile id='profile-panel' />
 					<Create id='create-panel' />
+					<HomePageBook id='book-panel' />
 				</View>
 			</Epic>
 		</SplitLayout>
