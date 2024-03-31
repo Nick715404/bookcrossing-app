@@ -1,9 +1,9 @@
 import { Div, Panel, PanelHeader, PanelHeaderBack, Image, Group, Text, CellButton } from "@vkontakte/vkui"
 import { useUnit } from "effector-react"
 import { $selectedBook } from "../../../store/modalBook"
-import { useActiveVkuiLocation, useRouteNavigator } from "@vkontakte/vk-mini-apps-router"
 import { setStatusActiveModal } from "../../../store/activeModal"
 import { Icon24Info } from "@vkontakte/icons"
+import "../../../styles/panels/modal.scss"
 
 type Props = {
     id: string
@@ -14,7 +14,7 @@ const HomePageBook = ({id}: Props) => {
     
     const image = (
         <Image
-          style={{ marginBottom: '0', marginTop: '0', display: "flex", alignItems: "center", justifyContent: "center", maxWidth: "auto"}}
+          style={{ marginBottom: '0', marginTop: '0'}}
           className="book-img"
           size={200}
           borderRadius="m"
@@ -40,21 +40,23 @@ const HomePageBook = ({id}: Props) => {
             <Div className="modalPage">
                 <Group separator="hide" className="bookImg">
                     {image}
+                    {/* <img src={book && book.imageId || ''} alt="" /> */}
                 </Group>
 
                 <Group separator="hide" className="groupBookInformation">
-                    <Text weight="1">
-                        {/*book && book.title*/}
+                    <Text weight="1" className="nameBook">
+                        {book && book.title}
                         Название
                     </Text>
                     <Text weight="2">
+                        {book && book.author}
                         Автор
                     </Text>
                 </Group>
 
                 <Group className="groupBookInformation">
                     <Text weight="2">
-                        Категория: 
+                        Категория: {book && book.categoryTitle}
                     </Text>
                     <Text weight="3">
                         ISBN: {book && book.isbn}
@@ -66,7 +68,7 @@ const HomePageBook = ({id}: Props) => {
             <Group>
                 <Div className="statusBook">
                     <Group separator="hide">
-                        <Text>Состояние: Приемлимое</Text>
+                        <Text>Состояние: Приемлимое{book && book.state}</Text>
                     </Group>
                     <Group separator="hide">{statusBook}</Group>
                 </Div>
@@ -75,7 +77,7 @@ const HomePageBook = ({id}: Props) => {
             <Div style={{marginTop: '-25px'}}>
                 <Group>
                     <Text>
-                        Коментарий пользователя: Заготовка заготовка заготовка заготовка заготовка заготовка заготовказаготовка заготовка
+                        Коментарий пользователя: {book && book.description} Заготовка заготовка заготовка заготовка заготовка заготовка заготовказаготовка заготовка
                     </Text>
                 </Group>
             </Div>

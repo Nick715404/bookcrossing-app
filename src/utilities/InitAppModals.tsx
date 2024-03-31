@@ -5,6 +5,7 @@ import Modal from "../components/modal/Modal";
 import ModalImgBook from "../components/modal/modalImgbook/ModalImgBook";
 import ModalBookStatusDescription from "../components/modal/modalBookStatusDescriptions/ModalBookStatusDescription";
 import { IInitAppEntities } from "../interfaces/interface";
+import TranscriptIsbnModal from "../components/modal/transcriptISBNModal/TranscriptIsbnModal";
 
 
 const InitAppModals = ({children}: IInitAppEntities) => {
@@ -17,10 +18,9 @@ const InitAppModals = ({children}: IInitAppEntities) => {
 
 	const modal = (
 		<ModalRoot activeModal={activeModal} onClose={() => changeActiveModal(null)}>
-			<Modal id={"modal"} />
 			<ModalImgBook id={"modalImgBook"} changeActiveModal={changeActiveModal} />
 			<ModalBookStatusDescription id={"statusDescription"} changeActiveModal={changeActiveModal} />
-			{/* <TranscriptIsbnModal id={"transcriptISBN"} changeActiveModal={changeActiveModal}/> */}
+			<TranscriptIsbnModal id={"transcriptISBN"} changeActiveModal={changeActiveModal}/>
 		</ModalRoot>
 	)
     

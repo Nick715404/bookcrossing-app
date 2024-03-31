@@ -4,7 +4,6 @@ import { useCallback, useState } from "react";
 import { useUnit } from "effector-react";
 import { $selectedBook } from "../../store/modalBook";
 import '../../styles/panels/modal.scss';
-import ModalImgBook from "./modalImgbook/ModalImgBook";
 import ModalBookStatusDescription from "./modalBookStatusDescriptions/ModalBookStatusDescription";
 import { setStatusActiveModal } from "../../store/activeModal";
 
