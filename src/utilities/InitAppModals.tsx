@@ -3,7 +3,7 @@ import { $statusActivModal, setStatusActiveModal } from "../store/activeModal";
 import { useUnit } from "effector-react";
 import Modal from "../components/modal/Modal";
 import ModalImgBook from "../components/modal/modalImgbook/ModalImgBook";
-import ModalBookStatusDescription from "../components/modal/modalBookStatusDescriptions/ModalBookStatusDescription";
+import ModalBookStatusDescription from "../components/modal/ModalStatus/ModalStatus";
 import { IInitAppEntities } from "../interfaces/interface";
 import TranscriptIsbnModal from "../components/modal/transcriptISBNModal/TranscriptIsbnModal";
 

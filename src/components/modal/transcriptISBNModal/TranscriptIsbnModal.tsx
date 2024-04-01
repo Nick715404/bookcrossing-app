@@ -3,25 +3,28 @@ import { setStatusActiveModal } from "../../../store/activeModal";
 import { IPassIdToModalPage } from "../../../interfaces/interface";
 import "../../../styles/components/transcriptionIsbn.scss"
 
-const TranscriptIsbnModal = ({id}: IPassIdToModalPage) => {
+const TranscriptIsbnModal = ({ id }: IPassIdToModalPage) => {
     const image = (
         <img className="imgIsbn" src="/img/genres/Isbn.png" />
     )
+    const header = (
+        <ModalPageHeader style={{ display: "flex", justifyContent: "center" }}>
+            Что такое ISBN?
+        </ModalPageHeader>
+    )
 
     return (
-        <ModalPage id={id} onClose={() => setStatusActiveModal(null)}
-        header={
-            <ModalPageHeader style={{display: "flex", justifyContent: "center"}}>
-                Что такое ISBN?
-            </ModalPageHeader>
-        }>
+        <ModalPage
+            id={id}
+            onClose={() => setStatusActiveModal(null)}
+            header={header}>
             <Div className="modalPageIsbn">
                 {image}
             </Div>
             <Div className="textBlock">
                 <Group separator="hide">
                     <Text>
-                        ISBN — код, позволяющий идентифицировать книгу. Благодаря нему, можно узнать название, автора, издательство, которым книга была напечатана, и другую информацию.  
+                        ISBN — код, позволяющий идентифицировать книгу. Благодаря нему, можно узнать название, автора, издательство, которым книга была напечатана, и другую информацию.
                     </Text>
                 </Group>
                 <Group separator="hide">

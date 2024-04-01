@@ -145,7 +145,7 @@ const CreateBook: React.FC = () => {
               isLoading={isLoading}
             />
           </FormItem>
-          {IsbnInfo}
+          <>{IsbnInfo}</>
         </form>}
     </>
   );

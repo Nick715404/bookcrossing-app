@@ -22,7 +22,7 @@ export const createBookFX = createEffect(async (book: ICreateBook) => {
   }
 });
 
-export const deleteBook = async (id: string) => {
+export const deleteBookFX = createEffect(async (id: string) => {
   try {
     const { data } = await api.delete(`/book/delete/${id}`);
     return data
@@ -30,4 +30,4 @@ export const deleteBook = async (id: string) => {
   catch (error) {
     console.log(error)
   }
-}
+})

@@ -1,5 +1,5 @@
 import { vkBlueColor } from '../../constants/utils';
-import { deleteBook } from '../../api/server/books/books';
+import { deleteBookFX } from '../../api/server/books/books';
 import { IconButton } from '@vkontakte/vkui';
 import { useEffect, useState } from 'react';
 import { Icon28BookmarkOutline, Icon28BookmarkCheckOutline } from '@vkontakte/icons';
