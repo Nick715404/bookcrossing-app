@@ -19,7 +19,7 @@ export const FindBooksOnShelfFX = createEffect(async (userId: string | undefined
     const { data } = await api.get(`/shelf/find/${userId}`);
     const shelf: IShelfInfo = data;
     const shelfBooks = shelf.books;
-    console.log('books on shelf has been loaded!');
+    console.log(shelfBooks);
     return shelfBooks;
   }
   catch (error) {
