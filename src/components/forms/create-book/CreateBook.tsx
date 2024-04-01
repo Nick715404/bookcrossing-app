@@ -9,8 +9,10 @@ import { $user } from "../../../store/user";
 import { initialState } from "../../../constants/utils";
 import React, { useState } from "react";
 import { useUnit } from "effector-react";
-import { FormItem, Button, Checkbox } from "@vkontakte/vkui";
+import { FormItem, Button, Checkbox, Text, CellButton, Div } from "@vkontakte/vkui";
 import { handleCreateBook, handleFormValidation } from "../../../utilities/forms/create-book.utils";
+import { setStatusActiveModal } from "../../../store/activeModal";
+import { Icon24Info } from "@vkontakte/icons";
 
 const CreateBook: React.FC = () => {
   const [formData, setFormData] = useState<IDataState>(initialState);
@@ -19,6 +21,15 @@ const CreateBook: React.FC = () => {
   const [submitted, setSubmitted] = useState<boolean>(false);
 
   const user = useUnit($user);
+
+  const IsbnInfo = (
+    <Div className="modalPage">
+      <Text>ISBN</Text>
+      <CellButton onClick={() => setStatusActiveModal('transcriptISBN')}>
+        <Icon24Info />
+      </CellButton>
+    </Div>
+  )
 
   // - Сделать лоадер для книги, сделать проверку на книгу
 
@@ -115,6 +126,7 @@ const CreateBook: React.FC = () => {
         >
           Сохранить</Button>
       </FormItem>
+      {IsbnInfo}
     </form>
   );
 };

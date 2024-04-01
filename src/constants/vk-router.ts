@@ -16,4 +16,9 @@ export const appRouter = createHashRouter([
     panel: 'create-panel',
     view: 'panel',
   },
+  {
+    path: '/pageBook',
+    panel: 'book-panel',
+    view: 'panel',
+  }
 ]);

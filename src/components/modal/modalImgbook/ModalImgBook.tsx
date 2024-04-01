@@ -3,7 +3,7 @@ import { IPassIdToModalPage } from "../../../interfaces/interface";
 import { setStatusActiveModal } from "../../../store/activeModal";
 
 
-const ModalImgBook = ({id, changeActiveModal}: IPassIdToModalPage) => {
+const ModalImgBook = ({id}: IPassIdToModalPage) => {
     return (
         <ModalCard id={id} onClose={() => setStatusActiveModal(null)} /*dynamicContentHeight={true}*/>
             <Div>

@@ -11,6 +11,7 @@ import {
   Text,
   SplitLayout,
 } from "@vkontakte/vkui"
+import { useActiveVkuiLocation, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 type Props = {
   book: IBook
@@ -21,6 +22,9 @@ type Props = {
 // - Поменять список выводящихся полей
 
 export default function Book({ book, afterIcon, beforeIcon }: Props) {  
+  const navigator = useRouteNavigator();
+  const {panel: activePanel} = useActiveVkuiLocation();
+  
   const image = (
     <Image
       style={{ marginBottom: '0', marginTop: '0' }}
@@ -38,7 +42,8 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
   return (
     <SplitLayout>
       <Div className="book" id={book.id}>
-        <SimpleCell className="book-wrapper" before={image} onClick={() => handleBook()}>
+        <SimpleCell className="book-wrapper" before={image} selected={activePanel === 'book-panel'} 
+                onClick={() => navigator.push('/pageBook')}>
           <Text className="book-title" weight="1">
             {book.title}
           </Text>

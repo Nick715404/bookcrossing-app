@@ -45,3 +45,11 @@
 .text {
     white-space: normal;
 }
+
+.statusBook {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    margin-top: -20px;
+}
