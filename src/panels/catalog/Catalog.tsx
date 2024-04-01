@@ -23,7 +23,9 @@ export default function Catalog({ id }: Props) {
 
 			<Search onPanel />
 
-			<Group separator='hide'>
+			<Group
+				style={{ paddingBottom: '16px' }}
+				separator='hide'>
 				<Categories />
 			</Group>
 

@@ -26,8 +26,10 @@ export default function Categories({ }: Props) {
 
   return (
     <Group>
-      <Header mode="primary" style={{ paddingBottom: '12px' }}>
-        Категории
+      <Header
+        mode="primary"
+        style={{ paddingBottom: '12px' }}>
+        <span style={{ fontSize: '18px' }}>Категории</span>
       </Header>
       <CardScroll size='s'>
         {categories && categories.map(category => (

@@ -58,7 +58,7 @@ const HomePageBook = ({id}: Props) => {
                             {book && book.author}
                         </Text>
                     </Group>
-                    <Group style={{marginLeft: "auto"}}>
+                    <Group style={{marginLeft: "10px"}}>
                         <CellButton>
                             <Icon24BookmarkAddBadgeOutline />
                         </CellButton>
