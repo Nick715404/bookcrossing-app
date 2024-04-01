@@ -2,12 +2,12 @@ import { Div, Panel, PanelHeader, PanelHeaderBack, Image, Group, Text, CellButto
 import { useUnit } from "effector-react"
 import { $selectedBook } from "../../../store/modalBook"
 import { setStatusActiveModal } from "../../../store/activeModal"
-import { Icon24Info } from "@vkontakte/icons"
+import { Icon24AddAwardsOutline, Icon24BookmarkAddBadgeOutline, Icon24Favorite, Icon24FolderAdd, Icon24Info, Icon24ListCheckOutline } from "@vkontakte/icons"
 import "../../../styles/panels/modal.scss"
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 
 type Props = {
-    id: string
+    id: string,
 }
 
 const HomePageBook = ({id}: Props) => {
@@ -48,22 +48,28 @@ const HomePageBook = ({id}: Props) => {
                     {/* <img src={book && book.imageId || ''} alt="" /> */}
                 </Group>
 
-                <Group separator="hide" className="groupBookInformation">
-                    <Text weight="1" className="nameBook">
-                        {book && book.title}
-                        Название
-                    </Text>
-                    <Text weight="2">
-                        {book && book.author}
-                        Автор
-                    </Text>
-                </Group>
-
+            </Div>  
+            <Div className="groupBookInformation"style={{display: "flex", flexDirection: "row", alignItems: "end", paddingBottom: 0}}>
+                    <Group separator="hide">
+                        <Text weight="1" className="nameBook" style={{fontSize: "21px"}}>
+                            {book && book.title}
+                        </Text>
+                        <Text weight="2" style={{fontSize: "18px"}}>
+                            {book && book.author}
+                        </Text>
+                    </Group>
+                    <Group style={{marginLeft: "auto"}}>
+                        <CellButton>
+                            <Icon24BookmarkAddBadgeOutline />
+                        </CellButton>
+                    </Group>
+                </Div>  
+            <Div>   
                 <Group className="groupBookInformation">
-                    <Text weight="2">
+                    <Text weight="2" style={{fontSize: "16px"}}>
                         Категория: {book && book.categoryTitle}
                     </Text>
-                    <Text weight="3">
+                    <Text weight="3" style={{fontSize: "13px", color: "#818c99"}}>
                         ISBN: {book && book.isbn}
                     </Text>
                 </Group>
@@ -73,7 +79,7 @@ const HomePageBook = ({id}: Props) => {
             <Group>
                 <Div className="statusBook">
                     <Group separator="hide">
-                        <Text>{book && book.state}</Text>
+                        <Text style={{fontSize: "16px"}}>{book && book.state}</Text>
                     </Group>
                     <Group separator="hide">{statusBook}</Group>
                 </Div>
@@ -82,8 +88,9 @@ const HomePageBook = ({id}: Props) => {
             <Div style={{marginTop: '-25px'}}>
                 <Group>
                     <Text>
-                        Коментарий пользователя: {book && book.description} Заготовка заготовка заготовка заготовка заготовка заготовка заготовказаготовка заготовка
+                        Коментарий пользователя: {book && book.description}
                     </Text>
+                    <Text>Книга живет в городе {/*city*/}</Text>
                 </Group>
             </Div>
             
