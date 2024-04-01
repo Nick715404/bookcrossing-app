@@ -6,18 +6,23 @@ import { Icon24BrainOutline } from '@vkontakte/icons';
 import { CardScroll, Card, Group, Header } from "@vkontakte/vkui"
 import { categoriesBooksFX } from "../../utilities/category/category.utils";
 import { $books } from "../../store/books";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
-type Props = {
-  // chooseCategory: (category: string) => void
-}
+type Props = {}
 
 export default function Categories({ }: Props) {
 
   const [categories, books] = useUnit([$categories, $books]);
+  const navigator = useRouteNavigator();
 
   useEffect((): any => {
     getAllCategoriesFX();
   }, [])
+
+  const handleClick = (title: string, id: string) => {
+    navigator.push(`/genre/${id}`);
+    categoriesBooksFX(title, books);
+  }
 
   return (
     <Group>
@@ -29,7 +34,7 @@ export default function Categories({ }: Props) {
           <Card
             className="card"
             key={category.id}
-            onClick={() => categoriesBooksFX(category.title, books)}
+            onClick={() => handleClick(category.title, category.id)}
           >
             <div className="card__wrapper">
               <div className="card__icon">

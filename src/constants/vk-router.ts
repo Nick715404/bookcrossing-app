@@ -16,4 +16,9 @@ export const appRouter = createHashRouter([
     panel: 'create-panel',
     view: 'panel',
   },
+  {
+    path: '/genre/:id',
+    panel: 'single-genre-panel',
+    view: 'panel',
+  },
 ]);
