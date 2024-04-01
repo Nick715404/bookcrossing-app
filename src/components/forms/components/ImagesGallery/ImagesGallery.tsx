@@ -9,7 +9,7 @@ export default function ImagesGallery({ items }: Props) {
     <Gallery
       style={{ marginBottom: '20px' }}
       align="center"
-      slideWidth='90%'
+      slideWidth='100%'
     >
       {items.map((item: any, index: any) => (
         <div key={index} className="input-images-box">

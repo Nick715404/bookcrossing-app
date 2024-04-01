@@ -5,7 +5,7 @@ import CustomTextarea from "../components/CustomTextarea/CustomTextarea";
 import QualitySelect from "../components/QualitySelect/QualitySelect";
 import CustomButton from "../../custom-button/CustomButton";
 import { $user } from "../../../store/user";
-import { IBook, IDataState, } from "../../../interfaces/interface";
+import { IDataState, } from "../../../interfaces/interface";
 import { initialState } from "../../../constants/utils";
 import React, { useState } from "react";
 import { useUnit } from "effector-react";
@@ -34,8 +34,6 @@ const CreateBook: React.FC = () => {
       </CellButton>
     </Div>
   )
-
-  // - Сделать лоадер для книги, сделать проверку на книгу
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, field: keyof IDataState) => {
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
