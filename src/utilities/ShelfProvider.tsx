@@ -10,11 +10,16 @@ type Props = {
 
 export default function ShelfProvider({ children }: Props) {
 
-  const user = useUnit($user);
+  const [user, books] = useUnit([$user, $booksOnShelf]);
 
   useEffect(() => {
     if (user.userId == '') return
-    FindBooksOnShelfFX(user.userId)
+    FindBooksOnShelfFX(user.userId);
+
+    if (books.length !== 0) {
+      FindBooksOnShelfFX(user.userId);
+    }
+
   }, [user]);
 
   return (

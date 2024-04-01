@@ -13,12 +13,8 @@ export default function Relevants() {
 
   const books = useUnit($books);
 
-  useEffect(() => {
-    getAllBooksFX();
-  }, [])
-
   return (
-    <div>
+    <>
       <Header mode="primary" style={{ paddingBottom: '12px' }}>
         Новые
       </Header>
@@ -30,6 +26,6 @@ export default function Relevants() {
           beforeIcon={<ToChat />}
         />
       )).reverse()}
-    </div>
+    </>
   )
 }

@@ -17,6 +17,11 @@ export const appRouter = createHashRouter([
     view: 'panel',
   },
   {
+    path: '/search',
+    panel: 'search-panel',
+    view: 'panel',
+  },
+  {
     path: '/genre/:id',
     panel: 'single-genre-panel',
     view: 'panel',

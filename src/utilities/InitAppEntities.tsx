@@ -3,6 +3,7 @@ import { IInitAppEntities } from "../interfaces/interface";
 import UserProvider from "./UserProvider";
 import ShelfProvider from "./ShelfProvider";
 import FavouritesProvider from "./FavouritesProvider";
+import BooksProvider from "./BooksProvider";
 
 const InitAppEntities = ({ children }: IInitAppEntities) => {
     return (
@@ -10,7 +11,9 @@ const InitAppEntities = ({ children }: IInitAppEntities) => {
             <UserProvider>
                 <ShelfProvider>
                     <FavouritesProvider>
-                        {children}
+                        <BooksProvider>
+                            {children}
+                        </BooksProvider>
                     </FavouritesProvider>
                 </ShelfProvider>
             </UserProvider>
