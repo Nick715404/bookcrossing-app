@@ -11,23 +11,31 @@ type Props = {
 
 export default function ImageInput({ go, bookId }: Props) {
 
-  const [images, setImages] = useState<any[] | null>([]);
+  const [images, setImages] = useState<any[]>([]);
   const [selectedImages, setSelectedImages] = useState<any | null>([]);
+  const [urls, setUrls] = useState<string[]>([]);
 
   const handleImageChange = (e: any) => {
-    const files = e.target.files;
-    setSelectedImages([...selectedImages, ...files]);
+    const file = e.target.files[0];
+    const target = e.target;
+
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      setUrls([...urls, e.target.result])
+    };
+    reader.readAsDataURL(file);
   };
 
-  //  Код для отладки
-  // useEffect(() => {
-  //   console.log(selectedImages);
-  // }, [selectedImages]);
+
+
+  //Код для отладки
+  useEffect(() => {
+    console.log(selectedImages);
+  }, [selectedImages]);
 
   useEffect(() => {
     if (go) {
       handleImageUpload(selectedImages, bookId);
-
     }
   }, [go]);
 
@@ -49,6 +57,11 @@ export default function ImageInput({ go, bookId }: Props) {
       {images && images.map((image, id) => {
         return <img key={id} src={'http://localhost:3100/' + image.path} />
       })}
+
+      {urls.map((item: any, index: any) => (
+        <img key={index} src={item} alt="" />
+      ))}
+
     </FormItem>
   )
 }

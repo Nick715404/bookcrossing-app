@@ -5,8 +5,8 @@ import Profile from "../panels/profile/Profile";
 import Create from "../panels/create/Create";
 import { useUnit } from "effector-react"
 import { Epic, View } from "@vkontakte/vkui";
-import Category from "../panels/[categoty]/Category";
-
+import Category from "../panels/categories/Category";
+import SearchPanel from "../panels/search/Search";
 
 const Router = () => {
 
@@ -23,6 +23,7 @@ const Router = () => {
 				<Profile id='profile-panel' />
 				<Create id='create-panel' />
 				<Category id='single-genre-panel' />
+				<SearchPanel id="search-panel" />
 			</View>
 		</Epic>
 	)
