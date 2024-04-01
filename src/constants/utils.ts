@@ -31,6 +31,12 @@ export const imageInputStyles = {
   color: 'transparent'
 }
 
+export const imageInputStylesWithGallery = {
+  ...imageInputStyles,
+  maxHeight: '58px',
+  width: '100%'
+}
+
 export const initialState: IDataState = {
   title: '',
   author: '',

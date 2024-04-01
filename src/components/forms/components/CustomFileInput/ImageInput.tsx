@@ -1,8 +1,9 @@
 import { handleImageUpload } from "../../../../api/server/images/image";
 import { getBookImage } from "../../../../api/server/images/image";
-import { imageInputStyles } from "../../../../constants/utils";
+import { imageInputStyles, imageInputStylesWithGallery } from "../../../../constants/utils";
 import { FormItem } from "@vkontakte/vkui";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import ImagesGallery from "../ImagesGallery/ImagesGallery";
 
 type Props = {
   go: any
@@ -12,56 +13,45 @@ type Props = {
 export default function ImageInput({ go, bookId }: Props) {
 
   const [images, setImages] = useState<any[]>([]);
-  const [selectedImages, setSelectedImages] = useState<any | null>([]);
-  const [urls, setUrls] = useState<string[]>([]);
+  const [selectedImages, setSelectedImages] = useState<any[]>([]);
+  const [urls, setUrls] = useState<any[]>([]);
 
   const handleImageChange = (e: any) => {
-    const file = e.target.files[0];
-    const target = e.target;
-
-    const reader = new FileReader();
-    reader.onload = (e: any) => {
-      setUrls([...urls, e.target.result])
-    };
-    reader.readAsDataURL(file);
+    const files = e.target.files;
+    setSelectedImages([...files]);
   };
 
+  const handleViewItems = useCallback(() => {
+    selectedImages.forEach((item: any) => {
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        setUrls([...urls, fileReader.result])
+      }
+      fileReader.readAsDataURL(item);
+    });
+  }, [selectedImages]);
 
-
-  //Код для отладки
   useEffect(() => {
-    console.log(selectedImages);
+    handleViewItems();
   }, [selectedImages]);
 
   useEffect(() => {
     if (go) {
+      console.log(selectedImages);
       handleImageUpload(selectedImages, bookId);
     }
   }, [go]);
 
-  async function getFiles() {
-    const images = await getBookImage(bookId);
-    setImages(images);
-  }
-
   return (
     <FormItem>
+      <ImagesGallery items={urls} />
       <input
         className="file-input"
         type="file"
         multiple
         onChange={handleImageChange}
-        style={imageInputStyles}
+        style={selectedImages.length > 0 ? { ...imageInputStylesWithGallery } : imageInputStyles}
       />
-
-      {images && images.map((image, id) => {
-        return <img key={id} src={'http://localhost:3100/' + image.path} />
-      })}
-
-      {urls.map((item: any, index: any) => (
-        <img key={index} src={item} alt="" />
-      ))}
-
     </FormItem>
   )
 }
