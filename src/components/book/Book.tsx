@@ -37,13 +37,14 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
   const handleBook = () => {
     selectBook(book)
     setStatusActiveModal('modal');
+    navigator.push('/pageBook')
   }
 
   return (
     <SplitLayout>
       <Div className="book" id={book.id}>
         <SimpleCell className="book-wrapper" before={image} selected={activePanel === 'book-panel'} 
-                onClick={() => navigator.push('/pageBook')}>
+                onClick={handleBook}>
           <Text className="book-title" weight="1">
             {book.title}
           </Text>

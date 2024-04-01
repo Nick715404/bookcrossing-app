@@ -4,6 +4,7 @@ import { $selectedBook } from "../../../store/modalBook"
 import { setStatusActiveModal } from "../../../store/activeModal"
 import { Icon24Info } from "@vkontakte/icons"
 import "../../../styles/panels/modal.scss"
+import { useEffect } from "react"
 
 type Props = {
     id: string
@@ -20,6 +21,10 @@ const HomePageBook = ({id}: Props) => {
           borderRadius="m"
           src="/img/genres/genre1.jpg" />
       )
+    
+    useEffect(() => {
+        console.log(book)
+    }, [])
 
       const statusBook = (
         <>
@@ -68,7 +73,7 @@ const HomePageBook = ({id}: Props) => {
             <Group>
                 <Div className="statusBook">
                     <Group separator="hide">
-                        <Text>Состояние: Приемлимое{book && book.state}</Text>
+                        <Text>{book && book.state}</Text>
                     </Group>
                     <Group separator="hide">{statusBook}</Group>
                 </Div>
