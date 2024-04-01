@@ -1,17 +1,28 @@
-import { useEffect } from "react"
-import { Icon24BrainOutline } from '@vkontakte/icons';
-import { CardScroll, Card, Group, Header } from "@vkontakte/vkui"
-import { useUnit } from "effector-react";
 import { $categories } from "../../store/categories";
 import { getAllCategoriesFX } from "../../api/server/categories/categories";
+import { useEffect } from "react"
+import { useUnit } from "effector-react";
+import { Icon24BrainOutline } from '@vkontakte/icons';
+import { CardScroll, Card, Group, Header } from "@vkontakte/vkui"
+import { categoriesBooksFX } from "../../utilities/category/category.utils";
+import { $books } from "../../store/books";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
-export default function Categories() {
+type Props = {}
 
-  const categories = useUnit($categories);
+export default function Categories({ }: Props) {
+
+  const [categories, books] = useUnit([$categories, $books]);
+  const navigator = useRouteNavigator();
 
   useEffect((): any => {
     getAllCategoriesFX();
   }, [])
+
+  const handleClick = (title: string, id: string) => {
+    navigator.push(`/genre/${id}`);
+    categoriesBooksFX(title, books);
+  }
 
   return (
     <Group>
@@ -20,7 +31,11 @@ export default function Categories() {
       </Header>
       <CardScroll size='s'>
         {categories && categories.map(category => (
-          <Card className="card" key={category.id}>
+          <Card
+            className="card"
+            key={category.id}
+            onClick={() => handleClick(category.title, category.id)}
+          >
             <div className="card__wrapper">
               <div className="card__icon">
                 <Icon24BrainOutline style={{ color: '#2688EB' }} />

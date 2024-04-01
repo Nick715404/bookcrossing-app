@@ -20,5 +20,15 @@ export const appRouter = createHashRouter([
     path: '/pageBook',
     panel: 'book-panel',
     view: 'panel',
-  }
+  },
+  {
+    path: '/search',
+    panel: 'search-panel',
+    view: 'panel',
+  },
+  {
+    path: '/genre/:id',
+    panel: 'single-genre-panel',
+    view: 'panel',
+  },
 ]);

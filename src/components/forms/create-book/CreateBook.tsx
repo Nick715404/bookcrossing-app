@@ -1,11 +1,11 @@
-import { createBookFX } from "../../../api/server/books/books";
-import { IDataState, } from "../../../interfaces/interface";
 import ImageInput from "../components/CustomFileInput/ImageInput";
 import CategorySelect from "../components/CategorySelect/CategorySelect";
 import CustomInput from "../components/CustomInput/CustomInput";
 import CustomTextarea from "../components/CustomTextarea/CustomTextarea";
 import QualitySelect from "../components/QualitySelect/QualitySelect";
+import CustomButton from "../../custom-button/CustomButton";
 import { $user } from "../../../store/user";
+import { IBook, IDataState, } from "../../../interfaces/interface";
 import { initialState } from "../../../constants/utils";
 import React, { useState } from "react";
 import { useUnit } from "effector-react";
@@ -18,7 +18,11 @@ const CreateBook: React.FC = () => {
   const [formData, setFormData] = useState<IDataState>(initialState);
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
   const [withoutISBN, setWithoutISBN] = useState<boolean>(false);
-  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [go, setGo] = useState({
+    start: false,
+    bookId: ''
+  });
 
   const user = useUnit($user);
 
@@ -38,7 +42,7 @@ const CreateBook: React.FC = () => {
   };
 
   const handleResetForm = () => {
-    setSubmitted(true);
+    setLoading(false);
     setFormData(initialState);
     setFormErrors({});
     setWithoutISBN(false);
@@ -46,6 +50,7 @@ const CreateBook: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     const { author } = formData;
     const userId: string | undefined = user.userId;
@@ -54,20 +59,28 @@ const CreateBook: React.FC = () => {
     handleFormValidation(author, errors);
     setFormErrors(errors);
 
-    if (Object.keys(errors).length > 0) return;
+    if (Object.keys(errors).length > 0) {
+      setLoading(false);
+      return;
+    };
 
     const result = await handleCreateBook(userId, formData);
 
-    console.log(result);
+    if (result.id !== '') {
+      setGo({
+        start: true,
+        bookId: result.id
+      })
+    }
 
     console.log('Book has been created!')
+    setLoading(false);
     handleResetForm();
   };
 
-
   return (
     <form onSubmit={handleSubmit}>
-      <ImageInput go={submitted} bookId={user.userId} />
+      <ImageInput go={go.start} bookId={go.bookId} />
       <CustomInput
         id="bookTitle"
         placeholder="Мастер и Маргарита"
@@ -119,12 +132,13 @@ const CreateBook: React.FC = () => {
         onChange={(e: any) => handleChangeValue(e, 'description')}
       />
       <FormItem>
-        <Button
-          stretched
+        <CustomButton
+          type='submit'
+          text="Сохранить"
           size="l"
-          type="submit"
-        >
-          Сохранить</Button>
+          isStretched
+          isLoading={isLoading}
+        />
       </FormItem>
       {IsbnInfo}
     </form>

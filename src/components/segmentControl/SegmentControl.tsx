@@ -1,7 +1,8 @@
-import { Div, Group, SegmentedControl } from "@vkontakte/vkui";
 import '../../styles/components/segmentControl.scss'
+
 import { segmentControlsOption } from "../../constants/utils";
-import { useState } from "react";
+import { Div, Group, SegmentedControl } from "@vkontakte/vkui";
+import React from 'react';
 
 type Props = {
     position?: string
@@ -9,15 +10,12 @@ type Props = {
 }
 
 const SegmentedControlCustom = ({ position, setPosition }: Props) => {
-
-    // const [position, setPosition] = useState<any>('shelf');
-
     return (
         <Group separator='hide'>
             <Div>
                 <SegmentedControl
-                    className='.segmentControl'
-                    size='l'
+                    className='segmentControl'
+                    size='m'
                     name='myBookAndFavorites'
                     value={position}
                     onChange={(value) => setPosition(value)}
@@ -28,4 +26,4 @@ const SegmentedControlCustom = ({ position, setPosition }: Props) => {
     )
 }
 
-export default SegmentedControlCustom;
+export default React.memo(SegmentedControlCustom);

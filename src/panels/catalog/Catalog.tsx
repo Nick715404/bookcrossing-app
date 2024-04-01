@@ -5,16 +5,15 @@ import {
 } from '@vkontakte/vkui';
 
 import Search from '../../components/search/Search';
-import Categories from '../../components/genres/Categories';
+import Categories from '../../components/categories/Categories';
 import Relevants from '../../components/relevant/Relevants';
-// import SearchResult from '../../components/search-result/SearchResult';
+
 
 type Props = {
 	id: string
 }
 
 export default function Catalog({ id }: Props) {
-
 	return (
 		<Panel id={id}>
 
@@ -22,7 +21,7 @@ export default function Catalog({ id }: Props) {
 				Буккроссинг
 			</PanelHeader>
 
-			<Search />
+			<Search onPanel />
 
 			<Group separator='hide'>
 				<Categories />

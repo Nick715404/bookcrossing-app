@@ -13,7 +13,6 @@ export async function handleImageUpload(selectedImages: any, bookId: string) {
     const response = await api.post('/image/load', formData, {
       onUploadProgress: (progressEvent: any) => {
         const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
-        console.log(progress);
       }
     });
     return response;

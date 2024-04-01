@@ -1,34 +1,44 @@
-import {
-  Icon24BookmarkOutline,
-  Icon24Bookmark,
-  Icon24BookmarkCheckBadge
-} from '@vkontakte/icons';
-import { useState } from 'react';
+import { vkBlueColor } from '../../constants/utils';
 import { deleteBook } from '../../api/server/books/books';
 import { IconButton } from '@vkontakte/vkui';
+import { useEffect, useState } from 'react';
+import { Icon28BookmarkOutline, Icon28BookmarkCheckOutline } from '@vkontakte/icons';
+import { PutBookToFav } from '../../api/server/favorites/favorites';
+import { useUnit } from 'effector-react';
+import { $user } from '../../store/user';
 
 type Props = {
   id: string
+  isFavorite?: boolean
 }
 
-export default function ToFav({ id }: Props) {
+export default function ToFav({ id, isFavorite }: Props) {
 
-  const [acitive, setActive] = useState<boolean>(false);
+  const [active, setActive] = useState<boolean>(false);
+  const user = useUnit($user);
 
-  const fakeHandleClick = (e: any) => {
-    e.preventDefault();
-    setActive(!acitive);
-  }
-  // - Функция удаляет книги
-  const deleteButtonHandler = async () => {
-    deleteBook(id);
+  const handleBookMove = () => {
+    const { userId } = user;
+    PutBookToFav(id, userId);
   };
+
+  useEffect(() => {
+    if (isFavorite) {
+      setActive(true)
+    }
+  }, [isFavorite]);
+
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    handleBookMove();
+    setActive(!active);
+  }
 
   return (
     <IconButton
-      onClick={fakeHandleClick}
+      onClick={handleClick}
       className='to-shelf-btn'>
-      {acitive ? <Icon24Bookmark fill='#99A2AD' /> : <Icon24BookmarkOutline fill='#99A2AD' />}
+      {active ? <Icon28BookmarkCheckOutline fill={vkBlueColor} /> : <Icon28BookmarkOutline fill={vkBlueColor} />}
     </IconButton>
   )
 }

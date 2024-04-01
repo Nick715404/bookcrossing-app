@@ -5,6 +5,8 @@ import { ICreateBook } from "../../../interfaces/interface";
 export const getAllBooksFX = createEffect(async () => {
   try {
     const { data } = await api.get('/book/all');
+    console.log('get all books done');
+    
     return data;
   }
   catch (error) {
@@ -15,6 +17,7 @@ export const getAllBooksFX = createEffect(async () => {
 export const createBookFX = createEffect(async (book: ICreateBook) => {
   try {
     const { data } = await api.post('/book/create', book);
+    console.log(data);
     return data;
   }
   catch (error) {
@@ -25,6 +28,7 @@ export const createBookFX = createEffect(async (book: ICreateBook) => {
 export const deleteBook = async (id: string) => {
   try {
     const { data } = await api.delete(`/book/delete/${id}`);
+    console.log('delete book done');
     return data
   }
   catch (error) {

@@ -43,14 +43,16 @@ export const initialState: IDataState = {
 
 export const segmentControlsOption = [
   {
-    label: 'Полка',
+    label: 'Мои книги',
     value: 'shelf'
   },
   {
-    label: 'Избраное',
+    label: 'Мне понравилось',
     value: 'favorites'
   }
 ]
+
+export const vkBlueColor = '3F8AE0';
 
 // export const statusBook = (
 //   /*<SplitLayout modal={modal} style={{padding: 0, margin: 0}}>*/
