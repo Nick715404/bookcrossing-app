@@ -1,39 +1,38 @@
-import { Div, Panel, PanelHeader, PanelHeaderBack, Image, Group, Text, CellButton } from "@vkontakte/vkui"
-import { useUnit } from "effector-react"
 import { $selectedBook } from "../../../store/modalBook"
 import { setStatusActiveModal } from "../../../store/activeModal"
-import { Icon24Info } from "@vkontakte/icons"
 import "../../../styles/panels/modal.scss"
+import { Icon24Info } from "@vkontakte/icons"
+import { useUnit } from "effector-react"
 import { useEffect } from "react"
+import { Div, Panel, PanelHeader, PanelHeaderBack, Image, Group, Text, CellButton } from "@vkontakte/vkui"
 
 type Props = {
     id: string
 }
 
-const HomePageBook = ({id}: Props) => {
+const HomePageBook = ({ id }: Props) => {
     const book = useUnit($selectedBook);
-    
+
     const image = (
         <Image
-          style={{ marginBottom: '0', marginTop: '0'}}
-          className="book-img"
-          size={200}
-          borderRadius="m"
-          src="/img/genres/genre1.jpg" />
-      )
-    
+            style={{ marginBottom: '0', marginTop: '0' }}
+            className="book-img"
+            size={200}
+            borderRadius="m"
+            src="/img/genres/genre1.jpg"
+        />
+    )
+
     useEffect(() => {
         console.log(book)
     }, [])
 
-      const statusBook = (
-        <>
-            <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{padding: 0, margin: 0}}>
-                <Icon24Info />
-            </CellButton>
-        </>
-      )
-    
+    const statusBook = (
+        <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{ padding: 0, margin: 0 }}>
+            <Icon24Info />
+        </CellButton>
+    )
+
     return (
         <Panel id={id}>
             <PanelHeader before={
@@ -50,8 +49,8 @@ const HomePageBook = ({id}: Props) => {
 
                 <Group separator="hide" className="groupBookInformation">
                     <Text weight="1" className="nameBook">
-                        {book && book.title}
                         Название
+                        {book && book.title}
                     </Text>
                     <Text weight="2">
                         {book && book.author}
@@ -79,14 +78,14 @@ const HomePageBook = ({id}: Props) => {
                 </Div>
             </Group>
 
-            <Div style={{marginTop: '-25px'}}>
+            <Div style={{ marginTop: '-25px' }}>
                 <Group>
                     <Text>
                         Коментарий пользователя: {book && book.description} Заготовка заготовка заготовка заготовка заготовка заготовка заготовказаготовка заготовка
                     </Text>
                 </Group>
             </Div>
-            
+
         </Panel>
     )
 }
