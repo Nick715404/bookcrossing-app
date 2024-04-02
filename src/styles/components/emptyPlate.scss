@@ -1,0 +1,14 @@
+.empty-plate-box {
+  padding-top: 56px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  &__title {
+    display: block;
+    max-width: 301px;
+  }
+
+}

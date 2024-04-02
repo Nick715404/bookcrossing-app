@@ -1,11 +1,21 @@
-import { ModalRoot, ModalPage, usePlatform, useAdaptivityConditionalRender, Image, SplitLayout, Div, Group, SplitCol, Text, Button, SimpleCell, CellButton } from "@vkontakte/vkui";
 import { IPassIdToModalPage } from "../../interfaces/interface"
-import { useCallback, useState } from "react";
-import { useUnit } from "effector-react";
 import { $selectedBook } from "../../store/modalBook";
 import '../../styles/panels/modal.scss';
-import ModalBookStatusDescription from "./modalBookStatusDescriptions/ModalBookStatusDescription";
 import { setStatusActiveModal } from "../../store/activeModal";
+import { useCallback, useState } from "react";
+import { useUnit } from "effector-react";
+import {
+  ModalPage,
+  Image,
+  SplitLayout,
+  Div,
+  Group,
+  SplitCol,
+  Text,
+  Button,
+  SimpleCell,
+  CellButton
+} from "@vkontakte/vkui";
 
 import "../../styles/panels/modal.scss"
 
@@ -14,8 +24,6 @@ type Props = {
 }
 
 const Modal = ({ id, changeActiveModal }: IPassIdToModalPage) => {
-  const platform = usePlatform();
-  const { sizeX } = useAdaptivityConditionalRender();
   const [expanded, setExpanded] = useState(false);
   const togle = useCallback(() => setExpanded(!expanded), [expanded]);
 

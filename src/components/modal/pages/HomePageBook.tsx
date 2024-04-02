@@ -1,39 +1,38 @@
-import { Div, Panel, PanelHeader, PanelHeaderBack, Image, Group, Text, CellButton } from "@vkontakte/vkui"
-import { useUnit } from "effector-react"
 import { $selectedBook } from "../../../store/modalBook"
 import { setStatusActiveModal } from "../../../store/activeModal"
-import { Icon24AddAwardsOutline, Icon24BookmarkAddBadgeOutline, Icon24Favorite, Icon24FolderAdd, Icon24Info, Icon24ListCheckOutline } from "@vkontakte/icons"
+import { Icon24Info } from "@vkontakte/icons"
 import "../../../styles/panels/modal.scss"
-import React, { useEffect } from "react"
+import { useEffect } from "react"
+import { useUnit } from "effector-react"
+import { CellButton, Div, Group, Panel, PanelHeader, PanelHeaderBack, Image, Text } from "@vkontakte/vkui"
 
 type Props = {
     id: string,
 }
 
-const HomePageBook = ({id}: Props) => {
+const HomePageBook = ({ id }: Props) => {
     const book = useUnit($selectedBook);
-    
+
     const image = (
         <Image
-          style={{ marginBottom: '0', marginTop: '0'}}
-          className="book-img"
-          size={200}
-          borderRadius="m"
-          src="/img/genres/genre1.jpg" />
-      )
-    
+            style={{ marginBottom: '0', marginTop: '0' }}
+            className="book-img"
+            size={200}
+            borderRadius="m"
+            src="/img/genres/genre1.jpg"
+        />
+    )
+
     useEffect(() => {
         console.log(book)
     }, [])
 
-      const statusBook = (
-        <>
-            <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{padding: 0, margin: 0}}>
-                <Icon24Info />
-            </CellButton>
-        </>
-      )
-    
+    const statusBook = (
+        <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{ padding: 0, margin: 0 }}>
+            <Icon24Info />
+        </CellButton>
+    )
+
     return (
         <Panel id={id}>
             <PanelHeader before={
@@ -48,23 +47,17 @@ const HomePageBook = ({id}: Props) => {
                     {/* <img src={book && book.imageId || ''} alt="" /> */}
                 </Group>
 
-            </Div>  
-            <Div className="groupBookInformation"style={{display: "flex", flexDirection: "row", alignItems: "end", paddingBottom: 0}}>
-                    <Group separator="hide">
-                        <Text weight="1" className="nameBook" style={{fontSize: "21px"}}>
-                            {book && book.title}
-                        </Text>
-                        <Text weight="2" style={{fontSize: "18px"}}>
-                            {book && book.author}
-                        </Text>
-                    </Group>
-                    <Group style={{marginLeft: "10px"}}>
-                        <CellButton>
-                            <Icon24BookmarkAddBadgeOutline />
-                        </CellButton>
-                    </Group>
-                </Div>  
-            <Div>   
+                <Group separator="hide" className="groupBookInformation">
+                    <Text weight="1" className="nameBook">
+                        {book && book.title}
+                        Название
+                    </Text>
+                    <Text weight="2">
+                        {book && book.author}
+                        Автор
+                    </Text>
+                </Group>
+
                 <Group className="groupBookInformation">
                     <Text weight="2" style={{fontSize: "16px"}}>
                         Категория: {book && book.categoryTitle}
@@ -85,7 +78,7 @@ const HomePageBook = ({id}: Props) => {
                 </Div>
             </Group>
 
-            <Div style={{marginTop: '-25px'}}>
+            <Div style={{ marginTop: '-25px' }}>
                 <Group>
                     <Text>
                         Коментарий пользователя: {book && book.description}
@@ -93,7 +86,7 @@ const HomePageBook = ({id}: Props) => {
                     <Text>Книга живет в городе {/*city*/}</Text>
                 </Group>
             </Div>
-            
+
         </Panel>
     )
 }
