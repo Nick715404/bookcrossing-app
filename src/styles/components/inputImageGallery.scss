@@ -1,0 +1,14 @@
+.input-images-box {
+
+  border-radius: 20px;
+  overflow: hidden;
+  height: 100%;
+  max-height: 470px;
+
+  .input-images-img {
+    // width: 100%;
+    height: 100%;
+    object-fit: contain;
+    overflow-clip-margin: unset;
+  }
+}

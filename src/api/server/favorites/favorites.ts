@@ -12,7 +12,7 @@ export const GetFavFromUser = createEffect(async (id: string) => {
   }
 });
 
-export const PutBookToFav = async (bookId: string, userId: string) => {
+export const PutBookToFavFX = createEffect(async ({ bookId, userId }: { bookId: string, userId: string }) => {
   try {
     const favoritesData = {
       bookId: bookId,
@@ -24,4 +24,10 @@ export const PutBookToFav = async (bookId: string, userId: string) => {
   catch (error) {
     console.log(error);
   }
-};
+});
+
+export const BookInFavIcon = createEffect(async (str: string) => {
+  if (str !== null || '') {
+    return true;
+  }
+});

@@ -1,7 +1,8 @@
+import { vkBlueColor } from '../../constants/utils';
+import { deleteBookFX } from '../../api/server/books/books';
+
 import { Icon28DeleteOutline } from '@vkontakte/icons';
 import { IconButton } from '@vkontakte/vkui';
-import { vkBlueColor } from '../../constants/utils';
-import { deleteBook } from '../../api/server/books/books';
 
 type Props = {
   bookId: string
@@ -10,7 +11,7 @@ type Props = {
 export default function DeleteBook({ bookId }: Props) {
 
   const handleDeleteBook = async () => {
-    deleteBook(bookId);
+    deleteBookFX(bookId);
   };
 
   return (

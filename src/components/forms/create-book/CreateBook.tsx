@@ -1,22 +1,23 @@
+import { $user } from "../../../store/user";
+import { IDataState, } from "../../../interfaces/interface";
+import { initialState } from "../../../constants/utils";
+import CompleteForm from "../complete-form/CompleteForm";
+import { setStatusActiveModal } from "../../../store/activeModal";
+import { handleCreateBook, handleFormValidation } from "../../../utilities/forms/create-book.utils";
+
 import ImageInput from "../components/CustomFileInput/ImageInput";
 import CategorySelect from "../components/CategorySelect/CategorySelect";
 import CustomInput from "../components/CustomInput/CustomInput";
 import CustomTextarea from "../components/CustomTextarea/CustomTextarea";
 import QualitySelect from "../components/QualitySelect/QualitySelect";
 import CustomButton from "../../custom-button/CustomButton";
-import { $user } from "../../../store/user";
-import { IDataState, } from "../../../interfaces/interface";
-import { initialState } from "../../../constants/utils";
-// import CompleteForm from "../complete-form/CompleteForm";
-import { setStatusActiveModal } from "../../../store/activeModal";
-import { handleCreateBook, handleFormValidation } from "../../../utilities/forms/create-book.utils";
+
 import { useUnit } from "effector-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { Icon24Info } from "@vkontakte/icons";
 import { FormItem, Checkbox, Text, CellButton, Div } from "@vkontakte/vkui";
 
 const CreateBook: React.FC = () => {
-  const formRef = useRef();
   const [formData, setFormData] = useState<IDataState>(initialState);
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
   const [withoutISBN, setWithoutISBN] = useState<boolean>(false);
@@ -82,9 +83,9 @@ const CreateBook: React.FC = () => {
 
   return (
     <>
-      {done ?
-        // <CompleteForm />
-        <h1>awdwd</h1>
+      {done
+        ?
+        <CompleteForm />
         :
         <form onSubmit={handleSubmit}>
           <ImageInput go={go.start} bookId={go.bookId} />
@@ -147,7 +148,7 @@ const CreateBook: React.FC = () => {
               isLoading={isLoading}
             />
           </FormItem>
-          {IsbnInfo}
+          <>{IsbnInfo}</>
         </form>}
     </>
   );

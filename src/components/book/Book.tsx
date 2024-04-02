@@ -1,5 +1,3 @@
-import ToChat from "../toChat/toChat";
-
 import { IBook } from "../../interfaces/interface";
 import { selectBook } from "../../store/modalBook";
 import { setStatusActiveModal } from "../../store/activeModal";
@@ -71,8 +69,8 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
           </Text>
         </SimpleCell>
       </Div >
-      {afterIcon}
-      {beforeIcon}
+      <>{afterIcon}</>
+      <>{beforeIcon}</>
     </SplitLayout >
   )
 }
