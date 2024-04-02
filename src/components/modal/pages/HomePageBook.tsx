@@ -33,10 +33,14 @@ const HomePageBook = ({ id }: Props) => {
         </CellButton>
     )
 
+    const goBack = () => {
+        window.history.back();
+    };
+
     return (
         <Panel id={id}>
             <PanelHeader before={
-                <PanelHeaderBack label="Назад" />
+                <PanelHeaderBack label="Назад" onClick={goBack}/>
             }>
                 Буккросинг
             </PanelHeader>

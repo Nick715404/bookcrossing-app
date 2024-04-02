@@ -1,19 +1,20 @@
 import { IPassIdToModalPage } from "../../../interfaces/interface";
 import "../../../styles/components/transcriptionIsbn.scss"
 import React from "react";
-import { ModalCardBase, Spacing, Button, Group, Div, Text, AdaptivityProvider, ViewWidth, ButtonGroup } from "@vkontakte/vkui";
-import { Icon56DeleteOutline } from "@vkontakte/icons";
+import { ModalCardBase, Spacing, Button, AdaptivityProvider, ViewWidth, Div, Group, Text, ButtonGroup } from "@vkontakte/vkui";
 import { deleteBookFX } from "../../../api/server/books/books";
+import { Icon56DeleteOutline } from "@vkontakte/icons";
 
 type Props = {
   bookId: string
 }
 
+
 const ModalAcceptDelete = ({ id }: IPassIdToModalPage, {bookId}: Props) => {
   const handleDeleteBook = async () => {
     deleteBookFX(bookId);
   };
-  
+
   return (
     <AdaptivityProvider viewWidth={ViewWidth.MOBILE}>
       <ModalCardBase
@@ -35,7 +36,7 @@ const ModalAcceptDelete = ({ id }: IPassIdToModalPage, {bookId}: Props) => {
       </Div>
       <ButtonGroup>
           <Button size="m" mode="secondary" stretched>
-              Отменить
+            Отменить
           </Button>
           <Button size="m" mode="primary" stretched onClick={handleDeleteBook}>
             Удалить
