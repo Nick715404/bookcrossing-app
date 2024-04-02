@@ -71,8 +71,8 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
           </Text>
         </SimpleCell>
       </Div >
-      {afterIcon}
-      {beforeIcon}
+      <>{afterIcon}</>
+      <>{beforeIcon}</>
     </SplitLayout >
   )
 }

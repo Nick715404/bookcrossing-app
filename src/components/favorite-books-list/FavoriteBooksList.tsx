@@ -4,6 +4,9 @@ import { useUnit } from "effector-react"
 import Book from "../book/Book";
 import ToChat from "../toChat/toChat";
 import ToFav from "../toFav/toFav";
+import EmptyPlate from "../epmty-plate/EmptyPlate";
+import { Icon28BookmarkCheckOutline } from '@vkontakte/icons';
+import { vkBlueColor } from "../../constants/utils";
 
 export default function FavoriteBooksList() {
 
@@ -11,14 +14,26 @@ export default function FavoriteBooksList() {
 
   return (
     <>
-      {books && books.map((book: IBook) => (
-        <Book
-          key={book.id}
-          book={book}
-          beforeIcon={<ToFav isFavorite id={book.id} />}
-          afterIcon={<ToChat />}
+      {books.length > 0
+        ?
+        books.map((book: IBook) => (
+          <Book
+            key={book.id}
+            book={book}
+            beforeIcon={<ToFav isFavorite id={book.id} />}
+            afterIcon={<ToChat />}
+          />
+        )).reverse()
+        :
+        <EmptyPlate
+          icon={<Icon28BookmarkCheckOutline fill={vkBlueColor} width={56} height={56} />}
+          title="Сохраняйте книги | в понравившиеся"
+          text="Здесь будут отображаться книги, которые вы отметили как понравившиеся"
+          label="Перейти в каталог"
+          location=""
         />
-      )).reverse()}
+      }
     </>
   )
 }
+
