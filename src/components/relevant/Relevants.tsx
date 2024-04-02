@@ -33,7 +33,7 @@ export default function Relevants() {
         :
         <EmptyPlate
           icon={<Icon28AllCategoriesOutline fill={vkBlueColor} width={56} height={56} />}
-          title="Здесь будут | отображаться все книги"
+          title="Здесь будут отображаться | все книги приложения"
           text="Добавьте свою книгу и она отобразится в каталоге"
           label="Создать книгу"
           location="create"
