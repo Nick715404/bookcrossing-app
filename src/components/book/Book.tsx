@@ -1,3 +1,5 @@
+import ToChat from "../toChat/toChat";
+
 import { IBook } from "../../interfaces/interface";
 import { selectBook } from "../../store/modalBook";
 import { setStatusActiveModal } from "../../store/activeModal";
@@ -10,6 +12,8 @@ import {
   SplitLayout,
 } from "@vkontakte/vkui"
 import { useActiveVkuiLocation, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { useEffect, useState } from "react";
+import { getBookImage } from "../../api/server/images/image";
 
 type Props = {
   book: IBook
@@ -19,17 +23,27 @@ type Props = {
 
 // - Поменять список выводящихся полей
 
-export default function Book({ book, afterIcon, beforeIcon }: Props) {  
+export default function Book({ book, afterIcon, beforeIcon }: Props) {
   const navigator = useRouteNavigator();
-  const {panel: activePanel} = useActiveVkuiLocation();
-  
+  const { panel: activePanel } = useActiveVkuiLocation();
+
+  const [path, setPath] = useState<string>('');
+
+  useEffect(() => {
+    async function getFiles() {
+      const images = await getBookImage(book.id);
+      setPath(images.path);
+    }
+    getFiles();
+  }, []);
+
   const image = (
     <Image
       style={{ marginBottom: '0', marginTop: '0' }}
       className="book-img"
       size={96}
       borderRadius="m"
-      src="/img/genres/genre1.jpg" />
+      src={'http://localhost:3100/' + path} />
   )
 
   const handleBook = () => {
@@ -41,8 +55,8 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
   return (
     <SplitLayout>
       <Div className="book" id={book.id}>
-        <SimpleCell className="book-wrapper" before={image} selected={activePanel === 'book-panel'} 
-                onClick={handleBook}>
+        <SimpleCell className="book-wrapper" before={image} selected={activePanel === 'book-panel'}
+          onClick={handleBook}>
           <Text className="book-title" weight="1">
             {book.title}
           </Text>
