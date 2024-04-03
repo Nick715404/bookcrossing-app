@@ -1,12 +1,11 @@
-import { useActiveVkuiLocation, useGetPanelForView } from "@vkontakte/vk-mini-apps-router";
 import Nav from "../components/tabbar/Nav";
 import Catalog from "../panels/catalog/Catalog";
 import Profile from "../panels/profile/Profile";
 import Create from "../panels/create/Create";
-import { useUnit } from "effector-react"
-import { Epic, View } from "@vkontakte/vkui";
 import Category from "../panels/categories/Category";
 import SearchPanel from "../panels/search/Search";
+import { useActiveVkuiLocation, useGetPanelForView } from "@vkontakte/vk-mini-apps-router";
+import { Epic, View } from "@vkontakte/vkui";
 
 const Router = () => {
 
