@@ -1,4 +1,4 @@
-import { Panel } from "@vkontakte/vkui"
+import { Panel, PanelHeader } from "@vkontakte/vkui"
 import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 
 type Props = {
@@ -6,9 +6,14 @@ type Props = {
 }
 
 export default function Category({ id }: Props) {
+
+  console.log('OKEY');
+
   return (
     <Panel id={id}>
-      <h1>Category slug</h1>
+      <PanelHeader separator={false}>
+        Буккроссинг
+      </PanelHeader>
     </Panel>
   )
 }

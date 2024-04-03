@@ -3,15 +3,16 @@ import { setStatusActiveModal } from "../../../store/activeModal"
 import "../../../styles/panels/modal.scss"
 import { Icon24Info } from "@vkontakte/icons"
 import { useUnit } from "effector-react"
+import { CellButton, Div, Group, Panel, PanelHeader, PanelHeaderBack, Image, Text } from "@vkontakte/vkui"
+import { $user } from "../../../store/user"
 import { useEffect } from "react"
-import { Div, Panel, PanelHeader, PanelHeaderBack, Image, Group, Text, CellButton } from "@vkontakte/vkui"
 
 type Props = {
     id: string
 }
 
 const HomePageBook = ({ id }: Props) => {
-    const book = useUnit($selectedBook);
+    const [book, user] = useUnit([$selectedBook, $user]);
 
     const image = (
         <Image
@@ -83,6 +84,7 @@ const HomePageBook = ({ id }: Props) => {
                     <Text>
                         Коментарий пользователя: {book && book.description} Заготовка заготовка заготовка заготовка заготовка заготовка заготовказаготовка заготовка
                     </Text>
+                    <Text>Книга живет в городе: {user && user.city}</Text>
                 </Group>
             </Div>
 

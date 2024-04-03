@@ -8,23 +8,23 @@ export default function Nav() {
   const { panel: activePanel } = useActiveVkuiLocation();
 
   return (
-    <Tabbar style={{paddingTop: '5px'}}>
+    <Tabbar style={{ paddingTop: '5px' }}>
       <TabbarItem
         selected={activePanel === 'profile-panel'}
         text='Профиль'
-        onClick={() => navigator.push('/profile')} style={{width: "auto", paddingBottom: "12px"}}>
+        onClick={() => navigator.push('/profile')} style={{ width: "auto", paddingBottom: "12px" }}>
         <Icon24UserCircleOutline />
       </TabbarItem>
       <TabbarItem
         selected={activePanel === 'catalog-panel'}
         text='Каталог'
-        onClick={() => navigator.push('/')}  style={{width: "auto", paddingBottom: "12px"}}>
+        onClick={() => navigator.push('/')} style={{ width: "auto", paddingBottom: "12px" }}>
         <Icon24HomeOutline />
       </TabbarItem>
       <TabbarItem
         selected={activePanel === 'create-panel'}
         text='Добавить'
-        onClick={() => navigator.push('/create')}  style={{width: "auto", paddingBottom: "12px"}}>
+        onClick={() => navigator.push('/create')} style={{ width: "auto", paddingBottom: "12px" }}>
         <Icon24AddSquareOutline />
       </TabbarItem>
     </Tabbar>
