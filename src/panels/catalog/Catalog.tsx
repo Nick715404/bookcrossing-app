@@ -1,14 +1,13 @@
+import Search from '../../components/search/Search';
+import Categories from '../../components/categories/Categories';
+import Relevants from '../../components/relevant/Relevants';
+
 import {
 	Panel,
 	PanelHeader,
 	Group,
 	IconButton,
 } from '@vkontakte/vkui';
-
-import Search from '../../components/search/Search';
-import Categories from '../../components/categories/Categories';
-import Relevants from '../../components/relevant/Relevants';
-import { Icon20LineBottom } from '@vkontakte/icons';
 
 
 type Props = {
