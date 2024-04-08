@@ -31,3 +31,13 @@ export const deleteBookFX = createEffect(async (id: string) => {
     console.log(error)
   }
 })
+
+export const getCurentBookFX = createEffect(async (id: string) => {
+  try {
+    const { data } = await api.get(`/book/${id}`);
+    return data
+  }
+  catch (error) {
+    console.log(error)
+  }
+})
