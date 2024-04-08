@@ -1,0 +1,68 @@
+.loading-book {
+
+  .book-img {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    padding: 0 !important;
+    background-color: #232324;
+    border-radius: 10px;
+    margin-right: 12px !important;
+  }
+
+  .book-wrapper {
+    .vkuiSimpleCell__children {
+      display: flex !important;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .vkuiSimpleCell__content {
+      width: 100% !important;
+      max-width: unset !important;
+    }
+  }
+
+  .book-content {
+    padding: 0 !important;
+    width: 68%;
+  }
+
+  .book-info {
+    height: 12px;
+    margin-bottom: 5px;
+  }
+
+  .book-title {
+    height: 24px;
+  }
+
+  .book-author {
+    max-width: 55%;
+    margin-bottom: 4px !important;
+  }
+
+  .book-quality {
+    max-width: 68%;
+  }
+
+  .book-genre {
+    max-width: 35%;
+  }
+
+}
+
+.loading {
+  animation: skeleton-anim 1s linear infinite alternate;
+  border-radius: 3px;
+}
+
+@keyframes skeleton-anim {
+  0% {
+    background-color: hsl(212, 72%, 36%);
+  }
+
+  100% {
+    background-color: hsl(212, 72%, 56%);
+  }
+}

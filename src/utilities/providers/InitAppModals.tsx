@@ -1,13 +1,12 @@
-import { ModalRoot, SplitLayout } from "@vkontakte/vkui";
 import { $statusActiveModal, setStatusActiveModal } from "../../store/activeModal";
-import { useUnit } from "effector-react";
-import Modal from "../../components/modals/Modal";
 import ModalImgBook from "../../components/modals/modalImgbook/ModalImgBook";
 import ModalBookStatusDescription from "../../components/modals/ModalStatus/ModalStatus";
 import { IInitAppEntities } from "../../interfaces/interface";
 import TranscriptIsbnModal from "../../components/modals/transcriptISBNModal/TranscriptIsbnModal";
-import DeleteBook from "../../components/delete-book/DeleteBook";
 import ModalAcceptDelete from "../../components/modals/ModalAcceptDelete/ModalAcceptDelete";
+
+import { useUnit } from "effector-react";
+import { ModalRoot, SplitLayout } from "@vkontakte/vkui";
 
 
 const InitAppModals = ({ children }: IInitAppEntities) => {
@@ -23,7 +22,7 @@ const InitAppModals = ({ children }: IInitAppEntities) => {
 			<ModalImgBook id={"modalImgBook"} changeActiveModal={changeActiveModal} />
 			<ModalBookStatusDescription id={"statusDescription"} changeActiveModal={changeActiveModal} />
 			<TranscriptIsbnModal id={"transcriptISBN"} changeActiveModal={changeActiveModal} />
-			<ModalAcceptDelete id={"deleteBook"} changeActiveModal={changeActiveModal} onClose={() => changeActiveModal(null)} />
+			<ModalAcceptDelete id="deleteBook" changeActiveModal={changeActiveModal} />
 		</ModalRoot>
 	)
 

@@ -3,7 +3,7 @@ import { getAllCategoriesFX } from "../../api/server/categories/categories";
 import { useEffect } from "react"
 import { useUnit } from "effector-react";
 import { Icon24BrainOutline } from '@vkontakte/icons';
-import { CardScroll, Card, Group, Header } from "@vkontakte/vkui"
+import { CardScroll, Card, Group, Header, Text, Div } from "@vkontakte/vkui"
 import { categoriesBooksFX } from "../../utilities/category/category.utils";
 import { $books } from "../../store/books";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
@@ -22,29 +22,34 @@ export default function Categories({ }: Props) {
 
   return (
     <>
-      <Header
-        mode="primary"
-        style={{ paddingBottom: '12px' }}>
-        <span style={{ fontSize: '18px' }}>Категории</span>
-      </Header>
-      <CardScroll size='s'>
-        {categories && categories.map(category => (
-          <Card
-            className="card"
-            key={category.id}
-            onClick={() => handleClick(category.title, category.id)}
-          >
-            <div className="card__wrapper">
-              <div className="card__icon">
-                <Icon24BrainOutline style={{ color: '#2688EB' }} />
-              </div>
-              <div className="card__content">
-                <span className="card__text">{category.title}</span>
-              </div>
-            </div>
-          </Card>
-        ))}
-      </CardScroll>
+      {categories &&
+        <>
+          <Header
+            mode="primary"
+            style={{ paddingBottom: '12px' }}>
+            <span style={{ fontSize: '18px' }}>Категории</span>
+          </Header>
+          <CardScroll size='s'>
+            {categories.map(category => (
+              <Card
+                className="card"
+                key={category.id}
+                onClick={() => handleClick(category.title, category.id)}
+              >
+                <div className="card__wrapper">
+                  <div className="card__icon">
+                    <Icon24BrainOutline style={{ color: '#2688EB' }} />
+                  </div>
+                  <div className="card__content">
+                    <span className="card__text">{category.title}</span>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </CardScroll>
+        </>
+      }
     </>
   )
 }
+

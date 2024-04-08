@@ -5,6 +5,7 @@ import { setStatusActiveModal } from '../../store/activeModal';
 import { Icon28DeleteOutline } from '@vkontakte/icons';
 import { IconButton } from '@vkontakte/vkui';
 import { deleteBookFX } from '../../api/server/books/books';
+import { GetCurrentBookIdFX } from '../../store/modalBook';
 
 type Props = {
   bookId: string
@@ -12,9 +13,9 @@ type Props = {
 
 export default function DeleteBook({ bookId }: Props) {
 
-  const handleClick = async () => {
-    // setStatusActiveModal("deleteBook");
-    deleteBookFX(bookId);
+  const handleClick = () => {
+    setStatusActiveModal("deleteBook");
+    GetCurrentBookIdFX(bookId);
   };
 
   return (

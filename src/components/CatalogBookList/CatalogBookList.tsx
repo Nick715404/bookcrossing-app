@@ -13,7 +13,7 @@ import { Icon28AllCategoriesOutline } from "@vkontakte/icons";
 export default function CatalogBookList() {
 
   const books = useUnit($books);
-
+  
   if (books.length === 0) {
     return (
       <EmptyPlate

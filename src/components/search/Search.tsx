@@ -1,17 +1,17 @@
-import React from "react";
-import { useUnit } from "effector-react";
-import { Search as SearchPanel } from "@vkontakte/vkui"
-import { useCallback } from "react";
 import { useActiveVkuiLocation, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+
+import React from "react";
+import { Search as SearchPanel } from "@vkontakte/vkui"
 
 type Props = {
   onPanel?: boolean
 }
 
+// - Книги из города юзера
+
 function Search({ onPanel }: Props) {
 
   const navigator = useRouteNavigator();
-  // const { panel: activePanel } = useActiveVkuiLocation();
 
   const handleGoToPanel = () => {
     if (onPanel) {

@@ -14,21 +14,23 @@ type Props = {
 }
 
 export default function ToFav({ bookId, isFav, inFav }: Props) {
-
+  const [active, setActive] = useState<boolean>();
   const user = useUnit($user);
 
   const handleBookMove = async (e: any) => {
     e.preventDefault();
     const { userId } = user;
     await PutBookToFavFX({ bookId, userId });
+    setActive(true);
   };
 
   return (
     <IconButton onClick={handleBookMove} className='to-shelf-btn'>
-      {isFav === '' || null ?
+      {isFav !== '' && isFav !== null ?
         <Icon28BookmarkCheckOutline fill={vkBlueColor} />
         : <Icon28BookmarkOutline fill={vkBlueColor} />
       }
+      {active && <Icon28BookmarkCheckOutline fill={vkBlueColor} />}
     </IconButton>
   )
 }

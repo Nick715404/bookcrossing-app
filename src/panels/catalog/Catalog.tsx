@@ -8,6 +8,9 @@ import {
 	Group,
 	IconButton,
 } from '@vkontakte/vkui';
+import LoadingBook from '../../components/LoadingBook/LoadingBook';
+import { useUnit } from 'effector-react';
+import { $status } from '../../store/books';
 
 
 type Props = {
