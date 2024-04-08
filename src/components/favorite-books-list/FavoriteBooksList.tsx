@@ -5,7 +5,7 @@ import { vkBlueColor } from "../../constants/utils";
 import Book from "../book/Book";
 import ToChat from "../toChat/toChat";
 import ToFav from "../toFav/toFav";
-import EmptyPlate from "../epmty-plate/EmptyPlate";
+import EmptyPlate from "../empty-plate/EmptyPlate";
 
 import { useUnit } from "effector-react"
 import { Icon28BookmarkCheckOutline } from '@vkontakte/icons';

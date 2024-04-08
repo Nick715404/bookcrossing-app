@@ -6,10 +6,7 @@ interface IFuncParams {
   books: IBook[];
 }
 
-export const categoriesBooksFX = createEffect(({ category, books }: IFuncParams) => {
-  console.log(category);
-  const sortedBooks = books.filter(item => item.categoryTitle === category)
-  console.log(sortedBooks);
-  return sortedBooks;
-}
-)
+export const categoriesBooksFX = createEffect(({ category, books }: IFuncParams): IBook[] => {
+  const arr = books.filter(item => item.categoryTitle === category);
+  return arr;
+})

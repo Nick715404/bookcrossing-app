@@ -24,7 +24,9 @@ export async function handleImageUpload(selectedImages: any, bookId: string) {
 
 export const getBookImage = async (bookId: string) => {
   try {
-    // - /image/clu0zb2u5000289aaz0lp7j9u/images
+
+    if (!bookId) return;
+
     const { data } = await api.get('/image/' + bookId + '/images');
     return data;
   }
