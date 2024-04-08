@@ -2,6 +2,7 @@ import {
 	Panel,
 	PanelHeader,
 	Group,
+	View,
 } from '@vkontakte/vkui';
 
 import Search from '../../components/search/Search';
@@ -16,24 +17,14 @@ type Props = {
 export default function Catalog({ id }: Props) {
 	return (
 		<Panel id={id}>
-
 			<PanelHeader separator={false}>
 				Буккроссинг
 			</PanelHeader>
-
-			<Search onPanel />
-
-			<Group
-				style={{ paddingBottom: '16px' }}
-				separator='hide'
-			>
-				<Categories />
-			</Group>
-
 			<Group separator='hide'>
+				<Search onPanel />
+				<Categories />
 				<Relevants />
 			</Group>
-
 		</Panel>
 	)
 }

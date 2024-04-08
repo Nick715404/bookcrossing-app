@@ -25,7 +25,7 @@ export default function Categories({ }: Props) {
   }
 
   return (
-    <Group>
+    <>
       <Header
         mode="primary"
         style={{ paddingBottom: '12px' }}>
@@ -49,6 +49,6 @@ export default function Categories({ }: Props) {
           </Card>
         ))}
       </CardScroll>
-    </Group>
+    </>
   )
 }

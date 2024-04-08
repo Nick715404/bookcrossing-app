@@ -15,7 +15,7 @@ import CustomButton from "../../custom-button/CustomButton";
 import { useUnit } from "effector-react";
 import React, { useCallback, useMemo, useState } from "react";
 import { Icon24Info } from "@vkontakte/icons";
-import { FormItem, Checkbox, Text, CellButton, Div } from "@vkontakte/vkui";
+import { FormItem, Checkbox, Text, CellButton, Div, Group } from "@vkontakte/vkui";
 
 const CreateBook: React.FC = () => {
   const [formData, setFormData] = useState<IDataState>(initialState);
@@ -82,7 +82,7 @@ const CreateBook: React.FC = () => {
   }, [formData, user]);
 
   return (
-    <>
+    <Group>
       {done
         ?
         <CompleteForm />
@@ -150,7 +150,7 @@ const CreateBook: React.FC = () => {
           </FormItem>
           <>{IsbnInfo}</>
         </form>}
-    </>
+    </Group>
   );
 };
 

@@ -18,9 +18,7 @@ export default function Profile({ id }: Props) {
       <PanelHeader separator={false}>
         Буккроссинг
       </PanelHeader>
-      <Group separator='hide'>
-        <User />
-      </Group>
+      <User />
 
       <SegmentedControlCustom position={position} setPosition={setPosition} />
 

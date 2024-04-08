@@ -13,8 +13,8 @@ type Props = {
 export default function DeleteBook({ bookId }: Props) {
 
   const handleClick = async () => {
-    setStatusActiveModal("deleteBook");
-    // deleteBookFX(bookId);
+    // setStatusActiveModal("deleteBook");
+    deleteBookFX(bookId);
   };
 
   return (

@@ -11,7 +11,7 @@ const User = () => {
     const user = useUnit($user);
 
     return (
-        <Group>
+        <Group separator='hide'>
             <Div className="userBlock">
                 <Div>
                     <Avatar size={80} initials='ИФ' gradientColor="blue" />
