@@ -3,9 +3,9 @@ import { $books } from "./books";
 import { createBookFX, deleteBookFX } from "../api/server/books/books";
 
 import { FindBooksOnShelfFX } from "../api/server/shelf/shelf";
-import { IBookOnShelf } from "../interfaces/interface";
+import { IExtendedBook } from "../interfaces/interface";
 
-export const $booksOnShelf = createStore<IBookOnShelf[]>([]);
+export const $booksOnShelf = createStore<IExtendedBook[]>([]);
 
 $booksOnShelf.on(FindBooksOnShelfFX.doneData, (prev, next) => {
   if (Array.isArray(next)) {

@@ -1,5 +1,5 @@
 import { useUnit } from "effector-react"
-import { IBookOnShelf } from "../../interfaces/interface"
+import { IExtendedBook } from "../../interfaces/interface"
 import Book from "../book/Book"
 import EditBook from "../edit-book/EditBook"
 import DeleteBook from "../delete-book/DeleteBook"
@@ -19,7 +19,7 @@ function ShelfBooksList() {
     <>
       {books.length > 0
         ?
-        books.map((book: IBookOnShelf) => {
+        books.map((book: IExtendedBook) => {
           return (<Book
             key={book.id}
             book={book}

@@ -1,5 +1,5 @@
 import { IBook } from "../interfaces/interface";
-import { BookInFavIcon, GetFavFromUser, PutBookToFavFX } from "../api/server/favorites/favorites";
+import { GetFavFromUser, PutBookToFavFX } from "../api/server/favorites/favorites";
 import { createStore } from "effector";
 
 export const $favBooks = createStore<IBook[]>([]);

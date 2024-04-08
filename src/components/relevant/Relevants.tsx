@@ -26,7 +26,7 @@ export default function Relevants() {
           <Book
             key={book.id}
             book={book}
-            afterIcon={<ToFav id={book.id} />}
+            afterIcon={<ToFav bookId={book.id} isFav={book.favourite} />}
             beforeIcon={<ToChat />}
           />
         )).reverse()

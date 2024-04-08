@@ -1,4 +1,4 @@
-import { IBook } from "../../interfaces/interface";
+import { IBook, IExtendedBook } from "../../interfaces/interface";
 import { $favBooks } from "../../store/favorites"
 import { vkBlueColor } from "../../constants/utils";
 
@@ -22,7 +22,7 @@ export default function FavoriteBooksList() {
           <Book
             key={book.id}
             book={book}
-            beforeIcon={<ToFav isFavorite id={book.id} />}
+            beforeIcon={<ToFav bookId={book.id} isFav={book.favourite} />}
             afterIcon={<ToChat />}
           />
         )).reverse()

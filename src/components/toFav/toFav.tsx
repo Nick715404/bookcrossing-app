@@ -5,33 +5,28 @@ import { $user } from '../../store/user';
 import { useUnit } from 'effector-react';
 import { Icon28BookmarkCheckOutline, Icon28BookmarkOutline } from '@vkontakte/icons';
 import { IconButton } from '@vkontakte/vkui';
+import { useState } from 'react';
 
 type Props = {
-  id: string
-  isFavorite?: boolean
-  fav?: string
+  bookId: string
+  isFav: string | null
+  inFav?: boolean
 }
 
-export default function ToFav({ id, isFavorite, fav }: Props) {
-
+export default function ToFav({ bookId, isFav, inFav }: Props) {
+  const [fav, setFav] = useState<boolean>();
   const user = useUnit($user);
 
   const handleBookMove = async (e: any) => {
     e.preventDefault();
     const { userId } = user;
-    const bookId = id;
-    const book = await PutBookToFavFX({ bookId, userId });
-    BookInFavIcon(book.favourite);
+    await PutBookToFavFX({ bookId, userId });
   };
 
-  // - Сделать проверку на кнопочку
-
   return (
-    <IconButton
-      onClick={handleBookMove}
-      className='to-shelf-btn'>
-      <Icon28BookmarkCheckOutline fill={vkBlueColor} />
-      <Icon28BookmarkOutline fill={vkBlueColor} />
+    <IconButton onClick={handleBookMove} className='to-shelf-btn'>
+      {isFav !== null ? <Icon28BookmarkCheckOutline fill={vkBlueColor} />
+        : <Icon28BookmarkOutline fill={vkBlueColor} />}
     </IconButton>
   )
 }

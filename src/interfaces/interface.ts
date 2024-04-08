@@ -28,10 +28,10 @@ export interface IBook {
   state: string,
   description?: string | null,
   imageId?: string,
+  favourite: string | null
 }
 
-export interface IBookOnShelf extends IBook {
-  favourite?: any
+export interface IExtendedBook extends IBook {
   shelf: string
   releaseDate?: string
 }
@@ -92,7 +92,7 @@ export interface IInitAppEntities {
 }
 
 export interface IShelfInfo {
-  books: IBookOnShelf[] | undefined
+  books: IExtendedBook[] | undefined
   info: {
     id: string
     userId: string

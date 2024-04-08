@@ -1,4 +1,4 @@
-import { IBookOnShelf, IShelfInfo } from "../../../interfaces/interface";
+import { IExtendedBook, IShelfInfo } from "../../../interfaces/interface";
 import { api } from "../../axios/axiosInstance";
 import { createEffect } from "effector";
 
