@@ -2,9 +2,10 @@ import Nav from "../components/tabbar/Nav";
 import Catalog from "../panels/catalog/Catalog";
 import Profile from "../panels/profile/Profile";
 import Create from "../panels/create/Create";
-import Category from "../panels/categories/Category";
+import Genre from "../panels/categories/Genre";
 import SearchPanel from "../panels/search/Search";
 import { useActiveVkuiLocation, useGetPanelForView } from "@vkontakte/vk-mini-apps-router";
+import HomePageBook from "../components/modals/pages/HomePageBook";
 import { Epic, View } from "@vkontakte/vkui";
 
 const Router = () => {
@@ -21,8 +22,9 @@ const Router = () => {
 				<Catalog id='catalog-panel' />
 				<Profile id='profile-panel' />
 				<Create id='create-panel' />
-				<Category id='single-genre-panel' />
+				<Genre id='genre-panel' />
 				<SearchPanel id="search-panel" />
+				<HomePageBook id='book-panel' />
 			</View>
 		</Epic>
 	)

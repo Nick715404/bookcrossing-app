@@ -25,7 +25,8 @@ export default function Catalog({ id }: Props) {
 
 			<Group
 				style={{ paddingBottom: '16px' }}
-				separator='hide'>
+				separator='hide'
+			>
 				<Categories />
 			</Group>
 
