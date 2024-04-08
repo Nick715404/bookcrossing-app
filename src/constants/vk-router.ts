@@ -31,6 +31,11 @@ const routes: RouteWithoutRoot[] = [
     panel: 'genre-panel',
     view: 'panel',
   },
+  {
+    path: '/main',
+    panel: 'main-panel',
+    view: 'panel'
+  },
 ]
 
 export const appRouter = createHashRouter(routes);
