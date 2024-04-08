@@ -7,7 +7,7 @@ import Create from './panels/create/Create';
 
 import { Epic, SplitLayout, View } from '@vkontakte/vkui';
 import { useActiveVkuiLocation, useGetPanelForView } from '@vkontakte/vk-mini-apps-router';
-import HomePageBook from './components/modal/pages/HomePageBook';
+import HomePageBook from './components/modals/pages/HomePageBook';
 
 const App = () => {
 

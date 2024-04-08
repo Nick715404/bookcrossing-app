@@ -63,6 +63,7 @@ export interface ICreateUser {
 
 export interface IPassIdToModalPage {
   changeActiveModal?: (id: string | null) => void
+  onClose?: any
   id: string
   data?: any
   openFiltersModal?: any
