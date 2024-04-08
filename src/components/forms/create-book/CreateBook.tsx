@@ -85,7 +85,7 @@ const CreateBook: React.FC = () => {
     <>
       {done
         ?
-        <CompleteForm />
+        <CompleteForm action={() => setDone(false)} />
         :
         <form onSubmit={handleSubmit}>
           <ImageInput go={go.start} bookId={go.bookId} />
@@ -149,7 +149,8 @@ const CreateBook: React.FC = () => {
             />
           </FormItem>
           <>{IsbnInfo}</>
-        </form>}
+        </form>
+      }
     </>
   );
 };

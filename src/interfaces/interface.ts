@@ -28,6 +28,7 @@ export interface IBook {
   state: string,
   description?: string | null,
   imageId?: string,
+  favourite?: any;
 }
 
 export interface IBookOnShelf extends IBook {

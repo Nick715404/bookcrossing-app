@@ -1,11 +1,12 @@
 import { $selectedBook } from "../../../store/modalBook"
 import { setStatusActiveModal } from "../../../store/activeModal"
-import { Icon24Info } from "@vkontakte/icons"
-import { useStore, useUnit } from "effector-react"
-import { CellButton, Div, Group, Panel, PanelHeader, PanelHeaderBack, Image, Text } from "@vkontakte/vkui"
 import { $user } from "../../../store/user"
-import { useEffect, useState } from "react"
 import { getCurentBookFX } from "../../../api/server/books/books"
+
+import { useEffect, useState } from "react"
+import { Icon24Info } from "@vkontakte/icons"
+import { useUnit } from "effector-react"
+import { CellButton, Div, Group, Panel, PanelHeader, PanelHeaderBack, Image, Text } from "@vkontakte/vkui";
 
 type Props = {
     id: string,
@@ -14,12 +15,9 @@ type Props = {
 const HomePageBook = ({ id }: Props) => {
     const [book, user] = useUnit([$selectedBook, $user]);
 
-    const [getBook, setBook] = useState(null); 
-    
-    useEffect(() => {
-        // const data = getCurentBookFX(book?id)
-        // setBook(data)
+    const [getBook, setBook] = useState(null);
 
+    useEffect(() => {
         const getCurentBook = async () => {
             try {
                 const data = book ? await getCurentBookFX(book.id) : undefined;
@@ -31,14 +29,6 @@ const HomePageBook = ({ id }: Props) => {
 
         getCurentBook();
     }, []);
-
-    
-
-    // useEffect(() => {
-    //     console.log(book);
-    //     if (book?.id == null) {
-    //     }
-    // }, [])
 
     const statusBook = (
         <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{ padding: 0, margin: 0 }}>

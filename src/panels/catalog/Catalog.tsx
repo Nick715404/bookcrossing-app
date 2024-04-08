@@ -18,24 +18,12 @@ type Props = {
 export default function Catalog({ id }: Props) {
 	return (
 		<Panel id={id}>
-
-			<PanelHeader separator={false}>
-				Буккроссинг
-			</PanelHeader>
-
-			<Search onPanel />
-
-			<Group
-				style={{ paddingBottom: '16px' }}
-				separator='hide'
-			>
+			<PanelHeader separator={false}>Буккроссинг</PanelHeader>
+			<Group>
+				<Search onPanel />
 				<Categories />
-			</Group>
-
-			<Group separator='hide'>
 				<Relevants />
 			</Group>
-
 		</Panel>
 	)
 }

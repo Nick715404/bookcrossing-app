@@ -1,11 +1,12 @@
-
+import { vkBlueColor } from '../../../constants/utils';
 import { Icon56CheckCircleDeviceOutline } from '@vkontakte/icons';
 import { Button, Div, Header, Text } from "@vkontakte/vkui";
-import { vkBlueColor } from '../../../constants/utils';
 
-type Props = {}
+type Props = {
+  action: () => void
+}
 
-export default function CompleteForm({ }: Props) {
+export default function CompleteForm({ action }: Props) {
 
   const styles: React.CSSProperties = {
     display: 'flex',
@@ -24,8 +25,8 @@ export default function CompleteForm({ }: Props) {
       <Div>
         <Text>Спасибо! Книга добавлена в каталог</Text>
       </Div>
-      <Div style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
-        <Button size='l'>Добавить еще одну</Button>
+      <Div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <Button size='l' onClick={action}>Добавить еще одну</Button>
         <Button appearance='overlay' size='l'>Поделиться</Button>
       </Div>
     </Div>
