@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import { vkBlueColor } from '../../constants/utils';
-import { deleteBookFX } from '../../api/server/books/books';
+import { setStatusActiveModal } from '../../store/activeModal';
 
 import { Icon28DeleteOutline } from '@vkontakte/icons';
 import { IconButton } from '@vkontakte/vkui';
-import { setStatusActiveModal } from '../../store/activeModal';
+import { deleteBookFX } from '../../api/server/books/books';
 
 type Props = {
   bookId: string
@@ -11,13 +12,13 @@ type Props = {
 
 export default function DeleteBook({ bookId }: Props) {
 
-  const handleDeleteBook = async () => {
-    // deleteBookFX(bookId);
+  const handleClick = async () => {
     setStatusActiveModal("deleteBook");
+    // deleteBookFX(bookId);
   };
 
   return (
-    <IconButton onClick={handleDeleteBook} className='delete-book-btn'>
+    <IconButton onClick={handleClick} className='delete-book-btn'>
       <Icon28DeleteOutline fill={vkBlueColor} />
     </IconButton>
   )

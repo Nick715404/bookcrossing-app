@@ -1,6 +1,6 @@
-import { createHashRouter } from "@vkontakte/vk-mini-apps-router";
+import { RouteWithoutRoot, createHashRouter } from "@vkontakte/vk-mini-apps-router";
 
-export const appRouter = createHashRouter([
+const routes: RouteWithoutRoot[] = [
   {
     path: '/',
     panel: 'catalog-panel',
@@ -28,7 +28,9 @@ export const appRouter = createHashRouter([
   },
   {
     path: '/genre/:id',
-    panel: 'single-genre-panel',
+    panel: 'genre-panel',
     view: 'panel',
   },
-]);
+]
+
+export const appRouter = createHashRouter(routes);

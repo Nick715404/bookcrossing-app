@@ -1,4 +1,4 @@
-import { IDataState } from "../interfaces/interface";
+import { IBook, IDataState } from "../interfaces/interface";
 
 export const qualityOptions = [
   {
@@ -60,12 +60,13 @@ export const segmentControlsOption = [
 
 export const vkBlueColor = '3F8AE0';
 
-// export const statusBook = (
-//   /*<SplitLayout modal={modal} style={{padding: 0, margin: 0}}>*/
-//   /*<SimpleCell  onClick={() => setActiveModal('statusDescription')}>*/
-//   <CellButton onClick={() => setStatusActiveModal('statusDescription')} style={{ padding: 0, margin: 0 }}>
-//     Состояние
-//   </CellButton>
-//   /*</SimpleCell>*/
-//   //  </SplitLayout>
-// )
+export const initialStateSelectedBook: IBook = {
+  id: "",
+  categoryTitle: "",
+  author: "",
+  owner: "",
+  isbn: "",
+  title: "",
+  state: "",
+  description: "",
+}

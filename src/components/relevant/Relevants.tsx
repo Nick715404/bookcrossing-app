@@ -4,7 +4,7 @@ import { $books } from "../../store/books";
 import Book from "../book/Book"
 import ToFav from "../toFav/toFav";
 import ToChat from "../toChat/toChat";
-import EmptyPlate from "../epmty-plate/EmptyPlate";
+import EmptyPlate from "../empty-plate/EmptyPlate";
 
 import { useUnit } from "effector-react";
 import { Header } from "@vkontakte/vkui"

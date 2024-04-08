@@ -8,7 +8,7 @@ import React from "react"
 import { Icon28BookOutline } from '@vkontakte/icons'
 // import { FindBooksOnShelfFX } from "../../api/server/shelf/shelf"
 // import { $user } from "../../store/user"
-import EmptyPlate from "../epmty-plate/EmptyPlate"
+import EmptyPlate from "../empty-plate/EmptyPlate"
 import { vkBlueColor } from "../../constants/utils"
 
 function ShelfBooksList() {

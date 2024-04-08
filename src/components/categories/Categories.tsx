@@ -20,8 +20,8 @@ export default function Categories({ }: Props) {
   }, [])
 
   const handleClick = (title: string, id: string) => {
-    navigator.push(`/genre/${id}`);
-    categoriesBooksFX(title, books);
+    navigator.push(`/genre/${title}`);
+    categoriesBooksFX({ category: title, books });
   }
 
   return (

@@ -1,30 +1,70 @@
 .modalPage {
     display: flex;
     flex-direction: column;
-    //justify-content: center;
-    //align-items: center;
+
+    .bookImg {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .vkuiGroup__inner {
+            width: 100%;
+        }
+
+        .book-img {
+            width: 100% !important;
+            height: 230px !important;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+    }
+
+    .nameBook {
+        font-size: 21px;
+        margin-bottom: 4px;
+        line-height: 1.15;
+    }
+
+    .bookAuthor {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .bookCategory {
+        font-size: 16px;
+        line-height: 1.15;
+        margin-bottom: 4px;
+    }
+
+    .bookIsbn {
+        color: #818c99;
+        font-size: 13px;
+    }
+
+    .bookText {
+        font-size: 16px;
+        margin-bottom: 4px;
+        position: relative;
+    }
+
+    .bookInfo {
+        width: 100px !important;
+    }
+
 }
 
-.bookImg {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 .groupBookInformation {
     margin-top: 16px;
-}
-
-.nameBook {
-    font-size: 21;
 }
 
 .buttonBlock {
     display: flex;
     justify-content: center;
     margin-top: 30px;
-   // padding-bottom: 50px;
+    // padding-bottom: 50px;
 }
 
 .gallery {
