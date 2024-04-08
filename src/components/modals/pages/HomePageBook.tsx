@@ -6,6 +6,7 @@ import { CellButton, Div, Group, Panel, PanelHeader, PanelHeaderBack, Image, Tex
 import { $user } from "../../../store/user"
 import { useEffect, useState } from "react"
 import { getBookImage } from "../../../api/server/images/image"
+import { getCurentBookFX } from "../../../api/server/books/books"
 
 type Props = {
     id: string,
@@ -14,6 +15,7 @@ type Props = {
 const HomePageBook = ({ id }: Props) => {
     const [book, user] = useUnit([$selectedBook, $user]);
     const [path, setPath] = useState<string>('');
+    const [getBook, setBook] = useState(null); 
     const loading = 'Загрузка, пожалуйста подождите';
 
     useEffect(() => {
@@ -24,6 +26,23 @@ const HomePageBook = ({ id }: Props) => {
         }
         getFiles();
     }, []);
+
+    useEffect(() => {
+        // const data = getCurentBookFX(book?id)
+        // setBook(data)
+
+        const getCurentBook = async () => {
+            try {
+                const data = book ? await getCurentBookFX(book.id) : undefined;
+                setBook(data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        getCurentBook();
+    }, []);
+
 
     const headerBefore = (
         <PanelHeaderBack label="Назад" onClick={() => window.history.back()} />

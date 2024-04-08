@@ -1,13 +1,13 @@
 import { ModalRoot, SplitLayout } from "@vkontakte/vkui";
-import { $statusActiveModal, setStatusActiveModal } from "../store/activeModal";
+import { $statusActiveModal, setStatusActiveModal } from "../../store/activeModal";
 import { useUnit } from "effector-react";
-import Modal from "../components/modals/Modal";
-import ModalImgBook from "../components/modals/modalImgbook/ModalImgBook";
-import ModalBookStatusDescription from "../components/modals/ModalStatus/ModalStatus";
-import { IInitAppEntities } from "../interfaces/interface";
-import TranscriptIsbnModal from "../components/modals/transcriptISBNModal/TranscriptIsbnModal";
-import DeleteBook from "../components/delete-book/DeleteBook";
-import ModalAcceptDelete from "../components/modals/ModalAcceptDelete/ModalAcceptDelete";
+import Modal from "../../components/modals/Modal";
+import ModalImgBook from "../../components/modals/modalImgbook/ModalImgBook";
+import ModalBookStatusDescription from "../../components/modals/ModalStatus/ModalStatus";
+import { IInitAppEntities } from "../../interfaces/interface";
+import TranscriptIsbnModal from "../../components/modals/transcriptISBNModal/TranscriptIsbnModal";
+import DeleteBook from "../../components/delete-book/DeleteBook";
+import ModalAcceptDelete from "../../components/modals/ModalAcceptDelete/ModalAcceptDelete";
 
 
 const InitAppModals = ({ children }: IInitAppEntities) => {

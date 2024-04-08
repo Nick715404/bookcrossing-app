@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { FindBooksOnShelfFX } from "../api/server/shelf/shelf";
+import { FindBooksOnShelfFX } from "../../api/server/shelf/shelf";
 import { useUnit } from "effector-react";
-import { $user } from "../store/user";
-import { $booksOnShelf } from "../store/shelf";
+import { $user } from "../../store/user";
+import { $booksOnShelf } from "../../store/shelf";
 
 type Props = {
   children: React.ReactNode

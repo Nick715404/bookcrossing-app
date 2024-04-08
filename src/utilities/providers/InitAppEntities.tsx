@@ -1,9 +1,9 @@
-// - Перенести сюда получение каталога, получение юзера
-import { IInitAppEntities } from "../interfaces/interface";
+import { IInitAppEntities } from "../../interfaces/interface";
 import UserProvider from "./UserProvider";
 import ShelfProvider from "./ShelfProvider";
 import FavouritesProvider from "./FavouritesProvider";
 import BooksProvider from "./BooksProvider";
+import InitCategories from "./InitCategories";
 
 const InitAppEntities = ({ children }: IInitAppEntities) => {
     return (
@@ -12,7 +12,9 @@ const InitAppEntities = ({ children }: IInitAppEntities) => {
                 <ShelfProvider>
                     <FavouritesProvider>
                         <BooksProvider>
-                            {children}
+                            <InitCategories>
+                                {children}
+                            </InitCategories>
                         </BooksProvider>
                     </FavouritesProvider>
                 </ShelfProvider>

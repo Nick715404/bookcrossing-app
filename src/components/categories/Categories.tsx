@@ -15,10 +15,6 @@ export default function Categories({ }: Props) {
   const [categories, books] = useUnit([$categories, $books]);
   const navigator = useRouteNavigator();
 
-  useEffect((): any => {
-    getAllCategoriesFX();
-  }, [])
-
   const handleClick = (title: string, id: string) => {
     navigator.push(`/genre/${title}`);
     categoriesBooksFX({ category: title, books });

@@ -28,7 +28,7 @@ export interface IBook {
   state: string,
   description?: string | null,
   imageId?: string,
-  favourite: string | null
+  favourite?: any;
 }
 
 export interface IExtendedBook extends IBook {

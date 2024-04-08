@@ -10,35 +10,21 @@ import { useUnit } from "effector-react";
 import { Header } from "@vkontakte/vkui"
 import { Icon28AllCategoriesOutline } from '@vkontakte/icons';
 import { vkBlueColor } from "../../constants/utils";
+import CatalogBookList from "../CatalogBookList/CatalogBookList";
+import { useState } from "react";
+import { LOADING_STATUS } from "../../constants/loadingStatus";
 
 export default function Relevants() {
 
-  const books = useUnit($books);
+  const [errors, setErrors] = useState();
+  const [status, setStatus] = useState(LOADING_STATUS.IDLE);
 
   return (
     <>
       <Header mode="primary" style={{ paddingBottom: '12px' }}>
         <span style={{ fontSize: '18px' }}>Новые</span>
       </Header>
-      {books.length > 0
-        ?
-        books.map((book: IBook) => (
-          <Book
-            key={book.id}
-            book={book}
-            afterIcon={<ToFav bookId={book.id} isFav={book.favourite} />}
-            beforeIcon={<ToChat />}
-          />
-        )).reverse()
-        :
-        <EmptyPlate
-          icon={<Icon28AllCategoriesOutline fill={vkBlueColor} width={56} height={56} />}
-          title="Здесь будут отображаться | все книги приложения"
-          text="Добавьте свою книгу и она отобразится в каталоге"
-          label="Создать книгу"
-          location="create"
-        />
-      }
+      <CatalogBookList />
     </>
   )
 }

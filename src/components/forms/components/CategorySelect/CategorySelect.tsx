@@ -13,10 +13,6 @@ function CategorySelect({ value, onChange }: Props) {
 
   const categories = useUnit($categories);
 
-  useEffect(() => {
-    getAllCategoriesFX();
-  }, []);
-
   const createOptions = useMemo(() => {
     const options = categories.map(category => ({
       value: category.title,

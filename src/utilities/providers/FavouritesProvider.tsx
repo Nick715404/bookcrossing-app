@@ -1,7 +1,7 @@
 import { useUnit } from "effector-react";
 import { useEffect } from "react"
-import { $user } from "../store/user";
-import { GetFavFromUser } from "../api/server/favorites/favorites";
+import { $user } from "../../store/user";
+import { GetFavFromUser } from "../../api/server/favorites/favorites";
 
 type Props = {
   children: React.ReactNode

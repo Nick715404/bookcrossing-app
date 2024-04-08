@@ -1,5 +1,5 @@
 import { vkBlueColor } from '../../constants/utils';
-import { BookInFavIcon, PutBookToFavFX } from '../../api/server/favorites/favorites';
+import { PutBookToFavFX } from '../../api/server/favorites/favorites';
 import { $user } from '../../store/user';
 
 import { useUnit } from 'effector-react';
@@ -9,12 +9,12 @@ import { useState } from 'react';
 
 type Props = {
   bookId: string
-  isFav: string | null
-  inFav?: boolean
+  isFav: string
+  inFav?: string
 }
 
 export default function ToFav({ bookId, isFav, inFav }: Props) {
-  const [fav, setFav] = useState<boolean>();
+
   const user = useUnit($user);
 
   const handleBookMove = async (e: any) => {
@@ -25,8 +25,10 @@ export default function ToFav({ bookId, isFav, inFav }: Props) {
 
   return (
     <IconButton onClick={handleBookMove} className='to-shelf-btn'>
-      {isFav !== null ? <Icon28BookmarkCheckOutline fill={vkBlueColor} />
-        : <Icon28BookmarkOutline fill={vkBlueColor} />}
+      {isFav === '' || null ?
+        <Icon28BookmarkCheckOutline fill={vkBlueColor} />
+        : <Icon28BookmarkOutline fill={vkBlueColor} />
+      }
     </IconButton>
   )
 }

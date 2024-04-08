@@ -1,13 +1,13 @@
+import Search from '../../components/search/Search';
+import Categories from '../../components/categories/Categories';
+import Relevants from '../../components/relevant/Relevants';
+
 import {
 	Panel,
 	PanelHeader,
 	Group,
-	View,
+	IconButton,
 } from '@vkontakte/vkui';
-
-import Search from '../../components/search/Search';
-import Categories from '../../components/categories/Categories';
-import Relevants from '../../components/relevant/Relevants';
 
 
 type Props = {
@@ -17,10 +17,8 @@ type Props = {
 export default function Catalog({ id }: Props) {
 	return (
 		<Panel id={id}>
-			<PanelHeader separator={false}>
-				Буккроссинг
-			</PanelHeader>
-			<Group separator='hide'>
+			<PanelHeader separator={false}>Буккроссинг</PanelHeader>
+			<Group>
 				<Search onPanel />
 				<Categories />
 				<Relevants />
