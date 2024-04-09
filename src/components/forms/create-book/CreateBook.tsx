@@ -1,21 +1,14 @@
 import { $user } from "../../../store/user";
 import { IDataState, } from "../../../interfaces/interface";
 import { initialState } from "../../../constants/utils";
-import CompleteForm from "../complete-form/CompleteForm";
-import { setStatusActiveModal } from "../../../store/activeModal";
 import { handleCreateBook, handleFormValidation } from "../../../utilities/forms/create-book.utils";
 
-import ImageInput from "../components/CustomFileInput/ImageInput";
-import CategorySelect from "../components/CategorySelect/CategorySelect";
-import CustomInput from "../components/CustomInput/CustomInput";
-import CustomTextarea from "../components/CustomTextarea/CustomTextarea";
-import QualitySelect from "../components/QualitySelect/QualitySelect";
-import CustomButton from "../../custom-button/CustomButton";
+import CreateBookForm from "./CreateBookForm";
+import CompleteForm from "../complete-form/CompleteForm";
 
 import { useUnit } from "effector-react";
 import React, { useCallback, useMemo, useState } from "react";
-import { Icon24Info } from "@vkontakte/icons";
-import { FormItem, Checkbox, Text, CellButton, Div, Group } from "@vkontakte/vkui";
+
 
 const CreateBook: React.FC = () => {
   const [formData, setFormData] = useState<IDataState>(initialState);
@@ -29,15 +22,6 @@ const CreateBook: React.FC = () => {
   const [done, setDone] = useState<boolean>(false);
 
   const user = useUnit($user);
-
-  const IsbnInfo = useMemo(() => (
-    <Div className="modalPage">
-      <Text>ISBN</Text>
-      <CellButton onClick={() => setStatusActiveModal('transcriptISBN')}>
-        <Icon24Info />
-      </CellButton>
-    </Div>
-  ), []);
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, field: keyof IDataState) => {
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
@@ -87,71 +71,16 @@ const CreateBook: React.FC = () => {
         ?
         <CompleteForm action={() => setDone(false)} />
         :
-        <Group>
-          <form onSubmit={handleSubmit}>
-            <ImageInput go={go.start} bookId={go.bookId} />
-            <CustomInput
-              id="bookTitle"
-              placeholder="Мастер и Маргарита"
-              name="bookTitle"
-              value={formData.title}
-              onChange={(e) => handleChangeValue(e, 'title')}
-              type="text"
-              top="Название"
-              htmlFor="bookTitle"
-              isRequired
-            />
-            <CustomInput
-              id="bookAuthor"
-              placeholder="М. А. Булгаков"
-              name="bookAuthor"
-              value={formData.author}
-              onChange={(e) => handleChangeValue(e, 'author')}
-              type="text"
-              top={formErrors.author ? formErrors.author : 'Автор'}
-              htmlFor="bookAuthor"
-              isRequired
-              status={formErrors.author ? 'error' : 'default'}
-            />
-            <QualitySelect
-              value={formData.state}
-              onChange={(e) => handleChangeValue(e, 'state')}
-            />
-            <CategorySelect
-              value={formData.categoryTitle}
-              onChange={(e: any) => handleChangeValue(e, 'categoryTitle')}
-            />
-            <CustomInput
-              id="bookIsbn"
-              placeholder="Введите ISBN книги"
-              name="bookIsbn"
-              value={withoutISBN ? '' : formData.isbn}
-              disabled={withoutISBN ? true : false}
-              onChange={(e) => handleChangeValue(e, 'isbn')}
-              type="text"
-              top="ISBN"
-              htmlFor="bookIsbn"
-              isRequired={withoutISBN ? false : true}
-            />
-            <FormItem htmlFor="bookCheckbox">
-              <Checkbox onClick={() => setWithoutISBN(!withoutISBN)} id="bookCheckbox">ISBN отсутствует</Checkbox>
-            </FormItem>
-            <CustomTextarea
-              value={formData.description}
-              onChange={(e: any) => handleChangeValue(e, 'description')}
-            />
-            <FormItem>
-              <CustomButton
-                type='submit'
-                text="Сохранить"
-                size="l"
-                isStretched
-                isLoading={isLoading}
-              />
-            </FormItem>
-            <>{IsbnInfo}</>
-          </form>
-        </Group>
+        <CreateBookForm
+          formData={formData}
+          formErrors={formErrors}
+          go={go}
+          handleChangeValue={handleChangeValue}
+          handleSubmit={handleSubmit}
+          isLoading={isLoading}
+          setWithoutISBN={() => setWithoutISBN(!withoutISBN)}
+          withoutISBN={withoutISBN}
+        />
       }
     </>
   );
