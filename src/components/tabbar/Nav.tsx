@@ -1,6 +1,10 @@
 import { useRouteNavigator, useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 import { Tabbar, TabbarItem } from "@vkontakte/vkui"
-import { Icon24UserCircleOutline, Icon24ServicesOutline, Icon24AddSquareOutline, Icon24HomeHeartOutline, Icon24HomeOutline } from '@vkontakte/icons';
+import {
+  Icon24UserCircleOutline,
+  Icon24AddSquareOutline,
+  Icon24HomeOutline
+} from '@vkontakte/icons';
 
 export default function Nav() {
 
@@ -8,7 +12,7 @@ export default function Nav() {
   const { panel: activePanel } = useActiveVkuiLocation();
 
   return (
-    <Tabbar style={{ paddingTop: '5px' }}>
+    <Tabbar>
       <TabbarItem
         selected={activePanel === 'profile-panel'}
         text='Профиль'

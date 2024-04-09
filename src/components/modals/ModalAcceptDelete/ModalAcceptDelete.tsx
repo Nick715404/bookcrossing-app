@@ -1,15 +1,14 @@
 import { setStatusActiveModal } from "../../../store/activeModal"
 import { IPassIdToModalPage } from "../../../interfaces/interface"
 
-
 import { $currentBookId } from "../../../store/modalBook"
 import { deleteBookFX } from "../../../api/server/books/books"
+
 import { Icon56DeleteOutline } from '@vkontakte/icons';
 import { useUnit } from "effector-react"
 import { Button, ButtonGroup, Div, ModalCard } from "@vkontakte/vkui"
 
 export default function ModalAcceptDeleteV2({ id, changeActiveModal }: IPassIdToModalPage) {
-
   const bookId = useUnit($currentBookId);
 
   const handleDelete = () => {
@@ -47,6 +46,5 @@ export default function ModalAcceptDeleteV2({ id, changeActiveModal }: IPassIdTo
         </ButtonGroup>
       }
     />
-
   )
 }

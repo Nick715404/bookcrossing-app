@@ -1,21 +1,22 @@
-import { Icon28CheckCircleDeviceOutline, Icon28CheckCircleOutline } from "@vkontakte/icons";
-import { Button, Div} from "@vkontakte/vkui"
+import { Icon28CheckCircleOutline } from "@vkontakte/icons";
+import { Button, Snackbar } from "@vkontakte/vkui";
 
-const Snackbar = () => {
-    return (
-        
-        <Div style={{display: "grid", padding: 32, gap: 32}}>
-            {/*<Snackbar
-                before={<Icon28CheckCircleOutline />}
-                after={
-                    <Button mode="link" appearance="accent" size="s">
-                        Отмепнить
-                    </Button>
-                }>
-                    Книга удалена из избраных
-            </Snackbar>*/}
-        </Div>
-    )
+interface IProps {
+    onClose: () => void
 }
 
-export default Snackbar;
+export default function SnackbarCustom({ onClose }: IProps) {
+    return (
+        <Snackbar
+            before={<Icon28CheckCircleOutline fill="var(--vkui--color_icon_positive)" />}
+            after={
+                <Button mode="link" appearance="accent" size="s">
+                    Поделиться
+                </Button>
+            }
+            onClose={onClose}
+        >
+            Ссылка скопирована
+        </Snackbar>
+    )
+}

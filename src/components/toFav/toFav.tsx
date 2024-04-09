@@ -30,7 +30,6 @@ export default function ToFav({ bookId, isFav, inFav }: Props) {
         <Icon28BookmarkCheckOutline fill={vkBlueColor} />
         : <Icon28BookmarkOutline fill={vkBlueColor} />
       }
-      {active && <Icon28BookmarkCheckOutline fill={vkBlueColor} />}
     </IconButton>
   )
 }
