@@ -2,7 +2,6 @@ import ToChat from "../toChat/toChat";
 
 import { IBook } from "../../interfaces/interface";
 import { selectBookFX } from "../../store/modalBook";
-import { setStatusActiveModal } from "../../store/activeModal";
 
 import {
   Div,
@@ -28,9 +27,7 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
   const navigator = useRouteNavigator();
   const { panel: activePanel } = useActiveVkuiLocation();
   const [path, setPath] = useState<string>('');
-  const status = useUnit($status);
 
-  const loading = status === 'loading'
   const success = status === 'success'
   const error = status === 'error'
 
@@ -45,50 +42,44 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
 
   const image = (
     <Image
-      style={{ marginBottom: '0', marginTop: '0' }}
-      className="book-img"
       size={96}
       borderRadius="m"
-      src={'http://localhost:3100/' + path} />
+      className="book-img"
+      src={'http://localhost:3100/' + path}
+      style={{ marginBottom: '0', marginTop: '0' }}
+    />
   )
 
   const handleChooseBook = () => {
     selectBookFX(book)
-    setStatusActiveModal('modal');
-    navigator.push('/pageBook')
+    navigator.push('/book');
   }
 
-  if (loading) return (<LoadingBook />);
-
   return (
-    <>
-      {success &&
-        <SplitLayout>
-          <Div className="book" id={book.id}>
-            <SimpleCell
-              className="book-wrapper"
-              before={image}
-              selected={activePanel === 'book-panel'}
-              onClick={handleChooseBook}
-            >
-              <Text className="book-title" weight="1">
-                {book.title}
-              </Text>
-              <Text className="book-author book-info">
-                {book.author ? book.author : 'Автор не найден'}
-              </Text>
-              <Text className="book-quality book-info">
-                {book.state ? book.state : "не найдено"}
-              </Text>
-              <Text className="book-genre book-info">
-                {book.categoryTitle ? book.categoryTitle : 'Нет жанра'}
-              </Text>
-            </SimpleCell>
-          </Div >
-          <>{afterIcon}</>
-          <>{beforeIcon}</>
-        </SplitLayout >}
-      {error && <Text>Oops!</Text>}
-    </>
+    <SplitLayout>
+      <Div className="book" id={book.id}>
+        <SimpleCell
+          className="book-wrapper"
+          before={image}
+          selected={activePanel === 'book-panel'}
+          onClick={handleChooseBook}
+        >
+          <Text className="book-title" weight="1">
+            {book.title}
+          </Text>
+          <Text className="book-author book-info">
+            {book.author ? book.author : 'Автор не найден'}
+          </Text>
+          <Text className="book-quality book-info">
+            {book.state ? book.state : "не найдено"}
+          </Text>
+          <Text className="book-genre book-info">
+            {book.categoryTitle ? book.categoryTitle : 'Нет жанра'}
+          </Text>
+        </SimpleCell>
+      </Div >
+      <>{afterIcon}</>
+      <>{beforeIcon}</>
+    </SplitLayout >
   )
 }

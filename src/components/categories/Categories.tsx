@@ -26,7 +26,8 @@ export default function Categories({ }: Props) {
         <span style={{ fontSize: '18px' }}>Категории</span>
       </Header>
       <CardScroll size='s'>
-        <Card className="card">
+
+        <Card className="card" onClick={() => navigator.push('/category/all')}>
           <div className="card__wrapper">
             <div className="card__icon">
               <Icon28MoreHorizontal style={{ color: '#2688EB' }} />
@@ -36,6 +37,7 @@ export default function Categories({ }: Props) {
             </div>
           </div>
         </Card>
+
         {categories && categories.map(category => (
           <Card
             className="card"
@@ -52,7 +54,8 @@ export default function Categories({ }: Props) {
             </div>
           </Card>
         ))}
-      </CardScroll>
+
+      </CardScroll >
     </>
   )
 }

@@ -17,8 +17,13 @@ const routes: RouteWithoutRoot[] = [
     view: 'panel',
   },
   {
-    path: '/pageBook',
+    path: '/book',
     panel: 'book-panel',
+    view: 'panel',
+  },
+  {
+    path: '/category/all',
+    panel: 'category-panel-all',
     view: 'panel',
   },
 ]

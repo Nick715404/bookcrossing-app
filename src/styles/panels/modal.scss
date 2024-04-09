@@ -50,7 +50,13 @@
     }
 
     .bookInfo {
-        width: 100px !important;
+        width: 45px !important;
+
+        .vkuiSimpleCell__content {
+            display: flex;
+            align-items: center;
+            justify-content: center !important;
+        }
     }
 
 }

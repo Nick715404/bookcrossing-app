@@ -9,9 +9,9 @@ function BooksOnShelf() {
   const user = useUnit($user);
 
   return (
-    <Group>
+    <>
       {user && <ShelfBooksList />}
-    </Group>
+    </>
   )
 }
 

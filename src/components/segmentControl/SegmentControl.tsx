@@ -11,18 +11,16 @@ type Props = {
 
 const SegmentedControlCustom = ({ position, setPosition }: Props) => {
     return (
-        <Group separator='hide'>
-            <Div>
-                <SegmentedControl
-                    className='segmentControl'
-                    size='m'
-                    name='myBookAndFavorites'
-                    value={position}
-                    onChange={(value) => setPosition(value)}
-                    options={segmentControlsOption}
-                />
-            </Div>
-        </Group>
+        <Div>
+            <SegmentedControl
+                className='segmentControl'
+                size='m'
+                name='myBookAndFavorites'
+                value={position}
+                onChange={(value) => setPosition(value)}
+                options={segmentControlsOption}
+            />
+        </Div>
     )
 }
 

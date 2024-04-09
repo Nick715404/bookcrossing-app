@@ -2,7 +2,7 @@ import Nav from "../components/tabbar/Nav";
 import Catalog from "../panels/catalog/Catalog";
 import Profile from "../panels/profile/Profile";
 import Create from "../panels/create/Create";
-import Genre from "../panels/categories/Genre";
+import Categories from "../panels/categories/Categories";
 import SearchPanel from "../panels/search/Search";
 import { useActiveVkuiLocation, useGetPanelForView } from "@vkontakte/vk-mini-apps-router";
 import HomePageBook from "../components/modals/pages/HomePageBook";
@@ -22,7 +22,7 @@ const Router = () => {
 				<Catalog id='catalog-panel' />
 				<Profile id='profile-panel' />
 				<Create id='create-panel' />
-				<Genre id='genre-panel' />
+				<Categories id='category-panel-all' />
 				<SearchPanel id="search-panel" />
 				<HomePageBook id='book-panel' />
 			</View>

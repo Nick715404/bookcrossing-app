@@ -82,76 +82,78 @@ const CreateBook: React.FC = () => {
   }, [formData, user]);
 
   return (
-    <Group>
+    <>
       {done
         ?
         <CompleteForm action={() => setDone(false)} />
         :
-        <form onSubmit={handleSubmit}>
-          <ImageInput go={go.start} bookId={go.bookId} />
-          <CustomInput
-            id="bookTitle"
-            placeholder="Мастер и Маргарита"
-            name="bookTitle"
-            value={formData.title}
-            onChange={(e) => handleChangeValue(e, 'title')}
-            type="text"
-            top="Название"
-            htmlFor="bookTitle"
-            isRequired
-          />
-          <CustomInput
-            id="bookAuthor"
-            placeholder="М. А. Булгаков"
-            name="bookAuthor"
-            value={formData.author}
-            onChange={(e) => handleChangeValue(e, 'author')}
-            type="text"
-            top={formErrors.author ? formErrors.author : 'Автор'}
-            htmlFor="bookAuthor"
-            isRequired
-            status={formErrors.author ? 'error' : 'default'}
-          />
-          <QualitySelect
-            value={formData.state}
-            onChange={(e) => handleChangeValue(e, 'state')}
-          />
-          <CategorySelect
-            value={formData.categoryTitle}
-            onChange={(e: any) => handleChangeValue(e, 'categoryTitle')}
-          />
-          <CustomInput
-            id="bookIsbn"
-            placeholder="Введите ISBN книги"
-            name="bookIsbn"
-            value={withoutISBN ? '' : formData.isbn}
-            disabled={withoutISBN ? true : false}
-            onChange={(e) => handleChangeValue(e, 'isbn')}
-            type="text"
-            top="ISBN"
-            htmlFor="bookIsbn"
-            isRequired={withoutISBN ? false : true}
-          />
-          <FormItem htmlFor="bookCheckbox">
-            <Checkbox onClick={() => setWithoutISBN(!withoutISBN)} id="bookCheckbox">ISBN отсутствует</Checkbox>
-          </FormItem>
-          <CustomTextarea
-            value={formData.description}
-            onChange={(e: any) => handleChangeValue(e, 'description')}
-          />
-          <FormItem>
-            <CustomButton
-              type='submit'
-              text="Сохранить"
-              size="l"
-              isStretched
-              isLoading={isLoading}
+        <Group>
+          <form onSubmit={handleSubmit}>
+            <ImageInput go={go.start} bookId={go.bookId} />
+            <CustomInput
+              id="bookTitle"
+              placeholder="Мастер и Маргарита"
+              name="bookTitle"
+              value={formData.title}
+              onChange={(e) => handleChangeValue(e, 'title')}
+              type="text"
+              top="Название"
+              htmlFor="bookTitle"
+              isRequired
             />
-          </FormItem>
-          <>{IsbnInfo}</>
-        </form>
+            <CustomInput
+              id="bookAuthor"
+              placeholder="М. А. Булгаков"
+              name="bookAuthor"
+              value={formData.author}
+              onChange={(e) => handleChangeValue(e, 'author')}
+              type="text"
+              top={formErrors.author ? formErrors.author : 'Автор'}
+              htmlFor="bookAuthor"
+              isRequired
+              status={formErrors.author ? 'error' : 'default'}
+            />
+            <QualitySelect
+              value={formData.state}
+              onChange={(e) => handleChangeValue(e, 'state')}
+            />
+            <CategorySelect
+              value={formData.categoryTitle}
+              onChange={(e: any) => handleChangeValue(e, 'categoryTitle')}
+            />
+            <CustomInput
+              id="bookIsbn"
+              placeholder="Введите ISBN книги"
+              name="bookIsbn"
+              value={withoutISBN ? '' : formData.isbn}
+              disabled={withoutISBN ? true : false}
+              onChange={(e) => handleChangeValue(e, 'isbn')}
+              type="text"
+              top="ISBN"
+              htmlFor="bookIsbn"
+              isRequired={withoutISBN ? false : true}
+            />
+            <FormItem htmlFor="bookCheckbox">
+              <Checkbox onClick={() => setWithoutISBN(!withoutISBN)} id="bookCheckbox">ISBN отсутствует</Checkbox>
+            </FormItem>
+            <CustomTextarea
+              value={formData.description}
+              onChange={(e: any) => handleChangeValue(e, 'description')}
+            />
+            <FormItem>
+              <CustomButton
+                type='submit'
+                text="Сохранить"
+                size="l"
+                isStretched
+                isLoading={isLoading}
+              />
+            </FormItem>
+            <>{IsbnInfo}</>
+          </form>
+        </Group>
       }
-    </Group>
+    </>
   );
 };
 

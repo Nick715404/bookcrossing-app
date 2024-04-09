@@ -20,10 +20,12 @@ type Props = {
 export default function Catalog({ id }: Props) {
 	return (
 		<Panel id={id}>
-			<PanelHeader separator={false}>Буккроссинг</PanelHeader>
+			<PanelHeader>Буккроссинг</PanelHeader>
 			<Group>
 				<Search onPanel />
 				<Categories />
+			</Group>
+			<Group>
 				<Relevants />
 			</Group>
 		</Panel>

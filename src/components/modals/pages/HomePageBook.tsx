@@ -1,36 +1,38 @@
 import { $selectedBook } from "../../../store/modalBook"
 import { setStatusActiveModal } from "../../../store/activeModal"
-import { Icon24Info } from "@vkontakte/icons"
-import { useUnit } from "effector-react"
-import { CellButton, Div, Group, Panel, PanelHeader, PanelHeaderBack, Image, Text, Separator } from "@vkontakte/vkui"
 import { $user } from "../../../store/user"
-import { useEffect, useState } from "react"
 import { getBookImage } from "../../../api/server/images/image"
 import { getCurentBookFX } from "../../../api/server/books/books"
 
+import ToFav from "../../toFav/toFav"
+
+import { useEffect, useState } from "react"
+import { Icon24Info } from "@vkontakte/icons"
+import { useUnit } from "effector-react"
+import {
+    CellButton,
+    Div,
+    Group,
+    Panel,
+    PanelHeader,
+    PanelHeaderBack,
+    Image,
+    Text,
+    Separator,
+    Button
+} from "@vkontakte/vkui"
+
 type Props = {
-    id: string,
+    id: string
 }
 
 const HomePageBook = ({ id }: Props) => {
     const [book, user] = useUnit([$selectedBook, $user]);
     const [path, setPath] = useState<string>('');
-    const [getBook, setBook] = useState(null); 
+    const [getBook, setBook] = useState(null);
     const loading = 'Загрузка, пожалуйста подождите';
 
     useEffect(() => {
-        async function getFiles() {
-            const images = await getBookImage(book.id);
-            if (!images) return
-            setPath(images ? images.path : '');
-        }
-        getFiles();
-    }, []);
-
-    useEffect(() => {
-        // const data = getCurentBookFX(book?id)
-        // setBook(data)
-
         const getCurentBook = async () => {
             try {
                 const data = book ? await getCurentBookFX(book.id) : undefined;
@@ -39,7 +41,12 @@ const HomePageBook = ({ id }: Props) => {
                 console.log(error);
             }
         }
-
+        async function getFiles() {
+            const images = await getBookImage(book.id);
+            if (!images) return
+            setPath(images ? images.path : '');
+        }
+        getFiles();
         getCurentBook();
     }, []);
 
@@ -60,33 +67,41 @@ const HomePageBook = ({ id }: Props) => {
                             src={'http://localhost:3100/' + path}
                         />
                     </Group>
-                    <Text weight="1" className="nameBook">
-                        {book.title ? book.title : loading}
-                    </Text>
+                    <Div className='book-top-row'>
+                        <Text weight="1" className="nameBook">
+                            {book.title ? book.title : 'Нет названия'}
+                        </Text>
+                        <Div className="book-top-row__btn">
+                            <ToFav bookId={book.id} isFav={book.favourite} />
+                        </Div>
+                    </Div>
                     <Text weight="3" className="bookAuthor">
-                        {book.author ? book.author : loading}
+                        {book.author ? book.author : 'Нет автора'}
                     </Text>
                     <Text weight="3" className="bookCategory">
-                        Категория: {book.categoryTitle ? book.categoryTitle : loading}
+                        Категория: {book.categoryTitle ? book.categoryTitle : 'Нет категории'}
                     </Text>
                     <Text weight="3" className="bookIsbn">
-                        ISBN: {book.isbn ? book.isbn : loading}
+                        ISBN: {book.isbn ? book.isbn : 'Нет isbn'}
                     </Text>
                     <Separator style={{ padding: '20px 0px' }} />
-                    <Group className="info" style={{display: 'flex'}}>
+                    <Div style={{ display: 'flex', alignItems: 'center', padding: '0' }}>
                         <Text className="bookText">
-                            Состояние: {book.state ? book.state : loading}
+                            Состояние: {book.state ? book.state : 'Не указано состояние'}
                         </Text>
-                        <CellButton className="bookInfo" onClick={() => setStatusActiveModal('statusDescription')} style={{ padding: 0, margin: 0 }}>
-                            <Icon24Info />
+                        <CellButton className="bookInfo" style={{ padding: 0, margin: '0 0 10px 0' }}>
+                            <Icon24Info onClick={() => setStatusActiveModal('statusDescription')} />
                         </CellButton>
-                    </Group>
+                    </Div>
                     <Text className="bookText">
-                        Коментарий пользователя: {book.description ? book.description : loading}
+                        Коментарий пользователя: {book.description ? book.description : 'Нет комментария'}
                     </Text>
                     <Text className="bookText">
-                        Книга живет в городе: {user && user.city}
+                        Книга живет в городе: {user.city ? user.city : 'Город не распознан'}
                     </Text>
+                </Div>
+                <Div style={{ marginTop: '40px' }}>
+                    <Button size="l" stretched>Написать владельцу</Button>
                 </Div>
             </Group>
         </Panel >

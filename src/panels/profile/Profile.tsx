@@ -2,6 +2,7 @@ import User from '../../components/user/User';
 import SegmentedControlCustom from '../../components/segmentControl/SegmentControl';
 import BooksOnShelf from '../../components/books-on-shelf/BooksOnShelf';
 import FavoritesBooks from '../../components/books-in-favorites/FavoritesBooks';
+
 import { useState } from 'react';
 import { Group, Panel, PanelHeader } from '@vkontakte/vkui';
 
@@ -15,14 +16,12 @@ export default function Profile({ id }: Props) {
 
   return (
     <Panel id={id}>
-      <PanelHeader separator={false}>
-        Буккроссинг
-      </PanelHeader>
+      <PanelHeader>Буккроссинг</PanelHeader>
       <User />
-
-      <SegmentedControlCustom position={position} setPosition={setPosition} />
-
-      {position === 'shelf' ? <BooksOnShelf /> : <FavoritesBooks />}
+      <Group>
+        <SegmentedControlCustom position={position} setPosition={setPosition} />
+        {position === 'shelf' ? <BooksOnShelf /> : <FavoritesBooks />}
+      </Group>
 
     </Panel>
   )
