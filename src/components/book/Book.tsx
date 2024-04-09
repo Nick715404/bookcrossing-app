@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 import { getBookImage } from "../../api/server/images/image";
 import { useUnit } from "effector-react";
 import { $status } from "../../store/books";
-import LoadingBook from "../LoadingBook/LoadingBook";
 
 type Props = {
   book: IBook

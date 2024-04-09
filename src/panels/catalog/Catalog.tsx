@@ -7,10 +7,9 @@ import {
 	PanelHeader,
 	Group,
 	IconButton,
+	Div,
 } from '@vkontakte/vkui';
-import LoadingBook from '../../components/LoadingBook/LoadingBook';
-import { useUnit } from 'effector-react';
-import { $status } from '../../store/books';
+import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 
 type Props = {
@@ -18,6 +17,12 @@ type Props = {
 }
 
 export default function Catalog({ id }: Props) {
+	const navigator = useRouteNavigator();
+	const { panel: activePanel } = useActiveVkuiLocation();
+
+	const handelMenu = () => {
+		navigator.push('/main')
+	}
 	return (
 		<Panel id={id}>
 			<PanelHeader>Буккроссинг</PanelHeader>
