@@ -1,6 +1,7 @@
 import SortedBookList from "../../components/sortedBookList/SortedBookList"
 import Search from "../../components/search/Search"
 import { Group, Header, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui"
+import CategoriesList from "../../components/CategoriesList/CategoriesList"
 
 type Props = {
   id: string
@@ -14,10 +15,12 @@ export default function Categories({ id }: Props) {
 
   return (
     <Panel id={id}>
-      <PanelHeader before={beforeHeader} separator={false}>
+      <PanelHeader before={beforeHeader}>
         Буккроссинг
       </PanelHeader>
-      All Categories
+      <Group>
+        <CategoriesList />
+      </Group>
     </Panel>
   )
 }
