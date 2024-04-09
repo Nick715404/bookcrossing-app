@@ -5,6 +5,7 @@ import { ICreateBook } from "../../../interfaces/interface";
 export const getAllBooksFX = createEffect(async () => {
   try {
     const { data } = await api.get('/book/all');
+    console.log(data);
     return data;
   }
   catch (error) {

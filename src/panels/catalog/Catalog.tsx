@@ -1,3 +1,7 @@
+import Search from '../../components/search/Search';
+import Categories from '../../components/categories/Categories';
+import Relevants from '../../components/relevant/Relevants';
+
 import {
 	Panel,
 	PanelHeader,
@@ -5,10 +9,6 @@ import {
 	IconButton,
 	Div,
 } from '@vkontakte/vkui';
-
-import Search from '../../components/search/Search';
-import Categories from '../../components/categories/Categories';
-import Relevants from '../../components/relevant/Relevants';
 import { Icon24MenuOutline } from '@vkontakte/icons';
 import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
@@ -47,12 +47,8 @@ export default function Catalog({ id }: Props) {
 				separator='hide'
 			>
 				<Categories />
-			</Group>
-
-			<Group separator='hide'>
 				<Relevants />
 			</Group>
-
 		</Panel>
 	)
 }

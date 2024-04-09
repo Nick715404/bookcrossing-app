@@ -25,9 +25,3 @@ export const PutBookToFavFX = createEffect(async ({ bookId, userId }: { bookId: 
     console.log(error);
   }
 });
-
-export const BookInFavIcon = createEffect(async (str: string) => {
-  if (str !== null || '') {
-    return true;
-  }
-});

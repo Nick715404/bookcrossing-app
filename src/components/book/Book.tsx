@@ -21,8 +21,6 @@ type Props = {
   beforeIcon: React.ReactNode | null
 }
 
-// - Поменять список выводящихся полей
-
 export default function Book({ book, afterIcon, beforeIcon }: Props) {
   const navigator = useRouteNavigator();
   const { panel: activePanel } = useActiveVkuiLocation();
@@ -32,6 +30,7 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
   useEffect(() => {
     async function getFiles() {
       const images = await getBookImage(book.id);
+      if (!images) return;
       setPath(images.path);
     }
     getFiles();
