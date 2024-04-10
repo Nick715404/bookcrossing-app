@@ -1,20 +1,16 @@
-import ToChat from "../toChat/toChat";
-
+import { getBookImage } from "../../api/server/images/image";
 import { IBook } from "../../interfaces/interface";
 import { selectBookFX } from "../../store/modalBook";
 
+import { useActiveVkuiLocation, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { useEffect, useState } from "react";
 import {
   Div,
   SimpleCell,
   Image,
   Text,
   SplitLayout,
-} from "@vkontakte/vkui"
-import { useActiveVkuiLocation, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { useEffect, useState } from "react";
-import { getBookImage } from "../../api/server/images/image";
-import { useUnit } from "effector-react";
-import { $status } from "../../store/books";
+} from "@vkontakte/vkui";
 
 type Props = {
   book: IBook
@@ -27,12 +23,13 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
   const { panel: activePanel } = useActiveVkuiLocation();
   const [path, setPath] = useState<string>('');
 
+  async function getFiles() {
+    const images = await getBookImage(book.id);
+    if (!images) return;
+    setPath(images.path);
+  }
+
   useEffect(() => {
-    async function getFiles() {
-      const images = await getBookImage(book.id);
-      if (!images) return;
-      setPath(images.path);
-    }
     getFiles();
   }, []);
 

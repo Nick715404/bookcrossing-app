@@ -98,3 +98,8 @@ export interface IShelfInfo {
     userId: string
   }
 }
+
+export interface BookStoreState {
+  category: string;
+  books: IBook[];
+}

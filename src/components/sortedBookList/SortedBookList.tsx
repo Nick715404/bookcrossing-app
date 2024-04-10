@@ -4,24 +4,24 @@ import { $sortedBooks } from "../../store/books";
 import Book from "../book/Book";
 
 import { useUnit } from "effector-react";
-import { Div, Group, Header, Text } from "@vkontakte/vkui";
+import { Div, Header, Text } from "@vkontakte/vkui";
 
 
 export default function SortedBookList() {
-  const books = useUnit($sortedBooks);
+  const data: any = useUnit($sortedBooks);
 
   return (
-    <Group style={{ paddingTop: '30px' }}>
-      <Header style={{ marginBottom: '12px' }}>Жанр</Header>
-      {books.length > 0 ? (
-        books.map((book: IBook) => (
+    <>
+      <Header mode="primary" style={{ marginBottom: '12px', fontSize: '20px' }}>{data.category}</Header>
+      {data.books.length > 0 ? (
+        data.books.map((book: IBook) => (
           <Book key={book.id} afterIcon beforeIcon book={book} />
         ))
       ) : (
         <Div>
-          <Text style={{ textAlign: 'center' }}>Ой, кажется что-то пошло не так!</Text>
+          <Text style={{ textAlign: 'center', marginBottom: '30px' }}>Ой, кажется что-то пошло не так!</Text>
         </Div>
       )}
-    </Group>
+    </>
   );
 }
