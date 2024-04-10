@@ -9,10 +9,7 @@ import { searchHandlerFX } from "../utilities/search/search.utils";
 export const $searchBooks = createStore<IBook[]>([]);
 export const $books = createStore<IBook[]>([]);
 export const $status = createStore<string>(LOADING_STATUS.IDLE);
-export const $sortedBooks = createStore<BookStoreState>({
-  category: '',
-  books: []
-});
+export const $sortedBooks = createStore<IBook[]>([]);
 
 $status.on(ChangeLoadingStatusFX.doneData, (_, action) => action);
 
@@ -23,11 +20,6 @@ $books.on(deleteBookFX.doneData, (book, newBook) => {
   return [...newBooks]
 });
 
-$sortedBooks.on(sortBookFx, (_, action) => {
-  return {
-    category: action.category,
-    books: action.books
-  };
-});
+$sortedBooks.on(sortBookFx.doneData, (_, action) => [...action]);
 
 $searchBooks.on(searchHandlerFX.doneData, (_, action) => [...action]);

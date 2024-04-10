@@ -1,7 +1,7 @@
 import { Group, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui'
 import React from 'react'
 import Search from '../../components/search/Search'
-import SortedBookList from '../../components/sortedBookList/SortedBookList'
+import SortedBookList from "../../components/sortedBookList/SortedBookList"
 import { SearchBooksList } from '../../components/SearchBooksList/SearchBooksList'
 
 type Props = {

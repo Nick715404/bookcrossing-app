@@ -1,20 +1,17 @@
 import { IBook } from "../../interfaces/interface";
 import { $sortedBooks } from "../../store/books";
-
-import Book from "../book/Book";
-
 import { useUnit } from "effector-react";
 import { Div, Header, Text } from "@vkontakte/vkui";
-
+import Book from "../book/Book";
 
 export default function SortedBookList() {
-  const data: any = useUnit($sortedBooks);
+  const books: IBook[] = useUnit($sortedBooks);
 
   return (
     <>
-      <Header mode="primary" style={{ marginBottom: '12px', fontSize: '20px' }}>{data.category}</Header>
-      {data.books.length > 0 ? (
-        data.books.map((book: IBook) => (
+      <Header mode="primary" style={{ marginBottom: '12px', fontSize: '20px' }}>Поиск по жанру: ...</Header>
+      {books.length ? (
+        books.map((book: IBook) => (
           <Book key={book.id} afterIcon beforeIcon book={book} />
         ))
       ) : (
