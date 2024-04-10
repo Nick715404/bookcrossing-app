@@ -2,6 +2,7 @@ import { createEffect } from "effector";
 import { api } from "../../axios/axiosInstance";
 import { ICreateUser, IUser, IVkUser } from "../../../interfaces/interface";
 import { fetchVkUser } from "../../vk-bridge/user";
+import { vkUser } from "../../../constants/vk-users";
 
 export const CreateUserFX = createEffect(async (user: ICreateUser) => {
   try {
@@ -15,7 +16,8 @@ export const CreateUserFX = createEffect(async (user: ICreateUser) => {
 
 export const GetCurrentUserFX = createEffect(async () => {
   try {
-    const user = await fetchVkUser();
+    // const user = await fetchVkUser();
+    const user = vkUser;
     console.log(user);
 
     if (!user) {
