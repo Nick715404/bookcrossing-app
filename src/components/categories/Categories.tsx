@@ -6,6 +6,7 @@ import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { useUnit } from "effector-react";
 import { Icon24BrainOutline, Icon28MoreHorizontal } from '@vkontakte/icons';
 import { CardScroll, Card, Group, Header, Text, Div } from "@vkontakte/vkui"
+import { iconMap } from "../../dictionary/dictionary";
 
 type Props = {}
 
@@ -17,6 +18,8 @@ export default function Categories({ }: Props) {
   const handleClick = (title: string, id: string) => {
     categoriesBooksFX({ category: title, books });
   }
+
+  const firstNineCategories = categories.filter((_, index) => index < 9);
 
   return (
     <>
@@ -38,6 +41,7 @@ export default function Categories({ }: Props) {
           </div>
         </Card>
 
+        {/* {firstNineCategories && firstNineCategories.map(category =>( */}
         {categories && categories.map(category => (
           <Card
             className="card"
@@ -46,7 +50,8 @@ export default function Categories({ }: Props) {
           >
             <div className="card__wrapper">
               <div className="card__icon">
-                <Icon24BrainOutline style={{ color: '#2688EB' }} />
+                {/* <Icon24BrainOutline style={{ color: '#2688EB' }} /> */}
+                {category.imageName && iconMap[category.imageName]}
               </div>
               <div className="card__content">
                 <span className="card__text">{category.title}</span>
