@@ -1,5 +1,5 @@
 import { $categories } from "../../store/categories";
-import { categoriesBooksFX } from "../../utilities/category/category.utils";
+import { sortBookFx } from "../../utilities/category/category.utils";
 import { $books } from "../../store/books";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
@@ -15,8 +15,9 @@ export default function Categories({ }: Props) {
   const [categories, books] = useUnit([$categories, $books]);
   const navigator = useRouteNavigator();
 
-  const handleClick = (title: string, id: string) => {
-    categoriesBooksFX({ category: title, books });
+  const handleClick = (category: string, id: string) => {
+    sortBookFx({ category, books });
+    navigator.push(`/category/${id}}`)
   }
 
   const firstNineCategories = categories.filter((_, index) => index < 9);

@@ -12,7 +12,6 @@ import ReactDOM from "react-dom";
 // Init VK  Mini App
 bridge.send("VKWebAppInit");
 
-
 ReactDOM.render(
   <ConfigProvider>
     <AdaptivityProvider>

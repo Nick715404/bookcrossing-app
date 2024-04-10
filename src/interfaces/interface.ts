@@ -85,6 +85,7 @@ export interface IServerUser {
   city: string
   name: string
   surName: string
+  avatar?: string
 }
 
 export interface IInitAppEntities {
@@ -97,4 +98,32 @@ export interface IShelfInfo {
     id: string
     userId: string
   }
+}
+
+export interface BookStoreState {
+  category: string;
+  books: IBook[];
+}
+
+export interface IVkUser {
+  id: number;
+  bdate_visibility?: number;
+  city: {
+    id?: number,
+    title: string
+  },
+  country?: {
+    id: number;
+    title: string;
+  },
+  timezone?: number;
+  photo_200?: string;
+  photo_max_orig?: string;
+  sex?: number;
+  photo_100?: string;
+  photo_base?: string;
+  first_name: string;
+  last_name: string;
+  can_access_closed?: boolean;
+  is_closed?: boolean
 }

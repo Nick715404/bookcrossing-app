@@ -1,13 +1,17 @@
 import { createEffect, createEvent, createStore } from "effector";
-import { IBook } from "../interfaces/interface";
+import { BookStoreState, IBook } from "../interfaces/interface";
 import { createBookFX, deleteBookFX, getAllBooksFX } from "../api/server/books/books";
-import { categoriesBooksFX } from "../utilities/category/category.utils";
+import { sortBookFx } from "../utilities/category/category.utils";
 import { LOADING_STATUS } from "../constants/loadingStatus";
 import { ChangeLoadingStatusFX } from "../utilities/loading/loading.utils";
+import { searchHandlerFX } from "../utilities/search/search.utils";
 
+export const $searchBooks = createStore<IBook[]>([]);
 export const $books = createStore<IBook[]>([]);
-export const $sortedBooks = createStore<IBook[]>([]);
 export const $status = createStore<string>(LOADING_STATUS.IDLE);
+export const $sortedBooks = createStore<IBook[]>([]);
+
+$status.on(ChangeLoadingStatusFX.doneData, (_, action) => action);
 
 $books.on(getAllBooksFX.doneData, (_, newBooks) => newBooks);
 $books.on(createBookFX.doneData, (books, newBooks) => [...books, newBooks]);
@@ -16,4 +20,6 @@ $books.on(deleteBookFX.doneData, (book, newBook) => {
   return [...newBooks]
 });
 
-$status.on(ChangeLoadingStatusFX.doneData, (_, action) => action);
+$sortedBooks.on(sortBookFx.doneData, (_, action) => [...action]);
+
+$searchBooks.on(searchHandlerFX.doneData, (_, action) => [...action]);

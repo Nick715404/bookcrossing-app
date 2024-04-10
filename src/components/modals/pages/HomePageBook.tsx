@@ -33,21 +33,18 @@ const HomePageBook = ({ id }: Props) => {
     const loading = 'Загрузка, пожалуйста подождите';
 
     useEffect(() => {
-        const getCurentBook = async () => {
+        const getCurrentBook = async () => {
             try {
                 const data = book ? await getCurentBookFX(book.id) : undefined;
                 setBook(data);
+                const images = await getBookImage(book.id);
+                if (!images) return
+                setPath(images ? images.path : '');
             } catch (error) {
                 console.log(error);
             }
         }
-        async function getFiles() {
-            const images = await getBookImage(book.id);
-            if (!images) return
-            setPath(images ? images.path : '');
-        }
-        getFiles();
-        getCurentBook();
+        getCurrentBook();
     }, []);
 
 

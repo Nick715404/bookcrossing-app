@@ -12,4 +12,6 @@ export const $user = createStore<IServerUser>({
 
 $user.on(CreateUserFX.doneData, (_, newUser) => newUser);
 
-$user.on(GetCurrentUserFX.doneData, (_, newUser) => newUser);
+$user.on(GetCurrentUserFX.doneData, (_, newUser) => {
+  return newUser
+});

@@ -12,12 +12,10 @@ export const getAllBooksFX = createEffect(async () => {
       ChangeLoadingStatusFX(LOADING_STATUS.SUCCESS);
       return data;
     }
-
-
   }
   catch (error) {
     ChangeLoadingStatusFX(LOADING_STATUS.ERROR);
-    console.log(`${error}, что то с бэком`)
+    throw new Error('Error to fetch all books!');
   }
 });
 

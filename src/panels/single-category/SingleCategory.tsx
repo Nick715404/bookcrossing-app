@@ -1,14 +1,12 @@
-import { Group, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui'
-import React from 'react'
-import Search from '../../components/search/Search'
+import { Group, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui"
 import SortedBookList from "../../components/sortedBookList/SortedBookList"
-import { SearchBooksList } from '../../components/SearchBooksList/SearchBooksList'
+
 
 type Props = {
   id: string
 }
 
-export default function SearchPanel({ id }: Props) {
+export default function SingleCategory({ id }: Props) {
 
   const headerBefore = (
     <PanelHeaderBack label="Назад" onClick={() => window.history.back()} />
@@ -18,8 +16,7 @@ export default function SearchPanel({ id }: Props) {
     <Panel id={id}>
       <PanelHeader before={headerBefore}>Буккроссинг</PanelHeader>
       <Group>
-        <Search />
-        <SearchBooksList />
+        <SortedBookList />
       </Group>
     </Panel>
   )

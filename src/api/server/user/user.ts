@@ -1,6 +1,8 @@
 import { createEffect } from "effector";
 import { api } from "../../axios/axiosInstance";
-import { ICreateUser, IUser } from "../../../interfaces/interface";
+import { ICreateUser, IUser, IVkUser } from "../../../interfaces/interface";
+import { fetchVkUser } from "../../vk-bridge/user";
+import { vkUser } from "../../../constants/vk-users";
 
 export const CreateUserFX = createEffect(async (user: ICreateUser) => {
   try {
@@ -12,18 +14,32 @@ export const CreateUserFX = createEffect(async (user: ICreateUser) => {
   }
 });
 
-export const GetCurrentUserFX = createEffect(async (user: IUser) => {
+export const GetCurrentUserFX = createEffect(async () => {
   try {
-    const { data } = await api.get(`/user/find/${user.vkid}`);
+    // const user = await fetchVkUser();
+    const user = vkUser;
+    console.log(user);
 
-    if (!data) {
-      const { data } = await api.post('/user/create', user);
-      return data;
+    if (!user) {
+      return new Error('User not found!')
     }
 
-    return data;
+    const fetchedUser = await api.get(`/user/find/${user.id}`);
+
+    if (fetchedUser.data === '') {
+      const createdUser = await api.post('/user/create', user);
+      console.log(createdUser);
+
+      if (createdUser.statusText !== "Created") {
+        return new Error("Error while creating user");
+      }
+
+      return await createdUser.data.user;
+    }
+
+    return await fetchedUser.data;
   }
   catch (error) {
-    throw error;
+    return new Error('Error with server');
   }
 });

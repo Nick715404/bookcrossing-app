@@ -4,10 +4,12 @@ import Profile from "../panels/profile/Profile";
 import Create from "../panels/create/Create";
 import Categories from "../panels/categories/Categories";
 import SearchPanel from "../panels/search/Search";
-import { useActiveVkuiLocation, useGetPanelForView } from "@vkontakte/vk-mini-apps-router";
 import HomePageBook from "../components/modals/pages/HomePageBook";
-import { Epic, View } from "@vkontakte/vkui";
 import Menu from "../panels/menu/Menu";
+import SingleCategory from "../panels/single-category/SingleCategory";
+
+import { useActiveVkuiLocation, useGetPanelForView } from "@vkontakte/vk-mini-apps-router";
+import { Epic, View } from "@vkontakte/vkui";
 
 const Router = () => {
 
@@ -24,6 +26,7 @@ const Router = () => {
 				<Profile id='profile-panel' />
 				<Create id='create-panel' />
 				<Categories id='category-panel-all' />
+				<SingleCategory id='category-panel-single' />
 				<SearchPanel id="search-panel" />
 				<HomePageBook id='book-panel' />
 				<Menu id="main-panel" />
