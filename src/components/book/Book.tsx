@@ -27,9 +27,6 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
   const { panel: activePanel } = useActiveVkuiLocation();
   const [path, setPath] = useState<string>('');
 
-  const success = status === 'success'
-  const error = status === 'error'
-
   useEffect(() => {
     async function getFiles() {
       const images = await getBookImage(book.id);
