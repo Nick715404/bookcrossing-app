@@ -11,10 +11,10 @@ const User = () => {
     const user = useUnit($user);
 
     return (
-        <Group separator='hide' style={{marginBottom: '15px'}}>
+        <Group separator='hide' style={{ marginBottom: '15px' }}>
             <Div className="userBlock">
                 <Div>
-                    <Avatar size={80} initials='ИФ' gradientColor="blue" />
+                    <Avatar src={user.avatar} size={80} initials='ИФ' gradientColor="blue" />
                 </Div>
                 <Div>
                     <Text className="nameText" weight="1">
