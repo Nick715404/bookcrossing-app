@@ -4,6 +4,9 @@ import { Card, Div, Group, Text } from "@vkontakte/vkui";
 import { Icon2416CircleOutline, Icon24BeautyOutline, Icon24BookSpreadOutline, Icon24ChefHatOutline, Icon24HealthOutline, Icon24HieroglyphCharacterOutline, Icon24HorseToyOutline} from "@vkontakte/icons";
 import React, { useState } from "react";
 import { iconMap } from "../../dictionary/dictionary";
+import { sortBookFx } from "../../utilities/category/category.utils";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { $books } from "../../store/books";
 
 interface IItem {
   id: number;
@@ -13,7 +16,7 @@ interface IItem {
 
 export default function CategoriesList() {
 
-  const categories = useUnit($categories);
+  //const categories = useUnit($categories);
 
   // const iconMap: any = {
   //   Icon24BookSpreadOutline: <Icon24BookSpreadOutline style={{color: '#2688EB'}} />,
@@ -37,12 +40,20 @@ export default function CategoriesList() {
   //       return null;
   //   }
   // }
+  
+  const [categories, books] = useUnit([$categories, $books]);
+  const navigator = useRouteNavigator();
+
+  const handleClick = (category: string, id: string) => {
+    sortBookFx({ category, books });
+    navigator.push(`/category/${id}}`)
+  }
 
   return (
     <>
-      {/* List of fetched categories */}
       {categories && categories.map(category => (
-        <Card className="card" key={category.id}>
+        <Card className="card" key={category.id}
+        onClick={() => handleClick(category.title, category.id)}>
           <Div style={{display: 'flex', alignItems: 'center', gap: 10}} >
             <Div className="card__wrapper" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <Group >
