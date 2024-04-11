@@ -42,8 +42,8 @@ export default function Categories({ }: Props) {
           </div>
         </Card>
 
-        {/* {firstNineCategories && firstNineCategories.map(category =>( */}
-        {categories && categories.map(category => (
+        {firstNineCategories && firstNineCategories.map(category =>(
+        // {categories && categories.map(category => (
           <Card
             className="card"
             key={category.id}
@@ -51,7 +51,6 @@ export default function Categories({ }: Props) {
           >
             <div className="card__wrapper">
               <div className="card__icon">
-                {/* <Icon24BrainOutline style={{ color: '#2688EB' }} /> */}
                 {category.imageName && iconMap[category.imageName]}
               </div>
               <div className="card__content">
