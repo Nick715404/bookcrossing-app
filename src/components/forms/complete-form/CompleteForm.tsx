@@ -1,4 +1,4 @@
-import { vkBlueColor } from '../../../constants/utils';
+import { vkGreyColor } from '../../../constants/utils';
 import { Icon56CheckCircleDeviceOutline } from '@vkontakte/icons';
 import { Button, Div, Header, Text } from "@vkontakte/vkui";
 
@@ -18,7 +18,7 @@ export default function CompleteForm({ action }: Props) {
 
   return (
     <Div style={styles}>
-      <Icon56CheckCircleDeviceOutline fill={vkBlueColor} />
+      <Icon56CheckCircleDeviceOutline fill={vkGreyColor} />
       <Header mode="primary">
         <span style={{ fontSize: '20px' }}>Книга сохранена!</span>
       </Header>

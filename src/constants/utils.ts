@@ -59,6 +59,7 @@ export const segmentControlsOption = [
 ]
 
 export const vkBlueColor = '3F8AE0';
+export const vkGreyColor = '99A2AD';
 
 export const initialStateSelectedBook: IBook = {
   id: "",

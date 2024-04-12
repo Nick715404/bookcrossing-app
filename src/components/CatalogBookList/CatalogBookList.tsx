@@ -1,4 +1,4 @@
-import { vkBlueColor } from "../../constants/utils";
+import { vkGreyColor } from "../../constants/utils";
 import { IBook } from "../../interfaces/interface";
 import { $books } from "../../store/books"
 
@@ -17,7 +17,7 @@ export default function CatalogBookList() {
   if (books.length === 0) {
     return (
       <EmptyPlate
-        icon={<Icon28AllCategoriesOutline fill={vkBlueColor} width={56} height={56} />}
+        icon={<Icon28AllCategoriesOutline fill={vkGreyColor} width={56} height={56} />}
         title="Здесь будут отображаться | все книги приложения"
         text="Добавьте свою книгу и она отобразится в каталоге"
         label="Создать книгу"

@@ -1,6 +1,6 @@
 import { IBook, IExtendedBook } from "../../interfaces/interface";
 import { $favBooks } from "../../store/favorites"
-import { vkBlueColor } from "../../constants/utils";
+import { vkGreyColor } from "../../constants/utils";
 
 import Book from "../book/Book";
 import ToChat from "../toChat/toChat";
@@ -28,7 +28,7 @@ export default function FavoriteBooksList() {
         )).reverse()
         :
         <EmptyPlate
-          icon={<Icon28BookmarkCheckOutline fill={vkBlueColor} width={56} height={56} />}
+          icon={<Icon28BookmarkCheckOutline fill={vkGreyColor} width={56} height={56} />}
           title="Сохраняйте книги | в понравившиеся"
           text="Здесь будут отображаться книги, которые вы отметили как понравившиеся"
           label="Перейти в каталог"
