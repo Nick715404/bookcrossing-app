@@ -5,6 +5,7 @@ import FavoritesBooks from '../../components/books-in-favorites/FavoritesBooks';
 
 import { useState } from 'react';
 import { Group, Panel, PanelHeader } from '@vkontakte/vkui';
+import CustomHeader from '../../components/header/CustomHeader';
 
 type Props = {
   id: string
@@ -16,7 +17,9 @@ export default function Profile({ id }: Props) {
 
   return (
     <Panel id={id}>
-      <PanelHeader>Буккроссинг</PanelHeader>
+      <PanelHeader>
+        <CustomHeader />
+      </PanelHeader>
       <User />
       <Group>
         <SegmentedControlCustom position={position} setPosition={setPosition} />

@@ -10,21 +10,20 @@ import {
 	Div,
 } from '@vkontakte/vkui';
 import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { Icon24MenuOutline } from '@vkontakte/icons';
+import { vkBlueColor } from '../../constants/utils';
+import CustomHeader from '../../components/header/CustomHeader';
 
 type Props = {
 	id: string
 }
 
 export default function Catalog({ id }: Props) {
-	const navigator = useRouteNavigator();
-	const { panel: activePanel } = useActiveVkuiLocation();
-
-	const handelMenu = () => {
-		navigator.push('/main')
-	}
 	return (
 		<Panel id={id}>
-			<PanelHeader>Буккроссинг</PanelHeader>
+			<PanelHeader>
+				<CustomHeader />
+			</PanelHeader>
 			<Group>
 				<Search onPanel />
 				<Categories />
