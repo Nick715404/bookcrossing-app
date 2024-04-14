@@ -5,6 +5,7 @@ import { vkBlueColor } from "../../constants/utils";
 import { useUnit } from "effector-react";
 import { $user } from "../../store/user";
 import { setStatusActiveModal } from "../../store/activeModal";
+import HeaderClose from "../../components/header/headerClose/HeaderClose";
 
 type Props = {
     id: string,
@@ -16,25 +17,14 @@ const Menu = ({id}: Props) => {
 
     const user = useUnit($user);
 
-    const handleBack = () => {
-        // navigator.push('/')
-        window.history.back();
-    }
-
+    const handelUserAgreement = () => {
+		navigator.push('/userAgreement')
+	}
     
     return (
         <Panel id={id}>
             <PanelHeader>
-                <Div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', padding: 0}}>
-                    <Group separator='hide'>
-                        <IconButton onClick={handleBack}>
-                            <Icon24CancelOutline fill={vkBlueColor} style={{paddingLeft: 0}} />
-                        </IconButton>
-                    </Group>
-                    <Group style={{justifyContent: 'center'}}>
-                        Буккроссинг
-                    </Group>
-                </Div>
+                <HeaderClose />
             </PanelHeader>
 
             <Group>
@@ -62,7 +52,7 @@ const Menu = ({id}: Props) => {
                     </Text>
                 </CellButton>
 
-                <CellButton style={{color: 'black'}}>
+                <CellButton style={{color: 'black'}} onClick={handelUserAgreement}>
                     <Text>
                         Пользовательское соглашение
                     </Text>

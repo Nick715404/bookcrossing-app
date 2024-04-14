@@ -41,6 +41,11 @@ const routes: RouteWithoutRoot[] = [
     panel: 'search-panel',
     view: 'panel'
   },
+  {
+    path: '/userAgreement',
+    panel: 'user-agreement',
+    view: 'panel'
+  }
 ]
 
 export const appRouter = createHashRouter(routes);
