@@ -22,6 +22,7 @@ import {
     Button
 } from "@vkontakte/vkui"
 import { useParams } from "@vkontakte/vk-mini-apps-router"
+import HomePageBookServer from "./HomePageBookServer"
 
 type Props = {
     id: string
@@ -33,45 +34,34 @@ const HomePageBook = ({ id }: Props) => {
     const [getBook, setBook] = useState(null);
     const params = useParams();
     const paramsId = params?.id;
-    
 
     useEffect(() => {
-        const getCurrentBook = async () => {
-            try {
-                const data = book ? await getCurentBookFX(book.id) : undefined;
-                setBook(data);
-                const images = await getBookImage(book.id);
-                if (!images) return
-                setPath(images ? images.path : '');
-            } catch (error) {
-                console.log(error);
+        console.log(paramsId)
+        if (book.id === '') {
+            const getCurrentBook = async () => {
+                try {
+                    const data = await getCurentBookFX(paramsId);
+                    setBook(data);
+                    const images = await getBookImage(paramsId);
+                    if (!images) return
+                    setPath(images ? images.path : '');
+                } catch (error) {
+                    console.log(error);
+                }
             }
+            getCurrentBook();
         }
-        getCurrentBook();
     }, []);
-
-    // useEffect(() => {
-    //     console.log(id)
-    //     if (!book) {
-    //         const getCurrentBook = async () => {
-    //             try {
-    //                 const data = await getCurentBookFX(paramsId);
-    //                 setBook(data);
-    //                 const images = await getBookImage(paramsId);
-    //                 if (!images) return
-    //                 setPath(images ? images.path : '');
-    //             } catch (error) {
-    //                 console.log(error);
-    //             }
-    //         }
-    //         getCurrentBook();
-    //         console.log(getBook)
-    //     }
-    // }, [id]);
 
     const headerBefore = (
         <PanelHeaderBack label="Назад" onClick={() => window.history.back()} />
     )
+
+    if (getBook) {
+        return (
+            <HomePageBookServer id={id} />
+        )
+    }
 
     return (
         <Panel id={id}>
