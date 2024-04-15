@@ -2,19 +2,19 @@ import { IBook, IDataState } from "../interfaces/interface";
 
 export const qualityOptions = [
   {
-    value: 'Отличное состояние',
+    value: 'Отличное',
     label: 'Отличное'
   },
   {
-    value: 'Хорошее состояние',
+    value: 'Хорошее',
     label: 'Хорошее'
   },
   {
-    value: 'Примелимое состояние',
+    value: 'Примелимое',
     label: 'Приемлимое'
   },
   {
-    value: 'Плохое состояние',
+    value: 'Плохое',
     label: 'Плохое'
   },
 ];
