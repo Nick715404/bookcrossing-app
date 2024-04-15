@@ -33,8 +33,6 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
     getFiles();
   }, []);
 
-  console.log(book);
-
   const image = (
     <Image
       size={96}
