@@ -2,19 +2,19 @@ import { IBook, IDataState } from "../interfaces/interface";
 
 export const qualityOptions = [
   {
-    value: 'Отличное состояние',
+    value: 'Отличное',
     label: 'Отличное'
   },
   {
-    value: 'Хорошее состояние',
+    value: 'Хорошее',
     label: 'Хорошее'
   },
   {
-    value: 'Примелимое состояние',
+    value: 'Примелимое',
     label: 'Приемлимое'
   },
   {
-    value: 'Плохое состояние',
+    value: 'Плохое',
     label: 'Плохое'
   },
 ];
@@ -59,6 +59,7 @@ export const segmentControlsOption = [
 ]
 
 export const vkBlueColor = '3F8AE0';
+export const vkGreyColor = '99A2AD';
 
 export const initialStateSelectedBook: IBook = {
   id: "",

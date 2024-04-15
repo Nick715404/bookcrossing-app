@@ -9,7 +9,7 @@ import { Icon28BookOutline } from '@vkontakte/icons'
 // import { FindBooksOnShelfFX } from "../../api/server/shelf/shelf"
 // import { $user } from "../../store/user"
 import EmptyPlate from "../empty-plate/EmptyPlate"
-import { vkBlueColor } from "../../constants/utils"
+import { vkGreyColor } from "../../constants/utils"
 
 function ShelfBooksList() {
 
@@ -29,7 +29,7 @@ function ShelfBooksList() {
         }).reverse()
         :
         <EmptyPlate
-          icon={<Icon28BookOutline fill={vkBlueColor} width={56} height={56} />}
+          icon={<Icon28BookOutline fill={vkGreyColor} width={56} height={56} />}
           label='Добавить книгу'
           title='Добавляйте книги | и обменивайтесь ими'
           text='Здесь будут отображаться книги, которые вы добавите в каталог'
