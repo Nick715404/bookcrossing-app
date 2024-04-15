@@ -39,7 +39,7 @@ export const deleteBookFX = createEffect(async (id: string) => {
   }
 })
 
-export const getCurentBookFX = createEffect(async (id: string) => {
+export const getCurentBookFX = createEffect(async (id: string | undefined) => {
   try {
     const { data } = await api.get(`/book/${id}`);
     return data

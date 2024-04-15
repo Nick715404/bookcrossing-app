@@ -22,7 +22,7 @@ export async function handleImageUpload(selectedImages: any, bookId: string) {
   }
 }
 
-export const getBookImage = async (bookId: string) => {
+export const getBookImage = async (bookId: string | undefined) => {
   try {
 
     if (!bookId) return;

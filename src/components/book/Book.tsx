@@ -45,7 +45,7 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
 
   const handleChooseBook = () => {
     selectBookFX(book)
-    navigator.push('/book');
+    navigator.push(`/book/${book.id}`);
   }
 
   return (

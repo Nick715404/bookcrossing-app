@@ -21,6 +21,7 @@ import {
     Separator,
     Button
 } from "@vkontakte/vkui"
+import { useParams } from "@vkontakte/vk-mini-apps-router"
 
 type Props = {
     id: string
@@ -30,7 +31,9 @@ const HomePageBook = ({ id }: Props) => {
     const [book, user] = useUnit([$selectedBook, $user]);
     const [path, setPath] = useState<string>('');
     const [getBook, setBook] = useState(null);
-    const loading = 'Загрузка, пожалуйста подождите';
+    const params = useParams();
+    const paramsId = params?.id;
+    
 
     useEffect(() => {
         const getCurrentBook = async () => {
@@ -47,6 +50,24 @@ const HomePageBook = ({ id }: Props) => {
         getCurrentBook();
     }, []);
 
+    useEffect(() => {
+        console.log(id)
+        if (!book) {
+            const getCurrentBook = async () => {
+                try {
+                    const data = await getCurentBookFX(paramsId);
+                    setBook(data);
+                    const images = await getBookImage(paramsId);
+                    if (!images) return
+                    setPath(images ? images.path : '');
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            getCurrentBook();
+            console.log(getBook)
+        }
+    }, [id]);
 
     const headerBefore = (
         <PanelHeaderBack label="Назад" onClick={() => window.history.back()} />
