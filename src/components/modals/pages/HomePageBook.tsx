@@ -50,24 +50,24 @@ const HomePageBook = ({ id }: Props) => {
         getCurrentBook();
     }, []);
 
-    useEffect(() => {
-        console.log(id)
-        if (!book) {
-            const getCurrentBook = async () => {
-                try {
-                    const data = await getCurentBookFX(paramsId);
-                    setBook(data);
-                    const images = await getBookImage(paramsId);
-                    if (!images) return
-                    setPath(images ? images.path : '');
-                } catch (error) {
-                    console.log(error);
-                }
-            }
-            getCurrentBook();
-            console.log(getBook)
-        }
-    }, [id]);
+    // useEffect(() => {
+    //     console.log(id)
+    //     if (!book) {
+    //         const getCurrentBook = async () => {
+    //             try {
+    //                 const data = await getCurentBookFX(paramsId);
+    //                 setBook(data);
+    //                 const images = await getBookImage(paramsId);
+    //                 if (!images) return
+    //                 setPath(images ? images.path : '');
+    //             } catch (error) {
+    //                 console.log(error);
+    //             }
+    //         }
+    //         getCurrentBook();
+    //         console.log(getBook)
+    //     }
+    // }, [id]);
 
     const headerBefore = (
         <PanelHeaderBack label="Назад" onClick={() => window.history.back()} />
