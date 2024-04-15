@@ -8,15 +8,15 @@ const HeaderClose = () => {
         // navigator.push('/')
         window.history.back();
     }
-    
+
     return (
-        <Div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', padding: 0}}>
+        <Div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: 0 }}>
             <Group separator='hide'>
-                <IconButton onClick={handleBack}>
-                    <Icon24CancelOutline fill={vkBlueColor} style={{paddingLeft: 0}} />
+                <IconButton onClick={handleBack} style={{ left: '-14px' }}>
+                    <Icon24CancelOutline fill={vkBlueColor} />
                 </IconButton>
             </Group>
-            <Group style={{justifyContent: 'center'}}>
+            <Group style={{ justifyContent: 'center' }}>
                 Буккроссинг
             </Group>
         </Div>
