@@ -1,10 +1,11 @@
 import { $categories } from "../../store/categories"
-import { useUnit } from "effector-react"
-import { Card, Div, Group, Text } from "@vkontakte/vkui";
 import { iconMap } from "../../dictionary/dictionary";
 import { sortBookFx } from "../../utilities/category/category.utils";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { $books } from "../../store/books";
+
+import { useUnit } from "effector-react"
+import { Card, Div, Group, Text } from "@vkontakte/vkui";
 
 interface IItem {
   id: number;

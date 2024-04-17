@@ -8,7 +8,7 @@ export const GetFavFromUser = createEffect(async (id: string) => {
     return books;
   }
   catch (error) {
-    console.log(error);
+    throw new Error('Failed to fetch favorite from user!')
   }
 });
 
@@ -22,6 +22,6 @@ export const PutBookToFavFX = createEffect(async ({ bookId, userId }: { bookId: 
     return data;
   }
   catch (error) {
-    console.log(error);
+    throw new Error('Failed to put book into shelf!');
   }
 });

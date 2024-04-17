@@ -65,10 +65,17 @@ export const initialStateSelectedBook: IBook = {
   id: "",
   categoryTitle: "",
   author: "",
-  owner: "",
+  owner: 0,
   isbn: "",
   title: "",
   state: "",
   description: "",
   favourite: ''
 }
+
+export const menuLinks = [
+  {
+    id: 1,
+    
+  },
+]

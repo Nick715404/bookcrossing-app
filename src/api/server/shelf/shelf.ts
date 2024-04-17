@@ -9,7 +9,7 @@ export const FindCurrentShelf = createEffect(async (userId: string) => {
     return shelf;
   }
   catch (error) {
-    console.log(error);
+    throw new Error('Failed to find shelf!');
   }
 });
 
@@ -21,6 +21,6 @@ export const FindBooksOnShelfFX = createEffect(async (userId: string | undefined
     return shelfBooks;
   }
   catch (error) {
-    console.log(error);
+    throw new Error('Failed to fetch books on shelf!');
   }
 });

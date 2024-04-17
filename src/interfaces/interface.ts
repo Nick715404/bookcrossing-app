@@ -22,7 +22,7 @@ export interface IBook {
   id: string
   categoryTitle?: string | null,
   author?: string | null,
-  owner?: string,
+  owner: number,
   isbn: string,
   title: string,
   state: string,

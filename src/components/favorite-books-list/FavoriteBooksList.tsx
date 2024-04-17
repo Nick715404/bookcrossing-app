@@ -23,7 +23,7 @@ export default function FavoriteBooksList() {
             key={book.id}
             book={book}
             beforeIcon={<ToFav isFav={book.favourite} bookId={book.id} />}
-            afterIcon={<ToChat />}
+            afterIcon={<ToChat vkid={book.owner} />}
           />
         )).reverse()
         :

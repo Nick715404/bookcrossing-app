@@ -38,7 +38,6 @@ export default function ImageInput({ go, bookId }: Props) {
 
   useEffect(() => {
     if (go) {
-      console.log(selectedImages);
       handleImageUpload(selectedImages, bookId);
     }
   }, [go]);

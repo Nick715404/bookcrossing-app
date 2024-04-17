@@ -13,7 +13,7 @@ import { Icon28AllCategoriesOutline } from "@vkontakte/icons";
 export default function CatalogBookList() {
 
   const books = useUnit($books);
-  
+
   if (books.length === 0) {
     return (
       <EmptyPlate
@@ -33,7 +33,7 @@ export default function CatalogBookList() {
           key={book.id}
           book={book}
           afterIcon={<ToFav bookId={book.id} isFav={book.favourite} />}
-          beforeIcon={<ToChat />}
+          beforeIcon={<ToChat vkid={book.owner} />}
         />
       )).reverse()}
     </>

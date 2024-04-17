@@ -18,7 +18,7 @@ export async function handleImageUpload(selectedImages: any, bookId: string) {
     return response;
   }
   catch (error) {
-    console.log(error);
+    throw new Error('Failed to upload image!');
   }
 }
 
@@ -31,7 +31,6 @@ export const getBookImage = async (bookId: string | undefined) => {
     return data;
   }
   catch (error) {
-    console.log(error);
-
+    throw new Error('Failed to get image from book');
   }
 }
