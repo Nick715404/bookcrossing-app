@@ -10,7 +10,7 @@ export const CreateUserFX = createEffect(async (user: ICreateUser) => {
     return data;
   }
   catch (error) {
-    console.log(error);
+    throw new Error('Failed to create user!');
   }
 });
 
@@ -28,7 +28,6 @@ export const GetCurrentUserFX = createEffect(async () => {
 
     if (fetchedUser.data === '') {
       const createdUser = await api.post('/user/create', user);
-      console.log(createdUser);
 
       if (createdUser.statusText !== "Created") {
         return new Error("Error while creating user");

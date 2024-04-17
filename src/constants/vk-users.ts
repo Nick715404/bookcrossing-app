@@ -1,7 +1,9 @@
 export const vkUser = {
   id: 123123,
-  name: 'Никита',
-  surName: 'Симонов',
-  city: 'Москва',
-  avatar: ''
+  first_name: 'Никита',
+  last_name: 'Симонов',
+  city: {
+    title: 'Челябинск'
+  },
+  photo_100: ''
 }

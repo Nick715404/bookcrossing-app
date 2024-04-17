@@ -3,10 +3,13 @@ import { setStatusActiveModal } from "../../../store/activeModal"
 import { $user } from "../../../store/user"
 import { getBookImage } from "../../../api/server/images/image"
 import { getCurentBookFX } from "../../../api/server/books/books"
+import { useParams } from "@vkontakte/vk-mini-apps-router"
+import { IBook } from "../../../interfaces/interface"
 
 import ToFav from "../../toFav/toFav"
+import HomePageBookServer from "./HomePageBookServer"
 
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { Icon24Info } from "@vkontakte/icons"
 import { useUnit } from "effector-react"
 import {
@@ -21,8 +24,6 @@ import {
     Separator,
     Button
 } from "@vkontakte/vkui"
-import { useParams } from "@vkontakte/vk-mini-apps-router"
-import HomePageBookServer from "./HomePageBookServer"
 
 type Props = {
     id: string
@@ -31,27 +32,27 @@ type Props = {
 const HomePageBook = ({ id }: Props) => {
     const [book, user] = useUnit([$selectedBook, $user]);
     const [path, setPath] = useState<string>('');
-    const [getBook, setBook] = useState(null);
+    const [getBook, setBook] = useState<IBook | null>(null);
     const params = useParams();
     const paramsId = params?.id;
 
-    useEffect(() => {
-        console.log(paramsId)
-        if (book.id === '') {
-            const getCurrentBook = async () => {
-                try {
-                    const data = await getCurentBookFX(paramsId);
-                    setBook(data);
-                    const images = await getBookImage(paramsId);
-                    if (!images) return
-                    setPath(images ? images.path : '');
-                } catch (error) {
-                    console.log(error);
-                }
-            }
-            getCurrentBook();
+    const getCurrentBook = useCallback(async () => {
+        try {
+            const data = await getCurentBookFX(paramsId);
+            setBook(data);
+            const images = await getBookImage(paramsId);
+            if (!images) return
+            setPath(images ? images.path : '');
+        } catch (error) {
+            throw new Error('Failed while get current book!');
         }
     }, []);
+
+    useEffect(() => {
+        if (book.id === '') {
+            getCurrentBook();
+        }
+    }, [id]);
 
     const headerBefore = (
         <PanelHeaderBack label="Назад" onClick={() => window.history.back()} />

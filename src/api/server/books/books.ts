@@ -25,7 +25,7 @@ export const createBookFX = createEffect(async (book: ICreateBook) => {
     return data;
   }
   catch (error) {
-    console.log(error);
+    throw new Error('FAiled to create book!');
   }
 });
 
@@ -35,7 +35,7 @@ export const deleteBookFX = createEffect(async (id: string) => {
     return data
   }
   catch (error) {
-    console.log(error)
+    throw new Error('Failed to delete book!');
   }
 })
 
@@ -45,6 +45,6 @@ export const getCurentBookFX = createEffect(async (id: string | undefined) => {
     return data
   }
   catch (error) {
-    console.log(error)
+    throw new Error('Failed white fetching current book!');
   }
 })

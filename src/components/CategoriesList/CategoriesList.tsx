@@ -1,46 +1,20 @@
 import { $categories } from "../../store/categories"
-import { useUnit } from "effector-react"
-import { Card, Div, Group, Text } from "@vkontakte/vkui";
-import { Icon2416CircleOutline, Icon24BeautyOutline, Icon24BookSpreadOutline, Icon24ChefHatOutline, Icon24HealthOutline, Icon24HieroglyphCharacterOutline, Icon24HorseToyOutline} from "@vkontakte/icons";
-import React, { useState } from "react";
 import { iconMap } from "../../dictionary/dictionary";
 import { sortBookFx } from "../../utilities/category/category.utils";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { $books } from "../../store/books";
 
+import { useUnit } from "effector-react"
+import { Card, Div, Group, Text } from "@vkontakte/vkui";
+
 interface IItem {
   id: number;
   title: string;
-  iconName: string; // Добавляем поле для хранения имени иконки
+  iconName: string;
 }
 
 export default function CategoriesList() {
 
-  //const categories = useUnit($categories);
-
-  // const iconMap: any = {
-  //   Icon24BookSpreadOutline: <Icon24BookSpreadOutline style={{color: '#2688EB'}} />,
-  //   Icon24HieroglyphCharacterOutline: <Icon24HieroglyphCharacterOutline style={{color: '#2688EB'}} />,
-  //   Icon24HorseToyOutline: <Icon24HorseToyOutline style={{color: '#2688EB'}} />,
-  //   Icon2416CircleOutline: <Icon2416CircleOutline style={{color: '#2688EB'}} />,
-  //   Icon24HealthOutline: <Icon24HealthOutline style={{color: '#2688EB'}} />,
-  //   Icon24BeautyOutline: <Icon24BeautyOutline style={{color: '#2688EB'}} />,
-  //   Icon24ChefHatOutline: <Icon24ChefHatOutline style={{color: '#2688EB'}} />
-  // }
-
-  // const IconComponent: React.FC<{iconName: string}> = ({iconName}) => {
-  //   switch (iconName) {
-  //     case  'Icon24BrainOutline':
-  //       return <Icon24BrainOutline style={{ color: '#2688EB' }} />;
-  //     case 'Icon24PaletteOutline':
-  //       return <Icon24PaletteOutline style={{ color: '#2688EB' }} />;
-  //     case 'Icon24EducationOutline':
-  //       return <Icon24EducationOutline style={{ color: '#2688EB' }} />;
-  //     default:
-  //       return null;
-  //   }
-  // }
-  
   const [categories, books] = useUnit([$categories, $books]);
   const navigator = useRouteNavigator();
 
@@ -53,11 +27,10 @@ export default function CategoriesList() {
     <>
       {categories && categories.map(category => (
         <Card className="card" key={category.id}
-        onClick={() => handleClick(category.title, category.id)}>
-          <Div style={{display: 'flex', alignItems: 'center', gap: 10}} >
-            <Div className="card__wrapper" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          onClick={() => handleClick(category.title, category.id)}>
+          <Div style={{ display: 'flex', alignItems: 'center', gap: 10 }} >
+            <Div className="card__wrapper" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Group >
-                {/* {category.imageName && <IconComponent iconName={category.imageName} />} */}
                 {category.imageName && iconMap[category.imageName]}
               </Group>
             </Div>

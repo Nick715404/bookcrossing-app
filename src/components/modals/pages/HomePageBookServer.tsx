@@ -36,7 +36,6 @@ const HomePageBook = ({ id }: Props) => {
   const paramsId = params?.id;
 
   useEffect(() => {
-    console.log(paramsId)
     const getCurrentBook = async () => {
       try {
         const data = await getCurentBookFX(paramsId);
@@ -101,7 +100,7 @@ const HomePageBook = ({ id }: Props) => {
           </Text>
         </Div>
         <Div style={{ marginTop: '40px' }}>
-          <Button size="l" stretched>Написать владельцу</Button>
+          <Button href={`https://vk.com/im?sel=${getBook?.owner}`} size="l" stretched>Написать владельцу</Button>
         </Div>
       </Group>
     </Panel >

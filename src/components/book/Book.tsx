@@ -3,7 +3,7 @@ import { IBook } from "../../interfaces/interface";
 import { selectBookFX } from "../../store/modalBook";
 
 import { useActiveVkuiLocation, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   Div,
   SimpleCell,
@@ -23,15 +23,15 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
   const { panel: activePanel } = useActiveVkuiLocation();
   const [path, setPath] = useState<string>('');
 
-  async function getFiles() {
+  const getFiles = useCallback(async () => {
     const images = await getBookImage(book.id);
     if (!images) return;
     setPath(images.path);
-  }
+  }, []);
 
   useEffect(() => {
     getFiles();
-  }, []);
+  }, [activePanel]);
 
   const image = (
     <Image
