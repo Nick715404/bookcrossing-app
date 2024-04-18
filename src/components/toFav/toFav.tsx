@@ -6,6 +6,7 @@ import { useUnit } from 'effector-react';
 import { Icon28BookmarkCheckOutline, Icon28BookmarkOutline } from '@vkontakte/icons';
 import { IconButton } from '@vkontakte/vkui';
 import { useState } from 'react';
+import { getCurentBookFX } from '../../api/server/books/books';
 
 type Props = {
   bookId: string
@@ -20,15 +21,21 @@ export default function ToFav({ bookId, isFav, inFav }: Props) {
   const handleBookMove = async (e: any) => {
     e.preventDefault();
     const { userId } = user;
-    await PutBookToFavFX({ bookId, userId });
-    setActive(true);
+    const response = await PutBookToFavFX({ bookId, userId });
+    if (response.favourite !== '') {
+      setActive(true);
+      // const aw = await getCurentBookFX();
+    }
   };
 
   return (
     <IconButton onClick={handleBookMove} className='to-shelf-btn'>
-      {isFav !== '' && isFav !== null ?
-        <Icon28BookmarkCheckOutline fill={vkBlueColor} />
-        : <Icon28BookmarkOutline fill={vkBlueColor} />
+      {
+        isFav !== '' && isFav !== null || active
+          ?
+          <Icon28BookmarkCheckOutline fill={vkBlueColor} />
+          :
+          <Icon28BookmarkOutline fill={vkBlueColor} />
       }
     </IconButton>
   )

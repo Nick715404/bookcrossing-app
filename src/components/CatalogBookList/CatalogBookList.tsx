@@ -19,8 +19,8 @@ export default function CatalogBookList() {
       <EmptyPlate
         icon={<Icon28AllCategoriesOutline fill={vkGreyColor} width={56} height={56} />}
         title="Здесь будут отображаться | все книги приложения"
-        text="Добавьте свою книгу и она отобразится в каталоге"
-        label="Создать книгу"
+        text="Создайте карточку книги и она отобразится в каталоге"
+        label="Добавить книгу"
         location="create"
       />
     )

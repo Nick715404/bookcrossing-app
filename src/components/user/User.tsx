@@ -18,7 +18,7 @@ const User = () => {
                 </Div>
                 <Div>
                     <Text className="nameText" weight="1">
-                        {user ? user.name : 'Загругка...'} {user ? user.surName : 'Загругка...'}
+                        {user ? user.name : 'Загругка...'} {user ? user.surName : 'Загрузка...'}
                     </Text>
                     <Text className="cityText" weight="3">
                         {user.city ? user.city : 'Загругка...'}
