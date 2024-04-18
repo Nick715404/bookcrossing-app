@@ -1,16 +1,14 @@
-import { getBookImage } from "../../api/server/images/image";
 import { IBook } from "../../interfaces/interface";
 import { selectBookFX } from "../../store/modalBook";
 
 import { useActiveVkuiLocation, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { useCallback, useEffect, useState } from "react";
 import {
   Div,
   SimpleCell,
-  Image,
   Text,
   SplitLayout,
 } from "@vkontakte/vkui";
+import { CustomImage } from "../CustomImage/CustomImage";
 
 type Props = {
   book: IBook
@@ -21,27 +19,6 @@ type Props = {
 export default function Book({ book, afterIcon, beforeIcon }: Props) {
   const navigator = useRouteNavigator();
   const { panel: activePanel } = useActiveVkuiLocation();
-  const [path, setPath] = useState<string>('');
-
-  const getFiles = useCallback(async () => {
-    const images = await getBookImage(book.id);
-    if (!images) return;
-    setPath(images.path);
-  }, []);
-
-  useEffect(() => {
-    getFiles();
-  }, [activePanel]);
-
-  const image = (
-    <Image
-      size={96}
-      borderRadius="m"
-      className="book-img"
-      src={'http://localhost:3100/' + path}
-      style={{ marginBottom: '0', marginTop: '0' }}
-    />
-  )
 
   const handleChooseBook = () => {
     selectBookFX(book)
@@ -53,7 +30,7 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
       <Div className="book" id={book.id}>
         <SimpleCell
           className="book-wrapper"
-          before={image}
+          before={<CustomImage bookId={book.id} />}
           selected={activePanel === 'book-panel'}
           onClick={handleChooseBook}
         >

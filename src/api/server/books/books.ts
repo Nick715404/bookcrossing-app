@@ -1,23 +1,28 @@
-import { createEffect } from "effector";
 import { api } from "../../axios/axiosInstance";
-import { ICreateBook } from "../../../interfaces/interface";
-import { ChangeLoadingStatusFX } from "../../../utilities/loading/loading.utils";
-import { LOADING_STATUS } from "../../../constants/loadingStatus";
+import { IBook, ICreateBook } from "../../../interfaces/interface";
+
+import { createEffect } from "effector";
 
 export const getAllBooksFX = createEffect(async () => {
   try {
-    ChangeLoadingStatusFX(LOADING_STATUS.LOADING);
     const { data } = await api.get('/book/all');
     if (data) {
-      ChangeLoadingStatusFX(LOADING_STATUS.SUCCESS);
       return data;
     }
   }
   catch (error) {
-    ChangeLoadingStatusFX(LOADING_STATUS.ERROR);
     throw new Error('Error to fetch all books!');
   }
 });
+
+export const fetchBooks = async () => {
+  try {
+    const { data } = await api.get('/book/all');
+    return data;
+  } catch (error) {
+    throw new Error('Error to fetch all books!');
+  }
+}
 
 export const createBookFX = createEffect(async (book: ICreateBook) => {
   try {
@@ -48,3 +53,12 @@ export const getCurentBookFX = createEffect(async (id: string | undefined) => {
     throw new Error('Failed white fetching current book!');
   }
 })
+
+export async function getCurrentBook(id: string | undefined): Promise<IBook> {
+  try {
+    const data: IBook = await getCurentBookFX(id);
+    return data;
+  } catch (error) {
+    throw new Error('Failed while get current book!');
+  }
+};

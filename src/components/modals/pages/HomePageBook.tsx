@@ -1,15 +1,14 @@
 import { $selectedBook } from "../../../store/modalBook"
 import { setStatusActiveModal } from "../../../store/activeModal"
 import { $user } from "../../../store/user"
-import { getBookImage } from "../../../api/server/images/image"
-import { getCurentBookFX } from "../../../api/server/books/books"
-import { useParams } from "@vkontakte/vk-mini-apps-router"
-import { IBook } from "../../../interfaces/interface"
+import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router"
 
 import ToFav from "../../toFav/toFav"
 import HomePageBookServer from "./HomePageBookServer"
 
-import { useCallback, useEffect, useState } from "react"
+import { CustomImage } from "../../CustomImage/CustomImage"
+import { useCurrentBook } from "../../../hooks/useCurrentBook"
+
 import { Icon24Info } from "@vkontakte/icons"
 import { useUnit } from "effector-react"
 import {
@@ -31,34 +30,17 @@ type Props = {
 
 const HomePageBook = ({ id }: Props) => {
     const [book, user] = useUnit([$selectedBook, $user]);
-    const [path, setPath] = useState<string>('');
-    const [getBook, setBook] = useState<IBook | null>(null);
     const params = useParams();
     const paramsId = params?.id;
+    const navigator = useRouteNavigator();
 
-    const getCurrentBook = useCallback(async () => {
-        try {
-            const data = await getCurentBookFX(paramsId);
-            setBook(data);
-            const images = await getBookImage(paramsId);
-            if (!images) return
-            setPath(images ? images.path : '');
-        } catch (error) {
-            throw new Error('Failed while get current book!');
-        }
-    }, []);
-
-    useEffect(() => {
-        if (book.id === '') {
-            getCurrentBook();
-        }
-    }, [id]);
+    const { data } = useCurrentBook({ bookId: '', paramsId: paramsId });
 
     const headerBefore = (
-        <PanelHeaderBack label="Назад" onClick={() => window.history.back()} />
+        <PanelHeaderBack label="Назад" onClick={() => navigator.push('/')} />
     )
 
-    if (getBook) {
+    if (data) {
         return (
             <HomePageBookServer id={id} />
         )
@@ -70,11 +52,7 @@ const HomePageBook = ({ id }: Props) => {
             <Group className="modalPage">
                 <Div>
                     <Group separator="hide" className="bookImg">
-                        <Image
-                            className="book-img"
-                            borderRadius="m"
-                            src={'http://localhost:3100/' + path}
-                        />
+                        <CustomImage bookId={book.id} />
                     </Group>
                     <Div className='book-top-row'>
                         <Text weight="1" className="nameBook">

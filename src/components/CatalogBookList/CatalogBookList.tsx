@@ -9,12 +9,18 @@ import Book from "../book/Book";
 
 import { useUnit } from "effector-react"
 import { Icon28AllCategoriesOutline } from "@vkontakte/icons";
+import { useQuery } from "react-query";
+import { fetchBooks } from "../../api/server/books/books";
+import { BookSkeleton } from "../Skeletons/BookSkeleton";
 
 export default function CatalogBookList() {
 
-  const books = useUnit($books);
+  const { data, isLoading, isSuccess } = useQuery({
+    queryKey: ['books', 'all'],
+    queryFn: fetchBooks
+  })
 
-  if (books.length === 0) {
+  if (isSuccess && data.length === 0) {
     return (
       <EmptyPlate
         icon={<Icon28AllCategoriesOutline fill={vkGreyColor} width={56} height={56} />}
@@ -28,14 +34,19 @@ export default function CatalogBookList() {
 
   return (
     <>
-      {books.length && books.map((book: IBook, index: number) => (
-        <Book
-          key={book.id}
-          book={book}
-          afterIcon={<ToFav bookId={book.id} isFav={book.favourite} />}
-          beforeIcon={<ToChat vkid={book.owner} />}
-        />
-      )).reverse()}
+      {
+        isLoading && <BookSkeleton />
+      }
+      {
+        isSuccess && data.map((book: IBook, index: number) => (
+          <Book
+            key={book.id}
+            book={book}
+            afterIcon={<ToFav bookId={book.id} isFav={book.favourite} />}
+            beforeIcon={<ToChat vkid={book.owner} />}
+          />
+        )).reverse()
+      }
     </>
   )
 }
