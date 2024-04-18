@@ -5,7 +5,7 @@ import { UpdateUserCityFX } from "../utilities/user/userCity";
 
 export const $user = createStore<IServerUser>({
   userId: '',
-  vkid: '',
+  vkId: 0,
   city: '',
   name: '',
   surName: '',

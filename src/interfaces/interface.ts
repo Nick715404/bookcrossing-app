@@ -81,7 +81,7 @@ export interface IUser extends ICreateUser {
 
 export interface IServerUser {
   userId: string
-  vkid: string
+  vkId: number
   city: string
   name: string
   surName: string

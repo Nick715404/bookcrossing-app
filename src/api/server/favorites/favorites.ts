@@ -25,3 +25,18 @@ export const PutBookToFavFX = createEffect(async ({ bookId, userId }: { bookId: 
     throw new Error('Failed to put book into shelf!');
   }
 });
+
+export const RemoveFromFavFX = createEffect(async ({ bookId, vkId }: { bookId: string, vkId: number }) => {
+
+  const favoritesData = {
+    bookId: bookId,
+    userId: vkId
+  }
+
+  try {
+    const { data } = await api.post('/favorites/delete', favoritesData);
+    return data;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+});

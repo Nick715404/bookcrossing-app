@@ -7,36 +7,36 @@ import { Icon28BookmarkCheckOutline, Icon28BookmarkOutline } from '@vkontakte/ic
 import { IconButton } from '@vkontakte/vkui';
 import { useState } from 'react';
 import { getCurentBookFX } from '../../api/server/books/books';
+import { $favoritesStatus, SwitchFavoritesStatus } from '../../store/favorites';
+import { ChangeArrayFX } from '../../store/books';
+import { ToFavReverse } from './toFavReverse';
 
 type Props = {
   bookId: string
   isFav: string
-  inFav?: string
 }
 
-export default function ToFav({ bookId, isFav, inFav }: Props) {
-  const [active, setActive] = useState<boolean>();
-  const user = useUnit($user);
+export default function ToFav({ bookId, isFav}: Props) {
+  const [user, status] = useUnit([$user, $favoritesStatus]);
 
   const handleBookMove = async (e: any) => {
     e.preventDefault();
     const { userId } = user;
     const response = await PutBookToFavFX({ bookId, userId });
     if (response.favourite !== '') {
-      setActive(true);
-      // const aw = await getCurentBookFX();
+      ChangeArrayFX({ id: response.id, favourite: response.favourite })
     }
   };
 
+  if (isFav !== '' && isFav !== null) {
+    return (
+      <ToFavReverse bookId={bookId} />
+    )
+  }
+
   return (
     <IconButton onClick={handleBookMove} className='to-shelf-btn'>
-      {
-        isFav !== '' && isFav !== null || active
-          ?
-          <Icon28BookmarkCheckOutline fill={vkBlueColor} />
-          :
-          <Icon28BookmarkOutline fill={vkBlueColor} />
-      }
+      <Icon28BookmarkOutline fill={vkBlueColor} />
     </IconButton>
   )
 }

@@ -28,7 +28,7 @@ export default function CatalogBookList() {
 
   return (
     <>
-      {books.length > 0 && books.map((book: IBook, index: number) => (
+      {books.length && books.map((book: IBook, index: number) => (
         <Book
           key={book.id}
           book={book}
