@@ -14,7 +14,6 @@ export default function UserProvider({ children }: Props) {
   useEffect(() => {
     const fetchData = async () => {
       const userData = await fetchVkUser();
-      delete userData.city
 
       if (!userData.city) {
         setStatusActiveModal('chooseCity');
