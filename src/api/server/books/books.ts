@@ -1,6 +1,6 @@
 import { createEffect } from "effector";
 import { api } from "../../axios/axiosInstance";
-import { ICreateBook } from "../../../interfaces/interface";
+import { IBook, ICreateBook } from "../../../interfaces/interface";
 import { ChangeLoadingStatusFX } from "../../../utilities/loading/loading.utils";
 import { LOADING_STATUS } from "../../../constants/loadingStatus";
 
@@ -25,7 +25,19 @@ export const createBookFX = createEffect(async (book: ICreateBook) => {
     return data;
   }
   catch (error) {
-    throw new Error('FAiled to create book!');
+    throw new Error('Failed to create book!');
+  }
+});
+
+export const editBookFX = createEffect(async (book: IBook) => {
+  try {
+    console.log('Book object:', book)
+    const { data } = await api.patch(`/book/edit/${book.id}`, book);
+    return data;
+  }
+  catch (error) {
+    console.log(error);
+    throw new Error('Failed to patch book!');
   }
 });
 

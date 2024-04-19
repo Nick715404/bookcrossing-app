@@ -16,8 +16,8 @@ export const CreateUserFX = createEffect(async (user: ICreateUser) => {
 
 export const GetCurrentUserFX = createEffect(async () => {
   try {
-    // const user = await fetchVkUser();
-    const user = vkUser;
+    const user = await fetchVkUser();
+    //const user = vkUser;
     console.log(user);
 
     if (!user) {

@@ -45,6 +45,11 @@ const routes: RouteWithoutRoot[] = [
     path: '/userAgreement',
     panel: 'user-agreement',
     view: 'panel'
+  },
+  {
+    path: '/editBook',
+    panel: 'edit-book',
+    view: 'editBook'
   }
 ]
 

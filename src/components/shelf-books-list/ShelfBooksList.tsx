@@ -23,7 +23,7 @@ function ShelfBooksList() {
           return (<Book
             key={book.id}
             book={book}
-            afterIcon={<EditBook />}
+            afterIcon={<EditBook bookId={book.id}/>}
             beforeIcon={<DeleteBook bookId={book.id} />}
           />)
         }).reverse()

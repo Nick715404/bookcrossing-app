@@ -7,6 +7,7 @@ import SearchPanel from "../panels/search/Search";
 import HomePageBook from "../components/modals/pages/HomePageBook";
 import Menu from "../panels/menu/Menu";
 import SingleCategory from "../panels/single-category/SingleCategory";
+import EditPanel from "../panels/edit/EditPanel";
 
 import { useActiveVkuiLocation, useGetPanelForView } from "@vkontakte/vk-mini-apps-router";
 import { Epic, View } from "@vkontakte/vkui";
@@ -31,7 +32,9 @@ const Router = () => {
 				<SearchPanel id="search-panel" />
 				<HomePageBook id='book-panel' />
 				<Menu id="main-panel" />
-				<UserAgreement id="user-agreement" />
+				<UserAgreement id="user-agreement" />	
+				<EditPanel id="edit-book" />
+
 			</View>
 		</Epic>
 	)
