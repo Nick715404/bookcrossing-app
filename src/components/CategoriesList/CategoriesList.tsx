@@ -25,21 +25,23 @@ export default function CategoriesList() {
 
   return (
     <>
-      {categories && categories.map(category => (
-        <Card className="card" key={category.id}
-          onClick={() => handleClick(category.title, category.id)}>
-          <Div style={{ display: 'flex', alignItems: 'center', gap: 10 }} >
-            <Div className="card__wrapper" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <Group >
-                {category.imageName && iconMap[category.imageName]}
+      {
+        categories && categories.map(category => (
+          <Card className="card" key={category.id}
+            onClick={() => handleClick(category.title, category.id)}>
+            <Div style={{ display: 'flex', alignItems: 'center', gap: 10 }} >
+              <Div className="card__wrapper" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Group >
+                  {category.imageName && iconMap[category.imageName]}
+                </Group>
+              </Div>
+              <Group className="card__content">
+                <Text className="card__text">{category.title}</Text>
               </Group>
             </Div>
-            <Group className="card__content">
-              <Text className="card__text">{category.title}</Text>
-            </Group>
-          </Div>
-        </Card>
-      ))}
+          </Card>
+        ))
+      }
     </>
   )
 }

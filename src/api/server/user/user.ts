@@ -14,15 +14,10 @@ export const CreateUserFX = createEffect(async (user: ICreateUser) => {
   }
 });
 
-export const GetCurrentUserFX = createEffect(async () => {
+export const GetCurrentUserFX = createEffect(async (user: IVkUser) => {
   try {
-    const user = await fetchVkUser();
-    //const user = vkUser;
-    console.log(user);
 
-    if (!user) {
-      return new Error('User not found!')
-    }
+    if (!user) return new Error('User not found!');
 
     const fetchedUser = await api.get(`/user/find/${user.id}`);
 

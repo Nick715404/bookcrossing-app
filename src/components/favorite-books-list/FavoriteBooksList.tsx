@@ -9,6 +9,7 @@ import EmptyPlate from "../empty-plate/EmptyPlate";
 
 import { useUnit } from "effector-react"
 import { Icon28BookmarkCheckOutline } from '@vkontakte/icons';
+import { ToFavReverse } from "../toFav/toFavReverse";
 
 export default function FavoriteBooksList() {
 
@@ -16,24 +17,25 @@ export default function FavoriteBooksList() {
 
   return (
     <>
-      {books.length > 0
-        ?
-        books.map((book: IBook) => (
-          <Book
-            key={book.id}
-            book={book}
-            beforeIcon={<ToFav isFav={book.favourite} bookId={book.id} />}
-            afterIcon={<ToChat vkid={book.owner} />}
+      {
+        books.length
+          ?
+          books.map((book: IBook) => (
+            <Book
+              key={book.id}
+              book={book}
+              beforeIcon={<ToFavReverse bookId={book.id} />}
+              afterIcon={<ToChat vkid={book.owner} />}
+            />
+          )).reverse()
+          :
+          <EmptyPlate
+            icon={<Icon28BookmarkCheckOutline fill={vkGreyColor} width={56} height={56} />}
+            title="Сохраняйте книги | в понравившиеся"
+            text="Здесь будут отображаться книги, которые вы отметили как понравившиеся"
+            label="Перейти в каталог"
+            location=""
           />
-        )).reverse()
-        :
-        <EmptyPlate
-          icon={<Icon28BookmarkCheckOutline fill={vkGreyColor} width={56} height={56} />}
-          title="Сохраняйте книги | в понравившиеся"
-          text="Здесь будут отображаться книги, которые вы отметили как понравившиеся"
-          label="Перейти в каталог"
-          location=""
-        />
       }
     </>
   )

@@ -7,6 +7,7 @@ import ModalAcceptDelete from "../../components/modals/ModalAcceptDelete/ModalAc
 
 import { useUnit } from "effector-react";
 import { ModalRoot, SplitLayout } from "@vkontakte/vkui";
+import { ChooseCityModal } from "../../components/modals/ChooseCityModal";
 
 
 const InitAppModals = ({ children }: IInitAppEntities) => {
@@ -23,6 +24,7 @@ const InitAppModals = ({ children }: IInitAppEntities) => {
 			<ModalBookStatusDescription id={"statusDescription"} changeActiveModal={changeActiveModal} />
 			<TranscriptIsbnModal id={"transcriptISBN"} changeActiveModal={changeActiveModal} />
 			<ModalAcceptDelete id="deleteBook" changeActiveModal={changeActiveModal} />
+			<ChooseCityModal id="chooseCity" />
 		</ModalRoot>
 	)
 

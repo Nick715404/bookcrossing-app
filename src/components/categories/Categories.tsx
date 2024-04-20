@@ -42,8 +42,7 @@ export default function Categories({ }: Props) {
           </div>
         </Card>
 
-        {firstNineCategories && firstNineCategories.map(category =>(
-        // {categories && categories.map(category => (
+        {firstNineCategories && firstNineCategories.map(category => (
           <Card
             className="card"
             key={category.id}

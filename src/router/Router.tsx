@@ -34,7 +34,6 @@ const Router = () => {
 				<Menu id="main-panel" />
 				<UserAgreement id="user-agreement" />	
 				<EditPanel id="edit-book" />
-
 			</View>
 		</Epic>
 	)
