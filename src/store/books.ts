@@ -15,14 +15,6 @@ export const $books = createStore<IBook[]>([]);
 export const $status = createStore<string>(LOADING_STATUS.IDLE);
 export const $sortedBooks = createStore<IBook[]>([]);
 
-export const PutBooksToStore = createEffect(async () => {
-  const response = await fetchBooks();
-  return response
-});
-
-$books.on(PutBooksToStore.doneData, (books, newBooks) => [...books, ...newBooks])
-
-
 export const ChangeArrayFX = createEvent<{ id: string, favourite: string }>();
 $status.on(ChangeLoadingStatusFX.doneData, (_, action) => action);
 

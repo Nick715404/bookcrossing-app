@@ -5,36 +5,24 @@ import { $books } from "../../store/books";
 import { useUnit } from "effector-react";
 import React, { useEffect, useState } from "react";
 import { Search as SearchPanel } from "@vkontakte/vkui"
+import { useQuery } from "react-query";
+import { SearchBooks } from "../../api/server/search";
+import { useDebounce } from "../../hooks/useDebounce";
 
 type Props = {
-  onPanel?: boolean
+  onPanel?: boolean,
+  handleInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => any,
+  searchText?: string;
 }
 
-// - Книги из города юзера
-
-function Search({ onPanel }: Props) {
-  const [searchText, setSearchText] = useState<string>('');
-  const books = useUnit($books);
+function Search({ onPanel, handleInputChange, searchText }: Props) {
   const navigator = useRouteNavigator();
-
 
   const handleGoToPanel = () => {
     if (onPanel) {
       return navigator.push('/search');
     }
   };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value);
-  };
-
-  useEffect(() => {
-    const Debounce = setTimeout(() => {
-      searchHandlerFX({ searchText: searchText, listOfBooks: books });
-    }, 500)
-
-    return () => clearTimeout(Debounce);
-  }, [searchText]);
 
   return (
     <SearchPanel
