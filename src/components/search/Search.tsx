@@ -1,13 +1,7 @@
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { searchHandlerFX } from "../../utilities/search/search.utils";
-import { $books } from "../../store/books";
 
-import { useUnit } from "effector-react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Search as SearchPanel } from "@vkontakte/vkui"
-import { useQuery } from "react-query";
-import { SearchBooks } from "../../api/server/search";
-import { useDebounce } from "../../hooks/useDebounce";
 
 type Props = {
   onPanel?: boolean,
@@ -20,7 +14,7 @@ function Search({ onPanel, handleInputChange, searchText }: Props) {
 
   const handleGoToPanel = () => {
     if (onPanel) {
-      return navigator.push('/search');
+      navigator.push('/search');
     }
   };
 

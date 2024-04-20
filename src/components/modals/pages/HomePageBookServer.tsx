@@ -1,12 +1,12 @@
 import { $selectedBook } from "../../../store/modalBook"
 import { setStatusActiveModal } from "../../../store/activeModal"
 import { $user } from "../../../store/user"
-import { getBookImage } from "../../../api/server/images/image"
-import { getCurentBookFX } from "../../../api/server/books/books"
+import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router"
+import { useCurrentBook } from "../../../hooks/useCurrentBook"
+import { CustomImage } from "../../CustomImage/CustomImage"
 
 import ToFav from "../../toFav/toFav"
 
-import { useEffect, useState } from "react"
 import { Icon24Info } from "@vkontakte/icons"
 import { useUnit } from "effector-react"
 import {
@@ -21,10 +21,6 @@ import {
   Separator,
   Button
 } from "@vkontakte/vkui"
-import { useParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router"
-import { IBook } from "../../../interfaces/interface"
-import { useCurrentBook } from "../../../hooks/useCurrentBook"
-import { CustomImage } from "../../CustomImage/CustomImage"
 
 type Props = {
   id: string
@@ -39,7 +35,7 @@ const HomePageBook = ({ id }: Props) => {
   const { data } = useCurrentBook({ bookId: '', paramsId: paramsId });
 
   const headerBefore = (
-    <PanelHeaderBack label="Назад" onClick={() => navigator.push('/')} />
+    <PanelHeaderBack label="Назад" onClick={() => navigator.back()} />
   )
 
   return (

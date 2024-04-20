@@ -10,7 +10,7 @@ const HeaderClose = () => {
     const navigator = useRouteNavigator();
 
     const handleBack = () => {
-        navigator.push('/')
+        navigator.back();
     }
 
     return (

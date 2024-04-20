@@ -4,7 +4,7 @@ const BookSkeleton = () => {
   return (
     <>
       {
-        [...Array(10)].map((_, index) => (
+        [...Array(5)].map((_, index) => (
           <LoadingBook key={index} />
         ))
       }

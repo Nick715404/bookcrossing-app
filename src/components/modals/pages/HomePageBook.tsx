@@ -37,7 +37,7 @@ const HomePageBook = ({ id }: Props) => {
     const { data } = useCurrentBook({ bookId: '', paramsId: paramsId });
 
     const headerBefore = (
-        <PanelHeaderBack label="Назад" onClick={() => navigator.push('/')} />
+        <PanelHeaderBack label="Назад" onClick={() => navigator.back()} />
     )
 
     if (data) {

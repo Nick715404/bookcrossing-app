@@ -8,13 +8,15 @@ import ToChat from "../toChat/toChat";
 import EmptyPlate from "../empty-plate/EmptyPlate";
 
 import { Icon28BookOutline } from '@vkontakte/icons';
+import { BookSkeleton } from "../Skeletons/BookSkeleton";
 
 interface IProps {
   data: IBook[] | undefined;
   isSuccess: boolean;
+  isLoading: boolean;
 }
 
-const SearchBooksList = ({ data, isSuccess }: IProps) => {
+const SearchBooksList = ({ data, isSuccess, isLoading }: IProps) => {
 
   if (isSuccess && data && data.length === 0) {
     return (
@@ -25,6 +27,12 @@ const SearchBooksList = ({ data, isSuccess }: IProps) => {
         label="Перейти в каталог"
         icon={<Icon28BookOutline style={{ width: 56, height: 56 }} fill={vkBlueColor} />}
       />
+    )
+  }
+
+  if (isLoading) {
+    return (
+      <BookSkeleton />
     )
   }
 

@@ -8,10 +8,10 @@ type Props = {
 }
 
 export default function SingleCategory({ id }: Props) {
-  const nav = useRouteNavigator();
+  const navigator = useRouteNavigator();
 
   const headerBefore = (
-    <PanelHeaderBack label="Назад" onClick={() => nav.push('/')} />
+    <PanelHeaderBack label="Назад" onClick={() => navigator.back()} />
   )
 
   return (

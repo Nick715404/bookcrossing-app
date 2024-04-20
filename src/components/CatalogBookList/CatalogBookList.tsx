@@ -29,9 +29,7 @@ export default function CatalogBookList() {
 
   return (
     <>
-      {
-        isLoading && <BookSkeleton />
-      }
+      {isLoading && <BookSkeleton />}
       {
         isSuccess && data.map((book: IBook, index: number) => (
           <Book

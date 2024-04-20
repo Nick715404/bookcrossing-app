@@ -1,12 +1,13 @@
-import { useState } from 'react'
-import Search from '../../components/search/Search'
 import { SearchBooksList } from '../../components/SearchBooksList/SearchBooksList'
-
-import { Group, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui'
-import { useQuery } from 'react-query'
 import { SearchBooks } from '../../api/server/search'
 import { useDebounce } from '../../hooks/useDebounce'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
+
+import Search from '../../components/search/Search'
+
+import { useState } from 'react'
+import { useQuery } from 'react-query'
+import { Group, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui'
 
 type Props = {
   id: string
@@ -20,7 +21,7 @@ export default function SearchPanel({ id }: Props) {
   };
   const navigator = useRouteNavigator();
 
-  const { data, isSuccess } = useQuery({
+  const { data, isSuccess, isLoading } = useQuery({
     queryKey: ['search', searchDebounce],
     queryFn: () => {
       const books = SearchBooks(searchDebounce)
@@ -29,15 +30,22 @@ export default function SearchPanel({ id }: Props) {
   })
 
   const headerBefore = (
-    <PanelHeaderBack label="Назад" onClick={() => navigator.push('/')} />
+    <PanelHeaderBack label="Назад" onClick={() => navigator.back()} />
   )
 
   return (
     <Panel id={id}>
       <PanelHeader before={headerBefore}>Буккроссинг</PanelHeader>
       <Group>
-        <Search handleInputChange={handleInputChange} searchText={searchText} />
-        <SearchBooksList data={data} isSuccess={isSuccess} />
+        <Search
+          handleInputChange={handleInputChange}
+          searchText={searchText}
+        />
+        <SearchBooksList
+          isLoading={isLoading}
+          data={data}
+          isSuccess={isSuccess}
+        />
       </Group>
     </Panel>
   )
