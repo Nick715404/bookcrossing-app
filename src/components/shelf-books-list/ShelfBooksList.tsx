@@ -1,17 +1,18 @@
 import { IExtendedBook } from "../../interfaces/interface"
+import { vkGreyColor } from "../../constants/utils"
+import { useGetBooksOnShelf } from "../../hooks/useGetBooksOnShelf"
+import { BookSkeleton } from "../Skeletons/BookSkeleton"
+
 import Book from "../book/Book"
 import EditBook from "../edit-book/EditBook"
 import DeleteBook from "../delete-book/DeleteBook"
 import EmptyPlate from "../empty-plate/EmptyPlate"
-import { vkGreyColor } from "../../constants/utils"
-
-import { useGetBooksOnShelf } from "../../hooks/useGetBooksOnShelf"
 
 import { Icon28BookOutline } from '@vkontakte/icons'
 import React from "react"
 
 function ShelfBooksList() {
-  const { data, isSuccess } = useGetBooksOnShelf();
+  const { data, isSuccess, isLoading } = useGetBooksOnShelf();
 
   if (isSuccess && data && data.length === 0) {
     return (
@@ -27,6 +28,7 @@ function ShelfBooksList() {
 
   return (
     <>
+      {isLoading && <BookSkeleton />}
       {
         isSuccess && data &&
         data.map((book: IExtendedBook) => {

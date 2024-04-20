@@ -11,17 +11,15 @@ import { Button, ButtonGroup, ModalCard } from "@vkontakte/vkui"
 export default function ModalAcceptDeleteV2({ id, changeActiveModal }: IPassIdToModalPage) {
   const bookId = useUnit($currentBookId);
   const client = useQueryClient();
+
   const { mutate, isSuccess } = useMutation({
-    mutationKey: ['delete', 'book'],
+    mutationKey: ['delete book'],
     mutationFn: () => deleteBook(bookId),
     onSuccess: () => {
       client.invalidateQueries({
-        queryKey: [
-          ['books', 'all'],
-          ['books', 'shelf']
-        ]
-      })
-    }
+        queryKey: ['books all', 'books shelf']
+      });
+    },
   })
 
   const handleDelete = () => {

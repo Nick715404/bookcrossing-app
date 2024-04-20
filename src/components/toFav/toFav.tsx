@@ -29,7 +29,7 @@ export default function ToFav({ bookId, isFav }: Props) {
     onMutate: () => {
       client.invalidateQueries({
         queryKey: [
-          ['books'],
+          ['books all', 'books favorites'],
         ]
       })
     },

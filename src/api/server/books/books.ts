@@ -27,7 +27,6 @@ export const createBookFX = createEffect(async (book: ICreateBook) => {
 
 export const editBookFX = createEffect(async (book: IBook) => {
   try {
-    console.log('Book object:', book)
     const { data } = await api.patch(`/book/edit/${book.id}`, book);
     return data;
   }

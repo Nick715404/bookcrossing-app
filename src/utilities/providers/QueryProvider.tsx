@@ -4,7 +4,7 @@ interface IProps { children: React.ReactNode }
 
 const defaultOptions = {
   queries: {
-    staleTime: 1000 * 6
+    staleTime: 1000
   },
 }
 

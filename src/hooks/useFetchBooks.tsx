@@ -3,7 +3,7 @@ import { fetchBooks } from "../api/server/books/books.query";
 
 const useFetchBooks = () => {
   return useQuery({
-    queryKey: ['books', 'all'],
+    queryKey: ['books all'],
     queryFn: fetchBooks
   })
 }

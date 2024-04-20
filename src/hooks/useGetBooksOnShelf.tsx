@@ -16,7 +16,7 @@ const useGetBooksOnShelf = () => {
   }
 
   return useQuery({
-    queryKey: ['booksOnShelf'],
+    queryKey: ['books shelf'],
     queryFn: handleFetch,
   })
 }

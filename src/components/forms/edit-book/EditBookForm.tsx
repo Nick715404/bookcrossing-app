@@ -30,7 +30,6 @@ export default function EditBookForm({
   isLoading,
   go
 }: IProps) {
-  console.log(formData)
   return (
     <Group>
       <form onSubmit={handleSubmit}>

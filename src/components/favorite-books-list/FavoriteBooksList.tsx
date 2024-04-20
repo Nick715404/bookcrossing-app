@@ -18,7 +18,7 @@ export default function FavoriteBooksList() {
   const user = useUnit($user);
 
   const { data, isSuccess, isLoading } = useQuery({
-    queryKey: ['books', 'favorites'],
+    queryKey: ['books favorites'],
     queryFn: () => fetchBooksFromFavorites(user.userId),
   })
 
@@ -36,9 +36,7 @@ export default function FavoriteBooksList() {
 
   return (
     <>
-      {
-        isLoading && <BookSkeleton />
-      }
+      {isLoading && <BookSkeleton />}
       {
         isSuccess && data.map((book: IBook) => (
           <Book
