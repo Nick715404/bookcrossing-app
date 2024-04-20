@@ -6,6 +6,7 @@ import { Group, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui'
 import { useQuery } from 'react-query'
 import { SearchBooks } from '../../api/server/search'
 import { useDebounce } from '../../hooks/useDebounce'
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 
 type Props = {
   id: string
@@ -17,6 +18,7 @@ export default function SearchPanel({ id }: Props) {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
+  const navigator = useRouteNavigator();
 
   const { data, isSuccess } = useQuery({
     queryKey: ['search', searchDebounce],
@@ -27,7 +29,7 @@ export default function SearchPanel({ id }: Props) {
   })
 
   const headerBefore = (
-    <PanelHeaderBack label="Назад" onClick={() => window.history.back()} />
+    <PanelHeaderBack label="Назад" onClick={() => navigator.push('/')} />
   )
 
   return (

@@ -6,6 +6,7 @@ import { $books } from "../../store/books";
 
 import { useUnit } from "effector-react"
 import { Card, Div, Group, Text } from "@vkontakte/vkui";
+import { useFetchBooks } from "../../hooks/useFetchBooks";
 
 interface IItem {
   id: number;
@@ -14,13 +15,17 @@ interface IItem {
 }
 
 export default function CategoriesList() {
-
-  const [categories, books] = useUnit([$categories, $books]);
+  const categories = useUnit($categories);
   const navigator = useRouteNavigator();
 
+  const { data } = useFetchBooks();
+
   const handleClick = (category: string, id: string) => {
-    sortBookFx({ category, books });
-    navigator.push(`/category/${id}}`)
+    if (data) {
+      sortBookFx({ category, books: data });
+      navigator.push(`/category/${id}}`);
+    }
+    return;
   }
 
   return (

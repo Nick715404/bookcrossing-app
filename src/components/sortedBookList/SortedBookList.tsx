@@ -1,13 +1,15 @@
 import { IBook } from "../../interfaces/interface";
 import { $sortedBooks } from "../../store/books";
-import { useUnit } from "effector-react";
-import { Div, Header, Text } from "@vkontakte/vkui";
+import { vkGreyColor } from "../../constants/utils";
+
 import Book from "../book/Book";
 import EmptyPlate from "../empty-plate/EmptyPlate";
-import { Icon56SearchOutline } from "@vkontakte/icons";
-import { vkGreyColor } from "../../constants/utils";
 import ToFav from "../toFav/toFav";
 import ToChat from "../toChat/toChat";
+
+import { Icon56SearchOutline } from "@vkontakte/icons";
+import { useUnit } from "effector-react";
+import { Div, Header, Text } from "@vkontakte/vkui";
 
 export default function SortedBookList() {
   const books: IBook[] = useUnit($sortedBooks);
