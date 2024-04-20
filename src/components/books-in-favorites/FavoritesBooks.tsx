@@ -12,7 +12,7 @@ export default function FavoritesBooks() {
 
   return (
     <>
-      <MiniInfoCell before={<Icon20Info />} textWrap="full">
+      <MiniInfoCell style={{ marginBottom: '10px' }} before={<Icon20Info />} textWrap="full">
         Некоторые книги могли пропасть, так как были удалены из каталога владельцами
       </MiniInfoCell>
       {user && <FavoriteBooksList />}
