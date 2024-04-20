@@ -1,12 +1,17 @@
+import { vkBlueColor } from "../../../constants/utils";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+
 import { Icon24CancelOutline } from "@vkontakte/icons"
 import { Div, Group, IconButton } from "@vkontakte/vkui"
-import { vkBlueColor } from "../../../constants/utils";
 
 
 const HeaderClose = () => {
+
+    const navigator = useRouteNavigator();
+
     const handleBack = () => {
-        // navigator.push('/')
-        window.history.back();
+        navigator.push('/')
+        // window.history.back();
     }
 
     return (
