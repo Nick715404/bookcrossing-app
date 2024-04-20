@@ -6,17 +6,14 @@ import ToChat from "../toChat/toChat";
 import EmptyPlate from "../empty-plate/EmptyPlate";
 import Book from "../book/Book";
 
-import { fetchBooks } from "../../api/server/books/books.query";
 import { BookSkeleton } from "../Skeletons/BookSkeleton";
+import { useFetchBooks } from "../../hooks/useFetchBooks";
+
 import { Icon28AllCategoriesOutline } from "@vkontakte/icons";
-import { useQuery } from "react-query";
 
 export default function CatalogBookList() {
 
-  const { data, isLoading, isSuccess } = useQuery({
-    queryKey: ['books', 'all'],
-    queryFn: fetchBooks
-  })
+  const { data, isLoading, isSuccess } = useFetchBooks();
 
   if (isSuccess && data.length === 0) {
     return (

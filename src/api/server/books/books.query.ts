@@ -1,4 +1,5 @@
-import { api } from "../../axios/axiosInstance";
+import { IBook, ICreateBook } from "../../../interfaces/interface";
+import { api, url } from "../../axios/axiosInstance";
 
 export const fetchBooks = async () => {
   try {
@@ -8,3 +9,21 @@ export const fetchBooks = async () => {
     throw new Error('Error to fetch all books!');
   }
 }
+
+export const createBook = async (book: ICreateBook): Promise<IBook> => {
+  try {
+    const response = await fetch(`${url}/book/create`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(book)
+    });
+
+    if (!response.ok) throw new Error('Failed to create book!');
+
+    const data: IBook = await response.json();
+    return data;
+  }
+  catch (error) {
+    throw new Error('Failed to create book!');
+  }
+};
