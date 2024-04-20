@@ -23,7 +23,7 @@ export default function ToFav({ bookId, isFav }: Props) {
   const { userId } = user;
   const client = useQueryClient();
 
-  const { mutate: moove } = useMutation({
+  const { mutate: moove, isSuccess } = useMutation({
     mutationKey: ['put', 'favorites'],
     mutationFn: () => putBookInFavorites(bookId, userId),
     onMutate: () => {
@@ -40,7 +40,7 @@ export default function ToFav({ bookId, isFav }: Props) {
     moove();
   };
 
-  if (isFav !== '' && isFav !== null) {
+  if (isFav !== '' && isFav !== null || isSuccess) {
     return (
       <ToFavReverse bookId={bookId} />
     )
