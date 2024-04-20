@@ -1,9 +1,7 @@
 import { GetCurrentUserFX } from '../../api/server/user/user';
 import { fetchVkUser } from '../../api/vk-bridge/user';
-import { ChooseCity } from '../../components/ChooseCity/ChooseCity';
-import React, { useEffect, useState } from 'react'
-import { IVkUser } from '../../interfaces/interface';
 import { setStatusActiveModal } from '../../store/activeModal';
+import React, { useEffect } from 'react'
 
 type Props = {
   children: React.ReactNode
