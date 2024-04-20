@@ -1,50 +1,65 @@
 import { setStatusActiveModal } from "../../../store/activeModal"
 import { IPassIdToModalPage } from "../../../interfaces/interface"
-
 import { $currentBookId } from "../../../store/modalBook"
-import { deleteBookFX } from "../../../api/server/books/books"
+import { deleteBook } from "../../../api/server/books/books.query";
 
+import { useMutation, useQueryClient } from "react-query";
 import { Icon56DeleteOutline } from '@vkontakte/icons';
 import { useUnit } from "effector-react"
-import { Button, ButtonGroup, Div, ModalCard } from "@vkontakte/vkui"
+import { Button, ButtonGroup, ModalCard } from "@vkontakte/vkui"
 
 export default function ModalAcceptDeleteV2({ id, changeActiveModal }: IPassIdToModalPage) {
   const bookId = useUnit($currentBookId);
+  const client = useQueryClient();
+  const { mutate, isSuccess } = useMutation({
+    mutationKey: ['delete', 'book'],
+    mutationFn: () => deleteBook(bookId),
+    onSuccess: () => {
+      client.invalidateQueries({
+        queryKey: [
+          ['books', 'all'],
+          ['books', 'shelf']
+        ]
+      })
+    }
+  })
 
   const handleDelete = () => {
-    deleteBookFX(bookId);
+    mutate();
     setStatusActiveModal(null);
   };
 
   return (
-    <ModalCard
-      id={id}
-      icon={<Icon56DeleteOutline />}
-      onClose={() => setStatusActiveModal(null)}
-      header='Вы уверены, что хотите удалить книгу из каталога?'
-      subheader='Удалив книгу из каталога, вы не сможете её востановить'
-      actions={
-        <ButtonGroup mode="horizontal" gap="m" stretched>
-          <Button
-            key="dismiss"
-            size="l"
-            mode="primary"
-            stretched
-            onClick={() => setStatusActiveModal(null)}
-          >
-            Отменить
-          </Button>
-          <Button
-            key="delete"
-            size="l"
-            mode="secondary"
-            stretched
-            onClick={handleDelete}
-          >
-            Удалить
-          </Button>
-        </ButtonGroup>
-      }
-    />
+    <>
+      <ModalCard
+        id={id}
+        icon={<Icon56DeleteOutline />}
+        onClose={() => setStatusActiveModal(null)}
+        header='Вы уверены, что хотите удалить книгу из каталога?'
+        subheader='Удалив книгу из каталога, вы не сможете её восстановить'
+        actions={
+          <ButtonGroup mode="horizontal" gap="m" stretched>
+            <Button
+              key="dismiss"
+              size="l"
+              mode="primary"
+              stretched
+              onClick={() => setStatusActiveModal(null)}
+            >
+              Отменить
+            </Button>
+            <Button
+              key="delete"
+              size="l"
+              mode="secondary"
+              stretched
+              onClick={handleDelete}
+            >
+              Удалить
+            </Button>
+          </ButtonGroup>
+        }
+      />
+    </>
   )
 }

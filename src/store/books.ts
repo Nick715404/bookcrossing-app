@@ -1,5 +1,4 @@
-import { createEffect, createEvent, createStore } from "effector";
-import { BookStoreState, IBook } from "../interfaces/interface";
+import { IBook } from "../interfaces/interface";
 import { createBookFX, deleteBookFX, getAllBooksFX } from "../api/server/books/books";
 import { sortBookFx } from "../utilities/category/category.utils";
 import { LOADING_STATUS } from "../constants/loadingStatus";
@@ -8,13 +7,23 @@ import { searchHandlerFX } from "../utilities/search/search.utils";
 import { EditArrayFX } from "./favorites";
 import { MoveBooksToStoreFX } from "../utilities/books/books.utils";
 
+import { createEffect, createEvent, createStore } from "effector";
+import { fetchBooks } from "../api/server/books/books.query";
+
 export const $searchBooks = createStore<IBook[]>([]);
 export const $books = createStore<IBook[]>([]);
 export const $status = createStore<string>(LOADING_STATUS.IDLE);
 export const $sortedBooks = createStore<IBook[]>([]);
 
-export const ChangeArrayFX = createEvent<{ id: string, favourite: string }>();
+export const PutBooksToStore = createEffect(async () => {
+  const response = await fetchBooks();
+  return response
+});
 
+$books.on(PutBooksToStore.doneData, (books, newBooks) => [...books, ...newBooks])
+
+
+export const ChangeArrayFX = createEvent<{ id: string, favourite: string }>();
 $status.on(ChangeLoadingStatusFX.doneData, (_, action) => action);
 
 $books.on(getAllBooksFX.doneData, (_, newBooks) => newBooks);

@@ -1,22 +1,21 @@
 import { Icon28CheckCircleOutline } from "@vkontakte/icons";
 import { Button, Snackbar } from "@vkontakte/vkui";
+import { useState } from "react";
 
 interface IProps {
-    onClose: () => void
+    id: string;
 }
 
-export default function SnackbarCustom({ onClose }: IProps) {
+export default function SnackbarCustom({ id }: IProps) {
     return (
-        <Snackbar
-            before={<Icon28CheckCircleOutline fill="var(--vkui--color_icon_positive)" />}
-            after={
-                <Button mode="link" appearance="accent" size="s">
-                    Поделиться
-                </Button>
-            }
-            onClose={onClose}
-        >
-            Ссылка скопирована
-        </Snackbar>
+        <>
+            <Snackbar
+                id={id}
+                before={<Icon28CheckCircleOutline fill="var(--vkui--color_icon_positive)" />}
+                onClose={() => console.log('snack close')}
+            >
+                Книга успешно удалена!
+            </Snackbar>
+        </>
     )
 }

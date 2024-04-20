@@ -4,7 +4,7 @@ import FavoriteBooksList from "../favorite-books-list/FavoriteBooksList";
 
 import { Icon20Info } from '@vkontakte/icons'
 import { useUnit } from "effector-react"
-import { Group, MiniInfoCell } from "@vkontakte/vkui"
+import { MiniInfoCell } from "@vkontakte/vkui"
 
 export default function FavoritesBooks() {
 

@@ -5,17 +5,17 @@ import { createBookFX, deleteBookFX } from "../api/server/books/books";
 import { FindBooksOnShelfFX } from "../api/server/shelf/shelf";
 import { IExtendedBook } from "../interfaces/interface";
 
-export const $booksOnShelf = createStore<IExtendedBook[]>([]);
+// export const $booksOnShelf = createStore<IExtendedBook[]>([]);
 
-$booksOnShelf.on(FindBooksOnShelfFX.doneData, (prev, next) => {
-  if (Array.isArray(next)) {
-    return [...prev, ...next];
-  }
-  return prev;
-});
+// $booksOnShelf.on(FindBooksOnShelfFX.doneData, (prev, next) => {
+//   if (Array.isArray(next)) {
+//     return [...prev, ...next];
+//   }
+//   return prev;
+// });
 
-$booksOnShelf.on(createBookFX.doneData, (book, newBook) => [...book, newBook]);
-$booksOnShelf.on(deleteBookFX.doneData, (book, newBook) => {
-  const newBooks = book.filter(item => item.id !== newBook.id);
-  return [...newBooks]
-});
+// $booksOnShelf.on(createBookFX.doneData, (book, newBook) => [...book, newBook]);
+// $booksOnShelf.on(deleteBookFX.doneData, (book, newBook) => {
+//   const newBooks = book.filter(item => item.id !== newBook.id);
+//   return [...newBooks]
+// });

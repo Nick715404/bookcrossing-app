@@ -8,9 +8,16 @@ const useGetBooksOnShelf = () => {
 
   const user = useUnit($user);
 
+  const handleFetch = async () => {
+    if (user.userId === '') {
+      return;
+    }
+    return findBooksOnShelf(user.userId)
+  }
+
   return useQuery({
-    queryKey: ['books', 'shelf'],
-    queryFn: () => findBooksOnShelf(user.userId),
+    queryKey: ['booksOnShelf'],
+    queryFn: handleFetch,
   })
 }
 
