@@ -11,15 +11,13 @@ const InitAppEntities = ({ children }: IInitAppEntities) => {
         <>
             <QueryProvider>
                 <UserProvider>
-                    <ShelfProvider>
-                        <FavouritesProvider>
-                            {/* <BooksProvider> */}
-                            <InitCategories>
-                                {children}
-                            </InitCategories>
-                            {/* </BooksProvider> */}
-                        </FavouritesProvider>
-                    </ShelfProvider>
+                    <FavouritesProvider>
+                        {/* <BooksProvider> */}
+                        <InitCategories>
+                            {children}
+                        </InitCategories>
+                        {/* </BooksProvider> */}
+                    </FavouritesProvider>
                 </UserProvider>
             </QueryProvider>
         </>

@@ -27,7 +27,6 @@ $favBooks.on(RemoveFromFavFX.doneData, (book, newBook) => {
   const newBooks = book.filter(item => item.id !== newBook.book.id);
   return [...newBooks]
 })
-
 $favBooks.on(EditArrayFX, (books, { id, favourite }) => {
   return books.map(book => {
     if (book.id === id) {

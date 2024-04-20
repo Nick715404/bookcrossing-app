@@ -9,7 +9,7 @@ const useCreateBook = () => {
     mutationKey: ['create', 'book'],
     mutationFn: createBook,
     onSuccess: () => {
-      client.invalidateQueries({ queryKey: ['books', 'all'] })
+      client.invalidateQueries({ queryKey: [['books', 'all'], ['books', 'shelf']] })
     }
   })
 }
