@@ -11,7 +11,6 @@ const HeaderClose = () => {
 
     const handleBack = () => {
         navigator.push('/')
-        // window.history.back();
     }
 
     return (
