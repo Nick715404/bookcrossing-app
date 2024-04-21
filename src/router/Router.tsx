@@ -8,10 +8,10 @@ import HomePageBook from "../components/modals/pages/HomePageBook";
 import Menu from "../panels/menu/Menu";
 import SingleCategory from "../panels/single-category/SingleCategory";
 import EditPanel from "../panels/edit/EditPanel";
+import UserAgreement from "../panels/userAgreement/UserAgreement";
 
 import { useActiveVkuiLocation, useGetPanelForView } from "@vkontakte/vk-mini-apps-router";
 import { Epic, View } from "@vkontakte/vkui";
-import UserAgreement from "../panels/userAgreement/UserAgreement";
 
 const Router = () => {
 

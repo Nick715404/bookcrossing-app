@@ -4,7 +4,7 @@ import { $books } from "../../store/books";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 import { useUnit } from "effector-react";
-import { Icon24BrainOutline, Icon28MoreHorizontal } from '@vkontakte/icons';
+import { Icon28MoreHorizontal } from '@vkontakte/icons';
 import { CardScroll, Card, Group, Header, Text, Div } from "@vkontakte/vkui"
 import { iconMap } from "../../dictionary/dictionary";
 import { useFetchBooks } from "../../hooks/useFetchBooks";

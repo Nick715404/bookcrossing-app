@@ -1,14 +1,6 @@
 import { IBook } from "../interfaces/interface";
-import { createBookFX, deleteBookFX, getAllBooksFX } from "../api/server/books/books";
-import { sortBookFx } from "../utilities/category/category.utils";
-import { LOADING_STATUS } from "../constants/loadingStatus";
-import { ChangeLoadingStatusFX } from "../utilities/loading/loading.utils";
-import { searchHandlerFX } from "../utilities/search/search.utils";
-import { EditArrayFX } from "./favorites";
-import { MoveBooksToStoreFX } from "../utilities/books/books.utils";
-
 import { createEffect, createEvent, createStore } from "effector";
-import { fetchBooks } from "../api/server/books/books.query";
+import { sortBookFx } from "../utilities/category/category.utils";
 
 export const $searchBooks = createStore<IBook[]>([]);
 export const $books = createStore<IBook[]>([]);
@@ -33,3 +25,5 @@ $books.on(ChangeArrayFX, (books, { id, favourite }) => {
     return book;
   });
 });
+
+$sortedBooks.on(sortBookFx.doneData, (_, newBooks) => [...newBooks])

@@ -2,11 +2,10 @@ import { $categories } from "../../store/categories"
 import { iconMap } from "../../dictionary/dictionary";
 import { sortBookFx } from "../../utilities/category/category.utils";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { $books } from "../../store/books";
+import { useFetchBooks } from "../../hooks/useFetchBooks";
 
 import { useUnit } from "effector-react"
 import { Card, Div, Group, Text } from "@vkontakte/vkui";
-import { useFetchBooks } from "../../hooks/useFetchBooks";
 
 interface IItem {
   id: number;
@@ -37,14 +36,12 @@ export default function CategoriesList() {
             key={category.id}
             onClick={() => handleClick(category.title, category.id)}
           >
-            <Div
-              style={{ display: 'flex', alignItems: 'center', gap: 10 }}
-            >
+            <Div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <Div
                 className="card__wrapper"
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
               >
-                <Group >
+                <Group>
                   {category.imageName && iconMap[category.imageName]}
                 </Group>
               </Div>
