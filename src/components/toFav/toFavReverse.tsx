@@ -1,14 +1,14 @@
 import { vkBlueColor } from '../../constants/utils';
 import { $user } from '../../store/user';
 
-import { EditArrayFX } from '../../store/favorites';
+import { DeleteBookFromFavPipeFX, EditArrayFX } from '../../store/favorites';
 import { removeFromFav } from '../../api/server/favorites/favorites.query';
 
 import { useUnit } from 'effector-react';
 import { Icon28BookmarkCheckOutline, Icon56DeleteOutline } from '@vkontakte/icons';
 import { IconButton, Snackbar } from '@vkontakte/vkui';
 import { useMutation, useQueryClient } from 'react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {
   bookId: string;
@@ -30,6 +30,13 @@ function ToFavReverse({ bookId }: Props) {
       setShowSnackbar(true)
     },
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      setShowSnackbar(true);
+      DeleteBookFromFavPipeFX(data);
+    }
+  }, [isSuccess]);
 
   const handleBookMove = async (e: any) => {
     e.preventDefault();

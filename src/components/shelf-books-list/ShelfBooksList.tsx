@@ -1,7 +1,8 @@
-import { IExtendedBook } from "../../interfaces/interface"
+import { IBook } from "../../interfaces/interface"
 import { vkGreyColor } from "../../constants/utils"
 import { useGetBooksOnShelf } from "../../hooks/useGetBooksOnShelf"
 import { BookSkeleton } from "../Skeletons/BookSkeleton"
+import { $books, GetAllBooksPipeFX } from "../../store/books"
 
 import Book from "../book/Book"
 import EditBook from "../edit-book/EditBook"
@@ -9,12 +10,18 @@ import DeleteBook from "../delete-book/DeleteBook"
 import EmptyPlate from "../empty-plate/EmptyPlate"
 
 import { Icon28BookOutline } from '@vkontakte/icons'
-import React from "react"
+import React, { useEffect } from "react"
+import { useUnit } from "effector-react"
 
 function ShelfBooksList() {
   const { data, isSuccess, isLoading } = useGetBooksOnShelf();
+  const books = useUnit($books);
 
-  if (isSuccess && data && data.length === 0) {
+  useEffect(() => {
+    if (isSuccess && data) GetAllBooksPipeFX(data);
+  }, [isSuccess, data]);
+
+  if (isSuccess && books.length === 0) {
     return (
       <EmptyPlate
         icon={<Icon28BookOutline fill={vkGreyColor} width={56} height={56} />}
@@ -30,8 +37,8 @@ function ShelfBooksList() {
     <>
       {isLoading && <BookSkeleton />}
       {
-        isSuccess && data &&
-        data.map((book: IExtendedBook) => {
+        isSuccess &&
+        books.map((book: IBook) => {
           return (
             <Book
               key={book.id}

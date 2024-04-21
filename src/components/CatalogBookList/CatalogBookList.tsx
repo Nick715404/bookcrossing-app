@@ -10,10 +10,17 @@ import { BookSkeleton } from "../Skeletons/BookSkeleton";
 import { useFetchBooks } from "../../hooks/useFetchBooks";
 
 import { Icon28AllCategoriesOutline } from "@vkontakte/icons";
+import { $books, GetAllBooksPipeFX } from "../../store/books";
+import { useUnit } from "effector-react";
+import { useEffect } from "react";
 
 export default function CatalogBookList() {
-
+  const books = useUnit($books);
   const { data, isLoading, isSuccess } = useFetchBooks();
+
+  useEffect(() => {
+    if (isSuccess) GetAllBooksPipeFX(data);
+  }, [data, isSuccess]);
 
   if (isSuccess && data.length === 0) {
     return (
@@ -31,7 +38,7 @@ export default function CatalogBookList() {
     <>
       {isLoading && <BookSkeleton />}
       {
-        isSuccess && data.map((book: IBook, index: number) => (
+        isSuccess && books.map((book: IBook, index: number) => (
           <Book
             key={book.id}
             book={book}

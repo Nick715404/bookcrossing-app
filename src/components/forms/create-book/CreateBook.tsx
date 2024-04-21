@@ -1,16 +1,15 @@
 import { $user } from "../../../store/user";
-import { ICreateBook, IDataState, } from "../../../interfaces/interface";
+import { IDataState, } from "../../../interfaces/interface";
 import { initialState } from "../../../constants/utils";
-import { handleCreateBook, handleFormValidation } from "../../../utilities/forms/create-book.utils";
+import { handleFormValidation } from "../../../utilities/forms/create-book.utils";
+import { useCreateBook } from "../../../hooks/useCreateBook";
+import { CreateBookPipeFX } from "../../../store/books";
 
 import CreateBookForm from "./CreateBookForm";
 import CompleteForm from "../complete-form/CompleteForm";
 
 import { useUnit } from "effector-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { SwitchFavoritesStatus } from "../../../store/favorites";
-import { useCreateBook } from "../../../hooks/useCreateBook";
-
+import React, { useCallback, useEffect, useState } from "react";
 
 const CreateBook: React.FC = () => {
   const [formData, setFormData] = useState<IDataState>(initialState);
@@ -45,20 +44,23 @@ const CreateBook: React.FC = () => {
     if (Object.keys(errors).length > 0) return;
 
     const DATA_FORM = { ...formData, userId: userId };
-    console.log(DATA_FORM);
     create(DATA_FORM);
-
-    if (isSuccess) {
-      setGo({
-        start: true,
-        bookId: data.id
-      })
-    }
 
     setDone(true);
 
     handleResetForm();
   }, [formData]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log('piped');
+      setGo({
+        start: true,
+        bookId: data?.id ?? ''
+      });
+      CreateBookPipeFX(data);
+    }
+  }, [isSuccess, data]);
 
   return (
     <>

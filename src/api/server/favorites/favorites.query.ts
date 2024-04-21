@@ -17,15 +17,13 @@ export const fetchBooksFromFavorites = async (id: string) => {
 }
 
 export const removeFromFav = async ({ bookId, vkId }: { bookId: string, vkId: number }) => {
-
   const favoritesData = {
     bookId: bookId,
     userId: vkId
   }
-
   try {
     const { data } = await api.post('/favorites/delete', favoritesData);
-    return data;
+    return data.book;
   } catch (error: any) {
     throw new Error(error);
   }

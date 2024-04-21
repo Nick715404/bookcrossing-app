@@ -13,16 +13,22 @@ import { BookSkeleton } from "../Skeletons/BookSkeleton";
 import { useUnit } from "effector-react"
 import { Icon28BookmarkCheckOutline } from '@vkontakte/icons';
 import { useQuery } from "react-query";
+import { $favBooks, GetAllBooksFromFavFX } from "../../store/favorites";
+import { useEffect } from "react";
 
 export default function FavoriteBooksList() {
-  const user = useUnit($user);
+  const [user, books] = useUnit([$user, $favBooks]);
 
   const { data, isSuccess, isLoading } = useQuery({
     queryKey: ['books favorites'],
     queryFn: () => fetchBooksFromFavorites(user.userId),
   })
 
-  if (isSuccess && data.length === 0) {
+  useEffect(() => {
+    if (isSuccess) GetAllBooksFromFavFX(data);
+  }, [isSuccess, data]);
+
+  if (isSuccess && books.length === 0) {
     return (
       <EmptyPlate
         icon={<Icon28BookmarkCheckOutline fill={vkGreyColor} width={56} height={56} />}
@@ -38,7 +44,7 @@ export default function FavoriteBooksList() {
     <>
       {isLoading && <BookSkeleton />}
       {
-        isSuccess && data.map((book: IBook) => (
+        books && books.map((book: IBook) => (
           <Book
             key={book.id}
             book={book}

@@ -93,7 +93,7 @@ export interface IInitAppEntities {
 }
 
 export interface IShelfInfo {
-  books: IExtendedBook[]
+  books: IBook[]
   info: {
     id: string
     userId: string

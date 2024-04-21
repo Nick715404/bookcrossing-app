@@ -7,12 +7,15 @@ import { useMutation, useQueryClient } from "react-query";
 import { Icon56DeleteOutline } from '@vkontakte/icons';
 import { useUnit } from "effector-react"
 import { Button, ButtonGroup, ModalCard } from "@vkontakte/vkui"
+import { DeleteBookPipeFX } from "../../../store/books";
+import { useEffect } from "react";
+import { DeleteBookFromFavPipeFX } from "../../../store/favorites";
 
 export default function ModalAcceptDeleteV2({ id, changeActiveModal }: IPassIdToModalPage) {
   const bookId = useUnit($currentBookId);
   const client = useQueryClient();
 
-  const { mutate, isSuccess } = useMutation({
+  const { mutate, isSuccess, data } = useMutation({
     mutationKey: ['delete book'],
     mutationFn: () => deleteBook(bookId),
     onSuccess: () => {
@@ -21,6 +24,13 @@ export default function ModalAcceptDeleteV2({ id, changeActiveModal }: IPassIdTo
       });
     },
   })
+
+  useEffect(() => {
+    if (isSuccess) {
+      DeleteBookPipeFX(data);
+      DeleteBookFromFavPipeFX(data);
+    }
+  }, [data, isSuccess]);
 
   const handleDelete = () => {
     mutate();
