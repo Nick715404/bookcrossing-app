@@ -4,36 +4,59 @@ import { ICreateUser, IUser, IVkUser } from "../../../interfaces/interface";
 import { fetchVkUser } from "../../vk-bridge/user";
 import { vkUser } from "../../../constants/vk-users";
 
-export const CreateUserFX = createEffect(async (user: ICreateUser) => {
+// export const CreateUserFX = createEffect(async (user: ICreateUser) => {
+//   try {
+//     const { data } = await api.post('/user/create', user);
+//     return data;
+//   }
+//   catch (error) {
+//     throw new Error('Failed to create user!');
+//   }
+// });
+
+export const fetchUserFromDataBase = async (id: number) => {
   try {
-    const { data } = await api.post('/user/create', user);
-    return data;
-  }
-  catch (error) {
-    throw new Error('Failed to create user!');
-  }
-});
+    const response = await api.get(`/user/find/${id}`);
 
-export const GetCurrentUserFX = createEffect(async (user: IVkUser) => {
-  try {
-
-    if (!user) return new Error('User not found!');
-
-    const fetchedUser = await api.get(`/user/find/${user.id}`);
-
-    if (fetchedUser.data === '') {
-      const createdUser = await api.post('/user/create', user);
-
-      if (createdUser.statusText !== "Created") {
-        return new Error("Error while creating user");
+    if (response.statusText !== 'OK') {
+      return {
+        status: 'epmty',
+        user: null,
       }
-
-      return await createdUser.data.user;
     }
 
-    return await fetchedUser.data;
+    return {
+      status: 'founded',
+      user: response.data,
+    }
+  } catch (error) {
+    return {
+      status: 'epmty',
+      user: null,
+    }
+  }
+};
+
+export const GetCurrentUserFX = createEffect(async (user: IVkUser) => {
+
+  if (!user) return new Error('User not found!');
+
+  try {
+    const { data } = await api.post('/user/create', user);
+    console.log(data);
+    return data.user;
   }
   catch (error) {
     return new Error('Error with server');
+  }
+});
+
+export const GetCurrentUserFromServerFX = createEffect(async (id: number) => {
+  try {
+    const { data } = await api.get(`/user/find/${id}`);
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw new Error('Error with server');
   }
 });

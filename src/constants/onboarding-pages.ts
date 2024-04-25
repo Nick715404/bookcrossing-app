@@ -36,10 +36,4 @@ export const onboardingPages = [
     text: 'Счастливых вам голодных игр. И пусть удача всегда будет с вами',
     imgPath: `/img/onboarding/page5.svg`
   },
-  {
-    id: '6',
-    title: 'В каком городе вы находитесь?',
-    text: '',
-    imgPath: `/img/onboarding/page6.svg`
-  },
 ]

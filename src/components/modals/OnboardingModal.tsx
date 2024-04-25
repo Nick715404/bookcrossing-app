@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { ModalPage, ModalPageHeader, Div, IconButton } from '@vkontakte/vkui';
-import { Icon28ChevronLeftOutline, Icon28ChevronRightOutline } from '@vkontakte/icons';
+import { ModalPage, ModalPageHeader } from '@vkontakte/vkui';
 
 import { onboardingPages } from '../../constants/onboarding-pages';
-import { setStatusActiveModal } from '../../store/activeModal';
 import { OnboardingPage } from '../../panels/onboarding/OnboardingPage';
 
 interface Props {
@@ -28,12 +26,14 @@ const OnboardingModal = ({ id }: Props) => {
   return (
     <ModalPage
       id={id}
-      onClose={() => setStatusActiveModal(null)}
       size="m"
       settlingHeight={100}
+      header={
+        <ModalPageHeader>Приветствуем!</ModalPageHeader>
+      }
     >
       <OnboardingPage
-        data={onboardingPages[currentPageIndex]}
+        page={onboardingPages[currentPageIndex]}
         onNext={handleNext}
         onPrev={handlePrev}
       />

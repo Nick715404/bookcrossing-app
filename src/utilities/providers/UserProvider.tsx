@@ -1,4 +1,4 @@
-import { GetCurrentUserFX } from '../../api/server/user/user';
+import { GetCurrentUserFX, GetCurrentUserFromServerFX, fetchUserFromDataBase } from '../../api/server/user/user';
 import { fetchVkUser } from '../../api/vk-bridge/user';
 import { setStatusActiveModal } from '../../store/activeModal';
 import React, { useEffect } from 'react'
@@ -13,12 +13,14 @@ export default function UserProvider({ children }: Props) {
     const fetchData = async () => {
       const userData = await fetchVkUser();
 
-      if (!userData.city) {
-        setStatusActiveModal('chooseCity');
-        return;
+      const serverUser = await fetchUserFromDataBase(userData.id);
+
+      if (serverUser.status === "epmty") {
+        return setStatusActiveModal('onboardingModal');
       }
 
-      GetCurrentUserFX(userData);
+      GetCurrentUserFromServerFX(userData.id);
+
     };
 
     fetchData();

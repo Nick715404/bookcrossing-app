@@ -1,20 +1,20 @@
 import { setStatusActiveModal } from '../../store/activeModal';
 import { useCities } from '../../hooks/useCities';
-import { CellButton, Div, Group, ModalPage, ModalPageHeader, } from '@vkontakte/vkui';
-import { ICity } from '../../interfaces/interface';
+import { Div, Group, ModalPage, ModalPageHeader, } from '@vkontakte/vkui';
 import { Loader } from '../../utilities/cities/Loader';
 import { ChooseCity } from '../ChooseCity/ChooseCity';
+import { useState } from 'react';
 
 type Props = {
   id: string
 }
 
 function ChooseCityModal({ id }: Props) {
-
+  const [isCityChosen, setIsCityChosen] = useState(false);
   const { data, isFetching, isSuccess } = useCities();
-  const platform = 'ios';
+
   const handleClose = () => {
-    setStatusActiveModal(null);
+    if (isCityChosen) setStatusActiveModal(null);
   }
 
   return (
