@@ -3,7 +3,6 @@ import { IDataState, } from "../../../interfaces/interface";
 import { initialState } from "../../../constants/utils";
 import { handleFormValidation } from "../../../utilities/forms/create-book.utils";
 import { useCreateBook } from "../../../hooks/useCreateBook";
-import { CreateBookPipeFX } from "../../../store/books";
 
 import CreateBookForm from "./CreateBookForm";
 import CompleteForm from "../complete-form/CompleteForm";
@@ -18,7 +17,7 @@ const CreateBook: React.FC = () => {
   const [go, setGo] = useState({ start: false, bookId: '' });
   const [done, setDone] = useState<boolean>(false);
 
-  const { mutate: create, isSuccess, data } = useCreateBook();
+  const { mutate: create } = useCreateBook();
   const user = useUnit($user);
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, field: keyof IDataState) => {
@@ -31,36 +30,27 @@ const CreateBook: React.FC = () => {
     setWithoutISBN(false);
   }, []);
 
-  const handleSubmit = useCallback(async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const { author } = formData;
     const userId = user.userId;
-
     const errors: { [key: string]: string } = {};
+
     handleFormValidation(author, errors);
     setFormErrors(errors);
-
     if (Object.keys(errors).length > 0) return;
 
     const DATA_FORM = { ...formData, userId: userId };
-    create(DATA_FORM);
 
-    setDone(true);
-
-    handleResetForm();
-  }, [formData]);
-
-  useEffect(() => {
-    if (isSuccess) {
-      console.log('piped');
-      setGo({
-        start: true,
-        bookId: data?.id ?? ''
-      });
-      CreateBookPipeFX(data);
-    }
-  }, [isSuccess, data]);
+    create(DATA_FORM, {
+      onSuccess: (data) => {
+        setGo({ start: true, bookId: data.id });
+        handleResetForm();
+        setDone(true);
+      }
+    });
+  };
 
   return (
     <>
@@ -75,7 +65,6 @@ const CreateBook: React.FC = () => {
           handleChangeValue={handleChangeValue}
           handleSubmit={handleSubmit}
           isLoading=''
-          // isLoading={isLoading}
           setWithoutISBN={() => setWithoutISBN(!withoutISBN)}
           withoutISBN={withoutISBN}
         />
@@ -85,3 +74,4 @@ const CreateBook: React.FC = () => {
 };
 
 export default React.memo(CreateBook);
+
