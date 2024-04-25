@@ -3,12 +3,13 @@ import { IDataState, } from "../../../interfaces/interface";
 import { initialState } from "../../../constants/utils";
 import { handleFormValidation } from "../../../utilities/forms/create-book.utils";
 import { useCreateBook } from "../../../hooks/useCreateBook";
+import { CreateBookPipeFX } from "../../../store/books";
 
 import CreateBookForm from "./CreateBookForm";
 import CompleteForm from "../complete-form/CompleteForm";
 
 import { useUnit } from "effector-react";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 const CreateBook: React.FC = () => {
   const [formData, setFormData] = useState<IDataState>(initialState);
@@ -17,7 +18,7 @@ const CreateBook: React.FC = () => {
   const [go, setGo] = useState({ start: false, bookId: '' });
   const [done, setDone] = useState<boolean>(false);
 
-  const { mutate: create } = useCreateBook();
+  const { mutate: create, data } = useCreateBook();
   const user = useUnit($user);
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, field: keyof IDataState) => {
@@ -46,6 +47,7 @@ const CreateBook: React.FC = () => {
     create(DATA_FORM, {
       onSuccess: (data) => {
         setGo({ start: true, bookId: data.id });
+        CreateBookPipeFX(data);
         handleResetForm();
         setDone(true);
       }
