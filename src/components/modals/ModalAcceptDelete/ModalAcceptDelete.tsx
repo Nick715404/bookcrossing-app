@@ -11,7 +11,7 @@ import { DeleteBookPipeFX } from "../../../store/books";
 import { useEffect } from "react";
 import { DeleteBookFromFavPipeFX } from "../../../store/favorites";
 
-export default function ModalAcceptDeleteV2({ id, changeActiveModal }: IPassIdToModalPage) {
+export default function ModalAcceptDeleteV2({ id }: IPassIdToModalPage) {
   const bookId = useUnit($currentBookId);
   const client = useQueryClient();
 

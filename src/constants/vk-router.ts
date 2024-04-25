@@ -50,7 +50,12 @@ const routes: RouteWithoutRoot[] = [
     path: '/editBook',
     panel: 'edit-book',
     view: 'edit-book-view'
-  }
+  },
+  {
+    path: '/onboarding',
+    panel: 'onboarding-panel',
+    view: 'onboarding-view'
+  },
 ]
 
 export const appRouter = createHashRouter(routes);

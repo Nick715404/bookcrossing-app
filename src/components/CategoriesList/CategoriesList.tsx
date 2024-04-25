@@ -6,6 +6,7 @@ import { useFetchBooks } from "../../hooks/useFetchBooks";
 
 import { useUnit } from "effector-react"
 import { Card, Div, Group, Text } from "@vkontakte/vkui";
+import { setStatusActiveModal } from "../../store/activeModal";
 
 interface IItem {
   id: number;

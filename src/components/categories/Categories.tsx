@@ -8,6 +8,7 @@ import { Icon28MoreHorizontal } from '@vkontakte/icons';
 import { CardScroll, Card, Group, Header, Text, Div } from "@vkontakte/vkui"
 import { iconMap } from "../../dictionary/dictionary";
 import { useFetchBooks } from "../../hooks/useFetchBooks";
+import { setStatusActiveModal } from "../../store/activeModal";
 
 type Props = {}
 
