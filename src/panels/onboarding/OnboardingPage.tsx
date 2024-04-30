@@ -19,8 +19,8 @@ const OnboardingPage = ({ page, onNext, onPrev }: Props) => {
   )
 
   return (
-    <Group style={{ height: '93.38dvh' }} id={page.id}>
-      <Group className='onboarding__wrapper'>
+    <Group id={page.id}>
+      <Group style={{ height: '90dvh' }} className='onboarding__wrapper'>
         <Div className='onboarding__content'>
           <img className='onboarding__img' src={page.imgPath} alt={page.title} />
           <Title className='onboarding__title' level='1'>

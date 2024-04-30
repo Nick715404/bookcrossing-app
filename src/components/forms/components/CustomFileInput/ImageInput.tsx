@@ -14,11 +14,8 @@ type Props = {
 }
 
 export default function ImageInput({ go, bookId }: Props) {
-
-  // const [images, setImages] = useState<any[]>([]);
   const [selectedImages, setSelectedImages] = useState<any[]>([]);
   const [urls, setUrls] = useState<any[]>([]);
-  const status = useUnit($createBookStatus);
 
   const handleImageChange = (e: any) => {
     const files = e.target.files;
@@ -40,9 +37,11 @@ export default function ImageInput({ go, bookId }: Props) {
   }, [selectedImages]);
 
   useEffect(() => {
-    if (go) {
+    if (go && selectedImages.length) {
       console.log('Start upload img');
       handleImageUpload(selectedImages, bookId);
+    } else {
+      console.log('Nothing to upload!');
     }
   }, [go]);
 

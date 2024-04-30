@@ -10,17 +10,27 @@ type TProps = {
 const CustomImage = ({ bookId }: TProps) => {
 
   const getFiles = async () => {
-    const images = await getBookImage(bookId);
-    if (!images) return;
-    return images;
+    try {
+      const images = await getBookImage(bookId);
+      console.log(images);
+      if (!images) {
+        return null; // Если нет изображений, возвращаем null
+      }
+      return images;
+    } catch (error) {
+      return null;
+    }
   };
 
-  const { data, isFetching, isSuccess } = useQuery({
-    queryKey: ['image', 'single'],
+  const { data, isError, isSuccess } = useQuery({
+    queryKey: ['image', 'single', bookId],
     queryFn: getFiles,
-  })
+    retry: 1,
+    retryDelay: 1000,
+    staleTime: 10000,
+  });
 
-  if (!data) {
+  if (isError || !data) {
     return (
       <Image
         size={96}
@@ -28,8 +38,8 @@ const CustomImage = ({ bookId }: TProps) => {
         className="book-img"
         style={{ marginBottom: '0', marginTop: '0' }}
       />
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -37,7 +47,8 @@ const CustomImage = ({ bookId }: TProps) => {
         size={96}
         borderRadius="m"
         className="book-img"
-        src={isSuccess && data && 'http://localhost:3100/' + data.path}
+        // src={isSuccess && data && 'http://localhost:3100/' + data.path}
+        src={isSuccess && data && 'http://localhost:3100/'}
         style={{ marginBottom: '0', marginTop: '0' }}
       />
     </>

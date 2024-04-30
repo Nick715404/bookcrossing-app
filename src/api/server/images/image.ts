@@ -27,7 +27,15 @@ export const getBookImage = async (bookId: string | undefined) => {
 
     if (!bookId) return;
 
-    const { data } = await api.get('/image/' + bookId + '/images');
+    const response = await api.get('/image/' + bookId + '/images');
+
+    if (response.statusText !== 'OK') {
+      console.log('failed');
+      return null
+    }
+
+    const { data } = await response;
+
     return data;
   }
   catch (error) {
