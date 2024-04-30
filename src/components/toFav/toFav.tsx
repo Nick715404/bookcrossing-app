@@ -35,7 +35,7 @@ export default function ToFav({ bookId, isFav }: Props) {
     },
   });
 
-  useEffect(() => {    
+  useEffect(() => {
     if (isSuccess) PutBookInFavFX(data);
   }, [isSuccess, data]);
 
@@ -48,7 +48,8 @@ export default function ToFav({ bookId, isFav }: Props) {
     return (
       <>
         <ToFavReverse bookId={bookId} />
-        {showSnackbar && (
+        {
+          showSnackbar &&
           <Snackbar
             onClose={() => setShowSnackbar(false)}
             before={<Icon32DoneOutline fill='#11d86b' />}
@@ -56,7 +57,7 @@ export default function ToFav({ bookId, isFav }: Props) {
           >
             Книга успешно добавлена в избранное!
           </Snackbar>
-        )}
+        }
       </>
     )
   }

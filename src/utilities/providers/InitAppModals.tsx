@@ -9,14 +9,12 @@ import { useUnit } from "effector-react";
 import { ModalRoot, SplitLayout } from "@vkontakte/vkui";
 import { ChooseCityModal } from "../../components/modals/ChooseCityModal";
 import OnboardingModal from "../../components/modals/OnboardingModal";
+import GlobalSnackbar from "../../components/GlobalSnackbar/GlobalSnackbar";
 
 
 const InitAppModals = ({ children }: IInitAppEntities) => {
 
-	const changeActiveModal = (id: string | null) => {
-		setStatusActiveModal(id);
-	}
-
+	const changeActiveModal = (id: string | null) => setStatusActiveModal(id);
 	const activeModal = useUnit($statusActiveModal);
 
 	const modal = (
@@ -27,6 +25,7 @@ const InitAppModals = ({ children }: IInitAppEntities) => {
 			<ModalAcceptDelete id="deleteBook" changeActiveModal={changeActiveModal} />
 			<ChooseCityModal id="chooseCity" />
 			<OnboardingModal id="onboardingModal" />
+			<GlobalSnackbar />
 		</ModalRoot>
 	)
 

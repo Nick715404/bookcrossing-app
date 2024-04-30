@@ -27,7 +27,7 @@ export default function CompleteForm({ action }: Props) {
       </Div>
       <Div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <Button size='l' onClick={action}>Добавить еще одну</Button>
-        <Button appearance='overlay' size='l'>Поделиться</Button>
+        {/* <Button appearance='overlay' size='l'>Поделиться</Button> */}
       </Div>
     </Div>
   )

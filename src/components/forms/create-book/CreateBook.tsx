@@ -18,7 +18,7 @@ const CreateBook: React.FC = () => {
   const [go, setGo] = useState({ start: false, bookId: '' });
   const [done, setDone] = useState<boolean>(false);
 
-  const { mutate: create, data } = useCreateBook();
+  const { mutate: create, data, isLoading } = useCreateBook();
   const user = useUnit($user);
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, field: keyof IDataState) => {
@@ -66,7 +66,7 @@ const CreateBook: React.FC = () => {
           go={go}
           handleChangeValue={handleChangeValue}
           handleSubmit={handleSubmit}
-          isLoading=''
+          isLoading={isLoading}
           setWithoutISBN={() => setWithoutISBN(!withoutISBN)}
           withoutISBN={withoutISBN}
         />
