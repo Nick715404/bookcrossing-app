@@ -1,9 +1,10 @@
 import '../../styles/components/user.scss'
 
-import PropTypes from 'prop-types';
-import { Avatar, Div, Group, Text } from "@vkontakte/vkui";
-import { useUnit } from "effector-react";
 import { $user } from "../../store/user";
+
+import PropTypes from 'prop-types';
+import { useUnit } from "effector-react";
+import { Avatar, Div, Group, Text } from "@vkontakte/vkui";
 
 
 const User = () => {
