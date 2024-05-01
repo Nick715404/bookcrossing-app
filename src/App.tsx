@@ -1,11 +1,12 @@
 import './styles/styles.scss'
 import Router from './router/Router';
-import { fetchVkUser } from './api/vk-bridge/user';
+import GlobalSnackbar from './components/GlobalSnackbar/GlobalSnackbar';
 
 const App = () => {
 	return (
 		<>
 			<Router />
+			<GlobalSnackbar />
 		</>
 	);
 }

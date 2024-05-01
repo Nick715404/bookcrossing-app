@@ -26,7 +26,6 @@ const InitAppModals = ({ children }: IInitAppEntities) => {
 			<ModalAcceptDelete id="deleteBook" changeActiveModal={changeActiveModal} />
 			<ChooseCityModal id="chooseCity" />
 			<OnboardingModal id="onboardingModal" />
-			<GlobalSnackbar />
 			<OnboardingMenuModal id="menuOnboarding" />
 		</ModalRoot>
 	)
