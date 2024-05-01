@@ -108,7 +108,7 @@ export interface BookStoreState {
 export interface IVkUser {
   id: number;
   bdate_visibility?: number;
-  city: {
+  city?: {
     id?: number,
     title: string
   },
