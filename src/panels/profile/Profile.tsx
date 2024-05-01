@@ -3,9 +3,9 @@ import SegmentedControlCustom from '../../components/segmentControl/SegmentContr
 import BooksOnShelf from '../../components/books-on-shelf/BooksOnShelf';
 import FavoritesBooks from '../../components/books-in-favorites/FavoritesBooks';
 
+import CustomHeader from '../../components/header/CustomHeader';
 import { useState } from 'react';
 import { Group, Panel, PanelHeader } from '@vkontakte/vkui';
-import CustomHeader from '../../components/header/CustomHeader';
 
 type Props = {
   id: string
@@ -25,7 +25,6 @@ export default function Profile({ id }: Props) {
         <SegmentedControlCustom position={position} setPosition={setPosition} />
         {position === 'shelf' ? <BooksOnShelf /> : <FavoritesBooks />}
       </Group>
-
     </Panel>
   )
 }

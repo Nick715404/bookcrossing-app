@@ -10,7 +10,10 @@ const initialState = {
 };
 
 const $snackbar = createStore(initialState)
-  .on(showSnackbarFX, (_, snackbar) => snackbar)
+  .on(showSnackbarFX, (_, snackbar) => {
+    console.log(snackbar);
+    return snackbar;
+  })
   .reset(hideShackbarFX);
 
 export { $snackbar, showSnackbarFX, hideShackbarFX };

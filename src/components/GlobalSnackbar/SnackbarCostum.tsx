@@ -1,6 +1,6 @@
 import { Snackbar } from "@vkontakte/vkui";
 import { hideShackbarFX } from "../../store/states";
-// import { hideSnackbar } from "../../store/states";
+
 interface IProps {
   data: {
     text: string,
@@ -10,6 +10,8 @@ interface IProps {
 }
 
 export default function SnackbarCostum({ data }: IProps) {
+  console.log('Snackbar!');
+  
   return (
     <Snackbar
       before={data.icon}

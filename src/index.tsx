@@ -9,7 +9,7 @@ import bridge from "@vkontakte/vk-bridge";
 import { AdaptivityProvider, ConfigProvider, AppRoot } from "@vkontakte/vkui";
 import ReactDOM from "react-dom";
 
-// Init VK  Mini App
+// - Init VK  Mini App
 bridge.send("VKWebAppInit");
 
 ReactDOM.render(

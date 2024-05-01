@@ -47,8 +47,7 @@ const CustomImage = ({ bookId }: TProps) => {
         size={96}
         borderRadius="m"
         className="book-img"
-        // src={isSuccess && data && 'http://localhost:3100/' + data.path}
-        src={isSuccess && data && 'http://localhost:3100/'}
+        src={isSuccess && data && 'https://буккросинг.рф:3100/' + data.path}
         style={{ marginBottom: '0', marginTop: '0' }}
       />
     </>
