@@ -4,7 +4,7 @@ import { setStatusActiveModal } from "../../store/activeModal";
 import HeaderClose from "../../components/header/headerClose/HeaderClose";
 
 import { useUnit } from "effector-react";
-import { Cell, CellButton, Div, Group, Panel, PanelHeader, Text } from "@vkontakte/vkui";
+import { CellButton, Div, Group, Panel, PanelHeader, Text } from "@vkontakte/vkui";
 
 type Props = {
     id: string,
@@ -26,7 +26,7 @@ const Menu = ({ id }: Props) => {
 
             <Group>
                 <CellButton>
-                    <Text onClick={() => setStatusActiveModal('onboardingModal')} className="menu-item">
+                    <Text onClick={() => setStatusActiveModal('menuOnboarding')} className="menu-item">
                         О приложении
                     </Text>
                 </CellButton>

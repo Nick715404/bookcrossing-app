@@ -10,6 +10,7 @@ import { ModalRoot, SplitLayout } from "@vkontakte/vkui";
 import { ChooseCityModal } from "../../components/modals/ChooseCityModal";
 import OnboardingModal from "../../components/modals/OnboardingModal";
 import GlobalSnackbar from "../../components/GlobalSnackbar/GlobalSnackbar";
+import OnboardingMenuModal from "../../components/modals/OnboardingMenuModal";
 
 
 const InitAppModals = ({ children }: IInitAppEntities) => {
@@ -26,6 +27,7 @@ const InitAppModals = ({ children }: IInitAppEntities) => {
 			<ChooseCityModal id="chooseCity" />
 			<OnboardingModal id="onboardingModal" />
 			<GlobalSnackbar />
+			<OnboardingMenuModal id="menuOnboarding" />
 		</ModalRoot>
 	)
 

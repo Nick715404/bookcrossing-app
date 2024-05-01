@@ -13,10 +13,10 @@ type Props = {
   onMenu?: boolean;
 };
 
-const OnboardingPage = ({ page, onNext, onPrev }: Props) => {
+const OnboardingPage = ({ page, onNext, onPrev, onMenu }: Props) => {
 
   const StartButton = (
-    <Button onClick={() => setStatusActiveModal('chooseCity')} size='m'>
+    <Button onClick={onMenu ? () => setStatusActiveModal(null) : () => setStatusActiveModal('chooseCity')} size='m'>
       Начать
     </Button>
   );
