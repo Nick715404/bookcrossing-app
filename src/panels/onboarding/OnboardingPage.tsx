@@ -1,22 +1,25 @@
 import '../../styles/panels/onboarding.scss';
 
 import { IOnboardingPage } from '../../constants/onboarding-pages';
-import { Icon28ChevronLeftOutline, Icon28ChevronRightOutline } from '@vkontakte/icons';
-import { Button, Div, Group, IconButton, Panel, PanelHeader, Text, Title } from '@vkontakte/vkui';
 import { setStatusActiveModal } from '../../store/activeModal';
+
+import { Icon28ChevronLeftOutline, Icon28ChevronRightOutline } from '@vkontakte/icons';
+import { Button, Div, Group, IconButton, Text, Title } from '@vkontakte/vkui';
 
 type Props = {
   page: IOnboardingPage;
   onNext?: () => void;
   onPrev?: () => void;
+  onMenu?: boolean;
 };
 
 const OnboardingPage = ({ page, onNext, onPrev }: Props) => {
+
   const StartButton = (
     <Button onClick={() => setStatusActiveModal('chooseCity')} size='m'>
       Начать
     </Button>
-  )
+  );
 
   return (
     <Group id={page.id}>

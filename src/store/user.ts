@@ -14,10 +14,5 @@ export const $user = createStore<IServerUser>({
 export const $userCity = createStore('');
 
 $userCity.on(UpdateUserCityFX.doneData, (_, action) => action);
-$user.on(GetCurrentUserFX.doneData, (_, newUser) => {
-  return newUser
-});
-$user.on(GetCurrentUserFromServerFX.doneData, (_, user) => {
-  console.log(user);
-  return user;
-});
+$user.on(GetCurrentUserFX.doneData, (_, newUser) => newUser);
+$user.on(GetCurrentUserFromServerFX.doneData, (_, user) => user);

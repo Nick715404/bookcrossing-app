@@ -48,22 +48,24 @@ export default function Categories({ }: Props) {
           </div>
         </Card>
 
-        {firstNineCategories && firstNineCategories.map(category => (
-          <Card
-            className="card"
-            key={category.id}
-            onClick={() => handleClick(category.title, category.id)}
-          >
-            <div className="card__wrapper">
-              <div className="card__icon">
-                {category.imageName && iconMap[category.imageName]}
+        {
+          firstNineCategories && firstNineCategories.map(category => (
+            <Card
+              className="card"
+              key={category.id}
+              onClick={() => handleClick(category.title, category.id)}
+            >
+              <div className="card__wrapper">
+                <div className="card__icon">
+                  {category.imageName && iconMap[category.imageName]}
+                </div>
+                <div className="card__content">
+                  <span className="card__text">{category.title}</span>
+                </div>
               </div>
-              <div className="card__content">
-                <span className="card__text">{category.title}</span>
-              </div>
-            </div>
-          </Card>
-        ))}
+            </Card>
+          ))
+        }
 
       </CardScroll >
     </>
