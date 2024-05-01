@@ -64,7 +64,7 @@ const HomePageBook = ({ id }: Props) => {
                 Категория: {data.categoryTitle}
               </Text>
               <Text weight="3" className="bookIsbn">
-                ISBN: {data.isbn}
+                ISBN: {data.isbn ? data.isbn : "Не указан"}
               </Text>
               <Separator style={{ padding: '20px 0px' }} />
               <Div style={{ display: 'flex', alignItems: 'center', padding: '0' }}>
