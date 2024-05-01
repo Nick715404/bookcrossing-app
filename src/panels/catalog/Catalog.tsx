@@ -16,7 +16,7 @@ type Props = {
 export default function Catalog({ id }: Props) {
 	return (
 		<Panel id={id}>
-			<PanelHeader>
+			<PanelHeader style={{display: 'flex', marginRight: 'auto', marginLeft: '20px'}}>
 				<CustomHeader />
 			</PanelHeader>
 			<Group>
