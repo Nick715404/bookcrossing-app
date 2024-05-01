@@ -1,26 +1,29 @@
 import '../../styles/panels/onboarding.scss';
 
 import { IOnboardingPage } from '../../constants/onboarding-pages';
-import { Icon28ChevronLeftOutline, Icon28ChevronRightOutline } from '@vkontakte/icons';
-import { Button, Div, Group, IconButton, Panel, PanelHeader, Text, Title } from '@vkontakte/vkui';
 import { setStatusActiveModal } from '../../store/activeModal';
+
+import { Icon28ChevronLeftOutline, Icon28ChevronRightOutline } from '@vkontakte/icons';
+import { Button, Div, Group, IconButton, Text, Title } from '@vkontakte/vkui';
 
 type Props = {
   page: IOnboardingPage;
   onNext?: () => void;
   onPrev?: () => void;
+  onMenu?: boolean;
 };
 
-const OnboardingPage = ({ page, onNext, onPrev }: Props) => {
+const OnboardingPage = ({ page, onNext, onPrev, onMenu }: Props) => {
+
   const StartButton = (
-    <Button onClick={() => setStatusActiveModal('chooseCity')} size='m'>
+    <Button onClick={onMenu ? () => setStatusActiveModal(null) : () => setStatusActiveModal('chooseCity')} size='m'>
       Начать
     </Button>
-  )
+  );
 
   return (
-    <Group style={{ height: '93.38dvh' }} id={page.id}>
-      <Group className='onboarding__wrapper'>
+    <Group id={page.id}>
+      <Group style={{ height: '90dvh' }} className='onboarding__wrapper'>
         <Div className='onboarding__content'>
           <img className='onboarding__img' src={page.imgPath} alt={page.title} />
           <Title className='onboarding__title' level='1'>

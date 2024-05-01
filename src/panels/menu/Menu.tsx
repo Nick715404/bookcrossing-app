@@ -1,11 +1,10 @@
-import { Icon24CancelOutline } from "@vkontakte/icons";
-import { useActiveVkuiLocation, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { Cell, CellButton, Div, Group, IconButton, Panel, PanelHeader, Text } from "@vkontakte/vkui";
-import { vkBlueColor } from "../../constants/utils";
-import { useUnit } from "effector-react";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { $user } from "../../store/user";
 import { setStatusActiveModal } from "../../store/activeModal";
 import HeaderClose from "../../components/header/headerClose/HeaderClose";
+
+import { useUnit } from "effector-react";
+import { CellButton, Div, Group, Panel, PanelHeader, Text } from "@vkontakte/vkui";
 
 type Props = {
     id: string,
@@ -27,7 +26,7 @@ const Menu = ({ id }: Props) => {
 
             <Group>
                 <CellButton>
-                    <Text className="menu-item">
+                    <Text onClick={() => setStatusActiveModal('menuOnboarding')} className="menu-item">
                         О приложении
                     </Text>
                 </CellButton>
@@ -44,11 +43,11 @@ const Menu = ({ id }: Props) => {
                     </Text>
                 </CellButton>
 
-                <CellButton>
+                {/* <CellButton>
                     <Text className="menu-item">
                         Поддержать проект
                     </Text>
-                </CellButton>
+                </CellButton> */}
 
                 <CellButton onClick={handelUserAgreement}>
                     <Text className="menu-item">

@@ -1,5 +1,5 @@
-import { createEffect } from "effector";
 import { api } from "../../axios/axiosInstance";
+import { createEffect } from "effector";
 
 export const getAllCategoriesFX = createEffect(async () => {
   try {
@@ -9,4 +9,4 @@ export const getAllCategoriesFX = createEffect(async () => {
   catch (error) {
     throw new Error('Неудалось получить книги в getAllGEnresFX');
   }
-})
+});

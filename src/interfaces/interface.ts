@@ -140,3 +140,8 @@ export interface IPromiseCities {
     items: ICity[]
   }
 }
+
+export interface ICategoriesBooksStore {
+  title: string,
+  books: IBook[],
+}

@@ -43,7 +43,6 @@ export const GetCurrentUserFX = createEffect(async (user: IVkUser) => {
 
   try {
     const { data } = await api.post('/user/create', user);
-    console.log(data);
     return data.user;
   }
   catch (error) {
@@ -54,7 +53,6 @@ export const GetCurrentUserFX = createEffect(async (user: IVkUser) => {
 export const GetCurrentUserFromServerFX = createEffect(async (id: number) => {
   try {
     const { data } = await api.get(`/user/find/${id}`);
-    console.log(data);
     return data;
   } catch (error) {
     throw new Error('Error with server');

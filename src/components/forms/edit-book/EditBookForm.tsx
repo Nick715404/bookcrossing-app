@@ -70,7 +70,7 @@ export default function EditBookForm({
           placeholder="Введите ISBN книги"
           name="bookIsbn"
           value={withoutISBN ? '' : formData.isbn}
-          disabled={withoutISBN ? true : false}
+          disabled={withoutISBN ? true : false || formData.isbn === '' && true}
           onChange={(e) => handleChangeValue(e, 'isbn')}
           type="text"
           top="ISBN *"
@@ -78,7 +78,7 @@ export default function EditBookForm({
           isRequired={withoutISBN ? false : true}
         />
         <FormItem htmlFor="bookCheckbox">
-          <Checkbox onClick={() => setWithoutISBN(!withoutISBN)} id="bookCheckbox">ISBN отсутствует</Checkbox>
+          <Checkbox checked={formData.isbn === '' && true} onClick={() => setWithoutISBN(!withoutISBN)} id="bookCheckbox">ISBN отсутствует</Checkbox>
         </FormItem>
         <CustomTextarea
           value={formData.description || ''}

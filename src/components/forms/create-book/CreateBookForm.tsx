@@ -35,6 +35,7 @@ export default function CreateBookForm({
       <form onSubmit={handleSubmit}>
         <ImageInput go={go.start} bookId={go.bookId} />
         <CustomInput
+          readOnly={isLoading}
           id="bookTitle"
           placeholder="Мастер и Маргарита"
           name="bookTitle"
@@ -46,6 +47,7 @@ export default function CreateBookForm({
           isRequired
         />
         <CustomInput
+          readOnly={isLoading}
           id="bookAuthor"
           placeholder="М. А. Булгаков"
           name="bookAuthor"
@@ -66,13 +68,14 @@ export default function CreateBookForm({
           onChange={(e: any) => handleChangeValue(e, 'categoryTitle')}
         />
         <CustomInput
+          readOnly={isLoading}
           id="bookIsbn"
           placeholder="Введите ISBN книги"
           name="bookIsbn"
           value={withoutISBN ? '' : formData.isbn}
           disabled={withoutISBN ? true : false}
           onChange={(e) => handleChangeValue(e, 'isbn')}
-          type="text"
+          type="number"
           top="ISBN *"
           htmlFor="bookIsbn"
           isRequired={withoutISBN ? false : true}

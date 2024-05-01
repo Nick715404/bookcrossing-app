@@ -5,10 +5,11 @@ import { onboardingPages } from '../../constants/onboarding-pages';
 import { OnboardingPage } from '../../panels/onboarding/OnboardingPage';
 
 interface Props {
-  id: string;
+  id?: string;
+  onMenu?: boolean;
 }
 
-const OnboardingModal = ({ id }: Props) => {
+const OnboardingModal = ({ id, onMenu }: Props) => {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
   const handleNext = () => {
@@ -33,6 +34,7 @@ const OnboardingModal = ({ id }: Props) => {
       }
     >
       <OnboardingPage
+        onMenu={onMenu}
         page={onboardingPages[currentPageIndex]}
         onNext={handleNext}
         onPrev={handlePrev}

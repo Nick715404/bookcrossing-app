@@ -3,13 +3,14 @@ import { IBook, } from "../../../interfaces/interface";
 import { initialStateSelectedBook } from "../../../constants/utils";
 import { handleEditBook, handleFormValidation } from "../../../utilities/forms/edit-book.utils";
 
-import { getCurentBookFX } from "../../../api/server/books/books";
 import { $editingBook } from "../../../store/bookEditId";
 
 import EditBookForm from "./EditBookForm";
 import CompleteForm from "../complete-form/CompleteForm";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+
 import { useUnit } from "effector-react";
-import React, { useCallback, useMemo, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 
 const EditBookF: React.FC = () => {
   const editingBook = useUnit($editingBook);
@@ -22,9 +23,8 @@ const EditBookF: React.FC = () => {
     bookId: ''
   });
   const [done, setDone] = useState<boolean>(false);
-
   const user = useUnit($user);
-
+  const router = useRouteNavigator();
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>, field: keyof IBook) => {
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
@@ -73,12 +73,12 @@ const EditBookF: React.FC = () => {
       setFormData(editingBook);
     }
   }, [editingBook]);
-  
+
   return (
     <>
       {done
         ?
-        <CompleteForm action={() => setDone(false)} />
+        <CompleteForm state="edit" action={() => router.push('/profile')} />
         :
         <EditBookForm
           formData={formData}

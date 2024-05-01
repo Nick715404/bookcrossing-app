@@ -5,6 +5,7 @@ const useFetchBooks = () => {
   return useQuery({
     queryKey: ['books all'],
     queryFn: fetchBooks,
+    refetchOnMount: false,
   })
 }
 

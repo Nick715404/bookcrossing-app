@@ -41,7 +41,7 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
             {book.author ? book.author : 'Автор не найден'}
           </Text>
           <Text className="book-quality book-info">
-            {book.state ? book.state : "не найдено"}
+            {book.state ? book.state : "Не найдено"}
           </Text>
           <Text className="book-genre book-info">
             {book.categoryTitle ? book.categoryTitle : 'Нет жанра'}

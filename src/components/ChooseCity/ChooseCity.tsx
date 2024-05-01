@@ -14,7 +14,6 @@ const ChooseCity = ({ data }: Props) => {
 
   const handleClick = async (city: ICity) => {
     const user = await fetchVkUser();
-    console.log(user);
     user.city = { id: city.id, title: city.title }
     GetCurrentUserFX(user);
     UpdateUserCityFX(city.title);
