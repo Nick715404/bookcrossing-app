@@ -1,7 +1,6 @@
-import { Group, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui"
 import SortedBookList from "../../components/sortedBookList/SortedBookList"
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router"
-
+import { Group, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui"
 
 type Props = {
   id: string

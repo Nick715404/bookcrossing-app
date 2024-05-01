@@ -1,27 +1,23 @@
 import { $categories } from "../../store/categories";
-import { sortBookFx } from "../../utilities/category/category.utils";
-import { $books } from "../../store/books";
+import { AddBooksToCategoryFX } from "../../utilities/category/category.utils";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
-import { useUnit } from "effector-react";
-import { Icon28MoreHorizontal } from '@vkontakte/icons';
-import { CardScroll, Card, Group, Header, Text, Div } from "@vkontakte/vkui"
 import { iconMap } from "../../dictionary/dictionary";
 import { useFetchBooks } from "../../hooks/useFetchBooks";
-import { setStatusActiveModal } from "../../store/activeModal";
 
-type Props = {}
+import { Icon28MoreHorizontal } from '@vkontakte/icons';
+import { useUnit } from "effector-react";
+import { CardScroll, Card, Header } from "@vkontakte/vkui"
 
-export default function Categories({ }: Props) {
-
-  const [categories, books] = useUnit([$categories, $books]);
+export default function Categories() {
+  const [categories] = useUnit([$categories]);
   const navigator = useRouteNavigator();
 
   const { data } = useFetchBooks();
 
   const handleClick = (category: string, id: string) => {
     if (data) {
-      sortBookFx({ category, books: data });
+      AddBooksToCategoryFX({ category, books: data });
       navigator.push(`/category/${id}}`)
     }
   }

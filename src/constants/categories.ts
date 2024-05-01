@@ -1,3 +1,5 @@
+import { ICategoriesBooksStore } from "../interfaces/interface"
+
 export const bookCategories = [
   {
     id: 1,
@@ -10,3 +12,8 @@ export const bookCategories = [
     icon: '',
   },
 ]
+
+export const categoriesBooksInitState = {
+  title: '',
+  books: [],
+} satisfies ICategoriesBooksStore

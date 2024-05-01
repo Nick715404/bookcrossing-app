@@ -12,9 +12,8 @@ const CustomImage = ({ bookId }: TProps) => {
   const getFiles = async () => {
     try {
       const images = await getBookImage(bookId);
-      console.log(images);
       if (!images) {
-        return null; // Если нет изображений, возвращаем null
+        return null;
       }
       return images;
     } catch (error) {
@@ -28,6 +27,7 @@ const CustomImage = ({ bookId }: TProps) => {
     retry: 1,
     retryDelay: 1000,
     staleTime: 10000,
+    retryOnMount: false
   });
 
   if (isError || !data) {

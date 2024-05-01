@@ -1,5 +1,5 @@
 import { IBook } from "../../interfaces/interface";
-import { $sortedBooks } from "../../store/books";
+import { $categoriesBooks, $sortedBooks } from "../../store/books";
 import { vkGreyColor } from "../../constants/utils";
 
 import Book from "../book/Book";
@@ -9,12 +9,12 @@ import ToChat from "../toChat/toChat";
 
 import { Icon56SearchOutline } from "@vkontakte/icons";
 import { useUnit } from "effector-react";
-import { Div, Header, Text } from "@vkontakte/vkui";
+import { Header } from "@vkontakte/vkui";
 
 export default function SortedBookList() {
-  const books: IBook[] = useUnit($sortedBooks);
+  const data = useUnit($categoriesBooks);
 
-  if (books.length === 0) {
+  if (data.books.length === 0) {
     return (
       <EmptyPlate
         icon={<Icon56SearchOutline fill={vkGreyColor} />}
@@ -28,10 +28,10 @@ export default function SortedBookList() {
 
   return (
     <>
-      <Header mode="primary" style={{ marginBottom: '12px', fontSize: '20px' }}>Поиск по жанру: ...</Header>
+      <Header mode="primary" style={{ marginBottom: '12px', fontSize: '20px' }}>Поиск по жанру: {data.title}</Header>
       {
-        books.length && (
-          books.map((book: IBook) => (
+        data.books.length && (
+          data.books.map((book: IBook) => (
             <Book
               key={book.id}
               afterIcon={<ToFav bookId={book.id} isFav={book.favourite} />}
