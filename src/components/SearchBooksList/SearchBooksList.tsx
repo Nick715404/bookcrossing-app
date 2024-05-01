@@ -1,6 +1,6 @@
 import { $books, $searchBooks } from "../../store/books";
 import { IBook } from "../../interfaces/interface";
-import { vkBlueColor } from "../../constants/utils";
+import { vkGreyColor } from "../../constants/utils";
 
 import Book from "../book/Book";
 import ToFav from "../toFav/toFav";
@@ -25,7 +25,7 @@ const SearchBooksList = ({ data, isSuccess, isLoading }: IProps) => {
         title="Книги по вашему запросу | не найдены"
         location="catalog"
         label="Перейти в каталог"
-        icon={<Icon28BookOutline style={{ width: 56, height: 56 }} fill={vkBlueColor} />}
+        icon={<Icon28BookOutline style={{ width: 56, height: 56 }} fill={vkGreyColor} />}
       />
     )
   }
