@@ -50,19 +50,24 @@
     max-width: 35%;
   }
 
+  .vkuiSimpleCell__main {
+    padding: 0 !important;
+    max-width: unset !important;
+  }
+
 }
 
 .loading {
   animation: skeleton-anim 1s linear infinite alternate;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 @keyframes skeleton-anim {
   0% {
-    background-color: hsl(212, 72%, 36%);
+    background-color: hsl(0, 0%, 66%);
   }
 
   100% {
-    background-color: hsl(212, 72%, 56%);
+    background-color: hsl(0, 0%, 81%);
   }
 }

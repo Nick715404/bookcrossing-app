@@ -5,6 +5,8 @@ import ImagesGallery from "../ImagesGallery/ImagesGallery";
 
 import { useCallback, useEffect, useState } from "react";
 import { FormItem } from "@vkontakte/vkui";
+import { useUnit } from "effector-react";
+import { $createBookStatus } from "../../../../store/books";
 
 type Props = {
   go: any
@@ -13,9 +15,10 @@ type Props = {
 
 export default function ImageInput({ go, bookId }: Props) {
 
-  const [images, setImages] = useState<any[]>([]);
+  // const [images, setImages] = useState<any[]>([]);
   const [selectedImages, setSelectedImages] = useState<any[]>([]);
   const [urls, setUrls] = useState<any[]>([]);
+  const status = useUnit($createBookStatus);
 
   const handleImageChange = (e: any) => {
     const files = e.target.files;
@@ -38,6 +41,7 @@ export default function ImageInput({ go, bookId }: Props) {
 
   useEffect(() => {
     if (go) {
+      console.log('Start upload img');
       handleImageUpload(selectedImages, bookId);
     }
   }, [go]);

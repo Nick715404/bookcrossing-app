@@ -1,13 +1,22 @@
 import { IBook } from "../interfaces/interface";
-import { GetFavFromUser, PutBookToFavFX } from "../api/server/favorites/favorites";
-import { createStore } from "effector";
-import { deleteBookFX } from "../api/server/books/books";
+
+
+import { createEffect, createEvent, createStore } from "effector";
 
 export const $favBooks = createStore<IBook[]>([]);
+export const $favoritesStatus = createStore<string>('');
 
-$favBooks.on(GetFavFromUser.doneData, (books, newBooks) => [...books, ...newBooks]);
-$favBooks.on(PutBookToFavFX.doneData, (books, newBook) => [...books, newBook]);
-$favBooks.on(deleteBookFX.doneData, (book, newBook) => {
-  const newBooks = book.filter(item => item.id !== newBook.id);
+export const EditArrayFX = createEvent<{ id: string, favourite: string }>();
+export const PutBookInFavFX = createEffect((data: IBook) => data);
+export const GetAllBooksFromFavFX = createEffect((data: IBook[]) => data);
+export const DeleteBookFromFavPipeFX = createEffect((data: IBook) => data);
+
+$favBooks.on(GetAllBooksFromFavFX.doneData, (_, newBooks) => newBooks)
+$favBooks.on(PutBookInFavFX.doneData, (books, newBook) => {
+  console.log(books, newBook);
+  return [...books, newBook]
+});
+$favBooks.on(DeleteBookFromFavPipeFX.doneData, (books, newBook) => {
+  const newBooks = books.filter(item => item.id !== newBook.id);
   return [...newBooks]
 });

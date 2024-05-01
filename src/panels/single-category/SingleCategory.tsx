@@ -1,5 +1,6 @@
 import { Group, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui"
 import SortedBookList from "../../components/sortedBookList/SortedBookList"
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router"
 
 
 type Props = {
@@ -7,9 +8,10 @@ type Props = {
 }
 
 export default function SingleCategory({ id }: Props) {
+  const navigator = useRouteNavigator();
 
   const headerBefore = (
-    <PanelHeaderBack label="Назад" onClick={() => window.history.back()} />
+    <PanelHeaderBack label="Назад" onClick={() => navigator.back()} />
   )
 
   return (

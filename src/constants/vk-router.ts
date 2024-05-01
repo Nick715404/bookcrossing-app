@@ -4,48 +4,58 @@ const routes: RouteWithoutRoot[] = [
   {
     path: '/',
     panel: 'catalog-panel',
-    view: 'panel',
+    view: 'catalog-view',
   },
   {
     path: '/profile',
     panel: 'profile-panel',
-    view: 'panel',
+    view: 'profile-view',
   },
   {
     path: '/create',
     panel: 'create-panel',
-    view: 'panel',
+    view: 'create-view',
   },
   {
     path: '/book/:id',
     panel: 'book-panel',
-    view: 'panel',
+    view: 'book-view',
   },
   {
     path: '/category/all',
     panel: 'category-panel-all',
-    view: 'panel',
+    view: 'category-view-all',
   },
   {
     path: '/category/:id',
     panel: 'category-panel-single',
-    view: 'panel',
+    view: 'category-view-single',
   },
   {
     path: '/main',
     panel: 'main-panel',
-    view: 'panel'
+    view: 'main-view'
   },
   {
     path: '/search',
     panel: 'search-panel',
-    view: 'panel'
+    view: 'search-view'
   },
   {
     path: '/userAgreement',
     panel: 'user-agreement',
-    view: 'panel'
-  }
+    view: 'user-agreement-view'
+  },
+  {
+    path: '/editBook',
+    panel: 'edit-book',
+    view: 'edit-book-view'
+  },
+  {
+    path: '/onboarding',
+    panel: 'onboarding-panel',
+    view: 'onboarding-view'
+  },
 ]
 
 export const appRouter = createHashRouter(routes);

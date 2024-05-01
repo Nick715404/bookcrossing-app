@@ -1,0 +1,37 @@
+.onboarding__wrapper {
+  margin-top: 50px;
+}
+
+.onboarding__title {
+  margin-bottom: 17px !important;
+}
+
+.onboarding__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.onboarding__img {
+  margin: 0 auto;
+  margin-bottom: 55px;
+  max-width: 206px;
+  aspect-ratio: 1 / 1;
+}
+
+.nav-buttons-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 999;
+
+  .nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1 !important;
+  }
+
+}

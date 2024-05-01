@@ -6,7 +6,8 @@ $dt-bg: #2d2c2c;
 
 // Dark-theme normilizer 
 .vkui--sizeX-none.vkui--vkBase--dark,
-.vkui--sizeX-none.vkui--vkIOS--dark {
+.vkui--sizeX-none.vkui--vkIOS--dark,
+.vkui--vkCom--dark {
   .book-wrapper {
     background-color: $dt-bg !important;
   }
@@ -20,7 +21,7 @@ $dt-bg: #2d2c2c;
   }
 
   .menu-item {
-   color: #fff !important;
+    color: #fff !important;
   }
 
 }

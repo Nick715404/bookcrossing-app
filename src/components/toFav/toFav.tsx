@@ -1,35 +1,69 @@
 import { vkBlueColor } from '../../constants/utils';
-import { PutBookToFavFX } from '../../api/server/favorites/favorites';
 import { $user } from '../../store/user';
 
+import { $favoritesStatus, PutBookInFavFX } from '../../store/favorites';
+import { ToFavReverse } from './toFavReverse';
+import { putBookInFavorites } from '../../api/server/books/books.query';
+
+import { useEffect, useState } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
 import { useUnit } from 'effector-react';
-import { Icon28BookmarkCheckOutline, Icon28BookmarkOutline } from '@vkontakte/icons';
-import { IconButton } from '@vkontakte/vkui';
-import { useState } from 'react';
+import { Icon28BookmarkOutline, Icon32DoneOutline } from '@vkontakte/icons';
+import { IconButton, Snackbar } from '@vkontakte/vkui';
 
 type Props = {
   bookId: string
   isFav: string
-  inFav?: string
 }
 
-export default function ToFav({ bookId, isFav, inFav }: Props) {
-  const [active, setActive] = useState<boolean>();
-  const user = useUnit($user);
+export default function ToFav({ bookId, isFav }: Props) {
+  const [user, status] = useUnit([$user, $favoritesStatus]);
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const { userId } = user;
+  const client = useQueryClient();
+
+  const { mutate: move, isSuccess, data } = useMutation({
+    mutationKey: ['put', 'favorites'],
+    mutationFn: () => putBookInFavorites(bookId, userId),
+    onSuccess: () => {
+      setShowSnackbar(true);
+      client.invalidateQueries({
+        queryKey: [
+          ['books all', 'books favorites'],
+        ]
+      });
+    },
+  });
+
+  useEffect(() => {    
+    if (isSuccess) PutBookInFavFX(data);
+  }, [isSuccess, data]);
 
   const handleBookMove = async (e: any) => {
     e.preventDefault();
-    const { userId } = user;
-    await PutBookToFavFX({ bookId, userId });
-    setActive(true);
+    move();
   };
+
+  if (isFav !== '' && isFav !== null || isSuccess) {
+    return (
+      <>
+        <ToFavReverse bookId={bookId} />
+        {showSnackbar && (
+          <Snackbar
+            onClose={() => setShowSnackbar(false)}
+            before={<Icon32DoneOutline fill='#11d86b' />}
+            duration={3000}
+          >
+            Книга успешно добавлена в избранное!
+          </Snackbar>
+        )}
+      </>
+    )
+  }
 
   return (
     <IconButton onClick={handleBookMove} className='to-shelf-btn'>
-      {isFav !== '' && isFav !== null ?
-        <Icon28BookmarkCheckOutline fill={vkBlueColor} />
-        : <Icon28BookmarkOutline fill={vkBlueColor} />
-      }
+      <Icon28BookmarkOutline fill={vkBlueColor} />
     </IconButton>
   )
 }

@@ -81,7 +81,7 @@ export interface IUser extends ICreateUser {
 
 export interface IServerUser {
   userId: string
-  vkid: string
+  vkId: number
   city: string
   name: string
   surName: string
@@ -93,7 +93,7 @@ export interface IInitAppEntities {
 }
 
 export interface IShelfInfo {
-  books: IExtendedBook[] | undefined
+  books: IBook[]
   info: {
     id: string
     userId: string
@@ -126,4 +126,17 @@ export interface IVkUser {
   last_name: string;
   can_access_closed?: boolean;
   is_closed?: boolean
+}
+
+export interface ICity {
+  id: number;
+  important: number;
+  title: string;
+}
+
+export interface IPromiseCities {
+  response: {
+    count: number;
+    items: ICity[]
+  }
 }

@@ -4,9 +4,11 @@ import { $books } from "../../store/books";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 import { useUnit } from "effector-react";
-import { Icon24BrainOutline, Icon28MoreHorizontal } from '@vkontakte/icons';
+import { Icon28MoreHorizontal } from '@vkontakte/icons';
 import { CardScroll, Card, Group, Header, Text, Div } from "@vkontakte/vkui"
 import { iconMap } from "../../dictionary/dictionary";
+import { useFetchBooks } from "../../hooks/useFetchBooks";
+import { setStatusActiveModal } from "../../store/activeModal";
 
 type Props = {}
 
@@ -15,9 +17,13 @@ export default function Categories({ }: Props) {
   const [categories, books] = useUnit([$categories, $books]);
   const navigator = useRouteNavigator();
 
+  const { data } = useFetchBooks();
+
   const handleClick = (category: string, id: string) => {
-    sortBookFx({ category, books });
-    navigator.push(`/category/${id}}`)
+    if (data) {
+      sortBookFx({ category, books: data });
+      navigator.push(`/category/${id}}`)
+    }
   }
 
   const firstNineCategories = categories.filter((_, index) => index < 9);
