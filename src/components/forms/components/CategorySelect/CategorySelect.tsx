@@ -23,7 +23,7 @@ function CategorySelect({ value, onChange }: Props) {
 
   return (
     <FormItem
-      top='Категории'
+      top='Категории *'
       htmlFor="bookCategory"
     >
       <Select

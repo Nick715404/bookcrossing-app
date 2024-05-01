@@ -23,13 +23,16 @@ export default function EmptyPlate({ icon, title, text, label, location }: Props
   }, [title]);
 
   const handleClick = () => {
-    showSnackbarFX({
-      text: 'Книга успешно удалена!',
-      icon: <Icon28CheckCircleOutline fill="var(--vkui--color_icon_positive)" />,
-      duration: 1000, // 4 секунды
-    });
-    // navigator.push(`/${location}`);
+    // showSnackbarFX({
+    //   text: 'Книга успешно удалена!',
+    //   icon: <Icon28CheckCircleOutline fill="var(--vkui--color_icon_positive)" />,
+    //   duration: 1000, // 4 секунды
+    // });
+    navigator.push(`/${location}`);
+    console.log(location);
   }
+
+
 
   return (
     <Div className="empty-plate-box">

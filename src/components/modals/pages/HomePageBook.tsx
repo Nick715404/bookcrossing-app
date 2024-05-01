@@ -59,7 +59,7 @@ const HomePageBook = ({ id }: Props) => {
                             {book.title ? book.title : 'Нет названия'}
                         </Text>
                         <Div className="book-top-row__btn">
-                            <ToFav bookId={book.id} isFav={book.favourite} />
+                            <ToFav ownerId={book.owner} bookId={book.id} isFav={book.favourite} />
                         </Div>
                     </Div>
                     <Text weight="3" className="bookAuthor">

@@ -42,7 +42,7 @@ export default function CatalogBookList() {
           <Book
             key={book.id}
             book={book}
-            afterIcon={<ToFav bookId={book.id} isFav={book.favourite} />}
+            afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={book.favourite} />}
             beforeIcon={<ToChat vkid={book.owner} />}
           />
         )).reverse()

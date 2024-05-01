@@ -41,7 +41,7 @@ const SearchBooksList = ({ data, isSuccess, isLoading }: IProps) => {
       {
         isSuccess && data && data.map((book: IBook) => (
           <Book
-            afterIcon={<ToFav bookId={book.id} isFav={book.favourite} />}
+            afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={book.favourite} />}
             beforeIcon={<ToChat vkid={book.owner} />}
             book={book}
             key={book.id} />

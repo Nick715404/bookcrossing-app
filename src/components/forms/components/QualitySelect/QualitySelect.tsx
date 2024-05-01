@@ -9,7 +9,7 @@ type Props = {
 export default function QualitySelect({ value, onChange }: Props) {
   return (
     <FormItem
-      top='Состояние'
+      top='Состояние *'
       htmlFor="bookQuality"
     >
       <Select

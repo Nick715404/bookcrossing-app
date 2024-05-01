@@ -34,7 +34,7 @@ export default function SortedBookList() {
           data.books.map((book: IBook) => (
             <Book
               key={book.id}
-              afterIcon={<ToFav bookId={book.id} isFav={book.favourite} />}
+              afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={book.favourite} />}
               beforeIcon={<ToChat vkid={book.owner} />}
               book={book}
             />

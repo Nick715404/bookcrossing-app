@@ -76,7 +76,7 @@ export default function CreateBookForm({
           disabled={withoutISBN ? true : false}
           onChange={(e) => handleChangeValue(e, 'isbn')}
           type="number"
-          top="ISBN *"
+          top="ISBN"
           htmlFor="bookIsbn"
           isRequired={withoutISBN ? false : true}
         />

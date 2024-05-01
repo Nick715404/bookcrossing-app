@@ -1,7 +1,7 @@
 import { vkBlueColor } from '../../constants/utils';
 import { $user } from '../../store/user';
 
-import { $favoritesStatus, PutBookInFavFX } from '../../store/favorites';
+import { PutBookInFavFX } from '../../store/favorites';
 import { ToFavReverse } from './toFavReverse';
 import { putBookInFavorites } from '../../api/server/books/books.query';
 
@@ -12,12 +12,13 @@ import { Icon28BookmarkOutline, Icon32DoneOutline } from '@vkontakte/icons';
 import { IconButton, Snackbar } from '@vkontakte/vkui';
 
 type Props = {
-  bookId: string
-  isFav: string
+  bookId: string;
+  isFav: string;
+  ownerId: number;
 }
 
-export default function ToFav({ bookId, isFav }: Props) {
-  const [user, status] = useUnit([$user, $favoritesStatus]);
+export default function ToFav({ bookId, isFav, ownerId }: Props) {
+  const [user] = useUnit([$user]);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const { userId } = user;
   const client = useQueryClient();
@@ -44,7 +45,8 @@ export default function ToFav({ bookId, isFav }: Props) {
     move();
   };
 
-  if (isFav !== '' && isFav !== null || isSuccess) {
+  // if (isFav !== '' || isFav !== null || isSuccess && user.vkId === ownerId) {
+  if (isFav.length && user.vkId === ownerId) {
     return (
       <>
         <ToFavReverse bookId={bookId} />
@@ -63,8 +65,10 @@ export default function ToFav({ bookId, isFav }: Props) {
   }
 
   return (
-    <IconButton onClick={handleBookMove} className='to-shelf-btn'>
-      <Icon28BookmarkOutline fill={vkBlueColor} />
-    </IconButton>
+    <>
+      <IconButton onClick={handleBookMove} className='to-shelf-btn'>
+        <Icon28BookmarkOutline fill={vkBlueColor} />
+      </IconButton>
+    </>
   )
 }

@@ -14,10 +14,7 @@ export const DeleteBookFromFavPipeFX = createEffect((data: IBook) => data);
 
 // - Store manipulation
 $favBooks.on(GetAllBooksFromFavFX.doneData, (_, newBooks) => newBooks)
-$favBooks.on(PutBookInFavFX.doneData, (books, newBook) => {
-  console.log(books, newBook);
-  return [...books, newBook]
-});
+$favBooks.on(PutBookInFavFX.doneData, (books, newBook) => [...books, newBook]);
 $favBooks.on(DeleteBookFromFavPipeFX.doneData, (books, newBook) => {
   const newBooks = books.filter(item => item.id !== newBook.id);
   return [...newBooks]

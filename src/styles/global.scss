@@ -1,13 +1,32 @@
-$dt-bg: #2d2c2c;
+$dt-bg: #85858526;
 
 .vkuiGroup__inner {
   padding: 0 !important;
 }
 
 // Dark-theme normilizer 
-.vkui--sizeX-none.vkui--vkBase--dark,
-.vkui--sizeX-none.vkui--vkIOS--dark,
-.vkui--vkCom--dark {
+.vkui--vkBase--dark,
+.vkui--vkIOS--dark,
+.vkui--vkCom--dark,
+.vkui--calendar--dark,
+.vkui--calls--dark,
+.vkui--cloud--dark,
+.vkui--dobro--dark,
+.vkui--home--dark,
+.vkui--media--dark,
+.vkui--mycom--dark,
+.vkui--octavius--dark,
+.vkui--octaviusCompact--dark,
+.vkui--octaviusVK--dark,
+.vkui--otvet--dark,
+.vkui--paradigmBase--dark,
+.vkui--portalUI--dark,
+.vkui--pulse--dark,
+.vkui--vkIdOk--dark,
+.kui--vkIdOkIOS--dark,
+.vkui--vkontakteAndroid--dark,
+.vkui--vkontakteCom--dark,
+.vkui--vkontakteIOS--dark {
   .book-wrapper {
     background-color: $dt-bg !important;
   }
@@ -17,7 +36,7 @@ $dt-bg: #2d2c2c;
   }
 
   .file-input {
-    background-color: #292929 !important;
+    background-color: $dt-bg !important;
   }
 
   .menu-item {
