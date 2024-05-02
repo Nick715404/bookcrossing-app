@@ -3,8 +3,6 @@ import { handleImageUpload } from "../../../../api/server/images/image";
 import { imageInputStyles, imageInputStylesWithGallery } from "../../../../constants/utils";
 import { useCallback, useEffect, useState } from "react";
 import { Button, Div, FormItem, Text } from "@vkontakte/vkui";
-import { showSnackbarFX } from "../../../../store/states";
-import { Icon28CheckCircleOutline } from "@vkontakte/icons";
 
 type Props = {
   go: any
