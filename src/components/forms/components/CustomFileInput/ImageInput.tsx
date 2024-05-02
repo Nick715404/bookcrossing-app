@@ -2,7 +2,7 @@ import ImagesGallery from "../ImagesGallery/ImagesGallery";
 import { handleImageUpload } from "../../../../api/server/images/image";
 import { imageInputStyles, imageInputStylesWithGallery } from "../../../../constants/utils";
 import { useCallback, useEffect, useState } from "react";
-import { FormItem } from "@vkontakte/vkui";
+import { Button, Div, FormItem, Text } from "@vkontakte/vkui";
 import { showSnackbarFX } from "../../../../store/states";
 import { Icon28CheckCircleOutline } from "@vkontakte/icons";
 
@@ -21,6 +21,8 @@ export default function ImageInput({ go, bookId }: Props) {
     const files = e.target.files;
     const filesArray = Array.from(files) as Array<File>;
 
+    setFileError(null);
+
     const filteredFiles = filesArray.filter((file: File) => {
       if (file.size > maxFileSizeInBytes) {
         setFileError(`Размер файла '${file.name}' превышает допустимый предел 1 MB.`);
@@ -29,7 +31,7 @@ export default function ImageInput({ go, bookId }: Props) {
       return true;
     });
 
-    setSelectedImages([...filteredFiles]);
+    setSelectedImages((prev) => [...prev, ...filteredFiles]);
   };
 
   const handleViewItems = useCallback(() => {
@@ -41,6 +43,22 @@ export default function ImageInput({ go, bookId }: Props) {
       fileReader.readAsDataURL(item);
     });
   }, [selectedImages]);
+
+  const handleRemoveImage = (index: number) => {
+    setUrls((prev) => {
+      const newUrls = [...prev];
+      newUrls.splice(index, 1);
+      return newUrls;
+    });
+
+    setSelectedImages((prev) => {
+      const newImages = [...prev];
+      newImages.splice(index, 1);
+      return newImages;
+    });
+  }
+
+  console.log(urls, selectedImages);
 
   useEffect(() => {
     if (!fileError) {
@@ -57,18 +75,27 @@ export default function ImageInput({ go, bookId }: Props) {
   useEffect(() => {
     if (fileError) {
       console.log('error');
-      showSnackbarFX({
-        text: `${fileError}`,
-        icon: <Icon28CheckCircleOutline fill="var(--vkui--color_icon_positive)" />,
-        duration: 4000,
-      });
     }
   }, [fileError]);
 
   return (
     <FormItem>
-      <ImagesGallery items={urls} />
-      <h1>{fileError}</h1>
+      {
+        fileError && selectedImages.length === 0 &&
+        <Div style={{ border: '#858585b6 solid 2px', borderRadius: '10px', marginBottom: '30px' }}>
+          <Text weight="3" style={{ textAlign: 'center', fontSize: '18px', }}>{fileError}</Text>
+        </Div>
+      }
+      {
+        urls.map((index) => (
+          <Div key={index} style={{ position: "relative", margin: "5px", cursor: "pointer" }}>
+            <ImagesGallery items={urls} />
+            <Button style={{ position: "absolute", top: "5px", right: "5px" }} onClick={() => handleRemoveImage(index)}>
+              Удалить
+            </Button>
+          </Div>
+        ))
+      }
       <input
         className="file-input"
         type="file"
