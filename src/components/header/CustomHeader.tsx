@@ -1,28 +1,41 @@
-import { useActiveVkuiLocation, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { vkBlueColor } from "../../constants/utils";
-import { Icon24MenuOutline } from "@vkontakte/icons"
-import { Div, Group, IconButton } from "@vkontakte/vkui"
+import { Icon24CancelOutline, Icon24MenuOutline } from "@vkontakte/icons"
+import { IconButton, PanelHeader } from "@vkontakte/vkui"
 
-const CustomHeader = () => {
+interface IProps {
+	withBack?: boolean;
+}
+
+const CustomHeader = ({ withBack }: IProps) => {
 	const navigator = useRouteNavigator();
-	const { panel: activePanel } = useActiveVkuiLocation();
+	const handelMenu = () => navigator.push('/main')
+	const handleBack = () => navigator.back();
 
-	const handelMenu = () => {
-		navigator.push('/main')
+	if (withBack) {
+		return (
+			<PanelHeader
+				before={
+					<IconButton onClick={handleBack}>
+						<Icon24CancelOutline fill={vkBlueColor} />
+					</IconButton>
+				}
+			>
+				Буккроссинг
+			</PanelHeader>
+		)
 	}
 
 	return (
-		<Div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: 0 }}>
-			<Group separator='hide'>
-				<IconButton onClick={handelMenu} style={{ left: '-14px' }}>
+		<PanelHeader
+			before={
+				<IconButton onClick={handelMenu}>
 					<Icon24MenuOutline fill={vkBlueColor} />
 				</IconButton>
-			</Group>
-
-			<Group>
-				Буккроссинг
-			</Group>
-		</Div>
+			}
+		>
+			Буккроссинг
+		</PanelHeader>
 	)
 }
 

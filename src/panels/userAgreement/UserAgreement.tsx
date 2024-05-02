@@ -1,19 +1,16 @@
 import { Div, Group, Panel, PanelHeader, Text } from "@vkontakte/vkui";
 import CustomHeader from "../../components/header/CustomHeader";
-import HeaderClose from "../../components/header/headerClose/HeaderClose";
 
 type Proops = {
     id: string
 }
 
-const UserAgreement = ({id}: Proops) => {
+const UserAgreement = ({ id }: Proops) => {
     return (
         <Panel>
-            <PanelHeader>
-                <HeaderClose />
-            </PanelHeader>
-            <Div style={{display: "flex", justifyContent: 'center', gap: 20}}>
-                <Text weight="1" style={{fontSize: "20px"}}>
+            <CustomHeader withBack />
+            <Div style={{ display: "flex", justifyContent: 'center', gap: 20 }}>
+                <Text weight="1" style={{ fontSize: "20px" }}>
                     Пользовательское соглашение
                 </Text>
             </Div>
@@ -153,7 +150,7 @@ const UserAgreement = ({id}: Proops) => {
                         7. Настоящее Соглашение составлено между Пользователем и Администрацией относительно порядка использования Цифрового продукта и его функциональности и заменяют собой все предыдущие соглашения между Пользователем и Администрацией.
                     </Text>
                 </Group>
-                
+
                 <Group separator="hide">
                     <Text weight="2">
                         8. Настоящее Соглашение регулируется и толкуется в соответствии с законодательством Российской Федерации. Вопросы, не урегулированные Соглашением, подлежат разрешению в соответствии с законодательством Российской Федерации.
