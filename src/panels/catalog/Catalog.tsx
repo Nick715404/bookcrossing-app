@@ -19,11 +19,11 @@ export default function Catalog({ id }: Props) {
 			<PanelHeader style={{display: 'flex', marginRight: 'auto', marginLeft: '20px'}}>
 				<CustomHeader />
 			</PanelHeader>
-			<Group>
+			<Group separator='show'>
 				<Search onPanel />
 				<Categories />
 			</Group>
-			<Group>
+			<Group >
 				<Relevants />
 			</Group>
 		</Panel>

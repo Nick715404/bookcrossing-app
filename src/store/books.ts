@@ -1,6 +1,6 @@
 import { categoriesBooksInitState } from "../constants/categories";
 import { IBook, ICategoriesBooksStore } from "../interfaces/interface";
-import { AddBooksToCategoryFX, sortBookFx } from "../utilities/category/category.utils";
+import { AddBooksToCategoryFX, CheckBookInFavPipeFX, sortBookFx } from "../utilities/category/category.utils";
 import { createEffect, createEvent, createStore } from "effector";
 
 // - Stores
@@ -34,4 +34,4 @@ $books.on(ChangeArrayFX, (books, { id, favourite }) => {
   });
 });
 $sortedBooks.on(sortBookFx.doneData, (_, newBooks) => [...newBooks])
-$categoriesBooks.on(AddBooksToCategoryFX.doneData, (_, action) => action)
+$categoriesBooks.on(AddBooksToCategoryFX.doneData, (_, action) => action);

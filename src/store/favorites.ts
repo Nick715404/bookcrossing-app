@@ -1,10 +1,12 @@
 import { IBook } from "../interfaces/interface";
 
 import { createEffect, createEvent, createStore } from "effector";
+import { CheckBookInFavPipeFX } from "../utilities/category/category.utils";
 
 // - Stores
 export const $favBooks = createStore<IBook[]>([]);
 export const $favoritesStatus = createStore<string>('');
+export const $favoriteStatus = createStore<boolean>(false);
 
 // - Effects
 export const EditArrayFX = createEvent<{ id: string, favourite: string }>();
@@ -19,3 +21,12 @@ $favBooks.on(DeleteBookFromFavPipeFX.doneData, (books, newBook) => {
   const newBooks = books.filter(item => item.id !== newBook.id);
   return [...newBooks]
 });
+$favoriteStatus.on(CheckBookInFavPipeFX.doneData, (_, action) => {
+  const favBooks = $favBooks.getState();
+  const isFavorite = isBookInFavorites(favBooks, action);
+  return isFavorite;
+})
+
+function isBookInFavorites(favBooks: IBook[], bookId: string) {
+  return favBooks.some(book => book.id === bookId); // Проверка по идентификатору книги
+}

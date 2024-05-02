@@ -1,7 +1,7 @@
 import { vkBlueColor } from '../../constants/utils';
 import { $user } from '../../store/user';
 
-import { PutBookInFavFX } from '../../store/favorites';
+import { $favoriteStatus, PutBookInFavFX } from '../../store/favorites';
 import { ToFavReverse } from './toFavReverse';
 import { putBookInFavorites } from '../../api/server/books/books.query';
 
@@ -10,6 +10,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import { useUnit } from 'effector-react';
 import { Icon28BookmarkOutline, Icon32DoneOutline } from '@vkontakte/icons';
 import { IconButton, Snackbar } from '@vkontakte/vkui';
+import { CheckBookInFavPipeFX } from '../../utilities/category/category.utils';
 
 type Props = {
   bookId: string;
@@ -19,7 +20,7 @@ type Props = {
 
 export default function ToFav({ bookId, isFav, ownerId }: Props) {
   const [showSnackbar, setShowSnackbar] = useState(false);
-  const [user] = useUnit([$user]);
+  const [user, status] = useUnit([$user, $favoriteStatus]);
   const client = useQueryClient();
   const { userId } = user;
 
@@ -45,7 +46,11 @@ export default function ToFav({ bookId, isFav, ownerId }: Props) {
     move();
   };
 
-  if ((isFav !== '' && isFav !== null) && user.vkId === ownerId || isSuccess) {
+  useEffect(() => {
+    CheckBookInFavPipeFX(bookId)
+  }, [isSuccess]);
+
+  if ((isFav !== '' && isFav !== null || isSuccess) && user.vkId === ownerId) {
     return (
       <>
         <ToFavReverse bookId={bookId} />

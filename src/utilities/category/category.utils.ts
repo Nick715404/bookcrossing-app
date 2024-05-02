@@ -7,9 +7,7 @@ interface IFuncParams {
 }
 
 export const sortBookFx = createEffect(({ category, books }: IFuncParams): IBook[] => {
-  console.log(books);
   const arr = books.filter(item => item.categoryTitle === category);
-  console.log(arr);
   return arr;
 });
 
@@ -19,4 +17,8 @@ export const AddBooksToCategoryFX = createEffect(({ category, books }: IFuncPara
     title: category,
     books: arr,
   };
-})
+});
+
+export const CheckBookInFavPipeFX = createEffect((bookId: string) => {
+  return bookId;
+});

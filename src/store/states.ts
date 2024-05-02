@@ -1,4 +1,5 @@
 import { createEffect, createEvent, createStore } from "effector";
+import { CheckBookInFavPipeFX } from "../utilities/category/category.utils";
 
 const showSnackbarFX = createEvent<{ text: string; icon: any; duration: number }>();
 const hideShackbarFX = createEvent();
@@ -16,7 +17,6 @@ const $snackbar = createStore(initialState)
   .reset(hideShackbarFX);
 
 const $favoriteBooks = createStore<string[]>([]);
-const $favoriteStatus = createStore(false);
 
 const GetBookIdToArrayFX = createEffect((bookId: string) => {
   return bookId;
@@ -24,4 +24,5 @@ const GetBookIdToArrayFX = createEffect((bookId: string) => {
 
 $favoriteBooks.on(GetBookIdToArrayFX.doneData, (books, newBook) => [...books, newBook]);
 
-export { $snackbar, $favoriteStatus, showSnackbarFX, hideShackbarFX, GetBookIdToArrayFX };
+
+export { $snackbar, showSnackbarFX, hideShackbarFX, GetBookIdToArrayFX };
