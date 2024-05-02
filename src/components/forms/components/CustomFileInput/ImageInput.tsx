@@ -2,7 +2,7 @@ import ImagesGallery from "../ImagesGallery/ImagesGallery";
 import { handleImageUpload } from "../../../../api/server/images/image";
 import { imageInputStyles, imageInputStylesWithGallery } from "../../../../constants/utils";
 import { useCallback, useEffect, useState } from "react";
-import { FormItem } from "@vkontakte/vkui";
+import { Button, Div, FormItem, Text } from "@vkontakte/vkui";
 import { showSnackbarFX } from "../../../../store/states";
 import { Icon28CheckCircleOutline } from "@vkontakte/icons";
 
@@ -65,10 +65,36 @@ export default function ImageInput({ go, bookId }: Props) {
     }
   }, [fileError]);
 
+  const handleRemoveImage = (index: number) => {
+    const updateUrls = [...urls];
+    updateUrls.splice(index, 1);
+    setUrls(updateUrls);
+  }
+
   return (
     <FormItem>
-      <ImagesGallery items={urls} />
-      <h1>{fileError}</h1>
+      {/* <Div style={{display: 'flex', flexWrap: 'wrap'}}>
+        {urls.map((item, index) => (
+          <Div key={index} style={{ position: "relative", margin: "5px", cursor: "pointer" }}>
+            <img src={item.url} />
+            <Button  style={{position: "absolute", top: "5px", right: "5px"}} onClick={() => handleRemoveImage(index)}>
+              Удалить
+            </Button>
+          </Div>
+        ))}
+      </Div> */}
+      <Div style={{border: '#d5d5d7 solid 2px', borderRadius: '25px', marginBottom: '30px'}}>
+        
+      {urls.map((item, index) => (
+          <Div key={index} style={{ position: "relative", margin: "5px", cursor: "pointer" }}>
+            <ImagesGallery items={urls} />
+            <Button  style={{position: "absolute", top: "5px", right: "5px"}} onClick={() => handleRemoveImage(index)}>
+              Удалить
+            </Button>
+          </Div>
+        ))}
+        <Text weight="1" style={{textAlign: 'center', fontSize: '18px'}}>{fileError}</Text>
+      </Div>
       <input
         className="file-input"
         type="file"
