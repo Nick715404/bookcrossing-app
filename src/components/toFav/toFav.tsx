@@ -18,10 +18,10 @@ type Props = {
 }
 
 export default function ToFav({ bookId, isFav, ownerId }: Props) {
-  const [user] = useUnit([$user]);
   const [showSnackbar, setShowSnackbar] = useState(false);
-  const { userId } = user;
+  const [user] = useUnit([$user]);
   const client = useQueryClient();
+  const { userId } = user;
 
   const { mutate: move, isSuccess, data } = useMutation({
     mutationKey: ['put', 'favorites'],
@@ -45,8 +45,7 @@ export default function ToFav({ bookId, isFav, ownerId }: Props) {
     move();
   };
 
-  // if (isFav !== '' || isFav !== null || isSuccess && user.vkId === ownerId) {
-  if (isFav.length && user.vkId === ownerId) {
+  if ((isFav !== '' && isFav !== null) && user.vkId === ownerId || isSuccess) {
     return (
       <>
         <ToFavReverse bookId={bookId} />

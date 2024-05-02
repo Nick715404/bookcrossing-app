@@ -1,12 +1,11 @@
 import { $categories } from "../../store/categories"
 import { iconMap } from "../../dictionary/dictionary";
-import { sortBookFx } from "../../utilities/category/category.utils";
+import { AddBooksToCategoryFX } from "../../utilities/category/category.utils";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { useFetchBooks } from "../../hooks/useFetchBooks";
 
 import { useUnit } from "effector-react"
 import { Card, Div, Group, Text } from "@vkontakte/vkui";
-import { setStatusActiveModal } from "../../store/activeModal";
 
 interface IItem {
   id: number;
@@ -22,7 +21,7 @@ export default function CategoriesList() {
 
   const handleClick = (category: string, id: string) => {
     if (data) {
-      sortBookFx({ category, books: data });
+      AddBooksToCategoryFX({ category, books: data });
       navigator.push(`/category/${id}}`);
     }
     return;
@@ -33,7 +32,7 @@ export default function CategoriesList() {
       {
         categories && categories.map(category => (
           <Card
-            className="card"
+            className="card-in-categories"
             key={category.id}
             onClick={() => handleClick(category.title, category.id)}
           >

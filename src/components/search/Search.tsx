@@ -7,9 +7,10 @@ type Props = {
   onPanel?: boolean,
   handleInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => any,
   searchText?: string;
+  autoFocus?: boolean;
 }
 
-function Search({ onPanel, handleInputChange, searchText }: Props) {
+function Search({ onPanel, handleInputChange, searchText, autoFocus }: Props) {
   const navigator = useRouteNavigator();
 
   const handleGoToPanel = () => {
@@ -24,6 +25,7 @@ function Search({ onPanel, handleInputChange, searchText }: Props) {
       onInput={handleInputChange}
       onClick={handleGoToPanel}
       placeholder="Поиск"
+      autoFocus={autoFocus}
     />
   )
 }

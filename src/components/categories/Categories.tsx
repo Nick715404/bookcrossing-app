@@ -22,7 +22,7 @@ export default function Categories() {
     }
   }
 
-  const firstNineCategories = categories.filter((_, index) => index < 9);
+  const firstNineCategories = categories.slice(0, 10).reverse();
 
   return (
     <>

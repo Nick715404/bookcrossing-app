@@ -38,6 +38,7 @@ export default function SearchPanel({ id }: Props) {
       <PanelHeader before={headerBefore}>Буккроссинг</PanelHeader>
       <Group>
         <Search
+          autoFocus
           handleInputChange={handleInputChange}
           searchText={searchText}
         />

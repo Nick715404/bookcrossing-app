@@ -27,7 +27,7 @@ const ChooseCity = ({ data }: Props) => {
       <Div style={{ padding: 0, marginBottom: '30px' }}>
         <img
           style={{ maxWidth: 206, margin: '0 auto' }}
-          src="/img/onboarding/page6.svg"
+          src="/img/onboarding/page6.png"
           alt="Выберите город"
         />
       </Div>
