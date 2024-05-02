@@ -23,16 +23,19 @@ import {
     Separator,
     Button
 } from "@vkontakte/vkui"
+import { checkBookInFavorites } from "../../../utilities/books/books.utils"
+import { $favBooks } from "../../../store/favorites"
 
 type Props = {
     id: string
 }
 
 const HomePageBook = ({ id }: Props) => {
-    const [book, user] = useUnit([$selectedBook, $user]);
+    const [book, user, favorites] = useUnit([$selectedBook, $user, $favBooks]);
     const params = useParams();
     const paramsId = params?.id;
     const navigator = useRouteNavigator();
+    const status = checkBookInFavorites(book, favorites);
 
     const { data } = useCurrentBook({ bookId: '', paramsId: paramsId });
 
@@ -59,7 +62,7 @@ const HomePageBook = ({ id }: Props) => {
                             {book.title ? book.title : 'Нет названия'}
                         </Text>
                         <Div className="book-top-row__btn">
-                            <ToFav ownerId={book.owner} bookId={book.id} isFav={book.favourite} />
+                            <ToFav ownerId={book.owner} bookId={book.id} isFav={status} />
                         </Div>
                     </Div>
                     <Text weight="3" className="bookAuthor">

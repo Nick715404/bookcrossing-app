@@ -8,14 +8,16 @@ import Book from "../book/Book";
 
 import { BookSkeleton } from "../Skeletons/BookSkeleton";
 import { useFetchBooks } from "../../hooks/useFetchBooks";
+import { $favBooks } from "../../store/favorites";
 
 import { Icon28AllCategoriesOutline } from "@vkontakte/icons";
 import { $books, GetAllBooksPipeFX } from "../../store/books";
 import { useUnit } from "effector-react";
 import { useEffect } from "react";
+import { checkBookInFavorites } from "../../utilities/books/books.utils";
 
 export default function CatalogBookList() {
-  const books = useUnit($books);
+  const [books, favorites] = useUnit([$books, $favBooks]);
   const { data, isLoading, isSuccess } = useFetchBooks();
 
   useEffect(() => {
@@ -38,14 +40,17 @@ export default function CatalogBookList() {
     <>
       {isLoading && <BookSkeleton />}
       {
-        isSuccess && books.map((book: IBook, index: number) => (
-          <Book
-            key={book.id}
-            book={book}
-            afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={book.favourite} />}
-            beforeIcon={<ToChat vkid={book.owner} />}
-          />
-        )).reverse()
+        isSuccess && books.map((book: IBook) => {
+          const check = checkBookInFavorites(book, favorites);
+          return (
+            <Book
+              key={book.id}
+              book={book}
+              afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={check} />}
+              beforeIcon={<ToChat vkid={book.owner} />}
+            />
+          )
+        }).reverse()
       }
     </>
   )

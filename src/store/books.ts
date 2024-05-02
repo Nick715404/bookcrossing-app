@@ -2,6 +2,7 @@ import { categoriesBooksInitState } from "../constants/categories";
 import { IBook, ICategoriesBooksStore } from "../interfaces/interface";
 import { AddBooksToCategoryFX, CheckBookInFavPipeFX, sortBookFx } from "../utilities/category/category.utils";
 import { createEffect, createEvent, createStore } from "effector";
+import { PutBookInFavFX } from "./favorites";
 
 // - Stores
 export const $searchBooks = createStore<IBook[]>([]);

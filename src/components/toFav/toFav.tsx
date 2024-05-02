@@ -14,7 +14,8 @@ import { CheckBookInFavPipeFX } from '../../utilities/category/category.utils';
 
 type Props = {
   bookId: string;
-  isFav: string;
+  // isFav: string;
+  isFav: boolean;
   ownerId: number;
 }
 
@@ -50,7 +51,7 @@ export default function ToFav({ bookId, isFav, ownerId }: Props) {
     CheckBookInFavPipeFX(bookId)
   }, [isSuccess]);
 
-  if ((isFav !== '' && isFav !== null || isSuccess) && user.vkId === ownerId) {
+  if (isFav) {
     return (
       <>
         <ToFavReverse bookId={bookId} />
