@@ -7,8 +7,11 @@ import ToFav from "../toFav/toFav";
 import ToChat from "../toChat/toChat";
 import EmptyPlate from "../empty-plate/EmptyPlate";
 
-import { Icon28BookOutline } from '@vkontakte/icons';
 import { BookSkeleton } from "../Skeletons/BookSkeleton";
+import { checkBookInFavorites } from "../../utilities/books/books.utils";
+import { $favBooks } from "../../store/favorites";
+import { Icon28BookOutline } from '@vkontakte/icons';
+import { useUnit } from "effector-react";
 
 interface IProps {
   data: IBook[] | undefined;
@@ -17,6 +20,7 @@ interface IProps {
 }
 
 const SearchBooksList = ({ data, isSuccess, isLoading }: IProps) => {
+  const favorites = useUnit($favBooks);
 
   if (isSuccess && data && data.length === 0) {
     return (
@@ -39,13 +43,16 @@ const SearchBooksList = ({ data, isSuccess, isLoading }: IProps) => {
   return (
     <>
       {
-        isSuccess && data && data.map((book: IBook) => (
-          <Book
-            afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={book.favourite} />}
-            beforeIcon={<ToChat vkid={book.owner} />}
-            book={book}
-            key={book.id} />
-        ))
+        isSuccess && data && data.map((book: IBook) => {
+          const status = checkBookInFavorites(book, favorites);
+          return (
+            <Book
+              afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={status} />}
+              beforeIcon={<ToChat vkid={book.owner} />}
+              book={book}
+              key={book.id} />
+          )
+        })
       }
     </>
   )

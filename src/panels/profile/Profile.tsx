@@ -17,9 +17,7 @@ export default function Profile({ id }: Props) {
 
   return (
     <Panel id={id}>
-      <PanelHeader style={{display: 'flex', marginRight: 'auto', marginLeft: '20px'}}>
-        <CustomHeader />
-      </PanelHeader>
+      <CustomHeader />
       <User />
       <Group>
         <SegmentedControlCustom position={position} setPosition={setPosition} />

@@ -45,7 +45,7 @@ const HomePageBook = ({ id }: Props) => {
       {
         data &&
         <Panel id={id}>
-          <PanelHeader before={headerBefore}>Буккросинг</PanelHeader>
+          <PanelHeader before={headerBefore}>Буккроссинг</PanelHeader>
           <Group className="modalPage">
             <Div>
               <Group separator="hide" className="bookImg">

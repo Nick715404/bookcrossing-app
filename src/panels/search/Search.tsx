@@ -7,7 +7,7 @@ import Search from '../../components/search/Search'
 
 import { useState } from 'react'
 import { useQuery } from 'react-query'
-import { Group, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui'
+import { Div, Group, Panel, PanelHeader, PanelHeaderBack, Separator } from '@vkontakte/vkui'
 
 type Props = {
   id: string
@@ -37,11 +37,13 @@ export default function SearchPanel({ id }: Props) {
     <Panel id={id}>
       <PanelHeader before={headerBefore}>Буккроссинг</PanelHeader>
       <Group>
-        <Search
-          autoFocus
-          handleInputChange={handleInputChange}
-          searchText={searchText}
-        />
+        <Div style={{ padding: '0', marginBottom: '5px' }}>
+          <Search
+            autoFocus
+            handleInputChange={handleInputChange}
+            searchText={searchText}
+          />
+        </Div>
         <SearchBooksList
           isLoading={isLoading}
           data={data}
