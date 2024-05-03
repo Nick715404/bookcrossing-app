@@ -31,7 +31,7 @@ export default function CompleteForm({ action, state }: Props) {
         </Text>
       </Div>
       <Div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <Button size='l' onClick={action}>Вернуться к книгам</Button>
+        <Button size='l' onClick={action}>{state ==='edit' ? 'Вернуться к книгам' : 'Добавить еще книгу'}</Button>
         {/* <Button appearance='overlay' size='l'>Поделиться</Button> */}
       </Div>
     </Div>

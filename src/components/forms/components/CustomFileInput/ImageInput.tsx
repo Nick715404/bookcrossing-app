@@ -56,8 +56,6 @@ export default function ImageInput({ go, bookId }: Props) {
     });
   }
 
-  console.log(urls, selectedImages);
-
   useEffect(() => {
     if (!fileError) {
       handleViewItems();
