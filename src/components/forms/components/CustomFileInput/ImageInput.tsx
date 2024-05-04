@@ -1,62 +1,60 @@
-import ImagesGallery from "../ImagesGallery/ImagesGallery";
-import { handleImageUpload } from "../../../../api/server/images/image";
-import { imageInputStyles, imageInputStylesWithGallery } from "../../../../constants/utils";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button, Div, FormItem, Text } from "@vkontakte/vkui";
-import { showSnackbarFX } from "../../../../store/states";
 import { Icon28CheckCircleOutline } from "@vkontakte/icons";
+import { imageInputStyles, imageInputStylesWithGallery } from "../../../../constants/utils";
+import { handleImageUpload } from "../../../../api/server/images/image";
+import { showSnackbarFX } from "../../../../store/states";
 
 type Props = {
-  go: any
-  bookId: string
-}
+  go: any;
+  bookId: string;
+};
 
 export default function ImageInput({ go, bookId }: Props) {
-  const [selectedImages, setSelectedImages] = useState<any[]>([]);
-  const [urls, setUrls] = useState<any[]>([]);
+  const [selectedImage, setSelectedImage] = useState<File[]>([]);
   const [fileError, setFileError] = useState<string | null>(null);
-  const maxFileSizeInBytes = 1024 * 1024; // - 1 MB
+  const [urls, setUrls] = useState<any[]>([]);
+  const maxFileSizeInBytes = 1024 * 1024; // 1 MB
 
-  const handleImageChange = (e: any) => {
-    const files = e.target.files;
-    const filesArray = Array.from(files) as Array<File>;
-
-    const filteredFiles = filesArray.filter((file: File) => {
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files; // Получаем файлы из input
+    if (files && files.length > 0) { // Проверяем, что files существует и не пустой
+      const file = files[0];
       if (file.size > maxFileSizeInBytes) {
         setFileError(`Размер файла '${file.name}' превышает допустимый предел 1 MB.`);
-        return false;
+      } else {
+        setSelectedImage([file]);
+        setFileError(null);
       }
-      return true;
-    });
-
-    setSelectedImages([...filteredFiles]);
+    }
   };
 
   const handleViewItems = useCallback(() => {
-    selectedImages.forEach((item: any) => {
-      const fileReader = new FileReader();
-      fileReader.onload = () => {
-        setUrls([...urls, fileReader.result])
-      }
-      fileReader.readAsDataURL(item);
-    });
-  }, [selectedImages]);
+    if (selectedImage.length > 0) {
+      selectedImage.forEach((item: File) => {
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+          setUrls((prevUrls) => [...prevUrls, fileReader.result]);
+        };
+        fileReader.readAsDataURL(item);
+      });
+    }
+  }, [selectedImage]);
 
   useEffect(() => {
-    if (!fileError) {
-      handleViewItems();
+    if (go && selectedImage.length > 0 && !fileError) {
+      console.log("Sending image to server", selectedImage);
+      handleImageUpload(selectedImage, bookId)
+        .catch(error => {
+          console.error("Failed to upload image:", error);
+          setFileError("Ошибка загрузки изображения");
+        });
     }
-  }, [selectedImages, fileError]);
-
-  useEffect(() => {
-    if (go && selectedImages.length && !fileError) {
-      handleImageUpload(selectedImages, bookId);
-    }
-  }, [go]);
+  }, [go, selectedImage, fileError]);
 
   useEffect(() => {
     if (fileError) {
-      console.log('error');
+      console.log("Error occurred:", fileError);
       showSnackbarFX({
         text: `${fileError}`,
         icon: <Icon28CheckCircleOutline fill="var(--vkui--color_icon_positive)" />,
@@ -65,43 +63,42 @@ export default function ImageInput({ go, bookId }: Props) {
     }
   }, [fileError]);
 
-  const handleRemoveImage = (index: number) => {
-    const updateUrls = [...urls];
-    updateUrls.splice(index, 1);
-    setUrls(updateUrls);
-  }
-
   return (
     <FormItem>
-      {/* <Div style={{display: 'flex', flexWrap: 'wrap'}}>
-        {urls.map((item, index) => (
-          <Div key={index} style={{ position: "relative", margin: "5px", cursor: "pointer" }}>
-            <img src={item.url} />
-            <Button  style={{position: "absolute", top: "5px", right: "5px"}} onClick={() => handleRemoveImage(index)}>
-              Удалить
-            </Button>
-          </Div>
-        ))}
-      </Div> */}
-      <Div style={{border: '#d5d5d7 solid 2px', borderRadius: '25px', marginBottom: '30px'}}>
-        
-      {urls.map((item, index) => (
-          <Div key={index} style={{ position: "relative", margin: "5px", cursor: "pointer" }}>
-            <ImagesGallery items={urls} />
-            <Button  style={{position: "absolute", top: "5px", right: "5px"}} onClick={() => handleRemoveImage(index)}>
-              Удалить
-            </Button>
-          </Div>
-        ))}
-        <Text weight="1" style={{textAlign: 'center', fontSize: '18px'}}>{fileError}</Text>
-      </Div>
+      <Text weight="3" style={{ textAlign: "left", fontSize: "14px", marginTop: '20px', color: '#6D7885'}}>
+        Фото
+      </Text>
+      <Text weight="1" style={{textAlign: 'center', fontSize: '18px'}}>{fileError}</Text>
       <input
         className="file-input"
         type="file"
-        multiple
         onChange={handleImageChange}
-        style={selectedImages.length > 0 ? { ...imageInputStylesWithGallery } : imageInputStyles}
+        style={selectedImage.length > 0 ? imageInputStylesWithGallery : imageInputStyles}
       />
+      {selectedImage.length > 0 && (
+        <Div style={{ display: "flex", flexWrap: "wrap" }}>
+          <Div style={{ position: "relative", margin: "5px", cursor: "pointer", display: 'flex', alignItems: 'center'}}>
+            <img
+              src={URL.createObjectURL(selectedImage[0])}
+              alt="Selected Image"
+              style={imageInputStyles}
+            />
+            <Button
+              style={{
+                position: "absolute",
+                top: "5px",
+                right: "165px",
+              }}
+              onClick={() => setSelectedImage([])}
+            >
+              X
+            </Button>
+          </Div>
+        </Div>
+      )}
+      <Text weight="3" style={{ textAlign: "left", fontSize: "14px", marginTop: '12px', color: '#6D7885'}}>
+        Допустимый размер файла 1Мб
+      </Text>
     </FormItem>
-  )
+  );
 }

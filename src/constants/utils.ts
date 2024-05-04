@@ -33,6 +33,7 @@ export const imageInputStyles = {
 
 export const imageInputStylesWithGallery = {
   ...imageInputStyles,
+  display: 'none',
   maxHeight: '58px',
   width: '100%'
 }
