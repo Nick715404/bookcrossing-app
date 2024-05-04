@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Button, Div, FormItem, Text } from "@vkontakte/vkui";
-import { Icon28CheckCircleOutline } from "@vkontakte/icons";
+import { Icon24CancelOutline, Icon28CheckCircleOutline } from "@vkontakte/icons";
 import { imageInputStyles, imageInputStylesWithGallery } from "../../../../constants/utils";
 import { handleImageUpload } from "../../../../api/server/images/image";
 import { showSnackbarFX } from "../../../../store/states";
@@ -102,10 +102,11 @@ export default function ImageInput({ go, bookId }: Props) {
                 position: "absolute",
                 top: "5px",
                 right: "165px",
+                width: '50px'
               }}
               onClick={() => setSelectedImage([])}
             >
-              X
+              <Icon24CancelOutline />
             </Button>
           </Div>
         </Div>
