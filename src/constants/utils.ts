@@ -31,6 +31,13 @@ export const imageInputStyles = {
   color: 'transparent'
 }
 
+export const imageStyles = {
+  marginLeft: 'auto',
+  width: '48%',
+  aspectRatio: '1 / 1',
+  borderRadius: '14px',
+}
+
 export const imageInputStylesWithGallery = {
   ...imageInputStyles,
   display: 'none',
