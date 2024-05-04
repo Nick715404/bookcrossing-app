@@ -75,7 +75,7 @@ const HomePageBook = ({ id }: Props) => {
                         ISBN: {book.isbn ? book.isbn : 'Нет isbn'}
                     </Text>
                     <Separator style={{ padding: '20px 0px' }} />
-                    <Div style={{ display: 'flex', alignItems: 'center', padding: '0' }}>
+                    <Div style={{ display: 'flex', alignItems: 'center', padding: '0', marginTop: '-10px' }}>
                         <Text className="bookText">
                             Состояние: {book.state ? book.state : 'Не указано состояние'}
                         </Text>

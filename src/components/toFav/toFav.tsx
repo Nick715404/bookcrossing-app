@@ -62,7 +62,7 @@ export default function ToFav({ bookId, isFav, ownerId }: Props) {
             before={<Icon32DoneOutline fill='#11d86b' />}
             duration={3000}
           >
-            Книга успешно добавлена в избранное!
+            Книга успешно добавлена в понравившиеся!
           </Snackbar>
         }
       </>

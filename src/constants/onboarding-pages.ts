@@ -34,6 +34,6 @@ export const onboardingPages = [
     id: '5',
     title: 'Избранное',
     text: 'Вы можете добавить заинтересовавшую книгу в «Мне понравилось» и написать владельцу позже, если по какой-либо причине не хотите делать это сразу',
-    imgPath: `/img/onboarding/page5.png`
+    imgPath: `/img/onboarding/unbordingLastPicture.svg`
   },
 ]

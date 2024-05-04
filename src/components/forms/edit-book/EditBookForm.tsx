@@ -8,6 +8,7 @@ import { IBook } from '../../../interfaces/interface'
 import CustomTextarea from '../components/CustomTextarea/CustomTextarea'
 
 import { Checkbox, FormItem, Group } from '@vkontakte/vkui'
+import CustomInputWithInfo from '../components/CustomInput/CustomInputWithInfo'
 
 interface IProps {
   handleSubmit: (e: React.FormEvent) => void;
@@ -58,6 +59,8 @@ export default function EditBookForm({
           status={formErrors.author ? 'error' : 'default'}
         />
         <QualitySelect
+          nameBlock='Состояние *'
+          goToModal='statusDescription'
           value={formData.state}
           onChange={(e) => handleChangeValue(e, 'state')}
         />
@@ -65,18 +68,19 @@ export default function EditBookForm({
           value={formData.categoryTitle || ''}
           onChange={(e: any) => handleChangeValue(e, 'categoryTitle')}
         />
-        <CustomInput
+        <CustomInputWithInfo 
+          readOnly={isLoading}
           id="bookIsbn"
           placeholder="Введите ISBN книги"
           name="bookIsbn"
           value={withoutISBN ? '' : formData.isbn}
-          disabled={withoutISBN ? true : false || formData.isbn === '' && true}
+          disabled={withoutISBN ? true : false}
           onChange={(e) => handleChangeValue(e, 'isbn')}
-          type="text"
-          top="ISBN *"
+          type="number"
+          nameBlock='ISBN *'
           htmlFor="bookIsbn"
-          isRequired={withoutISBN ? false : true}
-        />
+          goToModal='transcriptISBN'
+          isRequired={withoutISBN ? false : true}/>
         <FormItem htmlFor="bookCheckbox">
           <Checkbox checked={formData.isbn === '' && true} onClick={() => setWithoutISBN(!withoutISBN)} id="bookCheckbox">ISBN отсутствует</Checkbox>
         </FormItem>

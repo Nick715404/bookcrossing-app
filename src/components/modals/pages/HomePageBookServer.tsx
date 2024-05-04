@@ -68,12 +68,12 @@ const HomePageBook = ({ id }: Props) => {
               <Text weight="3" className="bookIsbn">
                 ISBN: {data.isbn ? data.isbn : "Не указан"}
               </Text>
-              <Separator style={{ padding: '20px 0px' }} />
-              <Div style={{ display: 'flex', alignItems: 'center', padding: '0' }}>
-                <Text className="bookText">
+              <Separator style={{ padding: '10px 0px' }} />
+              <Div style={{ display: 'flex', alignItems: 'center', padding: '0', marginTop: '-10px'}}>
+                <Text className="bookText" >
                   Состояние: {data.state}
                 </Text>
-                <CellButton className="bookInfo" style={{ padding: 0, margin: '0 0 10px 0' }}>
+                <CellButton className="bookInfo" style={{ padding: 0, margin: '0 0 0 0' }}>
                   <Icon24Info onClick={() => setStatusActiveModal('statusDescription')} />
                 </CellButton>
               </Div>

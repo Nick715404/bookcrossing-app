@@ -39,7 +39,7 @@ export default function CategoriesList() {
             <Div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: 0 }}>
               <Div
                 className="card__wrapper"
-                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: 0, paddingBottom: 0}}
               >
                 <Group>
                   {category.imageName && iconMap[category.imageName]}

@@ -17,10 +17,10 @@ const ModalStatus = ({ id }: IPassIdToModalPage) => {
                         Отличное:
                     </Headline>
                     <Div>
-                        <Text className="text">Обложка не повреждена;</Text>
-                        <Text className="text">Нет помарок на страницах;</Text>
-                        <Text className="text">Страницы не помяты и не порваны;</Text>
-                        <Text className="text" style={{ marginBottom: 16 }}>Допускаются царапины;</Text>
+                        <Text className="text">Обложка не повреждена</Text>
+                        <Text className="text">Нет помарок на страницах</Text>
+                        <Text className="text">Страницы не помяты и не порваны</Text>
+                        <Text className="text" style={{ marginBottom: 16 }}>Допускаются царапины</Text>
                     </Div>
                 </Group>
 
@@ -29,11 +29,11 @@ const ModalStatus = ({ id }: IPassIdToModalPage) => {
                         Хорошее:
                     </Headline>
                     <Div>
-                        <Text className="text">Обложка незначительно повреждена, или потерта;</Text>
-                        <Text className="text">На станицах незначительные пометки или помарки;</Text>
-                        <Text className="text">Страницы не порваны;</Text>
-                        <Text className="text">Книга может быть покороблена от воздействия влаги;</Text>
-                        <Text className="text" style={{ marginBottom: 16 }}>Суперобложка (если была) порвана или утеряна;</Text>
+                        <Text className="text">Обложка незначительно повреждена, или потерта</Text>
+                        <Text className="text">На станицах незначительные пометки или помарки</Text>
+                        <Text className="text">Страницы не порваны</Text>
+                        <Text className="text">Книга может быть покороблена от воздействия влаги</Text>
+                        <Text className="text" style={{ marginBottom: 16 }}>Суперобложка (если была) порвана или утеряна</Text>
                     </Div>
                 </Group>
 
@@ -42,10 +42,10 @@ const ModalStatus = ({ id }: IPassIdToModalPage) => {
                         Приемлемое:
                     </Headline>
                     <Div>
-                        <Text className="text">Страницы содержат значительные пометки или помарки;</Text>
-                        <Text className="text">Обложка повреждена, но не потеряна целиком;</Text>
-                        <Text className="text">Некоторые страницы порваны, испачканы, но текст читается полностью, ни одна страница не утеряна;</Text>
-                        <Text className="text" style={{ marginBottom: 16 }}>Переплет может частично распадаться на тетради, некоторые страницы могут выпадать;</Text>
+                        <Text className="text">Страницы содержат значительные пометки или помарки</Text>
+                        <Text className="text">Обложка повреждена, но не потеряна целиком</Text>
+                        <Text className="text">Некоторые страницы порваны, испачканы, но текст читается полностью, ни одна страница не утеряна</Text>
+                        <Text className="text" style={{ marginBottom: 16 }}>Переплет может частично распадаться на тетради, некоторые страницы могут выпадать</Text>
                     </Div>
                 </Group>
 
@@ -54,10 +54,10 @@ const ModalStatus = ({ id }: IPassIdToModalPage) => {
                         Плохое:
                     </Headline>
                     <Div className="bottomStatus">
-                        <Text className="text">Обложка утеряна;</Text>
-                        <Text className="text">Страницы повреждены либо испачканы, что существенно мешает восприятию текста;</Text>
-                        <Text className="text">Отсутствуют страница(ы);</Text>
-                        <Text className="text" >Переплет рассыпается;</Text>
+                        <Text className="text">Обложка утеряна</Text>
+                        <Text className="text">Страницы повреждены либо испачканы, что существенно мешает восприятию текста</Text>
+                        <Text className="text">Отсутствуют страницы</Text>
+                        <Text className="text" >Переплет рассыпается</Text>
                     </Div>
                 </Group>
             </Div>
