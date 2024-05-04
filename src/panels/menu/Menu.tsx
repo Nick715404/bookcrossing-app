@@ -1,10 +1,10 @@
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { $user } from "../../store/user";
 import { setStatusActiveModal } from "../../store/activeModal";
-import HeaderClose from "../../components/header/headerClose/HeaderClose";
 
 import { useUnit } from "effector-react";
 import { CellButton, Div, Group, Panel, PanelHeader, Text } from "@vkontakte/vkui";
+import CustomHeader from "../../components/header/CustomHeader";
 
 type Props = {
     id: string,
@@ -20,10 +20,7 @@ const Menu = ({ id }: Props) => {
 
     return (
         <Panel id={id}>
-            <PanelHeader style={{display: 'flex', marginRight: 'auto', marginLeft: '20px'}}>
-                <HeaderClose />
-            </PanelHeader>
-
+            <CustomHeader withBack />
             <Group>
                 <CellButton>
                     <Text onClick={() => setStatusActiveModal('menuOnboarding')} className="menu-item">

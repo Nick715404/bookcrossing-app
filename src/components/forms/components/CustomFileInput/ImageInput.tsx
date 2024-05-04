@@ -41,6 +41,20 @@ export default function ImageInput({ go, bookId }: Props) {
     }
   }, [selectedImage]);
 
+  const handleRemoveImage = (index: number) => {
+    setUrls((prev) => {
+      const newUrls = [...prev];
+      newUrls.splice(index, 1);
+      return newUrls;
+    });
+
+    // setSelectedImages((prev) => {
+    //   const newImages = [...prev];
+    //   newImages.splice(index, 1);
+    //   return newImages;
+    // });
+  }
+
   useEffect(() => {
     if (go && selectedImage.length > 0 && !fileError) {
       console.log("Sending image to server", selectedImage);

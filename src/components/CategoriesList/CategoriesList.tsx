@@ -5,7 +5,7 @@ import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { useFetchBooks } from "../../hooks/useFetchBooks";
 
 import { useUnit } from "effector-react"
-import { Card, Div, Group, Text } from "@vkontakte/vkui";
+import { Card, CellButton, Div, Group, Text } from "@vkontakte/vkui";
 
 interface IItem {
   id: number;
@@ -31,12 +31,12 @@ export default function CategoriesList() {
     <>
       {
         categories && categories.map(category => (
-          <Card
+          <CellButton
             className="card-in-categories"
             key={category.id}
             onClick={() => handleClick(category.title, category.id)}
           >
-            <Div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <Div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: 0 }}>
               <Div
                 className="card__wrapper"
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
@@ -49,7 +49,7 @@ export default function CategoriesList() {
                 <Text className="card__text">{category.title}</Text>
               </Group>
             </Div>
-          </Card>
+          </CellButton>
         ))
       }
     </>

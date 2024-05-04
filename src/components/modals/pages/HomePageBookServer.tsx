@@ -21,18 +21,20 @@ import {
   Separator,
   Button
 } from "@vkontakte/vkui"
+import { $favBooks } from "../../../store/favorites"
+import { checkBookInFavorites } from "../../../utilities/books/books.utils"
 
 type Props = {
   id: string
 }
 
 const HomePageBook = ({ id }: Props) => {
-  const [book, user] = useUnit([$selectedBook, $user]);
+  const [book, user, favorites] = useUnit([$selectedBook, $user, $favBooks]);
   const params = useParams();
   const paramsId = params?.id;
   const navigator = useRouteNavigator();
-
   const { data } = useCurrentBook({ bookId: '', paramsId: paramsId });
+  const status = data && checkBookInFavorites(data, favorites);
 
   const headerBefore = (
     <PanelHeaderBack label="Назад" onClick={() => navigator.back()} />
@@ -43,7 +45,7 @@ const HomePageBook = ({ id }: Props) => {
       {
         data &&
         <Panel id={id}>
-          <PanelHeader before={headerBefore}>Буккросинг</PanelHeader>
+          <PanelHeader before={headerBefore}>Буккроссинг</PanelHeader>
           <Group className="modalPage">
             <Div>
               <Group separator="hide" className="bookImg">
@@ -54,7 +56,7 @@ const HomePageBook = ({ id }: Props) => {
                   {data.title}
                 </Text>
                 <Div className="book-top-row__btn">
-                  <ToFav ownerId={book.owner} bookId={book.id} isFav={book.favourite} />
+                  <ToFav ownerId={book.owner} bookId={book.id} isFav={status ? true : false} />
                 </Div>
               </Div>
               <Text weight="3" className="bookAuthor">

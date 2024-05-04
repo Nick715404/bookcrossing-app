@@ -10,9 +10,12 @@ import ToChat from "../toChat/toChat";
 import { Icon56SearchOutline } from "@vkontakte/icons";
 import { useUnit } from "effector-react";
 import { Header } from "@vkontakte/vkui";
+import { $favBooks } from "../../store/favorites";
+import { checkBookInFavorites } from "../../utilities/books/books.utils";
 
 export default function SortedBookList() {
   const data = useUnit($categoriesBooks);
+  const favorites = useUnit($favBooks);
 
   if (data.books.length === 0) {
     return (
@@ -31,14 +34,17 @@ export default function SortedBookList() {
       <Header mode="primary" style={{ marginBottom: '12px', fontSize: '20px' }}>Поиск по жанру: {data.title}</Header>
       {
         data.books.length && (
-          data.books.map((book: IBook) => (
-            <Book
-              key={book.id}
-              afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={book.favourite} />}
-              beforeIcon={<ToChat vkid={book.owner} />}
-              book={book}
-            />
-          ))
+          data.books.map((book: IBook) => {
+            const status = checkBookInFavorites(book, favorites);
+            return (
+              <Book
+                key={book.id}
+                afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={status} />}
+                beforeIcon={<ToChat vkid={book.owner} />}
+                book={book}
+              />
+            )
+          })
         )
       }
     </>

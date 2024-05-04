@@ -16,9 +16,7 @@ type Props = {
 export default function Catalog({ id }: Props) {
 	return (
 		<Panel id={id}>
-			<PanelHeader style={{display: 'flex', marginRight: 'auto', marginLeft: '20px'}}>
-				<CustomHeader />
-			</PanelHeader>
+			<CustomHeader />
 			<Group separator='show'>
 				<Search onPanel />
 				<Categories />
