@@ -11,6 +11,7 @@ import SingleCategory from '../panels/single-category/SingleCategory';
 import EditPanel from '../panels/edit/EditPanel';
 import UserAgreement from '../panels/userAgreement/UserAgreement';
 import { Epic, View } from '@vkontakte/vkui';
+import { ChooseCitiesPage } from '../panels/cities/ChooseCities';
 
 const Router = () => {
 	const { view: activeView } = useActiveVkuiLocation();
@@ -33,6 +34,7 @@ const Router = () => {
 					<Menu id="main-panel" />
 					<UserAgreement id="user-agreement" />
 					<EditPanel id="edit-book" />
+					<ChooseCitiesPage id='choose-city-panel' />
 				</View>
 			</Epic>
 		</>

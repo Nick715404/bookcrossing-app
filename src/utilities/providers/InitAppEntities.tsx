@@ -9,13 +9,11 @@ const InitAppEntities = ({ children }: IInitAppEntities) => {
     return (
         <>
             <QueryProvider>
-                <UserProvider>
                     <FavouritesProvider>
                         <InitCategories>
                             {children}
                         </InitCategories>
                     </FavouritesProvider>
-                </UserProvider>
             </QueryProvider>
         </>
     )

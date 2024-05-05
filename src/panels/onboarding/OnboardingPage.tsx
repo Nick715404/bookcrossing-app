@@ -5,6 +5,7 @@ import { setStatusActiveModal } from '../../store/activeModal';
 
 import { Icon28ChevronLeftOutline, Icon28ChevronRightOutline } from '@vkontakte/icons';
 import { Button, Div, Group, IconButton, Text, Title } from '@vkontakte/vkui';
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 type Props = {
   page: IOnboardingPage;
@@ -14,9 +15,18 @@ type Props = {
 };
 
 const OnboardingPage = ({ page, onNext, onPrev, onMenu }: Props) => {
+  const router = useRouteNavigator();
+
+  const handleClick = () => {
+    router.push('/choose-city');
+    setStatusActiveModal(null);
+  }
 
   const StartButton = (
-    <Button onClick={onMenu ? () => setStatusActiveModal(null) : () => setStatusActiveModal('chooseCity')} size='m'>
+    <Button
+      onClick={onMenu ? () => setStatusActiveModal(null) : handleClick }
+      size='m'
+    >
       Начать
     </Button>
   );
