@@ -92,7 +92,7 @@ export default function ImageInput({ go, bookId }: Props) {
       />
       {selectedImage.length > 0 && (
         <Div style={{ display: "flex", flexWrap: "wrap" }}>
-          <Div style={{ display: 'flex', position: "relative", margin: "5px", cursor: "pointer", alignContent: 'center', gap: '10px' }}>
+          <Div style={{ display: 'flex', position: "relative", margin: "5px", cursor: "pointer", alignItems: 'center', gap: '10px', marginRight: '-20px'}}>
             <img
               src={URL.createObjectURL(selectedImage[0])}
               alt="Selected Image"
