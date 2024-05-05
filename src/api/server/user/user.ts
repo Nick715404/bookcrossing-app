@@ -19,7 +19,7 @@ export const fetchUserFromDataBase = async (id: number) => {
     }
   } catch (error) {
     return {
-      status: 'epmty',
+      status: 'empty',
       user: null,
     }
   }

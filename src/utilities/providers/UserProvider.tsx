@@ -15,6 +15,8 @@ export default function UserProvider({ children }: Props) {
 
       const serverUser = await fetchUserFromDataBase(userData.id);
 
+      console.log(serverUser.status);
+
       if (serverUser.status === "empty") {
         return setStatusActiveModal('onboardingModal');
       }
