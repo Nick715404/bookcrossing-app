@@ -33,7 +33,7 @@ export const imageInputStyles = {
 
 export const imageStyles = {
   marginLeft: 'auto',
-  width: '48%',
+  width: '90%',
   aspectRatio: '1 / 1',
   borderRadius: '14px',
 }
