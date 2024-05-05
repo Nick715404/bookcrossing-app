@@ -21,7 +21,7 @@ const CustomHeader = ({ withBack }: IProps) => {
 					</IconButton>
 				}
 			>
-				Буккроссинг
+				Буккроссинг.рф
 			</PanelHeader>
 		)
 	}
@@ -34,7 +34,7 @@ const CustomHeader = ({ withBack }: IProps) => {
 				</IconButton>
 			}
 		>
-			Буккроссинг
+			Буккроссинг.рф
 		</PanelHeader>
 	)
 }

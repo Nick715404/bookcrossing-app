@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Button, CellButton, Div, FormItem, Text } from "@vkontakte/vkui";
-import { Icon24CancelOutline, Icon28CheckCircleOutline } from "@vkontakte/icons";
 import { imageInputStyles, imageInputStylesWithGallery, imageStyles } from "../../../../constants/utils";
 import { handleImageUpload } from "../../../../api/server/images/image";
 import { showSnackbarFX } from "../../../../store/states";
+
+import { Icon24CancelOutline, Icon28CheckCircleOutline } from "@vkontakte/icons";
+import React, { useCallback, useEffect, useState } from "react";
+import { CellButton, Div, FormItem, Text } from "@vkontakte/vkui";
 
 type Props = {
   go: any;
@@ -79,10 +80,10 @@ export default function ImageInput({ go, bookId }: Props) {
 
   return (
     <FormItem>
-      <Text weight="3" style={{ textAlign: "left", fontSize: "14px", marginTop: '20px', color: '#6D7885'}}>
+      <Text weight="3" style={{ textAlign: "left", fontSize: "14px", marginTop: '20px', color: '#6D7885' }}>
         Фото
       </Text>
-      <Text weight="1" style={{textAlign: 'center', fontSize: '18px', marginBottom: '12px'}}>{fileError}</Text>
+      <Text weight="1" style={{ textAlign: 'center', fontSize: '18px', marginBottom: '12px' }}>{fileError}</Text>
       <input
         className="file-input"
         type="file"
@@ -91,27 +92,27 @@ export default function ImageInput({ go, bookId }: Props) {
       />
       {selectedImage.length > 0 && (
         <Div style={{ display: "flex", flexWrap: "wrap" }}>
-          <Div style={{ display: 'flex', position: "relative", margin: "5px", cursor: "pointer", alignContent: 'center', gap: '10px'}}>
+          <Div style={{ display: 'flex', position: "relative", margin: "5px", cursor: "pointer", alignContent: 'center', gap: '10px' }}>
             <img
               src={URL.createObjectURL(selectedImage[0])}
               alt="Selected Image"
               style={imageStyles}
             />
             <CellButton
-                style={{
-                  width: 'auto',
-                  marginBottom: 'auto',
-                  marginTop: '-15px',
-                  marginRight: 'auto'
-                }}
-                onClick={() => setSelectedImage([])}
-              >
-                <Icon24CancelOutline />
-              </CellButton>
+              style={{
+                width: 'auto',
+                marginBottom: 'auto',
+                marginTop: '-15px',
+                marginRight: 'auto'
+              }}
+              onClick={() => setSelectedImage([])}
+            >
+              <Icon24CancelOutline />
+            </CellButton>
           </Div>
         </Div>
       )}
-      <Text weight="3" style={{ textAlign: "left", fontSize: "14px", marginTop: '12px', color: '#6D7885'}}>
+      <Text weight="3" style={{ textAlign: "left", fontSize: "14px", marginTop: '12px', color: '#6D7885' }}>
         Допустимый размер файла 1Мб
       </Text>
     </FormItem>

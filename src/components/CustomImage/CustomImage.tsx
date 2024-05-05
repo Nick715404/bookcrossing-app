@@ -21,7 +21,7 @@ const CustomImage = ({ bookId }: TProps) => {
     }
   };
 
-  const { data, isError, isSuccess } = useQuery({
+  const { data, isError, isSuccess, isLoading } = useQuery({
     queryKey: ['image', 'single', bookId],
     queryFn: getFiles,
     retry: 1,
@@ -29,6 +29,17 @@ const CustomImage = ({ bookId }: TProps) => {
     staleTime: 10000,
     retryOnMount: false
   });
+
+  if (isLoading) {
+    return (
+      <Image
+        size={96}
+        borderRadius="m"
+        className="book-img loading"
+        style={{ marginBottom: '0', marginTop: '0' }}
+      />
+    )
+  }
 
   if (isError || !data) {
     return (

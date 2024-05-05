@@ -50,7 +50,7 @@ export default function CreateBookForm({
         <CustomInput
           readOnly={isLoading}
           id="bookAuthor"
-          placeholder="М.А. Булгаков"
+          placeholder="М. А. Булгаков"
           name="bookAuthor"
           value={formData.author}
           onChange={(e) => handleChangeValue(e, 'author')}
