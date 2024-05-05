@@ -8,6 +8,7 @@ import Search from '../../components/search/Search'
 import { useState } from 'react'
 import { useQuery } from 'react-query'
 import { Div, Group, Panel, PanelHeader, PanelHeaderBack, Separator } from '@vkontakte/vkui'
+import CustomHeader from '../../components/header/CustomHeader'
 
 type Props = {
   id: string
@@ -19,7 +20,6 @@ export default function SearchPanel({ id }: Props) {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
-  const navigator = useRouteNavigator();
 
   const { data, isSuccess, isLoading } = useQuery({
     queryKey: ['search', searchDebounce],
@@ -29,13 +29,9 @@ export default function SearchPanel({ id }: Props) {
     }
   })
 
-  const headerBefore = (
-    <PanelHeaderBack label="Назад" onClick={() => navigator.back()} />
-  )
-
   return (
     <Panel id={id}>
-      <PanelHeader before={headerBefore}>Буккроссинг</PanelHeader>
+      <CustomHeader withBack />
       <Group>
         <Div style={{ padding: '0', marginBottom: '5px' }}>
           <Search

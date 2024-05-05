@@ -17,11 +17,11 @@ export default function Catalog({ id }: Props) {
 	return (
 		<Panel id={id}>
 			<CustomHeader />
-			<Group separator='show'>
+			<Group separator='auto'>
 				<Search onPanel />
 				<Categories />
 			</Group>
-			<Group >
+			<Group>
 				<Relevants />
 			</Group>
 		</Panel>

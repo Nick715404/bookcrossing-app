@@ -7,7 +7,7 @@ export default function Relevants() {
     <>
       <Header
         mode="primary"
-        style={{ paddingBottom: '12px', paddingTop: '15px' }}
+        style={{ paddingBottom: '12px', marginTop: '1px' }}
       >
         <span style={{ fontSize: '18px' }}>Новые</span>
       </Header>
