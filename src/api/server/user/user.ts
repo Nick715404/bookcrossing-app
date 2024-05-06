@@ -1,18 +1,6 @@
-import { createEffect } from "effector";
 import { api } from "../../axios/axiosInstance";
-import { ICreateUser, IUser, IVkUser } from "../../../interfaces/interface";
-import { fetchVkUser } from "../../vk-bridge/user";
-import { vkUser } from "../../../constants/vk-users";
-
-// export const CreateUserFX = createEffect(async (user: ICreateUser) => {
-//   try {
-//     const { data } = await api.post('/user/create', user);
-//     return data;
-//   }
-//   catch (error) {
-//     throw new Error('Failed to create user!');
-//   }
-// });
+import { IVkUser } from "../../../interfaces/interface";
+import { createEffect } from "effector";
 
 export const fetchUserFromDataBase = async (id: number) => {
   try {
@@ -20,7 +8,7 @@ export const fetchUserFromDataBase = async (id: number) => {
 
     if (response.statusText !== 'OK') {
       return {
-        status: 'epmty',
+        status: 'empty',
         user: null,
       }
     }
@@ -31,7 +19,7 @@ export const fetchUserFromDataBase = async (id: number) => {
     }
   } catch (error) {
     return {
-      status: 'epmty',
+      status: 'empty',
       user: null,
     }
   }

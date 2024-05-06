@@ -1,3 +1,4 @@
+import { useActiveVkuiLocation, useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { GetCurrentUserFX, GetCurrentUserFromServerFX, fetchUserFromDataBase } from '../../api/server/user/user';
 import { fetchVkUser } from '../../api/vk-bridge/user';
 import { setStatusActiveModal } from '../../store/activeModal';
@@ -8,19 +9,19 @@ type Props = {
 }
 
 export default function UserProvider({ children }: Props) {
-
+  const router = useRouteNavigator();
   useEffect(() => {
     const fetchData = async () => {
       const userData = await fetchVkUser();
 
       const serverUser = await fetchUserFromDataBase(userData.id);
 
-      if (serverUser.status === "epmty") {
-        return setStatusActiveModal('onboardingModal');
+      if (serverUser.status === "empty") {
+        // return setStatusActiveModal('onboardingModal');
+        router.push('/onboarding')
       }
 
       GetCurrentUserFromServerFX(userData.id);
-
     };
 
     fetchData();

@@ -56,6 +56,11 @@ const routes: RouteWithoutRoot[] = [
     panel: 'onboarding-panel',
     view: 'onboarding-view'
   },
+  {
+    path: '/choose-city',
+    panel: 'choose-city-panel',
+    view: 'choose-city-view'
+  },
 ]
 
 export const appRouter = createHashRouter(routes);

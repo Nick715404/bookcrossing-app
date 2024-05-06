@@ -1,10 +1,9 @@
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { $user } from "../../store/user";
 import { setStatusActiveModal } from "../../store/activeModal";
-
-import { useUnit } from "effector-react";
-import { CellButton, Div, Group, Panel, PanelHeader, Text } from "@vkontakte/vkui";
 import CustomHeader from "../../components/header/CustomHeader";
+import { useUnit } from "effector-react";
+import { CellButton, Group, Panel, Text } from "@vkontakte/vkui";
 
 type Props = {
     id: string,
@@ -12,7 +11,6 @@ type Props = {
 
 const Menu = ({ id }: Props) => {
     const navigator = useRouteNavigator();
-    const user = useUnit($user);
 
     const handelUserAgreement = () => {
         navigator.push('/userAgreement')
@@ -52,14 +50,14 @@ const Menu = ({ id }: Props) => {
                     </Text>
                 </CellButton>
 
-                <Div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingTop: 0 }}>
+                {/* <Div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingTop: 0 }}>
                     <Text className="menu-item">
                         Город:
                     </Text>
                     <CellButton style={{ margin: 0 }}>
                         {user.city ? user.city : 'Загругка...'}
                     </CellButton>
-                </Div>
+                </Div> */}
             </Group>
         </Panel>
     )

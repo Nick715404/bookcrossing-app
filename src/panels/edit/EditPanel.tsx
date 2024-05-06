@@ -11,9 +11,7 @@ type Props = {
 export default function EditPanel({ id }: Props) {
   return (
     <Panel id={id}>
-      <PanelHeader>
-        <CustomHeader />
-      </PanelHeader>
+      <CustomHeader />
       <EditBookF />
     </Panel>
   )

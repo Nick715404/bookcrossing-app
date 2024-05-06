@@ -9,6 +9,7 @@ import { Icon28BookmarkCheckOutline, Icon56DeleteOutline } from '@vkontakte/icon
 import { IconButton, Snackbar } from '@vkontakte/vkui';
 import { useMutation, useQueryClient } from 'react-query';
 import { useEffect, useState } from 'react';
+import { setSnackbar } from '../../store/activeModal';
 
 type Props = {
   bookId: string;
@@ -24,6 +25,7 @@ function ToFavReverse({ bookId }: Props) {
     mutationKey: ['delete', 'favorites'],
     mutationFn: () => removeFromFav({ bookId: bookId, vkId: user.vkId }),
     onSuccess: () => {
+      setSnackbar('fav-remove')
       client.invalidateQueries({
         queryKey: ['books all', 'books favorites'],
       })

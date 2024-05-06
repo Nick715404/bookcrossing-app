@@ -1,10 +1,11 @@
-import { useQuery } from "react-query";
 import { fetchCities } from "../api/server/cities/cities";
+import { useQuery } from "react-query";
 
 const useCities = () => {
   return useQuery({
     queryKey: ['cities'],
-    queryFn: fetchCities
+    queryFn: fetchCities,
+    refetchOnWindowFocus: false
   })
 }
 
