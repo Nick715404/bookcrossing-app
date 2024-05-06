@@ -9,7 +9,8 @@ import {
 export default function Nav() {
   const navigator = useRouteNavigator();
   const { panel: activePanel } = useActiveVkuiLocation();
-  const isChooseCityActive = activePanel === 'choose-city-panel';
+  const validPanels: string[] = ['choose-city-panel', 'onboarding-panel', 'settings-panel'];
+  const isChooseCityActive = validPanels.includes(activePanel ?? '');
 
   return (
     <Tabbar>

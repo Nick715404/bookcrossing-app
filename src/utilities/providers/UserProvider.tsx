@@ -9,16 +9,16 @@ type Props = {
 }
 
 export default function UserProvider({ children }: Props) {
+  const router = useRouteNavigator();
   useEffect(() => {
     const fetchData = async () => {
       const userData = await fetchVkUser();
 
       const serverUser = await fetchUserFromDataBase(userData.id);
 
-      console.log(serverUser.status);
-
       if (serverUser.status === "empty") {
-        return setStatusActiveModal('onboardingModal');
+        // return setStatusActiveModal('onboardingModal');
+        router.push('/onboarding')
       }
 
       GetCurrentUserFromServerFX(userData.id);

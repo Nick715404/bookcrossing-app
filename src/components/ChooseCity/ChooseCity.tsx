@@ -19,9 +19,7 @@ const ChooseCity = ({ data }: Props) => {
     user.city = { id: city.id, title: city.title }
     GetCurrentUserFX(user);
     UpdateUserCityFX(city.title);
-    setTimeout(() => {
-      router.push('/');
-    }, 500)
+    router.push('/');
   };
 
   return (
@@ -29,7 +27,7 @@ const ChooseCity = ({ data }: Props) => {
       <Div style={{ padding: 0, marginBottom: '30px' }}>
         <img
           style={{ maxWidth: 206, margin: '40px auto 0' }}
-          src="/img/onboarding/page6.png"
+          src="/img/onboarding/choose.png"
           alt="Выберите город"
         />
       </Div>
