@@ -11,6 +11,7 @@ import { useUnit } from 'effector-react';
 import { Icon28BookmarkOutline, Icon32DoneOutline } from '@vkontakte/icons';
 import { IconButton, Snackbar } from '@vkontakte/vkui';
 import { CheckBookInFavPipeFX } from '../../utilities/category/category.utils';
+import { setSnackbar } from '../../store/activeModal';
 
 type Props = {
   bookId: string;
@@ -20,8 +21,7 @@ type Props = {
 }
 
 export default function ToFav({ bookId, isFav, ownerId }: Props) {
-  const [showSnackbar, setShowSnackbar] = useState(false);
-  const [user, status] = useUnit([$user, $favoriteStatus]);
+  const [user] = useUnit([$user]);
   const client = useQueryClient();
   const { userId } = user;
 
@@ -29,7 +29,7 @@ export default function ToFav({ bookId, isFav, ownerId }: Props) {
     mutationKey: ['put', 'favorites'],
     mutationFn: () => putBookInFavorites(bookId, userId),
     onSuccess: () => {
-      setShowSnackbar(true);
+      setSnackbar('fav-adding')
       client.invalidateQueries({
         queryKey: [
           ['books all', 'books favorites'],
@@ -55,16 +55,6 @@ export default function ToFav({ bookId, isFav, ownerId }: Props) {
     return (
       <>
         <ToFavReverse bookId={bookId} />
-        {
-          showSnackbar &&
-          <Snackbar
-            onClose={() => setShowSnackbar(false)}
-            before={<Icon32DoneOutline fill='#11d86b' />}
-            duration={3000}
-          >
-            Книга успешно добавлена в понравившиеся!
-          </Snackbar>
-        }
       </>
     )
   }

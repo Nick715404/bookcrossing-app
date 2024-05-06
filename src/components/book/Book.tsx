@@ -9,6 +9,7 @@ import {
   SplitLayout,
 } from "@vkontakte/vkui";
 import { CustomImage } from "../CustomImage/CustomImage";
+import { setSnackbar } from "../../store/activeModal";
 
 type Props = {
   book: IBook
