@@ -3,7 +3,7 @@ import { handleImageUpload } from "../../../../api/server/images/image";
 import { showSnackbarFX } from "../../../../store/states";
 
 import { Icon24CancelOutline, Icon28CheckCircleOutline } from "@vkontakte/icons";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { CellButton, Div, FormItem, Text } from "@vkontakte/vkui";
 
 type Props = {
@@ -16,6 +16,7 @@ export default function ImageInput({ go, bookId }: Props) {
   const [fileError, setFileError] = useState<string | null>(null);
   const [urls, setUrls] = useState<any[]>([]);
   const maxFileSizeInBytes = 1024 * 1024; // 1 MB
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files; // Получаем файлы из input
@@ -48,12 +49,12 @@ export default function ImageInput({ go, bookId }: Props) {
       newUrls.splice(index, 1);
       return newUrls;
     });
+    setSelectedImage([]); //очистка массива выбранных изображений
 
-    // setSelectedImages((prev) => {
-    //   const newImages = [...prev];
-    //   newImages.splice(index, 1);
-    //   return newImages;
-    // });
+    // Сброс значения input
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
   }
 
   useEffect(() => {
@@ -85,6 +86,7 @@ export default function ImageInput({ go, bookId }: Props) {
       </Text>
       <Text weight="1" style={{ textAlign: 'center', fontSize: '18px', marginBottom: '12px' }}>{fileError}</Text>
       <input
+        ref={inputRef}
         className="file-input"
         type="file"
         onChange={handleImageChange}
@@ -105,7 +107,7 @@ export default function ImageInput({ go, bookId }: Props) {
                 marginTop: '-15px',
                 marginRight: 'auto'
               }}
-              onClick={() => setSelectedImage([])}
+              onClick={() => {handleRemoveImage(0)}}
             >
               <Icon24CancelOutline />
             </CellButton>
