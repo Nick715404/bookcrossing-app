@@ -86,6 +86,7 @@ export default function ImageInput({ go, bookId, edit }: Props) {
         ref={inputRef}
         className="file-input"
         type="file"
+        accept=".jpg, .jpeg, .png, .svg"
         onChange={handleImageChange}
         style={selectedImage.length > 0 ? imageInputStylesWithGallery : imageInputStyles}
       />
