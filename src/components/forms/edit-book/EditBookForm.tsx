@@ -34,7 +34,7 @@ export default function EditBookForm({
   return (
     <Group>
       <form onSubmit={handleSubmit}>
-        <ImageInput go={go.start} bookId={go.bookId} />
+        <ImageInput edit go={go.start} bookId={go.bookId} />
         <CustomInput
           id="bookTitle"
           placeholder="Мастер и Маргарита"

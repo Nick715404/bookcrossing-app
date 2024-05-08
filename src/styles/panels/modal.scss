@@ -11,11 +11,12 @@
 
         .vkuiGroup__inner {
             width: 100%;
+            aspect-ratio: 1 / 1;
         }
 
         .book-img {
             width: 100% !important;
-            height: 230px !important;
+            min-height: 100% !important;
             overflow: hidden;
             border-radius: 10px;
         }
