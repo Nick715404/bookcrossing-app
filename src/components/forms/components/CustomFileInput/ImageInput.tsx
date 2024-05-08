@@ -122,7 +122,7 @@ export default function ImageInput({ go, bookId, edit }: Props) {
             marginTop: '12px',
           }}
         >
-          Допустимый размер файла 1Мб
+          Максимальный размер файла — 1Мб, допустимые форматы: .jpg, .jpeg, .png
         </Text>
     }
       {
