@@ -36,7 +36,6 @@ const HomePageBook = ({ id }: Props) => {
     const paramsId = params?.id;
     const navigator = useRouteNavigator();
     const status = checkBookInFavorites(book, favorites);
-
     const { data } = useCurrentBook({ bookId: '', paramsId: paramsId });
 
     const headerBefore = (

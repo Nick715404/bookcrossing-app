@@ -24,18 +24,15 @@ export async function handleImageUpload(selectedImages: any, bookId: string) {
 
 export const getBookImage = async (bookId: string | undefined) => {
   try {
-
     if (!bookId) return;
-
     const response = await api.get('/image/' + bookId + '/images');
-
     if (response.statusText !== 'OK') {
       console.log('failed');
       return null
     }
 
     const { data } = await response;
-
+    console.log(data);
     return data;
   }
   catch (error) {

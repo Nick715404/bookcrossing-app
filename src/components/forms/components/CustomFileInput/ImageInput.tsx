@@ -1,5 +1,5 @@
 import { imageInputStyles, imageInputStylesWithGallery, imageStyles } from "../../../../constants/utils";
-import { handleImageUpload } from "../../../../api/server/images/image";
+import { getBookImage, handleImageUpload } from "../../../../api/server/images/image";
 import { showSnackbarFX } from "../../../../store/states";
 
 import { Icon24CancelOutline, Icon28CheckCircleOutline } from "@vkontakte/icons";
@@ -15,7 +15,6 @@ type Props = {
 export default function ImageInput({ go, bookId, edit }: Props) {
   const [selectedImage, setSelectedImage] = useState<File[]>([]);
   const [fileError, setFileError] = useState<boolean>(false);
-  // const [urls, setUrls] = useState<any[]>([]);
   const maxFileSizeInBytes = 1024 * 1024; // 1 MB
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,32 +30,6 @@ export default function ImageInput({ go, bookId, edit }: Props) {
     }
   };
 
-  // const handleViewItems = useCallback(() => {
-  //   if (selectedImage.length > 0) {
-  //     selectedImage.forEach((item: File) => {
-  //       const fileReader = new FileReader();
-  //       fileReader.onload = () => {
-  //         setUrls((prevUrls) => [...prevUrls, fileReader.result]);
-  //       };
-  //       fileReader.readAsDataURL(item);
-  //     });
-  //   }
-  // }, [selectedImage]);
-
-  // const handleRemoveImage = (index: number) => {
-  //   setUrls((prev) => {
-  //     const newUrls = [...prev];
-  //     newUrls.splice(index, 1);
-  //     return newUrls;
-  //   });
-
-  //   // setSelectedImages((prev) => {
-  //   //   const newImages = [...prev];
-  //   //   newImages.splice(index, 1);
-  //   //   return newImages;
-  //   // });
-  // }
-
   useEffect(() => {
     if (go && selectedImage.length > 0 && !fileError) {
       console.log("Sending image to server", selectedImage);
@@ -68,16 +41,13 @@ export default function ImageInput({ go, bookId, edit }: Props) {
     }
   }, [go, selectedImage, fileError]);
 
-  // useEffect(() => {
-  //   if (fileError) {
-  //     console.log("Error occurred:", fileError);
-  //     showSnackbarFX({
-  //       text: `${fileError}`,
-  //       icon: <Icon28CheckCircleOutline fill="var(--vkui--color_icon_positive)" />,
-  //       duration: 4000,
-  //     });
-  //   }
-  // }, [fileError]);
+  useEffect(() => {
+    const Fetch = async () => {
+      const images = await getBookImage(bookId);
+      console.log(images);
+    }
+    Fetch() 
+  }, []);
 
   return (
     <FormItem>

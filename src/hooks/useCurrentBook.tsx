@@ -14,7 +14,8 @@ const useCurrentBook = ({ bookId, paramsId }: Props) => {
       if (bookId === '') {
         return await getCurrentBook(paramsId)
       }
-    }
+    },
+    refetchOnWindowFocus: false,
   })
 }
 
