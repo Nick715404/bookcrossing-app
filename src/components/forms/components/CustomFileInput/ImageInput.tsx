@@ -111,18 +111,29 @@ export default function ImageInput({ go, bookId, edit }: Props) {
         </Div>
       </Div>
     )}
-      {
-        fileError &&
-        <Text
+    {
+      !fileError &&
+      <Text
           weight="3"
           style={{
             textAlign: "left",
             fontSize: "14px",
             marginTop: '12px',
-            color: 'rgb(219 105 105)'
           }}
         >
           Допустимый размер файла 1Мб
+        </Text>
+    }
+      {
+        fileError &&
+        <Text weight="3"
+          style={{
+          textAlign: "left",
+          fontSize: "14px",
+          marginTop: '12px',
+          color: 'rgb(219 105 105)'
+        }}>
+          Размер файла превышает допустимый предел в 1Мб
         </Text>
       }
     </FormItem>
