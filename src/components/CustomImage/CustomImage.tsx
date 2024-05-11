@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { getBookImage } from "../../api/server/images/image";
-import { useQuery } from "react-query";
 import { Image } from "@vkontakte/vkui";
+import { useFetchBookImg } from "../../hooks/useFetchBookImg";
 
 type TProps = {
   bookId: string;
@@ -9,26 +7,7 @@ type TProps = {
 
 const CustomImage = ({ bookId }: TProps) => {
 
-  const getFiles = async () => {
-    try {
-      const images = await getBookImage(bookId);
-      if (!images) {
-        return null;
-      }
-      return images;
-    } catch (error) {
-      return null;
-    }
-  };
-
-  const { data, isError, isSuccess, isLoading } = useQuery({
-    queryKey: ['image', 'single', bookId],
-    queryFn: getFiles,
-    retry: 1,
-    retryDelay: 1000,
-    staleTime: 10000,
-    retryOnMount: false
-  });
+  const { data, isError, isSuccess, isLoading } = useFetchBookImg({ bookId: bookId });
 
   if (isLoading) {
     return (
