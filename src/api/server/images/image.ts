@@ -32,7 +32,7 @@ export const getBookImage = async (bookId: string | undefined) => {
     }
 
     const { data } = await response;
-    console.log(data);
+
     return data;
   }
   catch (error) {

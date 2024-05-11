@@ -1,8 +1,7 @@
 import { imageInputStyles, imageInputStylesWithGallery, imageStyles } from "../../../../constants/utils";
-import { getBookImage, handleImageUpload } from "../../../../api/server/images/image";
-import { showSnackbarFX } from "../../../../store/states";
+import { handleImageUpload } from "../../../../api/server/images/image";
 
-import { Icon24CancelOutline, Icon28CheckCircleOutline } from "@vkontakte/icons";
+import { Icon24CancelOutline } from "@vkontakte/icons";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { CellButton, Div, FormItem, Text } from "@vkontakte/vkui";
 
@@ -20,8 +19,8 @@ export default function ImageInput({ go, bookId, edit }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files; // Получаем файлы из input
-    if (files && files.length > 0) { // Проверяем, что files существует и не пустой
+    const files = e.target.files;
+    if (files && files.length > 0) {
       const file = files[0];
       if (file.size > maxFileSizeInBytes) {
         setFileError(true);
@@ -50,7 +49,7 @@ export default function ImageInput({ go, bookId, edit }: Props) {
       newUrls.splice(index, 1);
       return newUrls;
     });
-    setSelectedImage([]); //очистка массива выбранных изображений
+    setSelectedImage([]);
 
     // Сброс значения input
     if (inputRef.current) {
@@ -69,14 +68,6 @@ export default function ImageInput({ go, bookId, edit }: Props) {
     }
   }, [go, selectedImage, fileError]);
 
-  useEffect(() => {
-    const Fetch = async () => {
-      const images = await getBookImage(bookId);
-      console.log(images);
-    }
-    Fetch() 
-  }, []);
-
   return (
     <FormItem>
       <Text weight="3" style={{ textAlign: "left", fontSize: "14px", marginTop: '20px', color: '#6D7885' }}>
@@ -92,29 +83,29 @@ export default function ImageInput({ go, bookId, edit }: Props) {
       />
       {selectedImage.length > 0 && (
         <Div style={{ display: "flex", flexWrap: "wrap" }}>
-        <Div style={{ display: 'flex', position: "relative", margin: "5px", cursor: "pointer", alignItems: 'center', gap: '10px', marginRight: '-20px'}}>
-          <img
-            src={URL.createObjectURL(selectedImage[0])}
-            alt="Selected Image"
-            style={imageStyles}
-          />
-          <CellButton
-            style={{
-              width: 'auto',
-              marginBottom: 'auto',
-              marginTop: '-15px',
-              marginRight: 'auto'
-            }}
-            onClick={() => {handleRemoveImage(0)}}
-          >
-            <Icon24CancelOutline />
-          </CellButton>
+          <Div style={{ display: 'flex', position: "relative", margin: "5px", cursor: "pointer", alignItems: 'center', gap: '10px', marginRight: '-20px' }}>
+            <img
+              src={URL.createObjectURL(selectedImage[0])}
+              alt="Selected Image"
+              style={imageStyles}
+            />
+            <CellButton
+              style={{
+                width: 'auto',
+                marginBottom: 'auto',
+                marginTop: '-15px',
+                marginRight: 'auto'
+              }}
+              onClick={() => { handleRemoveImage(0) }}
+            >
+              <Icon24CancelOutline />
+            </CellButton>
+          </Div>
         </Div>
-      </Div>
-    )}
-    {
-      !fileError &&
-      <Text
+      )}
+      {
+        !fileError &&
+        <Text
           weight="3"
           style={{
             textAlign: "left",
@@ -124,16 +115,16 @@ export default function ImageInput({ go, bookId, edit }: Props) {
         >
           Максимальный размер файла — 1Мб, допустимые форматы: .jpg, .jpeg, .png
         </Text>
-    }
+      }
       {
         fileError &&
         <Text weight="3"
           style={{
-          textAlign: "left",
-          fontSize: "14px",
-          marginTop: '12px',
-          color: 'rgb(219 105 105)'
-        }}>
+            textAlign: "left",
+            fontSize: "14px",
+            marginTop: '12px',
+            color: 'rgb(219 105 105)'
+          }}>
           Размер файла превышает допустимый предел в 1Мб
         </Text>
       }

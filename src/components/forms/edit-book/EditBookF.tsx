@@ -74,8 +74,6 @@ const EditBookF: React.FC = () => {
     }
   }, [editingBook]);
 
-  console.log(formData);
-
   return (
     <>
       {done
