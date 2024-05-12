@@ -145,3 +145,10 @@ export interface ICategoriesBooksStore {
   title: string,
   books: IBook[],
 }
+
+export interface ICustomImage {
+  id: string;
+  path: string;
+  filename: string;
+  bookId: string;
+}

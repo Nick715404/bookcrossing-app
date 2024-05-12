@@ -47,7 +47,7 @@ const routes: RouteWithoutRoot[] = [
     view: 'user-agreement-view'
   },
   {
-    path: '/editBook',
+    path: '/:id',
     panel: 'edit-book',
     view: 'edit-book-view'
   },

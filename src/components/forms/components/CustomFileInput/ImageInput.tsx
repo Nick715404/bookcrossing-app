@@ -1,9 +1,11 @@
-import { imageInputStyles, imageInputStylesWithGallery, imageStyles } from "../../../../constants/utils";
+import { imageInputStyles, imageInputStylesActive, imageInputStylesWithGallery } from "../../../../constants/utils";
 import { handleImageUpload } from "../../../../api/server/images/image";
+import { useParams } from "@vkontakte/vk-mini-apps-router";
 
-import { Icon24CancelOutline } from "@vkontakte/icons";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { CellButton, Div, FormItem, Text } from "@vkontakte/vkui";
+import React, { useEffect, useRef, useState } from "react";
+import { Button, FormItem, Text } from "@vkontakte/vkui";
+import { useFetchBookImg } from "../../../../hooks/useFetchBookImg";
+import { CustomImage } from "./Image";
 
 type Props = {
   go: any;
@@ -13,15 +15,19 @@ type Props = {
 
 export default function ImageInput({ go, bookId, edit }: Props) {
   const [selectedImage, setSelectedImage] = useState<File[]>([]);
+  const [fetchedImage, setFetchedImages] = useState();
   const [fileError, setFileError] = useState<boolean>(false);
-  const [urls, setUrls] = useState<any[]>([]);
-  const maxFileSizeInBytes = 1024 * 1024; // 1 MB
+  const [editImage, setEditImage] = useState(false);
+
   const inputRef = useRef<HTMLInputElement>(null);
+  const params = useParams();
+  const { data } = useFetchBookImg({ bookId: params?.id });
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files && files.length > 0) {
       const file = files[0];
+      const maxFileSizeInBytes = 1024 * 1024;
       if (file.size > maxFileSizeInBytes) {
         setFileError(true);
       } else {
@@ -31,27 +37,8 @@ export default function ImageInput({ go, bookId, edit }: Props) {
     }
   };
 
-  const handleViewItems = useCallback(() => {
-    if (selectedImage.length > 0) {
-      selectedImage.forEach((item: File) => {
-        const fileReader = new FileReader();
-        fileReader.onload = () => {
-          setUrls((prevUrls) => [...prevUrls, fileReader.result]);
-        };
-        fileReader.readAsDataURL(item);
-      });
-    }
-  }, [selectedImage]);
-
-  const handleRemoveImage = (index: number) => {
-    setUrls((prev) => {
-      const newUrls = [...prev];
-      newUrls.splice(index, 1);
-      return newUrls;
-    });
+  const handleRemoveImage = () => {
     setSelectedImage([]);
-
-    // Сброс значения input
     if (inputRef.current) {
       inputRef.current.value = "";
     }
@@ -59,62 +46,53 @@ export default function ImageInput({ go, bookId, edit }: Props) {
 
   useEffect(() => {
     if (go && selectedImage.length > 0 && !fileError) {
-      console.log("Sending image to server", selectedImage);
       handleImageUpload(selectedImage, bookId)
-        .catch(error => {
-          console.error("Failed to upload image:", error);
-          setFileError(true);
-        });
+        .catch(() => setFileError(true));
     }
   }, [go, selectedImage, fileError]);
+
+  useEffect(() => {
+    setFetchedImages(data);
+  }, [data]);
 
   return (
     <FormItem>
       <Text weight="3" style={{ textAlign: "left", fontSize: "14px", marginTop: '20px', color: '#6D7885' }}>
         Фото
       </Text>
-      <input
-        ref={inputRef}
-        className="file-input"
-        type="file"
-        accept=".jpg, .jpeg, .png, .svg"
-        onChange={handleImageChange}
-        style={selectedImage.length > 0 ? imageInputStylesWithGallery : imageInputStyles}
-      />
-      {selectedImage.length > 0 && (
-        <Div style={{ display: "flex", flexWrap: "wrap" }}>
-          <Div style={{ display: 'flex', position: "relative", margin: "5px", cursor: "pointer", alignItems: 'center', gap: '10px', marginRight: '-20px' }}>
-            <img
-              src={URL.createObjectURL(selectedImage[0])}
-              alt="Selected Image"
-              style={imageStyles}
-            />
-            <CellButton
-              style={{
-                width: 'auto',
-                marginBottom: 'auto',
-                marginTop: '-15px',
-                marginRight: 'auto'
-              }}
-              onClick={() => { handleRemoveImage(0) }}
-            >
-              <Icon24CancelOutline />
-            </CellButton>
-          </Div>
-        </Div>
-      )}
       {
-        !fileError &&
-        <Text
-          weight="3"
-          style={{
-            textAlign: "left",
-            fontSize: "14px",
-            marginTop: '12px',
-          }}
-        >
-          Максимальный размер файла — 1Мб, допустимые форматы: .jpg, .jpeg, .png
-        </Text>
+        !fetchedImage &&
+        <input
+          ref={inputRef}
+          className="file-input"
+          type="file"
+          accept=".jpg, .jpeg, .png, .svg"
+          onChange={handleImageChange}
+          style={selectedImage.length > 0 ?
+            imageInputStylesWithGallery :
+            imageInputStyles}
+        />
+      }
+      <CustomImage
+        callback={handleRemoveImage}
+        images={selectedImage}
+        serverImage={fetchedImage}
+      />
+      {
+        fetchedImage &&
+        <>
+          <Text style={{marginBottom: '10px', color: 'rgb(150, 154, 159)', fontSize: '14px'}}>
+            Обновить фото
+          </Text>
+          <input
+            ref={inputRef}
+            className="file-input"
+            type="file"
+            accept=".jpg, .jpeg, .png, .svg"
+            onChange={handleImageChange}
+            style={imageInputStylesActive}
+          />
+        </>
       }
       {
         fileError &&
@@ -125,7 +103,7 @@ export default function ImageInput({ go, bookId, edit }: Props) {
             marginTop: '12px',
             color: 'rgb(219 105 105)'
           }}>
-          Размер файла превышает допустимый предел в 1Мб
+          Максимальный размер файла — 1Мб, допустимые форматы: .jpg, .jpeg, .png
         </Text>
       }
     </FormItem>

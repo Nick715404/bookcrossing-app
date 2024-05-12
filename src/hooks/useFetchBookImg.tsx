@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { getBookImage } from "../api/server/images/image";
 
 type Props = {
-  bookId: string
+  bookId: string | undefined
 }
 
 const useFetchBookImg = ({ bookId }: Props) => {
@@ -10,11 +10,12 @@ const useFetchBookImg = ({ bookId }: Props) => {
   const getFiles = async () => {
     try {
       const images = await getBookImage(bookId);
-      if (!images) {
-        return null;
-      }
+
+      if (!images) null;
+
       return images;
-    } catch (error) {
+    }
+    catch (error) {
       return null;
     }
   };
@@ -27,6 +28,7 @@ const useFetchBookImg = ({ bookId }: Props) => {
     staleTime: 10000,
     retryOnMount: false,
     refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 };
 

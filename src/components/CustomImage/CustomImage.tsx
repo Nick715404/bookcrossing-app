@@ -1,12 +1,11 @@
-import { Image } from "@vkontakte/vkui";
 import { useFetchBookImg } from "../../hooks/useFetchBookImg";
+import { Image } from "@vkontakte/vkui";
 
 type TProps = {
   bookId: string;
 }
 
 const CustomImage = ({ bookId }: TProps) => {
-
   const { data, isError, isSuccess, isLoading } = useFetchBookImg({ bookId: bookId });
 
   if (isLoading) {
