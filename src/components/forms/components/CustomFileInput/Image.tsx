@@ -10,7 +10,7 @@ type Props = {
 }
 
 const CustomImage = ({ images, callback, serverImage }: Props) => {
-  
+
   if (serverImage) {
     return (
       <Div style={{ display: "flex", alignItems: 'center', justifyContent: 'center' }}>
@@ -18,7 +18,7 @@ const CustomImage = ({ images, callback, serverImage }: Props) => {
           <img
             src={`https://буккросинг.рф:3100/${serverImage.path}`}
             alt="Selected Image"
-            style={{...imageStyles, margin: 0}}
+            style={{ ...imageStyles, margin: 0 }}
           />
         </Div>
       </Div>
@@ -30,24 +30,27 @@ const CustomImage = ({ images, callback, serverImage }: Props) => {
       {
         images.length > 0 &&
         <Div style={{ display: "flex", flexWrap: "wrap" }}>
-          <Div style={boxStyles}>
-            <img
-              src={URL.createObjectURL(images[0])}
-              alt="Selected Image"
-              style={imageStyles}
-            />
-            <CellButton
-              style={{
-                width: 'auto',
-                marginBottom: 'auto',
-                marginTop: '-15px',
-                marginRight: 'auto'
-              }}
-              onClick={callback}
-            >
-              <Icon24CancelOutline />
-            </CellButton>
-          </Div>
+          {
+            images.length > 0 &&
+            <Div style={boxStyles}>
+              <img
+                src={URL.createObjectURL(images[0])}
+                alt="Selected Image"
+                style={imageStyles}
+              />
+              <CellButton
+                style={{
+                  width: 'auto',
+                  marginBottom: 'auto',
+                  marginTop: '-15px',
+                  marginRight: 'auto'
+                }}
+                onClick={callback}
+              >
+                <Icon24CancelOutline />
+              </CellButton>
+            </Div>
+          }
         </Div>
       }
     </>

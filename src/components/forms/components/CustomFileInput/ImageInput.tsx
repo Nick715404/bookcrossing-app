@@ -2,10 +2,10 @@ import { imageInputStyles, imageInputStylesActive, imageInputStylesWithGallery }
 import { handleImageUpload } from "../../../../api/server/images/image";
 import { useParams } from "@vkontakte/vk-mini-apps-router";
 
-import React, { useEffect, useRef, useState } from "react";
-import { Button, FormItem, Text } from "@vkontakte/vkui";
 import { useFetchBookImg } from "../../../../hooks/useFetchBookImg";
 import { CustomImage } from "./Image";
+import React, { CSSProperties, useEffect, useRef, useState } from "react";
+import { FormItem, Text } from "@vkontakte/vkui";
 
 type Props = {
   go: any;
@@ -17,7 +17,6 @@ export default function ImageInput({ go, bookId, edit }: Props) {
   const [selectedImage, setSelectedImage] = useState<File[]>([]);
   const [fetchedImage, setFetchedImages] = useState();
   const [fileError, setFileError] = useState<boolean>(false);
-  const [editImage, setEditImage] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const params = useParams();
@@ -57,7 +56,7 @@ export default function ImageInput({ go, bookId, edit }: Props) {
 
   return (
     <FormItem>
-      <Text weight="3" style={{ textAlign: "left", fontSize: "14px", marginTop: '20px', color: '#6D7885' }}>
+      <Text weight="3" style={{ ...textStyles }}>
         Фото
       </Text>
       {
@@ -81,7 +80,7 @@ export default function ImageInput({ go, bookId, edit }: Props) {
       {
         fetchedImage &&
         <>
-          <Text style={{marginBottom: '10px', color: 'rgb(150, 154, 159)', fontSize: '14px'}}>
+          <Text style={{ marginBottom: '10px', color: 'rgb(150, 154, 159)', fontSize: '14px' }}>
             Обновить фото
           </Text>
           <input
@@ -108,4 +107,11 @@ export default function ImageInput({ go, bookId, edit }: Props) {
       }
     </FormItem>
   );
+}
+
+export const textStyles: CSSProperties = {
+  textAlign: "left",
+  fontSize: "14px",
+  marginTop: '20px',
+  color: '#6D7885'
 }

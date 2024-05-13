@@ -6,9 +6,10 @@ import CustomButton from '../../custom-button/CustomButton'
 
 import { IBook } from '../../../interfaces/interface'
 import CustomTextarea from '../components/CustomTextarea/CustomTextarea'
+import CustomInputWithInfo from '../components/CustomInput/CustomInputWithInfo'
 
 import { Checkbox, Div, FormItem, Group, Text } from '@vkontakte/vkui'
-import CustomInputWithInfo from '../components/CustomInput/CustomInputWithInfo'
+import { EditImageInput } from '../components/EditImageInput/EditImageInput'
 
 interface IProps {
   handleSubmit: (e: React.FormEvent) => void;
@@ -34,7 +35,7 @@ export default function EditBookForm({
   return (
     <Group>
       <form onSubmit={handleSubmit}>
-        <ImageInput edit go={go.start} bookId={go.bookId} />
+        <EditImageInput bookId={go.bookId} go={go.start} />
         <CustomInput
           id="bookTitle"
           placeholder="Мастер и Маргарита"
