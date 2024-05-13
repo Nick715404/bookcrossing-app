@@ -35,7 +35,6 @@ export default function EditBookForm({
   return (
     <Group>
       <form onSubmit={handleSubmit}>
-        {/* <EditImageInput bookId={go.bookId} go={go.start} /> */}
         <Div>
           <Text style={{color: 'rgb(150, 154, 159)', fontSize: '14px'}}>
             *Редактирование фотографии в разработке*
