@@ -5,11 +5,11 @@ import { useParams } from "@vkontakte/vk-mini-apps-router";
 import { useFetchBookImg } from "../../../../hooks/useFetchBookImg";
 import { CustomImage } from "./Image";
 import React, { CSSProperties, useEffect, useRef, useState } from "react";
-import { FormItem, Text } from "@vkontakte/vkui";
+import { Button, FormItem, Text } from "@vkontakte/vkui";
 
 type Props = {
-  go: any;
-  bookId: string;
+  go?: any;
+  bookId?: string;
   edit?: boolean;
 };
 
@@ -59,19 +59,6 @@ export default function ImageInput({ go, bookId, edit }: Props) {
       <Text weight="3" style={{ ...textStyles }}>
         Фото
       </Text>
-      {
-        !fetchedImage &&
-        <input
-          ref={inputRef}
-          className="file-input"
-          type="file"
-          accept=".jpg, .jpeg, .png, .svg"
-          onChange={handleImageChange}
-          style={selectedImage.length > 0 ?
-            imageInputStylesWithGallery :
-            imageInputStyles}
-        />
-      }
       <CustomImage
         callback={handleRemoveImage}
         images={selectedImage}
@@ -105,6 +92,9 @@ export default function ImageInput({ go, bookId, edit }: Props) {
           Максимальный размер файла — 1Мб, допустимые форматы: .jpg, .jpeg, .png
         </Text>
       }
+      <Button style={{ marginTop: 30 }} size="l" stretched>
+        Удалить фото
+      </Button>
     </FormItem>
   );
 }

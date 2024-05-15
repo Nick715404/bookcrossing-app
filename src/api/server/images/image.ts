@@ -1,6 +1,6 @@
 import { api } from "../../axios/axiosInstance";
 
-export async function handleImageUpload(selectedImages: any, bookId: string) {
+export async function handleImageUpload(selectedImages: any, bookId: string | undefined) {
   try {
     const formData = new FormData();
 
@@ -8,7 +8,7 @@ export async function handleImageUpload(selectedImages: any, bookId: string) {
       formData.append('images', image);
     });
 
-    formData.append('book-id', bookId);
+    formData.append('book-id', bookId || '');
 
     const response = await api.post('/image/load', formData, {
       onUploadProgress: (progressEvent: any) => {
