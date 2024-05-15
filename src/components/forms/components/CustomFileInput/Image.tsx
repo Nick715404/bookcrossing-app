@@ -4,8 +4,8 @@ import { Icon24CancelOutline } from "@vkontakte/icons";
 import { CellButton, Div } from "@vkontakte/vkui";
 
 type Props = {
-  images: File[];
-  callback: () => void;
+  images?: File[];
+  callback?: () => void;
   serverImage: ICustomImage | undefined;
 }
 
@@ -28,7 +28,7 @@ const CustomImage = ({ images, callback, serverImage }: Props) => {
   return (
     <>
       {
-        images.length > 0 &&
+        images && images.length > 0 &&
         <Div style={{ display: "flex", flexWrap: "wrap" }}>
           {
             images.length > 0 &&
