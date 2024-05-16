@@ -9,7 +9,7 @@ import CustomTextarea from '../components/CustomTextarea/CustomTextarea'
 import CustomInputWithInfo from '../components/CustomInput/CustomInputWithInfo'
 
 import { Checkbox, Div, FormItem, Group, Text } from '@vkontakte/vkui'
-import { EditImageInput } from '../components/EditImageInput/EditImageInput'
+import { EditBookFile } from './EditBookFile'
 
 interface IProps {
   handleSubmit: (e: React.FormEvent) => void;
@@ -35,11 +35,7 @@ export default function EditBookForm({
   return (
     <Group>
       <form onSubmit={handleSubmit}>
-        <Div>
-          <Text style={{color: 'rgb(150, 154, 159)', fontSize: '14px'}}>
-            *Редактирование фотографии в разработке*
-          </Text>
-        </Div>
+        <EditBookFile />
         <CustomInput
           id="bookTitle"
           placeholder="Мастер и Маргарита"

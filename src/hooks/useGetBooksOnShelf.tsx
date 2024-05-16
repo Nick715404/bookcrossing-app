@@ -5,7 +5,6 @@ import { useUnit } from "effector-react";
 import { useQuery } from "react-query";
 
 const useGetBooksOnShelf = () => {
-
   const user = useUnit($user);
 
   const handleFetch = async () => {
