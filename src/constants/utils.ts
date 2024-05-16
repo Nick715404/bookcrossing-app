@@ -38,6 +38,12 @@ export const imageStyles = {
   borderRadius: '14px',
 }
 
+export const activeImageStyles = {
+  marginLeft: '0',
+  width: '100%',
+  borderRadius: '14px',
+}
+
 export const customImageButton: CSSProperties = {
   width: 'auto',
   marginBottom: 'auto',
@@ -55,7 +61,15 @@ export const boxStyles: CSSProperties = {
   marginRight: '-20px'
 }
 
-export const imageInputStylesActive= {
+export const activeBoxStyles: CSSProperties = {
+  display: 'flex',
+  position: "relative",
+  margin: "5px",
+  cursor: "pointer",
+  alignItems: 'center',
+}
+
+export const imageInputStylesActive = {
   ...imageInputStyles,
   maxHeight: '58px',
   width: '100%'

@@ -36,11 +36,6 @@ export default function EditBookForm({
     <Group>
       <form onSubmit={handleSubmit}>
         <EditBookFile />
-        <Div>
-          <Text style={{ color: 'rgb(150, 154, 159)', fontSize: '14px' }}>
-            *Редактирование фотографии в разработке*
-          </Text>
-        </Div>
         <CustomInput
           id="bookTitle"
           placeholder="Мастер и Маргарита"

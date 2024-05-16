@@ -17,6 +17,8 @@ const snackbars: SnackbarMap = {
   'book-remove': <SuccesSnackbar id="fav-adding" text="Книга успешно удалена" />,
   'book-update': <SuccesSnackbar id="fav-adding" text="Книга успешно изменена" />,
   'error': <ErrorSnackbar id="fav-remove-error" text="Кажется что то пошло не так" />,
+  'image-update': <SuccesSnackbar id="image-update" text="Картинка успешно обновлена" />,
+  'image-update-error': <ErrorSnackbar id="image-update-error" text="Что то пошло не так" />,
 };
 
 const SnackBarProvider = ({ children }: Props) => {
