@@ -5,8 +5,6 @@ import ImageInput from "../components/CustomFileInput/ImageInput";
 type Props = {}
 
 const EditBookFile = ({ }: Props) => {
-  const params = useParams();
-  const { data } = useFetchBookImg({ bookId: params?.id })
 
   return (
     <>

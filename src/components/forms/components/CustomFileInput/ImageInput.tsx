@@ -38,7 +38,7 @@ export default function ImageInput({ go, bookId, edit }: Props) {
   const { mutate: updateImage, isLoading, isSuccess } = useUpdateImage({
     selectedImages: selectedImage,
     bookId: params?.id,
-    imageId: data.id
+    imageId: data && data.id
   })
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
