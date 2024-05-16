@@ -1,11 +1,14 @@
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { getBookImage } from "../api/server/images/image";
+import { setSnackbar } from "../store/activeModal";
 
 type Props = {
   bookId: string | undefined
 }
 
 const useFetchBookImg = ({ bookId }: Props) => {
+
+  const client = useQueryClient();
 
   const getFiles = async () => {
     try {
@@ -23,12 +26,11 @@ const useFetchBookImg = ({ bookId }: Props) => {
   return useQuery({
     queryKey: ['image', 'single', bookId],
     queryFn: getFiles,
-    retry: 1,
+    retry: 2,
     retryDelay: 1000,
-    staleTime: 10000,
-    retryOnMount: false,
+    retryOnMount: true,
     refetchOnWindowFocus: false,
-    refetchOnMount: false,
+    refetchOnMount: true,
   });
 };
 

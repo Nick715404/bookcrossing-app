@@ -6,7 +6,7 @@ import { CellButton, Div } from "@vkontakte/vkui";
 type Props = {
   images: File[];
   callback?: () => void;
-  serverImage: ICustomImage | undefined;
+  serverImage?: ICustomImage | undefined;
 }
 
 const CustomImage = ({ images, callback, serverImage }: Props) => {
