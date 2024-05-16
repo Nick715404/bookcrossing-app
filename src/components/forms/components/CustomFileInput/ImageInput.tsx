@@ -45,7 +45,7 @@ export default function ImageInput({ go, bookId, edit }: Props) {
     const files = e.target.files;
     if (files && files.length > 0) {
       const file = files[0];
-      const maxFileSizeInBytes = 1024 * 1024;
+      const maxFileSizeInBytes = (1024 * 1024) * 5;
       if (file.size > maxFileSizeInBytes) {
         setFileError(true);
       } else {
@@ -100,7 +100,7 @@ export default function ImageInput({ go, bookId, edit }: Props) {
           ref={inputRef}
           className="file-input"
           type="file"
-          accept=".jpg, .jpeg, .png, .svg"
+          accept=".jpg, .jpeg, .png, .svg, .heic"
           onChange={handleImageChange}
           style={selectedImage.length === 0 ? imageInputStylesActive : imageInputStylesWithGallery}
         />
@@ -123,7 +123,7 @@ export default function ImageInput({ go, bookId, edit }: Props) {
               marginTop: '12px',
               color: 'rgb(219 105 105)'
             }}>
-            Максимальный размер файла — 1Мб, допустимые форматы: .jpg, .jpeg, .png
+            Максимальный размер файла — 5Мб
           </Text>
         }
       </FormItem>
@@ -162,7 +162,7 @@ export default function ImageInput({ go, bookId, edit }: Props) {
             marginTop: '12px',
             color: 'rgb(219 105 105)'
           }}>
-          Максимальный размер файла — 1Мб, допустимые форматы: .jpg, .jpeg, .png
+          Максимальный размер файла — 5Мб
         </Text>
       }
     </FormItem>
