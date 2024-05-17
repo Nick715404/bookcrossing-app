@@ -5,7 +5,6 @@ import Profile from '../panels/profile/Profile';
 import Create from '../panels/create/Create';
 import Categories from '../panels/categories/Categories';
 import SearchPanel from '../panels/search/Search';
-import HomePageBook from '../components/modals/pages/HomePageBook';
 import Menu from '../panels/menu/Menu';
 import SingleCategory from '../panels/single-category/SingleCategory';
 import EditPanel from '../panels/edit/EditPanel';
@@ -13,6 +12,7 @@ import UserAgreement from '../panels/userAgreement/UserAgreement';
 import { Epic, View } from '@vkontakte/vkui';
 import { ChooseCitiesPage } from '../panels/cities/ChooseCities';
 import { OnboardingRouterPage } from '../panels/onboarding/OnboardingRouterPage';
+import HomePageBook from '../components/modals/pages/HomePageBookServer';
 
 const Router = () => {
 	const { view: activeView } = useActiveVkuiLocation();

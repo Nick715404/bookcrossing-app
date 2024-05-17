@@ -16,7 +16,7 @@ import { setSnackbar } from '../../store/activeModal';
 type Props = {
   bookId: string;
   // isFav: string;
-  isFav: boolean;
+  isFav: boolean | undefined;
   ownerId: number;
 }
 

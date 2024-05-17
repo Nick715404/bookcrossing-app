@@ -1,5 +1,5 @@
 import React from 'react'
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import { getCurrentBook } from '../api/server/books/books';
 
 type Props = {
@@ -8,6 +8,9 @@ type Props = {
 }
 
 const useCurrentBook = ({ bookId, paramsId }: Props) => {
+
+  const client = useQueryClient();
+
   return useQuery({
     queryKey: ['serverBook'],
     queryFn: async () => {
@@ -16,6 +19,11 @@ const useCurrentBook = ({ bookId, paramsId }: Props) => {
       }
     },
     refetchOnWindowFocus: false,
+    onSuccess() {
+      client.invalidateQueries({
+        queryKey: [['owner', 'city']]
+      })
+    }
   })
 }
 

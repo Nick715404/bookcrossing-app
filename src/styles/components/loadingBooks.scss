@@ -64,10 +64,10 @@
 
 @keyframes skeleton-anim {
   0% {
-    background-color: hsl(0, 0%, 66%);
+    background-color: hsla(0, 0%, 30%, 0.416);
   }
 
   100% {
-    background-color: hsl(0, 0%, 81%);
+    background-color: hsla(0, 1%, 33%, 0.528);
   }
 }
