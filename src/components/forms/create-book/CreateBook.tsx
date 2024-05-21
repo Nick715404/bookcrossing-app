@@ -38,7 +38,7 @@ const CreateBook: React.FC = () => {
     const userId = user.userId;
     const errors: { [key: string]: string } = {};
 
-    handleFormValidation(author, errors);
+    // handleFormValidation(author, errors);
     setFormErrors(errors);
     if (Object.keys(errors).length > 0) return;
 

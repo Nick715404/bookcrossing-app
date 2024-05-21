@@ -45,7 +45,7 @@ const EditBookF: React.FC = () => {
     const userId: string | undefined = user.userId;
 
     const errors: { [key: string]: string } = {};
-    handleFormValidation(author, errors);
+    // handleFormValidation(author, errors);
     setFormErrors(errors);
 
     if (Object.keys(errors).length > 0) {
