@@ -1,8 +1,5 @@
 import { IBook } from "../../interfaces/interface";
 import { vkGreyColor } from "../../constants/utils";
-
-import ToFav from "../toFav/toFav";
-import ToChat from "../toChat/toChat";
 import EmptyPlate from "../empty-plate/EmptyPlate";
 
 import { BookSkeleton } from "../Skeletons/BookSkeleton";
@@ -10,7 +7,8 @@ import { checkBookInFavorites } from "../../utilities/books/books.utils";
 import { $favBooks } from "../../store/favorites";
 import { Icon28BookOutline } from '@vkontakte/icons';
 import { useUnit } from "effector-react";
-import { Book } from "../book/Book";
+import { Book, ToChatButton, ToFavButton } from "..";
+
 
 interface IProps {
   data: IBook[] | undefined;
@@ -46,8 +44,8 @@ const SearchBooksList = ({ data, isSuccess, isLoading }: IProps) => {
           const status = checkBookInFavorites(book, favorites);
           return (
             <Book
-              afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={status} />}
-              beforeIcon={<ToChat vkid={book.owner} />}
+              afterIcon={<ToFavButton ownerId={book.owner} bookId={book.id} isFav={status} />}
+              beforeIcon={<ToChatButton vkid={book.owner} />}
               book={book}
               key={book.id} />
           )

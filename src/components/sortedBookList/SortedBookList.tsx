@@ -3,15 +3,13 @@ import { $categoriesBooks, $sortedBooks } from "../../store/books";
 import { vkGreyColor } from "../../constants/utils";
 
 import EmptyPlate from "../empty-plate/EmptyPlate";
-import ToFav from "../toFav/toFav";
-import ToChat from "../toChat/toChat";
 
 import { Icon56SearchOutline } from "@vkontakte/icons";
 import { useUnit } from "effector-react";
 import { Header } from "@vkontakte/vkui";
 import { $favBooks } from "../../store/favorites";
 import { checkBookInFavorites } from "../../utilities/books/books.utils";
-import { Book } from "..";
+import { Book, ToChatButton, ToFavButton } from "..";
 
 export default function SortedBookList() {
   const data = useUnit($categoriesBooks);
@@ -39,8 +37,8 @@ export default function SortedBookList() {
             return (
               <Book
                 key={book.id}
-                afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={status} />}
-                beforeIcon={<ToChat vkid={book.owner} />}
+                afterIcon={<ToFavButton ownerId={book.owner} bookId={book.id} isFav={status} />}
+                beforeIcon={<ToChatButton vkid={book.owner} />}
                 book={book}
               />
             )

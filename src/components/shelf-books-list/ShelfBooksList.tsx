@@ -4,14 +4,13 @@ import { useGetBooksOnShelf } from "../../hooks/useGetBooksOnShelf"
 import { BookSkeleton } from "../Skeletons/BookSkeleton"
 import { $books, GetAllBooksPipeFX } from "../../store/books"
 
-import EditBook from "../edit-book/EditBook"
-import DeleteBook from "../delete-book/DeleteBook"
 import EmptyPlate from "../empty-plate/EmptyPlate"
 
 import { Icon28BookOutline } from '@vkontakte/icons'
 import React, { useEffect } from "react"
 import { useUnit } from "effector-react"
-import { Book } from "../book/Book"
+import { Book } from "../Book/Book"
+import { DeleteBookButton, EditBookButton } from "../BooksButtons"
 
 function ShelfBooksList() {
   const { data, isSuccess, isLoading } = useGetBooksOnShelf();
@@ -43,8 +42,8 @@ function ShelfBooksList() {
             <Book
               key={book.id}
               book={book}
-              afterIcon={<EditBook bookId={book.id} />}
-              beforeIcon={<DeleteBook bookId={book.id} />}
+              afterIcon={<EditBookButton bookId={book.id} />}
+              beforeIcon={<DeleteBookButton bookId={book.id} />}
             />
           )
         }).reverse()

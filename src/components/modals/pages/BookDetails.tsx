@@ -1,5 +1,4 @@
 import { setStatusActiveModal } from "../../../store/activeModal";
-import ToFav from '../../toFav/toFav';
 import { IBook } from "../../../interfaces/interface";
 import { CustomImage } from "../../CustomImage/CustomImage";
 import { Icon24Info } from "@vkontakte/icons";
@@ -10,6 +9,7 @@ import {
   Separator,
   CellButton
 } from "@vkontakte/vkui";
+import { ToFavButton } from "../../BooksButtons";
 
 
 type BookDetailsProps = {
@@ -30,7 +30,7 @@ const BookDetails = ({ book, ownerCity, isFavorite, isLoading }: BookDetailsProp
           {book.title}
         </Text>
         <Div className="book-top-row__btn">
-          <ToFav ownerId={book.owner} bookId={book.id} isFav={isFavorite} />
+          <ToFavButton ownerId={book.owner} bookId={book.id} isFav={isFavorite} />
         </Div>
       </Div>
       <Text weight="3" className="bookAuthor">

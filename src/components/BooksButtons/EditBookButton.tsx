@@ -9,7 +9,7 @@ type Props = {
   bookId: string
 }
 
-export default function EditBook({ bookId }: Props) {
+export function EditBookButton({ bookId }: Props) {
 
   const navigator = useRouteNavigator()
 
@@ -19,10 +19,8 @@ export default function EditBook({ bookId }: Props) {
   };
 
   return (
-    <>
-      <IconButton onClick={handleClick} className='edit-book'>
-        <Icon28WriteOutline fill={vkBlueColor} />
-      </IconButton>
-    </>
+    <IconButton onClick={handleClick} className='edit-book'>
+      <Icon28WriteOutline fill={vkBlueColor} />
+    </IconButton>
   )
 } 

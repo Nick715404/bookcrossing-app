@@ -1,1 +1,2 @@
-export { Book } from './book/Book';
+export { Book } from './Book/Book';
+export * from './BooksButtons/index';

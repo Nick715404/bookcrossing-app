@@ -7,7 +7,7 @@ type TProps = {
   vkid: number | undefined;
 }
 
-export default function ToChat({ vkid }: TProps) {
+export function ToChatButton({ vkid }: TProps) {
 
   const [acitive, setActive] = useState<boolean>(false);
 
@@ -22,5 +22,5 @@ export default function ToChat({ vkid }: TProps) {
       className='to-chat-btn'>
       {acitive ? <Icon28MessageOutline fill={vkBlueColor} /> : <Icon28MessageOutline fill={vkBlueColor} />}
     </IconButton>
-  )
-}
+  );
+};

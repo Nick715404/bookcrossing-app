@@ -1,8 +1,9 @@
+import { Book, ToChatButton, ToFavButton } from "..";
+
+
 import { vkGreyColor } from "../../constants/utils";
 import { IBook } from "../../interfaces/interface";
 
-import ToFav from "../toFav/toFav";
-import ToChat from "../toChat/toChat";
 import EmptyPlate from "../empty-plate/EmptyPlate";
 
 import { BookSkeleton } from "../Skeletons/BookSkeleton";
@@ -15,7 +16,7 @@ import { useUnit } from "effector-react";
 import { useEffect } from "react";
 import { checkBookInFavorites } from "../../utilities/books/books.utils";
 import { CardGrid } from "@vkontakte/vkui";
-import { Book } from "..";
+
 
 export default function CatalogBookList() {
   const [books, favorites] = useUnit([$books, $favBooks]);
@@ -47,8 +48,8 @@ export default function CatalogBookList() {
             <Book
               key={book.id}
               book={book}
-              afterIcon={<ToFav ownerId={book.owner} bookId={book.id} isFav={check} />}
-              beforeIcon={<ToChat vkid={book.owner} />}
+              afterIcon={<ToFavButton ownerId={book.owner} bookId={book.id} isFav={check} />}
+              beforeIcon={<ToChatButton vkid={book.owner} />}
             />
           )
         }).reverse()
