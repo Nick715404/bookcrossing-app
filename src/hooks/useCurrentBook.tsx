@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery, useQueryClient } from 'react-query';
-import { getCurrentBook } from '../api/server/books/books';
+import { getCurrentBook } from '../api/server/books.query';
 
 type Props = {
   bookId: string;

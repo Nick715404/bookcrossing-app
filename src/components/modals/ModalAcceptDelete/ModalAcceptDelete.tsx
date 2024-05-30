@@ -1,7 +1,7 @@
 import { setSnackbar, setStatusActiveModal } from "../../../store/activeModal"
 import { IPassIdToModalPage } from "../../../interfaces/interface"
 import { $currentBookId } from "../../../store/modalBook"
-import { deleteBook } from "../../../api/server/books/books.query";
+import { deleteBook } from "../../../api/server/books.query";
 import { DeleteBookFromFavPipeFX } from "../../../store/favorites";
 import { DeleteBookPipeFX } from "../../../store/books";
 

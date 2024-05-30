@@ -1,6 +1,6 @@
-import { api } from "../../axios/axiosInstance";
-import { IVkUser } from "../../../interfaces/interface";
 import { createEffect } from "effector";
+import { IVkUser } from "../../interfaces/interface";
+import { api } from "./axiosInstance";
 
 export const fetchUserFromDataBase = async (id: number) => {
   try {

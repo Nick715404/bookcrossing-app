@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "react-query";
-import { deleteBook } from "../api/server/books/books.query";
+import { deleteBook } from "../api/server/books.query";
 
 interface IProps {
   bookId?: string;

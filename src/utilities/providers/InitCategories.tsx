@@ -1,4 +1,4 @@
-import { getAllCategoriesFX } from "../../api/server/categories/categories";
+import { getAllCategoriesFX } from "../../api/server/categories";
 import { useEffect } from "react"
 
 type Props = {

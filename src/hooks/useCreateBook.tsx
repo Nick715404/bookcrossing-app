@@ -1,4 +1,4 @@
-import { createBook } from "../api/server/books/books.query";
+import { createBook } from "../api/server/books.query";
 import { useMutation, useQueryClient } from "react-query";
 
 const useCreateBook = () => {

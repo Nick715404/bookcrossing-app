@@ -3,7 +3,7 @@ import { $user } from '../../store/user';
 
 import { $favoriteStatus, PutBookInFavFX } from '../../store/favorites';
 import { ToFavReverse } from './toFavReverse';
-import { putBookInFavorites } from '../../api/server/books/books.query';
+import { putBookInFavorites } from '../../api/server/books.query';
 
 import { useEffect, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';

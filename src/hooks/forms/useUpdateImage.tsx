@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "react-query";
-import { updateImage } from "../../api/server/images/image";
+import { updateImage } from "../../api/server/image";
 import { setSnackbar } from "../../store/activeModal";
 
 type Props = {

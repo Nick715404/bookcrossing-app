@@ -1,4 +1,4 @@
-import { GetFavFromUserFX } from "../api/server/favorites/favorites";
+import { GetFavFromUserFX } from "../api/server/favorites.query";
 import { IBook } from "../interfaces/interface";
 import { CheckBookInFavPipeFX } from "../utilities/category/category.utils";
 import { createEffect, createEvent, createStore } from "effector";

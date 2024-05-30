@@ -1,4 +1,4 @@
-import { fetchBooks } from "../api/server/books/books.query";
+import { fetchBooks } from "../api/server/books.query";
 import { useQuery } from "react-query";
 
 const useFetchBooks = () => {

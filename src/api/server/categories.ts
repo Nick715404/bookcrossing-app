@@ -1,4 +1,4 @@
-import { api } from "../../axios/axiosInstance";
+import { api } from "./axiosInstance";
 import { createEffect } from "effector";
 
 export const getAllCategoriesFX = createEffect(async () => {

@@ -1,5 +1,6 @@
-import { IBook, ICreateBook, IShelfInfo } from "../../../interfaces/interface";
-import { api, url } from "../../axios/axiosInstance";
+import { api, url } from "./axiosInstance";
+import { IBook, ICreateBook, IShelfInfo } from "../../interfaces/interface";
+import { createEffect } from "effector";
 
 export const fetchBooks = async () => {
   try {
@@ -50,7 +51,7 @@ export const deleteBook = async (id: string) => {
   catch (error) {
     throw new Error('Failed to delete book!');
   }
-}
+};
 
 export const putBookInFavorites = async (bookId: string, userId: string) => {
   try {
@@ -64,4 +65,35 @@ export const putBookInFavorites = async (bookId: string, userId: string) => {
   catch (error) {
     throw new Error('Failed to put book into shelf!');
   }
-}
+};
+
+export const getCurentBookFX = createEffect(async (id: string | undefined) => {
+  try {
+    const { data } = await api.get(`/book/${id}`);
+    return data
+  }
+  catch (error) {
+    throw new Error('Failed white fetching current book!');
+  }
+});
+
+export async function getCurrentBook(id: string | undefined): Promise<IBook> {
+  try {
+    const data: IBook = await getCurentBookFX(id);
+    return data;
+  }
+  catch (error) {
+    throw new Error('Failed while get current book!');
+  }
+};
+
+export const editBookFX = createEffect(async (book: IBook) => {
+  try {
+    const { data } = await api.patch(`/book/edit/${book.id}`, book);
+    return data;
+  }
+  catch (error) {
+    console.log(error);
+    throw new Error('Failed to patch book!');
+  }
+});

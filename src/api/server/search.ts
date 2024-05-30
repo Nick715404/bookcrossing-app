@@ -1,5 +1,5 @@
 import { IBook } from "../../interfaces/interface";
-import { api } from "../axios/axiosInstance"
+import { api } from "./axiosInstance"
 
 export const SearchBooks = async (param: string) => {
   try {

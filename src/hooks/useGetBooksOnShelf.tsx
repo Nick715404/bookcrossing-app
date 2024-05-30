@@ -1,5 +1,5 @@
 import { $user } from "../store/user";
-import { findBooksOnShelf } from "../api/server/books/books.query";
+import { findBooksOnShelf } from "../api/server/books.query";
 
 import { useUnit } from "effector-react";
 import { useQuery } from "react-query";

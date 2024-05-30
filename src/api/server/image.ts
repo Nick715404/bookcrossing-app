@@ -1,4 +1,4 @@
-import { api } from "../../axios/axiosInstance";
+import { api } from "./axiosInstance";
 
 export async function handleImageUpload(selectedImages: any, bookId: string | undefined) {
   try {

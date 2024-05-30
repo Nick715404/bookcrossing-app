@@ -1,4 +1,4 @@
-import { fetchCities } from "../api/server/cities/cities";
+import { fetchCities } from "../api/server/cities";
 import { useQuery } from "react-query";
 
 const useCities = () => {

@@ -1,8 +1,10 @@
-import { IBook } from "../../../interfaces/interface";
-import { api } from "../../axios/axiosInstance";
+import { createEffect } from "effector";
+
+import { api } from "./axiosInstance";
+import { IBook } from "../../interfaces/interface";
 
 interface IFetchedFromFav {
-  books: IBook[]
+  books: IBook[],
 }
 
 export const fetchBooksFromFavorites = async (id: string) => {
@@ -30,3 +32,14 @@ export const removeFromFav = async ({ bookId, vkId }: { bookId: string, vkId: nu
     throw new Error(error);
   }
 };
+
+export const GetFavFromUserFX = createEffect(async (id: string) => {
+  try {
+    const { data } = await api.get(`/favorites/find/${id}`);
+    const { books } = await data;
+    return books;
+  }
+  catch (error) {
+    throw new Error('Failed to fetch favorite from user!')
+  }
+});

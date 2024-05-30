@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { FormItem, Select } from "@vkontakte/vkui";
 import { $categories } from "../../../../store/categories";
 import { useUnit } from "effector-react";
-import { getAllCategoriesFX } from "../../../../api/server/categories/categories";
+import { getAllCategoriesFX } from "../../../../api/server/categories";
 
 type Props = {
   value: string | undefined

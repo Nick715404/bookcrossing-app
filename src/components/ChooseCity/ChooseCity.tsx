@@ -1,13 +1,13 @@
 import { ICity } from "../../interfaces/interface";
 import { UpdateUserCityFX } from "../../utilities/user/userCity";
 import { fetchVkUser } from "../../api/vk-bridge/user";
-import { GetCurrentUserFX } from "../../api/server/user/user";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { GetCurrentUserFX } from "../../api/server";
 
 import { CellButton, Div, Text } from "@vkontakte/vkui";
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 type Props = {
-  data: ICity[]
+  data: ICity[],
 }
 
 const ChooseCity = ({ data }: Props) => {

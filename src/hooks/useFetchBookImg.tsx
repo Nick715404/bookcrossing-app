@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "react-query";
-import { getBookImage } from "../api/server/images/image";
+import { getBookImage } from "../api/server/image";
 import { setSnackbar } from "../store/activeModal";
 
 type Props = {

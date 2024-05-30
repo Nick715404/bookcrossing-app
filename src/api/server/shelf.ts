@@ -1,6 +1,7 @@
-import { IExtendedBook, IShelfInfo } from "../../../interfaces/interface";
-import { api } from "../../axios/axiosInstance";
+
 import { createEffect } from "effector";
+import { api } from "./axiosInstance";
+import { IShelfInfo } from "../../interfaces/interface";
 
 export const FindCurrentShelf = createEffect(async (userId: string) => {
   try {

@@ -1,4 +1,4 @@
-import { editBookFX } from "../../api/server/books/books";
+import { editBookFX } from "../../api/server/books.query";
 import { IBook } from "../../interfaces/interface";
 
 export const handleFormValidation = (author: string, errors: any) => {
