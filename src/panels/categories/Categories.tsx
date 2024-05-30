@@ -1,6 +1,6 @@
-import CategoriesList from "../../components/CategoriesList/CategoriesList"
+import { AllCategoriesList } from "../../components/CategoriesSwiper/AllCategoriesList"
 import CustomHeader from "../../components/header/CustomHeader"
-import { Group, Panel} from "@vkontakte/vkui"
+import { Group, Panel } from "@vkontakte/vkui"
 
 type Props = {
   id: string
@@ -11,7 +11,7 @@ export default function Categories({ id }: Props) {
     <Panel id={id}>
       <CustomHeader withBack />
       <Group>
-        <CategoriesList />
+        <AllCategoriesList />
       </Group>
     </Panel>
   )

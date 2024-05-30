@@ -1,5 +1,5 @@
+import { CategoriesCards } from '../../components';
 import Search from '../../components/search/Search';
-import Categories from '../../components/categories/Categories';
 import Relevants from '../../components/relevant/Relevants';
 import CustomHeader from '../../components/header/CustomHeader';
 
@@ -18,7 +18,7 @@ export default function Catalog({ id }: Props) {
 			<CustomHeader />
 			<Group separator='auto'>
 				<Search onPanel />
-				<Categories />
+				<CategoriesCards />
 			</Group>
 			<Group>
 				<Relevants />
