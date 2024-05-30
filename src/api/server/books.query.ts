@@ -2,15 +2,15 @@ import { api, url } from "./axiosInstance";
 import { IBook, ICreateBook, IShelfInfo } from "../../interfaces/interface";
 import { createEffect } from "effector";
 
-export const fetchBooks = async () => {
+export const fetchBooks = async (): Promise<IBook[]> => {
   try {
-    const { data } = await api.get('/book/all');
-    const fetchedData: IBook[] = data;
-    return fetchedData;
-  } catch (error) {
-    throw new Error('Error to fetch all books!');
+    const { data } = await api.get<IBook[]>('/book/all');
+    return data;
   }
-}
+  catch (error) {
+    throw new Error('Error to fetch all books!' + error);
+  }
+};
 
 export const createBook = async (book: ICreateBook): Promise<IBook> => {
   try {
@@ -26,30 +26,28 @@ export const createBook = async (book: ICreateBook): Promise<IBook> => {
     return data;
   }
   catch (error) {
-    throw new Error('Failed to create book!');
+    throw new Error('Failed to create book!' + error);
   }
 };
 
 export const findBooksOnShelf = async (userId: string) => {
   try {
-    const { data } = await api.get(`/shelf/find/${userId}`);
-    const shelf: IShelfInfo = data;
-    const shelfBooks = shelf.books;
-    return shelfBooks;
+    const { data } = await api.get<IShelfInfo>(`/shelf/find/${userId}`);
+    const { books } = data;
+    return books;
   }
   catch (error) {
-    throw new Error('Failed to fetch books on shelf!');
+    throw new Error('Failed to fetch books on shelf!' + error);
   }
 };
 
 export const deleteBook = async (id: string) => {
   try {
-    const { data } = await api.delete(`/book/delete/${id}`);
-    const deletedBook: IBook = data;
-    return deletedBook;
+    const { data } = await api.delete<IBook>(`/book/delete/${id}`);
+    return data;
   }
   catch (error) {
-    throw new Error('Failed to delete book!');
+    throw new Error('Failed to delete book!' + error);
   }
 };
 
@@ -59,25 +57,15 @@ export const putBookInFavorites = async (bookId: string, userId: string) => {
       bookId: bookId,
       userId: userId
     }
-    const { data } = await api.post('/favorites/put', favoritesData);
+    const { data } = await api.post<IBook>('/favorites/put', favoritesData);
     return data;
   }
   catch (error) {
-    throw new Error('Failed to put book into shelf!');
+    throw new Error('Failed to put book into shelf!' + error);
   }
 };
 
-export const getCurentBookFX = createEffect(async (id: string | undefined) => {
-  try {
-    const { data } = await api.get(`/book/${id}`);
-    return data
-  }
-  catch (error) {
-    throw new Error('Failed white fetching current book!');
-  }
-});
-
-export async function getCurrentBook(id: string | undefined): Promise<IBook> {
+export const getCurrentBook = async (id: string | undefined): Promise<IBook> => {
   try {
     const data: IBook = await getCurentBookFX(id);
     return data;
@@ -93,7 +81,16 @@ export const editBookFX = createEffect(async (book: IBook) => {
     return data;
   }
   catch (error) {
-    console.log(error);
-    throw new Error('Failed to patch book!');
+    throw new Error('Failed to patch book!' + error);
+  }
+});
+
+export const getCurentBookFX = createEffect(async (id: string | undefined) => {
+  try {
+    const { data } = await api.get<IBook>(`/book/${id}`);
+    return data
+  }
+  catch (error) {
+    throw new Error('Failed white fetching current book!' + error);
   }
 });

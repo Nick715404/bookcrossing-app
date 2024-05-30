@@ -1,4 +1,4 @@
-import { handleImageUpload, updateImage } from "../../../../api/server/image";
+import { handleImageUpload, updateImage } from "../../../../api/server/image.query";
 import { useParams } from "@vkontakte/vk-mini-apps-router";
 import {
   imageInputStyles,

@@ -1,5 +1,5 @@
 import { IBook, IGenre } from "../interfaces/interface";
-import { getAllCategoriesFX } from "../api/server/categories";
+import { getAllCategoriesFX } from "../api/server/categories.query";
 import { createStore } from "effector";
 
 export const $categories = createStore<IGenre[]>([]);

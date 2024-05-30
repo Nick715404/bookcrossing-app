@@ -1,0 +1,1 @@
+export { fetchVkUser } from './user';
