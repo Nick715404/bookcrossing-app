@@ -1,27 +1,22 @@
+import styles from './Buttons.module.scss';
 
-
+import { vkBlueColor } from '../../constants/utils';
+import { GetCurrentBookIdFX } from '../../store/modalBook';
+import { setStatusActiveModal } from '../../store/activeModal';
 import { Icon28DeleteOutline } from '@vkontakte/icons';
 import { IconButton } from '@vkontakte/vkui';
-import { setStatusActiveModal } from '../../store/activeModal';
-import { GetCurrentBookIdFX } from '../../store/modalBook';
-import { vkBlueColor } from '../../constants/utils';
 
-type Props = {
-  bookId: string
-}
+type DeleteBookButtonProps = { bookId: string, };
 
-export function DeleteBookButton({ bookId }: Props) {
-
+export function DeleteBookButton({ bookId }: DeleteBookButtonProps) {
   const handleClick = () => {
     setStatusActiveModal("deleteBook");
     GetCurrentBookIdFX(bookId);
   };
 
   return (
-    <>
-      <IconButton onClick={handleClick} className='delete-book-btn'>
-        <Icon28DeleteOutline fill={vkBlueColor} />
-      </IconButton>
-    </>
-  )
-}
+    <IconButton onClick={handleClick} className={styles.buttonBottom}>
+      <Icon28DeleteOutline fill={vkBlueColor} />
+    </IconButton>
+  );
+};
