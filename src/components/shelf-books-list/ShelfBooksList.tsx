@@ -4,7 +4,6 @@ import { useGetBooksOnShelf } from "../../hooks/useGetBooksOnShelf"
 import { BookSkeleton } from "../Skeletons/BookSkeleton"
 import { $books, GetAllBooksPipeFX } from "../../store/books"
 
-import Book from "../book/Book"
 import EditBook from "../edit-book/EditBook"
 import DeleteBook from "../delete-book/DeleteBook"
 import EmptyPlate from "../empty-plate/EmptyPlate"
@@ -12,6 +11,7 @@ import EmptyPlate from "../empty-plate/EmptyPlate"
 import { Icon28BookOutline } from '@vkontakte/icons'
 import React, { useEffect } from "react"
 import { useUnit } from "effector-react"
+import { Book } from "../book/Book"
 
 function ShelfBooksList() {
   const { data, isSuccess, isLoading } = useGetBooksOnShelf();

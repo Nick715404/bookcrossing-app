@@ -1,12 +1,12 @@
 import { IBook } from "../../interfaces/interface";
 import { vkGreyColor } from "../../constants/utils";
-import Book from "../book/Book";
 import ToChat from "../toChat/toChat";
 import EmptyPlate from "../empty-plate/EmptyPlate";
 import { ToFavReverse } from "../toFav/toFavReverse";
 import { $favBooks } from "../../store/favorites";
 import { useUnit } from "effector-react"
 import { Icon28BookmarkCheckOutline } from '@vkontakte/icons';
+import { Book } from "..";
 
 export default function FavoriteBooksList() {
   const books = useUnit($favBooks);

@@ -1,1 +1,1 @@
-export {} from '';
+export { Book } from './book/Book';

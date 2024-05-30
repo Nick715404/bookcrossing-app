@@ -4,7 +4,6 @@ import { IBook } from "../../interfaces/interface";
 import ToFav from "../toFav/toFav";
 import ToChat from "../toChat/toChat";
 import EmptyPlate from "../empty-plate/EmptyPlate";
-import Book from "../book/Book";
 
 import { BookSkeleton } from "../Skeletons/BookSkeleton";
 import { useFetchBooks } from "../../hooks/useFetchBooks";
@@ -16,6 +15,7 @@ import { useUnit } from "effector-react";
 import { useEffect } from "react";
 import { checkBookInFavorites } from "../../utilities/books/books.utils";
 import { CardGrid } from "@vkontakte/vkui";
+import { Book } from "..";
 
 export default function CatalogBookList() {
   const [books, favorites] = useUnit([$books, $favBooks]);

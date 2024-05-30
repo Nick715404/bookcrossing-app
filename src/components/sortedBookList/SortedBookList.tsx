@@ -2,7 +2,6 @@ import { IBook } from "../../interfaces/interface";
 import { $categoriesBooks, $sortedBooks } from "../../store/books";
 import { vkGreyColor } from "../../constants/utils";
 
-import Book from "../book/Book";
 import EmptyPlate from "../empty-plate/EmptyPlate";
 import ToFav from "../toFav/toFav";
 import ToChat from "../toChat/toChat";
@@ -12,6 +11,7 @@ import { useUnit } from "effector-react";
 import { Header } from "@vkontakte/vkui";
 import { $favBooks } from "../../store/favorites";
 import { checkBookInFavorites } from "../../utilities/books/books.utils";
+import { Book } from "..";
 
 export default function SortedBookList() {
   const data = useUnit($categoriesBooks);

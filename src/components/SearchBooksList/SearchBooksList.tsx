@@ -1,8 +1,6 @@
-import { $books, $searchBooks } from "../../store/books";
 import { IBook } from "../../interfaces/interface";
 import { vkGreyColor } from "../../constants/utils";
 
-import Book from "../book/Book";
 import ToFav from "../toFav/toFav";
 import ToChat from "../toChat/toChat";
 import EmptyPlate from "../empty-plate/EmptyPlate";
@@ -12,6 +10,7 @@ import { checkBookInFavorites } from "../../utilities/books/books.utils";
 import { $favBooks } from "../../store/favorites";
 import { Icon28BookOutline } from '@vkontakte/icons';
 import { useUnit } from "effector-react";
+import { Book } from "../book/Book";
 
 interface IProps {
   data: IBook[] | undefined;
