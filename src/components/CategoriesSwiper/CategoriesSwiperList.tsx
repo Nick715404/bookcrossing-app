@@ -5,13 +5,13 @@ import { useUnit } from "effector-react";
 
 export function CategoriesSwiperList() {
   const [categories] = useUnit([$categories]);
-  const firstNineCategories = categories.slice(0, 10);
+  const slicedCategories = categories.slice(0, 10);
 
   return (
     <Fragment>
       {
-        firstNineCategories && firstNineCategories.map(category => (
-          <CategorySwiperItem category={category} />
+        slicedCategories && slicedCategories.map(category => (
+          <CategorySwiperItem key={category.id} category={category} />
         ))
       }
     </Fragment>

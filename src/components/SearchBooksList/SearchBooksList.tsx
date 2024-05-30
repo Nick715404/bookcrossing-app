@@ -2,7 +2,7 @@ import { IBook } from "../../interfaces/interface";
 import { vkGreyColor } from "../../constants/utils";
 import EmptyPlate from "../empty-plate/EmptyPlate";
 
-import { BookSkeleton } from "../Skeletons/BookSkeleton";
+import { BooksSkeleton } from "../Skeletons/BooksSkeletons/BookSkeleton";
 import { checkBookInFavorites } from "../../utilities/books/books.utils";
 import { $favBooks } from "../../store/favorites";
 import { Icon28BookOutline } from '@vkontakte/icons';
@@ -33,7 +33,7 @@ const SearchBooksList = ({ data, isSuccess, isLoading }: IProps) => {
 
   if (isLoading) {
     return (
-      <BookSkeleton />
+      <BooksSkeleton />
     )
   }
 

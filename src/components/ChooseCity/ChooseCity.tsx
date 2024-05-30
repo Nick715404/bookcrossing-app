@@ -1,25 +1,14 @@
+import styles from './ChooseCity.module.scss';
+
 import { ICity } from "../../interfaces/interface";
-import { UpdateUserCityFX } from "../../utilities/user/userCity";
-import { fetchVkUser } from "../../api/vk-bridge/user";
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { GetCurrentUserFX } from "../../api/server";
+import { ChooseCityList } from './ChooseCityList';
+import { useChooseCity } from './useChooseCity';
+import { Div, Text } from "@vkontakte/vkui";
 
-import { CellButton, Div, Text } from "@vkontakte/vkui";
+type Props = { data: ICity[], };
 
-type Props = {
-  data: ICity[],
-}
-
-const ChooseCity = ({ data }: Props) => {
-  const router = useRouteNavigator();
-
-  const handleClick = async (city: ICity) => {
-    const user = await fetchVkUser();
-    user.city = { id: city.id, title: city.title }
-    GetCurrentUserFX(user);
-    UpdateUserCityFX(city.title);
-    router.push('/');
-  };
+export function ChooseCity({ data }: Props) {
+  const handleClick = useChooseCity();
 
   return (
     <Div style={{ padding: 0, marginBottom: '10px', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
@@ -31,23 +20,13 @@ const ChooseCity = ({ data }: Props) => {
         />
       </Div>
       <Div>
-        <Text style={{ textAlign: 'center' }} weight="3">В каком городе вы находитесь?<br />Это обязательное форма выбора!</Text>
+        <Text style={{ textAlign: 'center' }} weight="3">
+          В каком городе вы находитесь?<br />Это обязательное форма выбора!
+        </Text>
       </Div>
       <Div style={{ textAlign: 'center' }}>
-        {
-          data && data.map((city: ICity) => (
-            <CellButton
-              centered
-              onClick={() => handleClick(city)}
-              key={city.id}
-            >
-              {city.title}
-            </CellButton>
-          ))
-        }
+        {data && <ChooseCityList handleClick={handleClick} data={data} />}
       </Div>
     </Div>
-  )
-}
-
-export { ChooseCity };
+  );
+};

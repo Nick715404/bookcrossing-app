@@ -1,7 +1,7 @@
 import { IBook } from "../../interfaces/interface"
 import { vkGreyColor } from "../../constants/utils"
 import { useGetBooksOnShelf } from "../../hooks/useGetBooksOnShelf"
-import { BookSkeleton } from "../Skeletons/BookSkeleton"
+import { BooksSkeleton } from "../Skeletons/BooksSkeletons/BookSkeleton"
 import { $books, GetAllBooksPipeFX } from "../../store/books"
 
 import EmptyPlate from "../empty-plate/EmptyPlate"
@@ -34,7 +34,7 @@ function ShelfBooksList() {
 
   return (
     <>
-      {isLoading && <BookSkeleton />}
+      {isLoading && <BooksSkeleton />}
       {
         isSuccess &&
         books.map((book: IBook) => {

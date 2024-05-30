@@ -1,0 +1,64 @@
+.card {
+  position: relative !important;
+}
+
+.book {
+  position: relative !important;
+  display: flex !important;
+  align-items: start !important;
+  gap: 10px;
+}
+
+.img {
+  padding: 0 !important;
+  width: 96px;
+  aspect-ratio: 1 / 1;
+  border-radius: 5px;
+}
+
+.content {
+  padding: 0 !important;
+  width: 55%;
+}
+
+.title {
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.large {
+  border-radius: 5px;
+  width: 60%;
+  margin-bottom: 5px;
+  padding: 8px 12px !important;
+}
+
+.medium {
+  border-radius: 5px;
+  width: 40%;
+  padding: 8px 12px !important;
+  margin-bottom: 5px;
+}
+
+.small {
+  border-radius: 5px;
+  width: 30%;
+  padding: 8px 12px !important;
+  margin-bottom: 5px;
+}
+
+.loading {
+  animation: skeleton-anim 1s linear infinite alternate;
+  border-radius: 5px;
+}
+
+@keyframes skeleton-anim {
+  0% {
+    background-color: hsla(0, 0%, 30%, 0.416);
+  }
+
+  100% {
+    background-color: hsla(0, 1%, 33%, 0.528);
+  }
+}
