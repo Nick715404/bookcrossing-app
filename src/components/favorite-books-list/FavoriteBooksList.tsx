@@ -1,32 +1,15 @@
 import { IBook } from "../../interfaces/interface";
 import { vkGreyColor } from "../../constants/utils";
-
 import Book from "../book/Book";
 import ToChat from "../toChat/toChat";
 import EmptyPlate from "../empty-plate/EmptyPlate";
-
 import { ToFavReverse } from "../toFav/toFavReverse";
-import { $user } from "../../store/user";
-import { fetchBooksFromFavorites } from "../../api/server/favorites/favorites.query";
-import { BookSkeleton } from "../Skeletons/BookSkeleton";
-import { $favBooks, GetAllBooksFromFavFX } from "../../store/favorites";
-
-import { useEffect } from "react";
+import { $favBooks } from "../../store/favorites";
 import { useUnit } from "effector-react"
 import { Icon28BookmarkCheckOutline } from '@vkontakte/icons';
-import { useQuery } from "react-query";
 
 export default function FavoriteBooksList() {
-  const [user, books] = useUnit([$user, $favBooks]);
-
-  const { isLoading } = useQuery({
-    queryKey: ['books favorites'],
-    queryFn: () => fetchBooksFromFavorites(user.userId),
-  })
-
-  // useEffect(() => {
-  //   if (isSuccess) GetAllBooksFromFavFX(data);
-  // }, [isSuccess, data]);
+  const books = useUnit($favBooks);
 
   if (books.length === 0) {
     return (
@@ -37,22 +20,20 @@ export default function FavoriteBooksList() {
         label="Перейти в каталог"
         location=""
       />
-    )
-  }
+    );
+  };
 
   return (
     <>
       {
-        isLoading ?
-          <BookSkeleton /> :
-          books && books.map((book: IBook) => (
-            <Book
-              key={book.id}
-              book={book}
-              beforeIcon={<ToFavReverse bookId={book.id} />}
-              afterIcon={<ToChat vkid={book.owner} />}
-            />
-          )).reverse()
+        books && books.map((book: IBook) => (
+          <Book
+            key={book.id}
+            book={book}
+            beforeIcon={<ToFavReverse bookId={book.id} />}
+            afterIcon={<ToChat vkid={book.owner} />}
+          />
+        )).reverse()
       }
     </>
   )
