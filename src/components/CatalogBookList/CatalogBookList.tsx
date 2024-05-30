@@ -15,6 +15,7 @@ import { $books, GetAllBooksPipeFX } from "../../store/books";
 import { useUnit } from "effector-react";
 import { useEffect } from "react";
 import { checkBookInFavorites } from "../../utilities/books/books.utils";
+import { CardGrid } from "@vkontakte/vkui";
 
 export default function CatalogBookList() {
   const [books, favorites] = useUnit([$books, $favBooks]);
@@ -37,7 +38,7 @@ export default function CatalogBookList() {
   }
 
   return (
-    <>
+    <CardGrid size="l">
       {isLoading && <BookSkeleton />}
       {
         isSuccess && books.map((book: IBook) => {
@@ -52,6 +53,6 @@ export default function CatalogBookList() {
           )
         }).reverse()
       }
-    </>
+    </CardGrid>
   )
 }

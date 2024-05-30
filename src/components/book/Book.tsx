@@ -1,3 +1,5 @@
+import styles from './Book.module.scss';
+
 import { IBook } from "../../interfaces/interface";
 import { selectBookFX } from "../../store/modalBook";
 
@@ -7,8 +9,12 @@ import {
   SimpleCell,
   Text,
   SplitLayout,
+  Card,
+  CardGrid,
+  ContentCard,
 } from "@vkontakte/vkui";
 import { CustomImage } from "../CustomImage/CustomImage";
+import { BookContent } from './BookContent';
 
 type Props = {
   book: IBook
@@ -18,38 +24,21 @@ type Props = {
 
 export default function Book({ book, afterIcon, beforeIcon }: Props) {
   const navigator = useRouteNavigator();
-  const { panel: activePanel } = useActiveVkuiLocation();
+  // const { panel: activePanel } = useActiveVkuiLocation();
 
   const handleChooseBook = () => {
     selectBookFX(book)
     navigator.push(`/book/${book.id}`);
-  }
+  };
 
   return (
-    <SplitLayout>
-      <Div className="book" id={book.id}>
-        <SimpleCell
-          className="book-wrapper"
-          before={<CustomImage bookId={book.id} />}
-          selected={activePanel === 'book-panel'}
-          onClick={handleChooseBook}
-        >
-          <Text className="book-title" weight="1">
-            {book.title}
-          </Text>
-          <Text className="book-author book-info">
-            {book.author ? book.author : 'Автор не найден'}
-          </Text>
-          <Text className="book-quality book-info">
-            {book.state ? book.state : "Не найдено"}
-          </Text>
-          <Text className="book-genre book-info">
-            {book.categoryTitle ? book.categoryTitle : 'Нет жанра'}
-          </Text>
-        </SimpleCell>
-      </Div >
-      <>{afterIcon}</>
-      <>{beforeIcon}</>
-    </SplitLayout >
+    <Card>
+      <SimpleCell>
+        <Div className={styles.book}>
+          <CustomImage bookId={book.id} />
+          <BookContent book={book} />
+        </Div>
+      </SimpleCell>
+    </Card>
   )
 }

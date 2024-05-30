@@ -1,0 +1,32 @@
+.book {
+  padding: 0 !important;
+  display: flex !important;
+  align-items: start !important;
+}
+
+.bookContent {
+  padding: 0 10px !important;
+  max-width: 80%;
+  white-space: wrap !important;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.author {
+  font-size: 13px;
+  color: #6D7885;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.info {
+  font-size: 12px;
+  color: #6D7885;
+  line-height: 1;
+  margin-bottom: 5px;
+}
