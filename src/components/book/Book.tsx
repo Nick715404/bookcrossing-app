@@ -24,7 +24,7 @@ export function Book({ book, afterIcon, beforeIcon }: TBookProps) {
   };
 
   return (
-    <Card>
+    <Card className={styles.card}>
       <SimpleCell onClick={handleChooseBook}>
         <Div className={styles.book}>
           <CustomImage bookId={book.id} />
