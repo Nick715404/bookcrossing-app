@@ -1,3 +1,4 @@
+import { GetFavFromUserFX } from "../api/server/favorites/favorites";
 import { IBook } from "../interfaces/interface";
 import { CheckBookInFavPipeFX } from "../utilities/category/category.utils";
 import { createEffect, createEvent, createStore } from "effector";
@@ -14,7 +15,8 @@ export const GetAllBooksFromFavFX = createEffect((data: IBook[]) => data);
 export const DeleteBookFromFavPipeFX = createEffect((data: IBook) => data);
 
 // - Store manipulation
-$favBooks.on(GetAllBooksFromFavFX.doneData, (_, newBooks) => newBooks)
+// $favBooks.on(GetAllBooksFromFavFX.doneData, (_, newBooks) => newBooks);
+$favBooks.on(GetFavFromUserFX.doneData, (_, newBooks) => newBooks);
 $favBooks.on(PutBookInFavFX.doneData, (books, newBook) => {
   newBook.favourite = 'true';
   return [...books, newBook];

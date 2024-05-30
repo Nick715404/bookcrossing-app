@@ -5,7 +5,6 @@ import CustomHeader from '../../components/header/CustomHeader';
 
 import {
 	Panel,
-	PanelHeader,
 	Group,
 } from '@vkontakte/vkui';
 

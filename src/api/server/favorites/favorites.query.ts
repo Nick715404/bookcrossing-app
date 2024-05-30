@@ -20,11 +20,13 @@ export const removeFromFav = async ({ bookId, vkId }: { bookId: string, vkId: nu
   const favoritesData = {
     bookId: bookId,
     userId: vkId
-  }
+  };
+
   try {
     const { data } = await api.post('/favorites/delete', favoritesData);
     return data.book;
-  } catch (error: any) {
+  }
+  catch (error: any) {
     throw new Error(error);
   }
 };
