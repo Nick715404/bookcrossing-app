@@ -4,7 +4,7 @@ import { useGetBooksOnShelf } from "../../hooks/useGetBooksOnShelf"
 import { BookSkeleton } from "../Skeletons/BookSkeleton"
 import { $books, GetAllBooksPipeFX } from "../../store/books"
 
-import Book from "../book/Book"
+import Book from "../Book/Book"
 import EditBook from "../edit-book/EditBook"
 import DeleteBook from "../delete-book/DeleteBook"
 import EmptyPlate from "../empty-plate/EmptyPlate"

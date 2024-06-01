@@ -4,7 +4,7 @@ import { IBook } from "../../interfaces/interface";
 import ToFav from "../toFav/toFav";
 import ToChat from "../toChat/toChat";
 import EmptyPlate from "../empty-plate/EmptyPlate";
-import Book from "../book/Book";
+import Book from "../Book/Book";
 
 import { BookSkeleton } from "../Skeletons/BookSkeleton";
 import { useFetchBooks } from "../../hooks/useFetchBooks";

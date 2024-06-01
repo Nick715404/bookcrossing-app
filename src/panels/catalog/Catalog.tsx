@@ -1,4 +1,4 @@
-import Search from '../../components/search/Search';
+import Search from '../../components/Search/Search';
 import Categories from '../../components/categories/Categories';
 import Relevants from '../../components/relevant/Relevants';
 import CustomHeader from '../../components/header/CustomHeader';

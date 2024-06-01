@@ -1,6 +1,6 @@
 import { IBook } from "../../interfaces/interface";
 import { vkGreyColor } from "../../constants/utils";
-import Book from "../book/Book";
+import Book from "../Book/Book";
 import ToChat from "../toChat/toChat";
 import EmptyPlate from "../empty-plate/EmptyPlate";
 import { ToFavReverse } from "../toFav/toFavReverse";

@@ -3,7 +3,7 @@ import { SearchBooks } from '../../api/server/search'
 import { useDebounce } from '../../hooks/useDebounce'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 
-import Search from '../../components/search/Search'
+import Search from '../../components/Search/Search';
 
 import { useState } from 'react'
 import { useQuery } from 'react-query'
