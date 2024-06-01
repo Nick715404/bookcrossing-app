@@ -15,14 +15,6 @@ export function CatalogBook() {
     if (isSuccess) GetAllBooksPipeFX(data);
   }, [data, isSuccess]);
 
-  if (isLoading) {
-    return (
-      <CardGrid size="l">
-        <BooksSkeleton />
-      </CardGrid>
-    );
-  };
-
   if (isSuccess && data.length === 0) {
     return (
       <EmptyPlate
@@ -37,6 +29,7 @@ export function CatalogBook() {
 
   return (
     <CardGrid style={{ gap: '5px' }} size="l">
+      {isLoading && <BooksSkeleton />}
       {isSuccess && <CatalogBookList />}
     </CardGrid>
   );

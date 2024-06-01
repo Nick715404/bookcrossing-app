@@ -1,3 +1,5 @@
+import styles from './Buttons.module.scss';
+
 import { vkBlueColor } from '../../constants/utils';
 import { getCurentBookFX } from '../../api/server/books.query';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
@@ -15,8 +17,8 @@ export function EditBookButton({ bookId }: Props) {
   };
 
   return (
-    <IconButton onClick={handleClick} className='edit-book'>
+    <IconButton onClick={handleClick} className={styles.buttonTop}>
       <Icon28WriteOutline fill={vkBlueColor} />
     </IconButton>
-  )
-} 
+  );
+} ;

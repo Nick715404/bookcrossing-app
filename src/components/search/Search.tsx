@@ -12,12 +12,7 @@ type Props = {
 
 function Search({ onPanel, handleInputChange, searchText, autoFocus }: Props) {
   const navigator = useRouteNavigator();
-
-  const handleGoToPanel = () => {
-    if (onPanel) {
-      navigator.push('/search');
-    }
-  };
+  const handleGoToPanel = () => onPanel && navigator.push('/search');
 
   return (
     <SearchPanel

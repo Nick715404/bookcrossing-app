@@ -1,13 +1,13 @@
-import { SearchBooksList } from '../../components/SearchBooksList/SearchBooksList'
-import { SearchBooks } from '../../api/server';
-import { useDebounce } from '../../hooks/useDebounce'
+import { SearchBooksList } from '../components/SearchBooksList/SearchBooksList'
+import { SearchBooks } from '../api/server';
+import { useDebounce } from '../hooks/useDebounce'
 
-import CustomHeader from '../../components/header/CustomHeader'
-import Search from '../../components/search/Search'
+import Search from '../components/Search/Search'
 
 import { useState } from 'react'
 import { useQuery } from 'react-query'
 import { Div, Group, Panel } from '@vkontakte/vkui'
+import { CustomHeader } from '../components';
 
 type Props = {
   id: string

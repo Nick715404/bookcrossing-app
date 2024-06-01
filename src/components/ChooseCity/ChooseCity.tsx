@@ -11,20 +11,16 @@ export function ChooseCity({ data }: Props) {
   const handleClick = useChooseCity();
 
   return (
-    <Div style={{ padding: 0, marginBottom: '10px', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-      <Div style={{ padding: 0, marginBottom: '30px' }}>
-        <img
-          style={{ maxWidth: 206, margin: '40px auto 0' }}
-          src="/img/onboarding/choose.png"
-          alt="Выберите город"
-        />
+    <Div className={styles.wrapper}>
+      <Div className={styles.imgBox}>
+        <img className={styles.img} src="/img/onboarding/choose.png" alt="Выберите город" />
       </Div>
       <Div>
-        <Text style={{ textAlign: 'center' }} weight="3">
+        <Text className={styles.centeredText} weight="3">
           В каком городе вы находитесь?<br />Это обязательное форма выбора!
         </Text>
       </Div>
-      <Div style={{ textAlign: 'center' }}>
+      <Div className={styles.centeredText}>
         {data && <ChooseCityList handleClick={handleClick} data={data} />}
       </Div>
     </Div>

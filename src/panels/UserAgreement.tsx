@@ -1,5 +1,5 @@
 import { Div, Group, Panel, PanelHeader, Text } from "@vkontakte/vkui";
-import CustomHeader from "../../components/header/CustomHeader";
+import { CustomHeader } from "../../components";
 
 type Proops = {
     id: string

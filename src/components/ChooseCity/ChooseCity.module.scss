@@ -1,0 +1,23 @@
+.wrapper {
+  padding: 0;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .imgBox {
+    padding: 0;
+    margin-bottom: 30px;
+
+    .img {
+      max-width: 206px;
+      margin: 40px auto 0;
+    }
+
+  }
+
+  .centeredText {
+    text-align: center;
+  }
+
+}

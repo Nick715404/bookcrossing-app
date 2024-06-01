@@ -1,19 +1,16 @@
 import { IBook } from "../../interfaces/interface"
-import { vkGreyColor } from "../../constants/utils"
 import { useGetBooksOnShelf } from "../../hooks/useGetBooksOnShelf"
-import { BooksSkeleton } from "../Skeletons/BooksSkeletons/BookSkeleton"
 import { $books, GetAllBooksPipeFX } from "../../store/books"
-
-import EmptyPlate from "../empty-plate/EmptyPlate"
-
-import { Icon28BookOutline } from '@vkontakte/icons'
-import React, { useEffect } from "react"
-import { useUnit } from "effector-react"
 import { Book } from "../Book/Book"
 import { DeleteBookButton, EditBookButton } from "../BooksButtons"
+import { Fragment, useEffect } from "react"
+import { useUnit } from "effector-react"
+import EmptyPlate from "../empty-plate/EmptyPlate"
+import { Icon28BookOutline } from "@vkontakte/icons"
+import { vkGreyColor } from "../../constants/utils"
 
-function ShelfBooksList() {
-  const { data, isSuccess, isLoading } = useGetBooksOnShelf();
+export function ShelfBooksList() {
+  const { data, isSuccess } = useGetBooksOnShelf();
   const books = useUnit($books);
 
   useEffect(() => {
@@ -33,10 +30,8 @@ function ShelfBooksList() {
   }
 
   return (
-    <>
-      {isLoading && <BooksSkeleton />}
+    <Fragment>
       {
-        isSuccess &&
         books.map((book: IBook) => {
           return (
             <Book
@@ -48,8 +43,6 @@ function ShelfBooksList() {
           )
         }).reverse()
       }
-    </>
-  )
-}
-
-export default React.memo(ShelfBooksList);
+    </Fragment>
+  );
+};

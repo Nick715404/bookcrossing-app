@@ -1,5 +1,5 @@
+import { CustomHeader } from "../../components"
 import SortedBookList from "../../components/sortedBookList/SortedBookList"
-import CustomHeader from "../../components/header/CustomHeader"
 import { Group, Panel } from "@vkontakte/vkui"
 
 type Props = {

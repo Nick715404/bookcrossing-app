@@ -1,9 +1,9 @@
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { $user } from "../../store/user";
 import { setStatusActiveModal } from "../../store/activeModal";
-import CustomHeader from "../../components/header/CustomHeader";
 import { useUnit } from "effector-react";
 import { CellButton, Group, Panel, Text } from "@vkontakte/vkui";
+import { CustomHeader } from "../../components";
 
 type Props = {
     id: string,

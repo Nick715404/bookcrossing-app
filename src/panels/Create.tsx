@@ -1,11 +1,8 @@
 import { Panel, PanelHeader } from '@vkontakte/vkui';
 import CreateBook from '../../components/forms/create-book/CreateBook';
-import CustomHeader from '../../components/header/CustomHeader';
+import { CustomHeader } from '../../components';
 
-type Props = {
-  id: string
-}
-
+type Props = { id: string };
 
 export default function Create({ id }: Props) {
   return (
