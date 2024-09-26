@@ -1,7 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://буккросинг.рф:3100/api'
-})
+	baseURL: `${process.env.REACT_APP_API_URL}`,
+});
 
-export const url = 'https://буккросинг.рф:3100/api';
+console.log(process.env.REACT_APP_API_URL);
+

@@ -1,6 +1,6 @@
 {
-    "name": "bookcrossing-app",
-    "version": "0.0.0",
+    "name": "bookcrossing-server",
+    "version": "1.0.0",
     "scripts": {
         "dev": "cross-env PORT=10888 HTTPS=true react-scripts start",
         "build": "react-scripts build",
@@ -38,6 +38,7 @@
     },
     "devDependencies": {
         "cross-env": "^7.0.3",
+        "dotenv": "^16.4.5",
         "react-hot-loader": "^4.13.0",
         "react-scripts": "^5.0.1"
     },
