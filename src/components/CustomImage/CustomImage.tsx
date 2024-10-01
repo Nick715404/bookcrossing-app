@@ -1,46 +1,50 @@
-import { useFetchBookImg } from "../../hooks/useFetchBookImg";
-import { Image } from "@vkontakte/vkui";
+import { useFetchBookImg } from '../../hooks/useFetchBookImg';
+import { Image } from '@vkontakte/vkui';
 
-type TProps = {
-  bookId: string;
-}
+type CustomImageProps = {
+	bookId: string;
+};
 
-const CustomImage = ({ bookId }: TProps) => {
-  const { data, isError, isSuccess, isLoading } = useFetchBookImg({ bookId: bookId });
+const CustomImage = ({ bookId }: CustomImageProps) => {
+	const { data, isError, isSuccess, isLoading } = useFetchBookImg({
+		bookId: bookId,
+	});
 
-  if (isLoading) {
-    return (
-      <Image
-        size={96}
-        borderRadius="m"
-        className="book-img loading"
-        style={{ marginBottom: '0', marginTop: '0' }}
-      />
-    )
-  }
+	if (isLoading) {
+		return (
+			<Image
+				size={96}
+				borderRadius='m'
+				className='book-img loading'
+				style={{ marginBottom: '0', marginTop: '0' }}
+			/>
+		);
+	}
 
-  if (isError || !data) {
-    return (
-      <Image
-        size={96}
-        borderRadius="m"
-        className="book-img"
-        style={{ marginBottom: '0', marginTop: '0' }}
-      />
-    );
-  };
+	if (isError || !data) {
+		return (
+			<Image
+				size={96}
+				borderRadius='m'
+				className='book-img'
+				style={{ marginBottom: '0', marginTop: '0' }}
+			/>
+		);
+	}
 
-  return (
-    <>
-      <Image
-        size={96}
-        borderRadius="m"
-        className="book-img"
-        src={isSuccess && data && 'https://буккросинг.рф:3100/' + data.path}
-        style={{ marginBottom: '0', marginTop: '0' }}
-      />
-    </>
-  )
-}
+	return (
+		<>
+			<Image
+				size={96}
+				borderRadius='m'
+				className='book-img'
+				src={
+					isSuccess && data && `${process.env.REACT_APP_IMAGE_PATH}${data.path}`
+				}
+				style={{ marginBottom: '0', marginTop: '0' }}
+			/>
+		</>
+	);
+};
 
 export { CustomImage };

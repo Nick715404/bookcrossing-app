@@ -1,37 +1,32 @@
-import { useQuery, useQueryClient } from "react-query";
-import { getBookImage } from "../api/server/images/image";
-import { setSnackbar } from "../store/activeModal";
+import { useQuery } from 'react-query';
+import { getBookImage } from '../api/server/images/image';
 
 type Props = {
-  bookId: string | undefined
-}
+	bookId: string | undefined;
+};
 
 const useFetchBookImg = ({ bookId }: Props) => {
+	const getFiles = async () => {
+		try {
+			const images = await getBookImage(bookId);
 
-  const client = useQueryClient();
+			if (!images) null;
 
-  const getFiles = async () => {
-    try {
-      const images = await getBookImage(bookId);
+			return images;
+		} catch (error) {
+			return null;
+		}
+	};
 
-      if (!images) null;
-
-      return images;
-    }
-    catch (error) {
-      return null;
-    }
-  };
-
-  return useQuery({
-    queryKey: ['image', 'single', bookId],
-    queryFn: getFiles,
-    retry: 2,
-    retryDelay: 1000,
-    retryOnMount: true,
-    refetchOnWindowFocus: false,
-    refetchOnMount: true,
-  });
+	return useQuery({
+		queryKey: ['image', 'single', bookId],
+		queryFn: getFiles,
+		retry: 2,
+		retryDelay: 1000,
+		retryOnMount: true,
+		refetchOnWindowFocus: false,
+		refetchOnMount: true,
+	});
 };
 
 export { useFetchBookImg };

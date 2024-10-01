@@ -13,7 +13,8 @@ export const fetchBooks = async () => {
 
 export const createBook = async (book: ICreateBook): Promise<IBook> => {
 	try {
-		const { data } = await api.post('/book/create', JSON.stringify(book));
+		console.log(book);
+		const { data } = await api.post('/book/create', book);
 		return data;
 	} catch (error) {
 		throw new Error('Failed to create book!');
