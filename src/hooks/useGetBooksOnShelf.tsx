@@ -9,14 +9,15 @@ const useGetBooksOnShelf = () => {
 
   const handleFetch = async () => {
     if (user.userId === '') {
-      return;
+      return Promise.resolve([]);
     }
     return findBooksOnShelf(user.userId)
   }
 
   return useQuery({
-    queryKey: ['books shelf'],
+    queryKey: ['books shelf', user.userId],
     queryFn: handleFetch,
+    enabled: user.userId !== '',
   })
 }
 

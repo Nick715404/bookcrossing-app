@@ -37,7 +37,6 @@ function ShelfBooksList() {
     <>
       {isLoading && <BookSkeleton />}
       {
-        isSuccess &&
         books.map((book: IBook) => {
           return (
             <Book
@@ -53,4 +52,4 @@ function ShelfBooksList() {
   )
 }
 
-export default React.memo(ShelfBooksList);
+export default ShelfBooksList;

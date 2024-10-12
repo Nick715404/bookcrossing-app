@@ -14,4 +14,4 @@ function BooksOnShelf() {
   )
 }
 
-export default React.memo(BooksOnShelf);
+export default BooksOnShelf;
