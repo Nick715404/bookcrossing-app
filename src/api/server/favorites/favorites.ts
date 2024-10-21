@@ -1,42 +1,45 @@
-import { createEffect } from "effector";
-import { api } from "../../axios/axiosInstance";
+import { createEffect } from 'effector';
+import { api } from '../../axios/axiosInstance';
 
 export const GetFavFromUserFX = createEffect(async (id: string) => {
-  try {
-    const { data } = await api.get(`/favorites/find/${id}`);
-    const { books } = await data;
-    return books;
-  }
-  catch (error) {
-    throw new Error('Failed to fetch favorite from user!')
-  }
+	try {
+		const { data } = await api.get(`/favorites/find/${id}`);
+		const { books } = await data;
+		console.log(books);
+		return books;
+	} catch (error) {
+		throw new Error('Failed to fetch favorite from user!');
+	}
 });
 
-export const PutBookToFavFX = createEffect(async ({ bookId, userId }: { bookId: string, userId: string }) => {
-  try {
-    const favoritesData = {
-      bookId: bookId,
-      userId: userId
-    }
-    const { data } = await api.post('/favorites/put', favoritesData);
-    return data;
-  }
-  catch (error) {
-    throw new Error('Failed to put book into shelf!');
-  }
-});
+export const PutBookToFavFX = createEffect(
+	async ({ bookId, userId }: { bookId: string; userId: string }) => {
+		try {
+			const favoritesData = {
+				bookId: bookId,
+				userId: userId,
+			};
+			const { data } = await api.post('/favorites/put', favoritesData);
+			console.log(data);
+			return data;
+		} catch (error) {
+			throw new Error('Failed to put book into shelf!');
+		}
+	}
+);
 
-export const RemoveFromFavFX = createEffect(async ({ bookId, vkId }: { bookId: string, vkId: number }) => {
+export const RemoveFromFavFX = createEffect(
+	async ({ bookId, vkId }: { bookId: string; vkId: number }) => {
+		const favoritesData = {
+			bookId: bookId,
+			userId: vkId,
+		};
 
-  const favoritesData = {
-    bookId: bookId,
-    userId: vkId
-  }
-
-  try {
-    const { data } = await api.post('/favorites/delete', favoritesData);
-    return data;
-  } catch (error: any) {
-    throw new Error(error);
-  }
-});
+		try {
+			const { data } = await api.post('/favorites/delete', favoritesData);
+			return data;
+		} catch (error: any) {
+			throw new Error(error);
+		}
+	}
+);

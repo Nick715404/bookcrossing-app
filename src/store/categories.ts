@@ -1,6 +1,6 @@
-import { IBook, IGenre } from "../interfaces/interface";
-import { getAllCategoriesFX } from "../api/server/categories/categories";
-import { createStore } from "effector";
+import { IBook, IGenre } from '../types/interface';
+import { getAllCategoriesFX } from '../api/server/categories/categories';
+import { createStore } from 'effector';
 
 export const $categories = createStore<IGenre[]>([]);
 

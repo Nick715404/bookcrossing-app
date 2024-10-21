@@ -1,4 +1,4 @@
-import { IBook, ICreateBook, IShelfInfo } from '../../../interfaces/interface';
+import { IBook, ICreateBook, IShelfInfo } from '../../../types/interface';
 import { api } from '../../axios/axiosInstance';
 
 export const fetchBooks = async () => {
@@ -49,6 +49,7 @@ export const putBookInFavorites = async (bookId: string, userId: string) => {
 			userId: userId,
 		};
 		const { data } = await api.post('/favorites/put', favoritesData);
+		console.log(data);
 		return data;
 	} catch (error) {
 		throw new Error('Failed to put book into shelf!');

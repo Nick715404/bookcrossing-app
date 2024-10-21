@@ -1,5 +1,5 @@
 import { api } from '../../axios/axiosInstance';
-import { IBook, ICreateBook } from '../../../interfaces/interface';
+import { IBook, ICreateBook } from '../../../types/interface';
 
 import { createEffect } from 'effector';
 

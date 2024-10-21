@@ -2,7 +2,7 @@ import {
 	useActiveVkuiLocation,
 	useRouteNavigator,
 } from '@vkontakte/vk-mini-apps-router';
-import { IBook } from '../../interfaces/interface';
+import { IBook } from '../../types/interface';
 import { selectBookFX } from '../../store/modalBook';
 import { Div, SimpleCell, Text, SplitLayout } from '@vkontakte/vkui';
 import { CustomImage } from '../CustomImage/CustomImage';

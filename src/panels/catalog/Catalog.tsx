@@ -3,26 +3,22 @@ import Categories from '../../components/categories/Categories';
 import Relevants from '../../components/relevant/Relevants';
 import CustomHeader from '../../components/header/CustomHeader';
 
-import {
-	Panel,
-	Group,
-} from '@vkontakte/vkui';
+import { Panel, Group } from '@vkontakte/vkui';
 
 type Props = {
-	id: string
-}
+	id: string;
+};
 
 export default function Catalog({ id }: Props) {
 	return (
 		<Panel id={id}>
 			<CustomHeader />
 			<Group separator='auto'>
-				<Search onPanel />
-				<Categories />
+				{/* <Search onPanel />
+				<Categories /> */}
+				hello
 			</Group>
-			<Group>
-				<Relevants />
-			</Group>
+			<Group>{/* <Relevants /> */}</Group>
 		</Panel>
-	)
+	);
 }

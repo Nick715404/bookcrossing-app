@@ -1,19 +1,19 @@
-import { ICategoriesBooksStore } from "../interfaces/interface"
+import { ICategoriesBooksStore } from '../types/interface';
 
 export const bookCategories = [
-  {
-    id: 1,
-    title: 'Детские книги',
-    icon: '',
-  },
-  {
-    id: 2,
-    title: 'Какая то фигня еще',
-    icon: '',
-  },
-]
+	{
+		id: 1,
+		title: 'Детские книги',
+		icon: '',
+	},
+	{
+		id: 2,
+		title: 'Какая то фигня еще',
+		icon: '',
+	},
+];
 
 export const categoriesBooksInitState = {
-  title: '',
-  books: [],
-} satisfies ICategoriesBooksStore
+	title: '',
+	books: [],
+} satisfies ICategoriesBooksStore;

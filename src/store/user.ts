@@ -1,14 +1,17 @@
-import { createStore } from "effector";
-import { GetCurrentUserFX, GetCurrentUserFromServerFX } from "../api/server/user/user";
-import { IServerUser } from "../interfaces/interface";
-import { UpdateUserCityFX } from "../utilities/user/userCity";
+import { createStore } from 'effector';
+import {
+	GetCurrentUserFX,
+	GetCurrentUserFromServerFX,
+} from '../api/server/user/user';
+import { IServerUser } from '../types/interface';
+import { UpdateUserCityFX } from '../utilities/user/userCity';
 
 export const $user = createStore<IServerUser>({
-  userId: '',
-  vkId: 0,
-  city: '',
-  name: '',
-  surName: '',
+	userId: '',
+	vkId: 0,
+	city: '',
+	name: '',
+	surName: '',
 });
 
 export const $userCity = createStore('');

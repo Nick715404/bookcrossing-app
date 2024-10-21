@@ -1,6 +1,7 @@
 import { api } from '../../axios/axiosInstance';
-import { IVkUser } from '../../../interfaces/interface';
+import { IVkUser } from '../../../types/interface';
 import { createEffect } from 'effector';
+import { TCreateUser } from '../../../types';
 
 export const fetchUserFromDataBase = async (id: number) => {
 	try {
@@ -25,12 +26,12 @@ export const fetchUserFromDataBase = async (id: number) => {
 	}
 };
 
-export const GetCurrentUserFX = createEffect(async (user: IVkUser) => {
+export const GetCurrentUserFX = createEffect(async (user: TCreateUser) => {
 	if (!user) return new Error('User not found!');
 
 	try {
-		const { data } = await api.post('/user/create', user);
-		return data.user;
+		const { data: response } = await api.post('/users', user);
+		return response.user;
 	} catch (error) {
 		return new Error('Error with server');
 	}
