@@ -1,6 +1,6 @@
 import { Fragment } from 'react/jsx-runtime';
 import { useInfinteScroll } from './useInfinteScroll';
-import Book from '../Book/Book';
+import { Book } from '../Book/Book';
 import ToFav from '../toFav/toFav';
 import ToChat from '../toChat/toChat';
 import { Button } from '@vkontakte/vkui';

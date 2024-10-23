@@ -1,19 +1,25 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
+import {
+	QueryClient,
+	QueryClientConfig,
+	QueryClientProvider,
+} from 'react-query';
 
-interface IProps {
+interface QueryProviderProps {
 	children: React.ReactNode;
 }
 
-const defaultOptions = {
-	queries: {
-		staleTime: 1000,
+const defaultOptions: QueryClientConfig = {
+	defaultOptions: {
+		queries: {
+			staleTime: 1000,
+			refetchOnWindowFocus: false,
+			refetchOnMount: false,
+		},
 	},
 };
 
-const client = new QueryClient({ defaultOptions });
+const client = new QueryClient(defaultOptions);
 
-const QueryProvider = ({ children }: IProps) => {
+export const QueryProvider = ({ children }: QueryProviderProps) => {
 	return <QueryClientProvider client={client}>{children}</QueryClientProvider>;
 };
-
-export { QueryProvider };

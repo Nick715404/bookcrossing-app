@@ -2,7 +2,7 @@ import { $books, $searchBooks } from '../../store/books';
 import { IBook } from '../../types/interface';
 import { vkGreyColor } from '../../constants/utils';
 
-import Book from '../Book/Book';
+import { Book } from '../Book/Book';
 import ToFav from '../toFav/toFav';
 import ToChat from '../toChat/toChat';
 import EmptyPlate from '../empty-plate/EmptyPlate';
