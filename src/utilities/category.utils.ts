@@ -1,5 +1,5 @@
-import { IBook } from '../../types/interface';
 import { createEffect } from 'effector';
+import { IBook } from '../types';
 
 interface IFuncParams {
 	category: string;

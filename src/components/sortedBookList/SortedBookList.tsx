@@ -11,7 +11,7 @@ import { Icon56SearchOutline } from '@vkontakte/icons';
 import { useUnit } from 'effector-react';
 import { Header } from '@vkontakte/vkui';
 import { $favBooks } from '../../store/favorites';
-import { checkBookInFavorites } from '../../utilities/books/books.utils';
+import { checkBookInFavorites } from '../../utilities/books.utils';
 
 export default function SortedBookList() {
 	const data = useUnit($categoriesBooks);

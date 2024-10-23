@@ -1,6 +1,6 @@
 import { $categories } from '../../store/categories';
 import { iconMap } from '../../dictionary/dictionary';
-import { AddBooksToCategoryFX } from '../../utilities/category/category.utils';
+import { AddBooksToCategoryFX } from '../../utilities/category.utils';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { useFetchBooks } from '../../hooks/useFetchBooks';
 

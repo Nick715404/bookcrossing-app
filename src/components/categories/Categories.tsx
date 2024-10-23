@@ -1,5 +1,5 @@
 import { $categories } from '../../store/categories';
-import { AddBooksToCategoryFX } from '../../utilities/category/category.utils';
+import { AddBooksToCategoryFX } from '../../utilities/category.utils';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import { iconMap } from '../../dictionary/dictionary';

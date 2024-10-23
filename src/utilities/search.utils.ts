@@ -1,5 +1,5 @@
 import { createEffect } from 'effector';
-import { IBook } from '../../types/interface';
+import { IBook } from '../types/interface';
 
 interface IParams {
 	searchText: string;

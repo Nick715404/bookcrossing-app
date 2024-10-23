@@ -10,7 +10,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import { useUnit } from 'effector-react';
 import { Icon28BookmarkOutline, Icon32DoneOutline } from '@vkontakte/icons';
 import { IconButton, Snackbar } from '@vkontakte/vkui';
-import { CheckBookInFavPipeFX } from '../../utilities/category/category.utils';
+import { CheckBookInFavPipeFX } from '../../utilities/category.utils';
 import { setSnackbar } from '../../store/activeModal';
 
 type Props = {
