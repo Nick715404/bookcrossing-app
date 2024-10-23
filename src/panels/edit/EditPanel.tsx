@@ -4,15 +4,14 @@ import CustomHeader from '../../components/header/CustomHeader';
 import EditBookF from '../../components/forms/edit-book/EditBookF';
 
 type Props = {
-  id: string
-}
-
+	id: string;
+};
 
 export default function EditPanel({ id }: Props) {
-  return (
-    <Panel id={id}>
-      <CustomHeader withBack />
-      <EditBookF />
-    </Panel>
-  )
+	return (
+		<Panel id={id}>
+			<CustomHeader withBack />
+			{/* <EditBookF /> */}
+		</Panel>
+	);
 }

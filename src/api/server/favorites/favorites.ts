@@ -1,12 +1,13 @@
 import { createEffect } from 'effector';
 import { api } from '../../axios/axiosInstance';
+import { IBook, TSuccessResponse } from '../../../types';
 
 export const GetFavFromUserFX = createEffect(async (id: string) => {
 	try {
-		const { data } = await api.get(`/favorites/find/${id}`);
-		const { books } = await data;
-		console.log(books);
-		return books;
+		const { data: response }: { data: TSuccessResponse<IBook[]> } =
+			await api.get(`/favorite/${id}`);
+		console.log(response.data);
+		return response.data;
 	} catch (error) {
 		throw new Error('Failed to fetch favorite from user!');
 	}

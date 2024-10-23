@@ -14,56 +14,58 @@ import { CheckBookInFavPipeFX } from '../../utilities/category/category.utils';
 import { setSnackbar } from '../../store/activeModal';
 
 type Props = {
-  bookId: string;
-  // isFav: string;
-  isFav: boolean | undefined;
-  ownerId: number;
-}
+	bookId: string;
+	// isFav: string;
+	isFav: boolean | undefined;
+	ownerId: string;
+};
 
 export default function ToFav({ bookId, isFav, ownerId }: Props) {
-  const [user] = useUnit([$user]);
-  const client = useQueryClient();
-  const { userId } = user;
+	const [user] = useUnit([$user]);
+	const client = useQueryClient();
+	const { userId } = user;
 
-  const { mutate: move, isSuccess, data } = useMutation({
-    mutationKey: ['put', 'favorites'],
-    mutationFn: () => putBookInFavorites(bookId, userId),
-    onSuccess: () => {
-      setSnackbar('fav-adding')
-      client.invalidateQueries({
-        queryKey: [
-          ['books all', 'books favorites'],
-        ]
-      });
-    },
-  });
+	const {
+		mutate: move,
+		isSuccess,
+		data,
+	} = useMutation({
+		mutationKey: ['put', 'favorites'],
+		mutationFn: () => putBookInFavorites(bookId, userId),
+		onSuccess: () => {
+			setSnackbar('fav-adding');
+			client.invalidateQueries({
+				queryKey: [['books all', 'books favorites']],
+			});
+		},
+	});
 
-  useEffect(() => {
-    if (isSuccess) PutBookInFavFX(data);
-  }, [isSuccess, data]);
+	useEffect(() => {
+		if (isSuccess) PutBookInFavFX(data);
+	}, [isSuccess, data]);
 
-  const handleBookMove = async (e: any) => {
-    e.preventDefault();
-    move();
-  };
+	const handleBookMove = async (e: any) => {
+		e.preventDefault();
+		move();
+	};
 
-  useEffect(() => {
-    CheckBookInFavPipeFX(bookId)
-  }, [isSuccess]);
+	useEffect(() => {
+		CheckBookInFavPipeFX(bookId);
+	}, [isSuccess]);
 
-  if (isFav) {
-    return (
-      <>
-        <ToFavReverse bookId={bookId} />
-      </>
-    )
-  }
+	if (isFav) {
+		return (
+			<>
+				<ToFavReverse bookId={bookId} />
+			</>
+		);
+	}
 
-  return (
-    <>
-      <IconButton onClick={handleBookMove} className='to-shelf-btn'>
-        <Icon28BookmarkOutline fill={vkBlueColor} />
-      </IconButton>
-    </>
-  )
+	return (
+		<>
+			<IconButton onClick={handleBookMove} className='to-shelf-btn'>
+				<Icon28BookmarkOutline fill={vkBlueColor} />
+			</IconButton>
+		</>
+	);
 }

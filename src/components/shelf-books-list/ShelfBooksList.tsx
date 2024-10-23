@@ -35,7 +35,7 @@ function ShelfBooksList() {
 
 	return (
 		<>
-			{isLoading && <BookSkeleton />}
+			{/* {isLoading && <BookSkeleton />}
 			{isSuccess &&
 				books
 					.map((book: IBook) => {
@@ -48,7 +48,7 @@ function ShelfBooksList() {
 							/>
 						);
 					})
-					.reverse()}
+					.reverse()} */}
 		</>
 	);
 }

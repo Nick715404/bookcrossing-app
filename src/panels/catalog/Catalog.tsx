@@ -14,11 +14,12 @@ export default function Catalog({ id }: Props) {
 		<Panel id={id}>
 			<CustomHeader />
 			<Group separator='auto'>
-				{/* <Search onPanel />
-				<Categories /> */}
-				hello
+				<Search onPanel />
+				<Categories />
 			</Group>
-			<Group>{/* <Relevants /> */}</Group>
+			<Group>
+				<Relevants />
+			</Group>
 		</Panel>
 	);
 }

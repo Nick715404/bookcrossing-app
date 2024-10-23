@@ -1,11 +1,12 @@
 import { initialStateSelectedBook } from '../constants/utils';
+import { TBook } from '../types';
 import { IBook } from '../types/interface';
 import { createEffect, createEvent, createStore } from 'effector';
 
-export const $selectedBook = createStore<IBook>(initialStateSelectedBook);
+export const $selectedBook = createStore<TBook>(initialStateSelectedBook);
 export const $currentBookId = createStore<string>('');
 
-export const selectBookFX = createEvent<IBook>();
+export const selectBookFX = createEvent<TBook>();
 
 export const GetCurrentBookIdFX = createEffect((id: string): string => {
 	return id;

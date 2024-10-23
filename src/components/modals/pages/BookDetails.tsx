@@ -28,11 +28,11 @@ const BookDetails = ({
 					{book.title}
 				</Text>
 				<Div className='book-top-row__btn'>
-					<ToFav ownerId={book.owner} bookId={book.id} isFav={isFavorite} />
+					{/* <ToFav ownerId={book.owner} bookId={book.id} isFav={isFavorite} /> */}
 				</Div>
 			</Div>
 			<Text weight='3' className='bookAuthor'>
-				{book.author}
+				{/* {book.author} */}
 			</Text>
 			<Text weight='3' className='bookCategory'>
 				Категория: {book.categoryTitle}

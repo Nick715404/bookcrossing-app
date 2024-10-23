@@ -1,21 +1,39 @@
+import { TBook, TSuccessResponse } from '../../../types';
 import { IBook, ICreateBook, IShelfInfo } from '../../../types/interface';
 import { api } from '../../axios/axiosInstance';
 
-export const fetchBooks = async () => {
+type TInfinteBookFetching = {
+	books: TBook[] | [];
+	limit: string;
+	page: string;
+	total: number;
+};
+
+export const fetchBooks = async ({ pageParam = 1 }) => {
 	try {
-		const { data } = await api.get('/book/all');
-		const fetchedData: IBook[] = data;
-		return fetchedData;
+		const { data: response } = await api.get<
+			TSuccessResponse<TInfinteBookFetching>
+		>(`/books?page=${pageParam}&limit=5`);
+
+		return {
+			books: response.data.books,
+			nextPage:
+				+response.data.page <
+				Math.ceil(response.data.total / +response.data.limit)
+					? Number(response.data.page) + 1
+					: undefined,
+		};
 	} catch (error) {
-		throw new Error('Error to fetch all books!');
+		throw new Error('Error while fetching books!');
 	}
 };
 
 export const createBook = async (book: ICreateBook): Promise<IBook> => {
 	try {
 		console.log(book);
-		const { data } = await api.post('/book/create', book);
-		return data;
+		const { data: response } = await api.post('/books', book);
+		console.log(response);
+		return response;
 	} catch (error) {
 		throw new Error('Failed to create book!');
 	}
@@ -23,7 +41,7 @@ export const createBook = async (book: ICreateBook): Promise<IBook> => {
 
 export const findBooksOnShelf = async (userId: string) => {
 	try {
-		const { data } = await api.get(`/shelf/find/${userId}`);
+		const { data } = await api.get(`/shelf/${userId}`);
 		const shelf: IShelfInfo = data;
 		const shelfBooks = shelf.books;
 		return shelfBooks;

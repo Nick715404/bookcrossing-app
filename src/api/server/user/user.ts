@@ -1,13 +1,14 @@
 import { api } from '../../axios/axiosInstance';
-import { IVkUser } from '../../../types/interface';
 import { createEffect } from 'effector';
-import { TCreateUser } from '../../../types';
+import { IServerUser, TCreateUser, TSuccessResponse } from '../../../types';
 
 export const fetchUserFromDataBase = async (id: number) => {
 	try {
-		const response = await api.get(`/user/find/${id}`);
+		const { data: response }: { data: TSuccessResponse<any> } = await api.get(
+			`/users/${id}`
+		);
 
-		if (response.statusText !== 'OK') {
+		if (response.status !== 'ok') {
 			return {
 				status: 'empty',
 				user: null,
@@ -31,7 +32,7 @@ export const GetCurrentUserFX = createEffect(async (user: TCreateUser) => {
 
 	try {
 		const { data: response } = await api.post('/users', user);
-		return response.user;
+		return response.data;
 	} catch (error) {
 		return new Error('Error with server');
 	}
@@ -39,8 +40,8 @@ export const GetCurrentUserFX = createEffect(async (user: TCreateUser) => {
 
 export const GetCurrentUserFromServerFX = createEffect(async (id: number) => {
 	try {
-		const { data } = await api.get(`/user/find/${id}`);
-		return data;
+		const { data: response } = await api.get(`/users/${id}`);
+		return response.data;
 	} catch (error) {
 		throw new Error('Error with server');
 	}

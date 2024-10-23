@@ -57,7 +57,7 @@ const Modal = ({ id, changeActiveModal }: IPassIdToModalPage) => {
 			dynamicContentHeight={true}
 		>
 			<SplitLayout>
-				<SplitCol animate={true}>
+				{/* <SplitCol animate={true}>
 					<Div className='modalPage'>
 						<Group separator='hide'>
 							<Group separator='hide'>
@@ -93,7 +93,7 @@ const Modal = ({ id, changeActiveModal }: IPassIdToModalPage) => {
 							</Button>
 						</Group>
 					</Div>
-				</SplitCol>
+				</SplitCol> */}
 			</SplitLayout>
 		</ModalPage>
 	);

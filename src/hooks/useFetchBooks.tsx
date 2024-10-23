@@ -1,11 +1,11 @@
-import { fetchBooks } from "../api/server/books/books.query";
-import { useQuery } from "react-query";
+import { fetchBooks } from '../api/server/books/books.query';
+import { useQuery } from 'react-query';
 
-const useFetchBooks = () => {
-  return useQuery({
-    queryKey: ['books all'],
-    queryFn: fetchBooks,
-  })
-}
+const useFetchBooks = (page: number, limit: number) => {
+	return useQuery({
+		queryKey: ['books all', page, limit],
+		queryFn: () => fetchBooks({ pageParam: page }),
+	});
+};
 
 export { useFetchBooks };

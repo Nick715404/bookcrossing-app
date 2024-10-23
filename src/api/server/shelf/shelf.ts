@@ -4,9 +4,10 @@ import { createEffect } from 'effector';
 
 export const FindCurrentShelf = createEffect(async (userId: string) => {
 	try {
-		const { data } = await api.get(`/shelf/find/${userId}`);
-		const shelf: IShelfInfo = await data;
-		return shelf;
+		const { data } = await api.get(`/shelf/${userId}`);
+		console.log(data);
+		// const shelf: IShelfInfo = await data;
+		// return shelf;
 	} catch (error) {
 		throw new Error('Failed to find shelf!');
 	}

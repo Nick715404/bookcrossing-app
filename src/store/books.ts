@@ -7,9 +7,10 @@ import {
 } from '../utilities/category/category.utils';
 import { createEffect, createEvent, createStore } from 'effector';
 import { PutBookInFavFX } from './favorites';
+import { TBook } from '../types';
 
 // - Stores
-export const $searchBooks = createStore<IBook[]>([]);
+export const $searchBooks = createStore<TBook[]>([]);
 export const $books = createStore<IBook[]>([]);
 export const $sortedBooks = createStore<IBook[]>([]);
 export const $createBookStatus = createStore<boolean>(false);

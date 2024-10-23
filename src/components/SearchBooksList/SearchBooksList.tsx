@@ -45,7 +45,7 @@ const SearchBooksList = ({ data, isSuccess, isLoading }: IProps) => {
 
 	return (
 		<>
-			{isSuccess &&
+			{/* {isSuccess &&
 				data &&
 				data.map((book: IBook) => {
 					const status = checkBookInFavorites(book, favorites);
@@ -59,7 +59,7 @@ const SearchBooksList = ({ data, isSuccess, isLoading }: IProps) => {
 							key={book.id}
 						/>
 					);
-				})}
+				})} */}
 		</>
 	);
 };

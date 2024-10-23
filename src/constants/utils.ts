@@ -1,5 +1,6 @@
 import { CSSProperties } from 'react';
 import { IBook, IDataState } from '../types/interface';
+import { TBook } from '../types';
 
 export const qualityOptions = [
 	{
@@ -89,7 +90,7 @@ export const initialState: IDataState = {
 	categoryTitle: '',
 	isbn: '',
 	description: '',
-	owner: '',
+	userId: '',
 };
 
 export const segmentControlsOption = [
@@ -106,16 +107,17 @@ export const segmentControlsOption = [
 export const vkBlueColor = '3F8AE0';
 export const vkGreyColor = '99A2AD';
 
-export const initialStateSelectedBook: IBook = {
+export const initialStateSelectedBook: TBook = {
 	id: '',
-	categoryTitle: '',
-	author: '',
-	owner: 0,
+	categoryId: '',
+	authors: [],
+	owner: '',
 	isbn: '',
 	title: '',
 	state: '',
 	description: '',
-	favourite: '',
+	// favourite: '',
+	releaseDate: '',
 };
 
 export const menuLinks = [

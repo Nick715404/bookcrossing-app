@@ -2,13 +2,13 @@ import {
 	useActiveVkuiLocation,
 	useRouteNavigator,
 } from '@vkontakte/vk-mini-apps-router';
-import { IBook } from '../../types/interface';
 import { selectBookFX } from '../../store/modalBook';
 import { Div, SimpleCell, Text, SplitLayout } from '@vkontakte/vkui';
 import { CustomImage } from '../CustomImage/CustomImage';
+import { TBook } from '../../types';
 
 type Props = {
-	book: IBook;
+	book: TBook;
 	afterIcon: React.ReactNode | null;
 	beforeIcon: React.ReactNode | null;
 };
@@ -16,6 +16,17 @@ type Props = {
 export default function Book({ book, afterIcon, beforeIcon }: Props) {
 	const navigator = useRouteNavigator();
 	const { panel: activePanel } = useActiveVkuiLocation();
+	const {
+		categoryId,
+		description,
+		id,
+		isbn,
+		owner,
+		releaseDate,
+		state,
+		title,
+		authors,
+	} = book;
 
 	const handleChooseBook = () => {
 		selectBookFX(book);
@@ -27,21 +38,22 @@ export default function Book({ book, afterIcon, beforeIcon }: Props) {
 			<Div className='book' id={book.id}>
 				<SimpleCell
 					className='book-wrapper'
-					before={<CustomImage bookId={book.id} />}
+					// before={<CustomImage bookId={book.id} />}
 					selected={activePanel === 'book-panel'}
 					onClick={handleChooseBook}
 				>
 					<Text className='book-title' weight='1'>
-						{book.title}
+						{title}
 					</Text>
 					<Text className='book-author book-info'>
-						{book.author ? book.author : 'Автор не найден'}
+						{/* {book.author ? book.author : 'Автор не найден'} */}
+						{authors ? authors?.map((author, index) => author.author.name) : ''}
 					</Text>
 					<Text className='book-quality book-info'>
 						{book.state ? book.state : 'Не найдено'}
 					</Text>
 					<Text className='book-genre book-info'>
-						{book.categoryTitle ? book.categoryTitle : 'Нет жанра'}
+						{categoryId ? categoryId : 'Нет жанра'}
 					</Text>
 				</SimpleCell>
 			</Div>

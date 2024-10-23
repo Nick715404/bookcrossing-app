@@ -11,17 +11,13 @@ const InitAppEntities = ({ children }: IInitAppEntities) => {
 	return (
 		<>
 			<QueryProvider>
-				<FavouritesProvider>
-					<InitCategories>
-						<AppRoot>
-							<InitAppModals>
-								<UserProvider>
-									<SnackBarProvider>{children}</SnackBarProvider>
-								</UserProvider>
-							</InitAppModals>
-						</AppRoot>
-					</InitCategories>
-				</FavouritesProvider>
+				<AppRoot>
+					<InitAppModals>
+						<UserProvider>
+							<SnackBarProvider>{children}</SnackBarProvider>
+						</UserProvider>
+					</InitAppModals>
+				</AppRoot>
 			</QueryProvider>
 		</>
 	);

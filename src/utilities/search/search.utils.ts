@@ -12,13 +12,13 @@ export const searchHandlerFX = createEffect(
 			return listOfBooks;
 		}
 		const normalizedSearchText = searchText.toLowerCase();
-		return listOfBooks.filter(({ title, isbn, author, categoryTitle }) => {
-			return (
-				title.toLowerCase().includes(normalizedSearchText) ||
-				isbn.toLowerCase().includes(normalizedSearchText) ||
-				author?.toLowerCase().includes(normalizedSearchText) ||
-				categoryTitle?.toLowerCase().includes(normalizedSearchText)
-			);
-		});
+		// return listOfBooks.filter(({ title, isbn, author, categoryTitle }) => {
+		// 	return (
+		// 		title.toLowerCase().includes(normalizedSearchText) ||
+		// 		isbn.toLowerCase().includes(normalizedSearchText) ||
+		// 		author?.toLowerCase().includes(normalizedSearchText) ||
+		// 		categoryTitle?.toLowerCase().includes(normalizedSearchText)
+		// 	);
+		// });
 	}
 );

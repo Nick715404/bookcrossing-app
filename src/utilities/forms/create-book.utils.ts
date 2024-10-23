@@ -10,7 +10,7 @@ export const handleFormValidation = (author: string, errors: any) => {
 };
 
 export const handleCreateBook = async (
-	userId: string | undefined,
+	userId: string,
 	formData: IDataState
 ) => {
 	const data = { ...formData, userId: userId };

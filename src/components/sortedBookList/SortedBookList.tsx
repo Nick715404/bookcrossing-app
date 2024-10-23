@@ -34,7 +34,7 @@ export default function SortedBookList() {
 			<Header mode='primary' style={{ marginBottom: '12px', fontSize: '20px' }}>
 				Поиск по жанру: {data.title}
 			</Header>
-			{data.books.length &&
+			{/* {data.books.length &&
 				data.books.map((book: IBook) => {
 					const status = checkBookInFavorites(book, favorites);
 					return (
@@ -47,7 +47,7 @@ export default function SortedBookList() {
 							book={book}
 						/>
 					);
-				})}
+				})} */}
 		</>
 	);
 }
