@@ -2,6 +2,7 @@ import { vkBlueColor } from '../../constants/utils';
 import { Icon28MessageOutline } from '@vkontakte/icons';
 import { IconButton } from '@vkontakte/vkui';
 import { useState } from 'react';
+import bridge from '@vkontakte/vk-bridge';
 
 type TProps = {
 	vkid: string | undefined;
