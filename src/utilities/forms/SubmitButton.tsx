@@ -1,11 +1,21 @@
 import { Button, Div } from '@vkontakte/vkui';
+import { UseFormHandleSubmit } from 'react-hook-form';
+import { TCreateBookFields } from './types';
 
-type SubmitButtonProps = {};
+type SubmitButtonProps = {
+	handleSubmit: () => Promise<void>;
+};
 
-export const SubmitButton = ({}: SubmitButtonProps) => {
+export const SubmitButton = ({ handleSubmit }: SubmitButtonProps) => {
 	return (
 		<Div>
-			<Button size='l' appearance='accent' stretched>
+			<Button
+				size='l'
+				appearance='accent'
+				stretched
+				type='submit'
+				onClick={handleSubmit}
+			>
 				Сохранить
 			</Button>
 		</Div>
