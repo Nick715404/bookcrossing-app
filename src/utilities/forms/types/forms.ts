@@ -6,7 +6,15 @@ export type TSelectOptions = {
 export type StandartInputProps = {
 	id: number;
 	label: string;
-	value: string;
+	value:
+		| 'title'
+		| 'author'
+		| 'state'
+		| 'isbn'
+		| 'description'
+		| 'categoryTitle'
+		| 'userId'
+		| 'withoutIsbn';
 	placeholder: string;
 	type: 'text' | 'select' | 'checkbox' | 'textarea';
 	required: {
@@ -24,4 +32,5 @@ export type TCreateBookFields = {
 	description: string;
 	categoryTitle?: string;
 	userId?: string;
+	withoutIsbn: boolean;
 };

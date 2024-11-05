@@ -1,5 +1,5 @@
 import CustomInput from '../components/CustomInput/CustomInput';
-import ImageInput from '../components/CustomFileInput/ImageInput';
+import { ImageInput } from '../components/CustomFileInput/ImageInput';
 import QualitySelect from '../components/QualitySelect/QualitySelect';
 import CategorySelect from '../components/CategorySelect/CategorySelect';
 import CustomButton from '../../custom-button/CustomButton';

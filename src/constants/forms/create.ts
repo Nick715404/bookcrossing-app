@@ -59,6 +59,27 @@ export const formItems: StandartInputProps[] = [
 	},
 	{
 		id: 4,
+		label: 'Категория',
+		placeholder: '',
+		value: 'categoryTitle',
+		type: 'select',
+		required: {
+			value: true,
+			message: 'Укажите состояние книги.',
+		},
+		options: [
+			{
+				value: '',
+				label: 'Выберите значение',
+			},
+			{
+				value: 'testing',
+				label: 'Тестовое',
+			},
+		],
+	},
+	{
+		id: 5,
 		label: 'ISBN',
 		placeholder: 'ISBN',
 		value: 'isbn',
@@ -69,7 +90,7 @@ export const formItems: StandartInputProps[] = [
 		},
 	},
 	{
-		id: 5,
+		id: 6,
 		label: 'ISBN отсутствует',
 		placeholder: '',
 		value: 'withoutIsbn',
@@ -80,7 +101,7 @@ export const formItems: StandartInputProps[] = [
 		},
 	},
 	{
-		id: 6,
+		id: 7,
 		label: 'Комменатрий',
 		placeholder: 'Добавьте комментарий.',
 		value: 'description',
