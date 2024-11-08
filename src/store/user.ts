@@ -4,7 +4,7 @@ import {
 	GetCurrentUserFromServerFX,
 } from '../api/server/user/user';
 import { IServerUser } from '../types/interface';
-import { UpdateUserCityFX } from '../utilities/user/userCity';
+import { UpdateUserCityFX } from '../utilities/user-city.utils';
 
 export const $user = createStore<IServerUser>({
 	userId: '',

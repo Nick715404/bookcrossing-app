@@ -1,27 +1,19 @@
-import { SearchBooksList } from '../../components/SearchBooksList/SearchBooksList';
-import { SearchBooks } from '../../api/server/search';
-import { useDebounce } from '../../hooks/useDebounce';
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { SearchBooksList } from '../components/SearchBooksList/SearchBooksList';
+import { SearchBooks } from '../api/server/search';
+import { useDebounce } from '../hooks/useDebounce';
 
-// import Search from '../../components/search/Search';
+import Search from '../components/Search/Search';
 
 import { useState } from 'react';
 import { useQuery } from 'react-query';
-import {
-	Div,
-	Group,
-	Panel,
-	PanelHeader,
-	PanelHeaderBack,
-	Separator,
-} from '@vkontakte/vkui';
-import CustomHeader from '../../components/header/CustomHeader';
+import { Div, Group, Panel } from '@vkontakte/vkui';
+import CustomHeader from '../components/header/CustomHeader';
 
-type Props = {
+type SearchPanelProps = {
 	id: string;
 };
 
-export default function SearchPanel({ id }: Props) {
+export const SearchPanel = ({ id }: SearchPanelProps) => {
 	const [searchText, setSearchText] = useState<string>('');
 	const searchDebounce = useDebounce({ value: searchText, delay: 300 });
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,11 +33,11 @@ export default function SearchPanel({ id }: Props) {
 			<CustomHeader withBack />
 			<Group>
 				<Div style={{ padding: '0', marginBottom: '5px' }}>
-					{/* <Search
-            autoFocus
-            handleInputChange={handleInputChange}
-            searchText={searchText}
-          /> */}
+					<Search
+						autoFocus
+						handleInputChange={handleInputChange}
+						searchText={searchText}
+					/>
 				</Div>
 				<SearchBooksList
 					isLoading={isLoading}
@@ -55,4 +47,4 @@ export default function SearchPanel({ id }: Props) {
 			</Group>
 		</Panel>
 	);
-}
+};

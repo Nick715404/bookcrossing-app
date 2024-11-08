@@ -4,7 +4,7 @@ import {
 	AddBooksToCategoryFX,
 	CheckBookInFavPipeFX,
 	sortBookFx,
-} from '../utilities/category/category.utils';
+} from '../utilities/category.utils';
 import { createEffect, createEvent, createStore } from 'effector';
 import { PutBookInFavFX } from './favorites';
 import { TBook } from '../types';

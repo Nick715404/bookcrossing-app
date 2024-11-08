@@ -1,5 +1,5 @@
 import { ICity } from '../../types/interface';
-import { UpdateUserCityFX } from '../../utilities/user/userCity';
+import { UpdateUserCityFX } from '../../utilities/user-city.utils';
 import { fetchVkUser } from '../../api/vk-bridge/user';
 import { GetCurrentUserFX } from '../../api/server/user/user';
 

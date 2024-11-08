@@ -8,7 +8,7 @@ import ToChat from '../toChat/toChat';
 import EmptyPlate from '../empty-plate/EmptyPlate';
 
 import { BookSkeleton } from '../Skeletons/BookSkeleton';
-import { checkBookInFavorites } from '../../utilities/books/books.utils';
+import { checkBookInFavorites } from '../../utilities/books.utils';
 import { $favBooks } from '../../store/favorites';
 import { Icon28BookOutline } from '@vkontakte/icons';
 import { useUnit } from 'effector-react';

@@ -1,7 +1,6 @@
 import { $user } from '../../../store/user';
 import { IDataState } from '../../../types/interface';
 import { initialState } from '../../../constants/utils';
-import { handleFormValidation } from '../../../utilities/forms/create-book.utils';
 import { useCreateBook } from '../../../hooks/useCreateBook';
 import { CreateBookPipeFX } from '../../../store/books';
 

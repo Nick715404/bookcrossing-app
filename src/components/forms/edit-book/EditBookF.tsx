@@ -1,8 +1,7 @@
 import { $user } from '../../../store/user';
 import { IBook } from '../../../types/interface';
 import { initialStateSelectedBook } from '../../../constants/utils';
-import { handleEditBook } from '../../../utilities/forms/edit-book.utils';
-import { handleFormValidation } from '../../../utilities/forms/create-book.utils';
+import { handleEditBook } from '../../../utilities/edit-book.utils';
 import { $editingBook } from '../../../store/bookEditId';
 
 import EditBookForm from './EditBookForm';
