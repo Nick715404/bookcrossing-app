@@ -179,5 +179,5 @@ export const textStyles: CSSProperties = {
 	textAlign: 'left',
 	fontSize: '14px',
 	marginTop: '20px',
-	color: '#6D7885',
+	color: '#969A9F',
 };

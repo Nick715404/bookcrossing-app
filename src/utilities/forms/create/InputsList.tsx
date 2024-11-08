@@ -1,15 +1,19 @@
 import { StandartInput } from './StandartInput';
 import { SubmitButton } from './SubmitButton';
-import { Fragment } from 'react/jsx-runtime';
-import { Div } from '@vkontakte/vkui/dist/components/Div/Div';
 import { useValidateForm } from '../../../hooks/forms';
 import { formItems } from '../../../constants/forms/create';
+import { FormImageInput } from './FormImageInput';
+import { Fragment } from 'react/jsx-runtime';
+import { Div } from '@vkontakte/vkui/dist/components/Div/Div';
+import { ImageInput } from '../../../components';
 
 export const InputsList = () => {
 	const { handleChange, form, handleSubmitForm } = useValidateForm({});
 
 	return (
 		<>
+			<FormImageInput />
+			<ImageInput />
 			{formItems.map(item => (
 				<Fragment key={item.id}>
 					<StandartInput
